@@ -31,10 +31,16 @@ Research program proving infinitude/log-density $c_1^2$ of $W_1=\{n: n(n-1)\mid\
 | `wp23-anatomy.md` | WP2.3: anatomy layer unwinds elementarily ($u_f<2$) — PASS |
 | `verify_dls.py` | Numerical verification of the deep large sieve (identities, fiber/energy/RMS) |
 | `wp21_test.py` | Model test of the WP2.1 two-frequency reduction |
+| `empirics_d.py` | WP1.5 band-empirics probe ($T_q(\lambda)$ on real populations, 5 strata; ~minutes at $x=10^8$) |
+| `archive/` | Recovered session artifacts + full transcripts — historical; see `archive/README.md` |
 
 ## Scripts
 
-Python 3 with `numpy` and `sympy`; run directly (`python3 verify_dls.py`). `empirics_d.py` (WP1.5) is referenced but not yet recovered into the repo.
+Python 3 with `numpy` and `sympy`, installed in the repo venv: run with `.venv/bin/python verify_dls.py`. All identities verified passing on this machine (June 9, 2026).
+
+## History
+
+The program was built in two claude.ai sessions on June 9, 2026 (problem selection → k=1 skeleton → Lemma D de-risk → WP2.0–2.3), then migrated here. The original session's artifacts and both full transcripts are preserved under `archive/` — grep there before re-deriving anything. Docs predating the WP2.0 erratum carry inflated coverage claims; the repo-root docs are canonical.
 
 ## Where work happens next (roadmap §Immediate next actions)
 

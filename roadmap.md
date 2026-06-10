@@ -51,7 +51,7 @@ Union bounds across the digit layer (failure mass $\Theta(1)$). Smooth-cofactor 
 
 **WP3b — Close Lemma B:** fetch TT Thm 3.1, run the three checks, write the half-page lemma, verify the $z$-interpolation reconstruction.
 
-**WP4 — Manuscript spine (parallel, zero risk):** re-creates the lost artifacts (skeleton, HYPOTHESES_CHECK, Lemma 0 writeup) in durable form; locks rung ii. The chat export is the only backup of several derivations — paper form is the durable one.
+**WP4 — Manuscript spine (parallel, zero risk):** re-creates the lost artifacts (skeleton, HYPOTHESES_CHECK, Lemma 0 writeup) in durable form; locks rung ii. *(Update June 9: the "lost" originals were recovered from the chat export into `archive/original-session/` — K1_SKELETON.md, HYPOTHESES_CHECK.md, all test scripts — and full session transcripts are in `archive/transcripts/`. WP4 is now "polish into manuscript form with the corrected accounting," not re-derivation from scratch.)*
 
 **WP5 — Constructive route, general $k$** (parked): $k$-point correlation tech is the frontier (open even for smoothness; log-Chowla open for even $k\ge4$ — though our functions are parity-free). Revisit on G1 kill or after the $k=1$ paper.
 
