@@ -9,7 +9,7 @@ Research program proving infinitude/log-density $c_1^2$ of $W_1=\{n: n(n-1)\mid\
 - Sources and citation verification statuses live in `citations.md` (PINNED / PARTIAL / TO-PIN).
 - Dead ends are recorded with proofs of death (roadmap §Dead-ends, lemma-D §8) — do not re-attempt them.
 - Any derivation must be written to a file immediately; chat sessions are not durable storage.
-- `program-state.md` is a generated single-file bundle of everything, for upload to Claude project knowledge (the claude.ai "Erdos 396" project is the phone-side mirror of this repo). **Regenerate it after sessions that change state** with `python3 make_bundle.py`; never edit it directly. The user must then re-upload it to project knowledge manually.
+- `program-state.md` is a generated single-file bundle (`python3 make_bundle.py`), **retired as of June 10, 2026**: the claude.ai phone-side mirror is no longer used (the user drives this repo from anywhere via Claude Code remote control). Kept as an archival snapshot; regenerate only if a single-file export is needed. Never edit it directly.
 
 ## Document map
 
