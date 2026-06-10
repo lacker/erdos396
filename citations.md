@@ -66,6 +66,16 @@ Theorems and papers this proof needs (or may need) to cite. **Status:** PINNED =
 | Balog–Wooley | explicit constructions with congruence freedom | Route C (general $k$) | TO-PIN |
 | Tao(–Teräväinen) $k$-point correlation state of the art; log-Chowla open for even $k\ge4$ | bridge-to-general-$k$ risk calibration | WP5 | TO-PIN |
 
+## E. Smooth windows / constructive route (WP5)
+
+| Ref | What it gives us | Used in | Status |
+|---|---|---|---|
+| **Balog–Wooley 1998, J. Austral. Math. Soc. A 64, 266–276** | strings of $n^{1/u}$-smooth consecutive integers, length $\log_4 n$; cyclotomic mechanism $x-i=i(z_i^{\gamma_i}-1)$, CRT exponents, polylog moduli; family entropy $O(t\log\log X)$ | WP5 core; the FQ-convergence discovery | **PINNED (source read June 10)** |
+| Hildebrand, *On integer sets containing strings of consecutive integers* | $k$-strings of $n^{\alpha}$-smooth with positive density for $\alpha>e^{-1/(k-1)}$ — the dense-window input, admissible vs the $\sqrt{}$-ceiling only for $k\le2$ | WP5a ($k=2$ rung) | TO-PIN (priority — exact statement + density) |
+| Balog–Ruzsa (smooth pairs) | positive density of $n$ with $n, an+c$ both $n^{\beta}$-smooth, any $\beta>0$ | $k=1$ window family | TO-PIN |
+| Eggleton–Selfridge | early strings of $\le5$ smooth consecutive integers | context | TO-PIN |
+| Balog–Erdős–Tenenbaum + Heath-Brown construction | pairs $n,n+1$ smooth to $\exp(8\log n\log_3 n/\log_2 n)$ — depth record for pairs | WP5 upgrade path | TO-PIN |
+
 ## Our own citable artifacts
 
 | Item | Status |

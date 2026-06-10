@@ -19,6 +19,7 @@
 | `wp22-minor-major.md` | WP2.2: D†-digit closed modulo write-up |
 | `wp23-anatomy.md` | WP2.3: anatomy layer PASS — elementary unwinding; **no structural obstruction left on D** |
 | `wp24-e1-e2-fineclass.md` | WP2.4: E1/E2 diagnosed LOW-RISK (signed form suffices, true in data); fine-class check PASS |
+| `wp5-diagnosis.md` | WP5: constructive-route diagnosis — FQ convergence, entropy obstruction, $k=2$ rung viable |
 | `citations.md` | ledger; verification statuses inside |
 
 ## Targets
@@ -56,7 +57,7 @@ Union bounds across the digit layer (failure mass $\Theta(1)$). Smooth-cofactor 
 
 **WP4 finding (erratum-grade, recorded in `wp22-minor-major.md` §0):** writing the D†-minor proof showed the WP2.2 statement was wrong twice over — single-scale (M2) misses small-scale convergent-gap "grazes," and the polylog conclusion is structurally false for $u>u'$ (the $s{=}1$ gap). Corrected form: a Diophantine-functional bound $|V_p|\ll L^{B+3}(1+\mathcal D_R)+L^2R/s_0$, minor set by all-scale gap-ratio threshold $RL^{-B}$ (structural gap auto-exempt under the top trim), minor-set worst case $\sqrt R\,L^{O(1)}$ — **within budget with room**; Family B recounted, still sparse. Conclusion-level WP2.2 claims survive. The draft-the-proof discipline has now caught an overcount twice (WP2.0, WP4).
 
-**WP5 — Constructive route, general $k$** (parked): $k$-point correlation tech is the frontier (open even for smoothness; log-Chowla open for even $k\ge4$ — though our functions are parity-free). Revisit on G1 kill or after the $k=1$ paper.
+**WP5 — Constructive route, literal 396: DIAGNOSIS DONE (June 10; `wp5-diagnosis.md`).** Findings: (i) witness densities are geometric $\approx c_1^{k+1}$ — independence true at every order in data; (ii) the naive band-coin model is wrong — top-of-band carries are automatic by size (FK law), so constructions should *select* band primes into auto-carry slivers; (iii) absolute-counting comparisons are dead at every smoothness level (unifies two old dead-ends, quantitatively: needs $u<2^{1/(k+1)}$ vs the forced $u\ge2$); (iv) **route convergence**: in Balog–Wooley families the slot-2 digits at window primes are Fermat quotients of the explicit bases — Lemma D's deep-large-sieve species, and linear in the construction's exponents (CRT-forcible); (v) **entropy obstruction**: pure B–W families carry $O(t\log\log X)$ entropy vs the $\gtrsim\log x$ needed — insufficient, proof-of-death recorded. Reduction: literal 396 $\Leftarrow$ entropy-rich $\sqrt{2n}$-smooth window families (exist for $k\le2$ only: Hildebrand/Balog–Ruzsa) + family-FQ equidistribution (our wheelhouse, upper-bound mode). **WP5a ($k=2$ rung, after the $k=1$ paper): genuinely approachable, ~35–40%.** General $k$: blocked on window technology or $(k{+}1)$-point correlations. P(literal 396 via this program): **~10%**.
 
 ## Decision tree & calibration
 
@@ -68,7 +69,7 @@ WP1.4–1.5 ─► G1 ─┬─ PASS ────► WP2 ─┬─ success + WP3
                        (WP4 runs in parallel throughout)
 ```
 
-Rung i full: **~50%** (post-WP2.4/WP3b: B citable, E1/E2 benign, fine classes pass; remaining risk = Lemma C, Type-II ranges, uniformity bookkeeping) — the one-day-swing humility warning still applies · Route-B lower bound: **+~25%** · rung ii: **~90%** · general-$k$ contribution: **15–40%**.
+Rung i full: **~50%** (post-WP2.4/WP3b: B citable, E1/E2 benign, fine classes pass; remaining risk = Lemma C, Type-II ranges, uniformity bookkeeping) — the one-day-swing humility warning still applies · Route-B lower bound: **+~25%** · rung ii: **~90%** · $k{=}2$ rung (WP5a): **~35–40%** · **literal 396 via this program: ~10%** (post-WP5-diagnosis: half on entropy-rich windows, half on the long-horizon analytic route).
 
 ## Immediate next actions
 
@@ -77,7 +78,8 @@ Rung i full: **~50%** (post-WP2.4/WP3b: B citable, E1/E2 benign, fine classes pa
 3. **WP3b — DONE June 9 late evening** (see above; `lemma-B-anatomy-independence.md` has the verbatim theorem + resolved checks; TT row in `citations.md` now PINNED).
 4. **WP4 — DONE June 9 evening** (see above): manuscript spine drafted and compiling; D†-minor proved in corrected form; E1/E2 isolated as the precise open hypotheses of the digit layer. Remaining manuscript debts are exactly manuscript §10's ledger: E1, E2, the anatomy Type-I/II ranges + ℓ-resonance count, the fine-class check, the Vaaler/completion packaging (D5), Lemma 0′ margins, Lemma A write-up, assembly bookkeeping.
 5. **WP2.4 — DONE June 9 late evening** (`wp24-e1-e2-fineclass.md`): E1/E2 diagnosed — both LOW RISK (E1: only the *signed* average is needed, true in data with 10–300× margin, two of three boundary pieces unconditional; E2: tail law and moments confirmed, elementary + one BV corner); fine-class check (D4) **PASS** (bounded-depth exact I–E, same species; class-restricted probes all at $z=O(1)$). **Next binding items:** (a) write-ups: E1/E2 proofs, B0, D†-anatomy Type-I/II ranges (the one remaining named risk); (b) Lemma C (WP3) — now the largest open surface; (c) re-read FK with our notation (citations.md row A3).
-6. (When convenient) re-run `empirics_d.py` at $x=10^9$ to check the §4 flag shrinks like a boundary term.
+6. **WP5 — DIAGNOSIS DONE June 10** (`wp5-diagnosis.md`); future sub-items: WP5a ($k=2$ via Hildebrand windows + family-D machinery), entropy-rich B–W variants (reading/derivation session), pin Hildebrand strings + Balog–Ruzsa exact statements.
+7. (When convenient) re-run `empirics_d.py` at $x=10^9$ to check the §4 flag shrinks like a boundary term.
 
 ## Method note
 
