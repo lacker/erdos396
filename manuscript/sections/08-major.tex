@@ -1,0 +1,193 @@
+\section{The major-arc counts}\label{sec:major}
+
+Major $p$ cannot be bounded individually --- on a resonance curve the
+slowly walking digit weight phase-locks with the slowly rotating deep
+phase and $|V_p|$ genuinely reaches $cR$ (observed; Appendix
+\ref{app:numerics}). They must be \emph{counted}, and the count must be
+performed on average over $q\sim Q$: each $p$ is resonant for only a
+vanishing proportion of the band moduli. Two average-equidistribution
+steps are isolated below as Hypotheses E1 and E2; everything else in this
+section is proved. For the lower-bound track
+(Theorem~\ref{thm:lower}) the worst-case-per-$q$ versions suffice and
+neither hypothesis is needed.
+
+\subsection{Family A: quadratic resonances ((M1)-failures)}
+
+(M1) fails for $(p,q,\lambda)$ exactly when there exist
+$\mu\le R\Llog^{-B}$ and $k\in\Z$ with
+\begin{equation}\label{eq:conic}
+\big|\mu q^2-\lambda p^2-kpq\big|\;\le\;\frac{pq}{2\mu\Llog^{B}},
+\end{equation}
+lattice points near the conics $p\approx q\sqrt{\mu/\lambda}$ (after
+absorbing $k$; the $k\ne0$ branches are the wrap copies).
+
+\begin{lemma}[unconditional branch count]\label{lem:branch}
+\statusP\quad
+Fix $q,\lambda,\mu$ and $\delta\in(0,\tfrac12]$, and set
+$N_q(\mu,\lambda,\delta):=\#\{p\in(P,2P]:\ \nm{\theta_\mu(p,q)}\le\delta\}$
+(count over integers $p$; restricting to primes only decreases it). Then
+\[
+N_q(\mu,\lambda,\delta)\;=\;2\delta P
++E_q(\mu,\lambda,\delta),
+\qquad
+|E_q(\mu,\lambda,\delta)|\;\ll\;\frac{\mu Q}{P}+\frac{\lambda P}{Q}+1 .
+\]
+\end{lemma}
+
+\begin{proof}
+On $(P,2P]$ the phase $p\mapsto\theta_\mu=\mu q/p-\lambda p/q$ is
+monotone in each of $O(\mu Q/P+\lambda P/Q+1)$ branches on which it
+crosses an integer (its total variation is
+$\ll\mu Q/P+\lambda P/Q$); on each branch the solution set of
+$\nm{\theta_\mu}\le\delta$ is a union of at most two intervals, each
+contributing its length over the local derivative
+($\asymp\mu q/p^2+\lambda/q$) plus $O(1)$ endpoint integers. Summing the
+main terms reconstitutes $2\delta P$; the endpoints give $E_q$.
+\end{proof}
+
+\begin{hypothesis}[E1; wrap-boundary average, Family A]\label{hyp:E1}
+\statusO{} (average-equidistribution step)\quad
+For each $0<\lambda\le\Llog^{C}$, with $\delta_\mu:=1/(2\mu\Llog^{B})$,
+\[
+\frac{1}{\pi(Q)}\sum_{q\sim Q}\
+\sum_{\mu\le R\Llog^{-B}}\big|E_q(\mu,\lambda,\delta_\mu)\big|
+\;\ll\;P\,\Llog^{\,1-B}+\Llog^{O(1)} .
+\]
+That is: the branch-boundary terms, which are $O(\mu Q/P+\lambda P/Q+1)$
+individually and worst-case too large to sum over $\mu$, average out over
+$q\sim Q$ to the size of the main-term total. This is the first of the
+two equidistribution steps to rigorize; the heuristic is that for fixed
+$(p,\mu,\lambda)$ the branch endpoints equidistribute as $q$ varies over
+the band.
+\end{hypothesis}
+
+\begin{proposition}[Family A count]\label{prop:familyA}
+\statusP{} modulo E1\quad
+Assume Hypothesis~E1. Then
+\[
+\frac{1}{\pi(Q)}\sum_{q\sim Q}
+\#\Big\{p\sim P:\ p\ \text{(M1)-major for some }
+0<\lambda\le\Llog^{C}\Big\}
+\;\ll\;\frac{P\,\Llog^{\,C+1}}{\Llog^{B}}\;+\;\Llog^{C+O(1)} ,
+\]
+polylog-sparse in $p$ once $B\ge c'+C+2$.
+\end{proposition}
+
+\begin{proof}
+$p$ is (M1)-major for $(q,\lambda)$ iff
+$\nm{\theta_\mu}\le\delta_\mu$ for some $\mu\le R\Llog^{-B}$
+(condition \eqref{eq:conic}). By Lemma~\ref{lem:branch},
+\begin{align*}
+\frac{1}{\pi(Q)}\sum_{q\sim Q}\#\{p\ \text{(M1)-major for }(q,\lambda)\}
+&\;\le\;\sum_{\mu\le R\Llog^{-B}}2\delta_\mu P
++\frac{1}{\pi(Q)}\sum_{q\sim Q}\sum_{\mu\le R\Llog^{-B}}|E_q|\\
+&\;\ll\;\frac{P\log R}{\Llog^{B}}+P\Llog^{1-B}+\Llog^{O(1)}
+\end{align*}
+using E1 for the second sum. Summing over the $\Llog^{C}$ values of
+$\lambda$ gives the claim.
+\end{proof}
+
+\begin{remark}[damage control]
+Each (M1)-major $p$ contributes at most $R$ (trivially) to the inner
+$p$-aggregate $T_q:=\sum_{p\sim P}|V_p|$, against the budget
+$\pi(P)\,R\,\Llog^{-c}$. By Proposition~\ref{prop:familyA} the major
+contribution is $\ll PR\,\Llog^{C+1-B}$, controlled for
+$B\ge c+C+2$.
+\end{remark}
+
+\subsection{Family B: Diophantine degeneracy ((M2$^*$)-failures)}
+
+Throughout this subsection the band carries the top trim
+$u\le\tfrac12-\eta$, under which the structural first gap is exempt:
+$p/q\le R\Llog^{-B}$ automatically (Remark after
+Definition~\ref{def:minor-conditions}).
+
+\begin{hypothesis}[E2; boundary average, Family B]\label{hyp:E2}
+\statusO{} (average-equidistribution step)\quad
+In the lattice count of Proposition~\ref{prop:familyB}, the $O(1)$
+endpoint terms per coprime pair $(a,s)$, $s\sim S$, average out over
+$p\sim P$: their total at scale $S$ is
+$\ll PS\cdot\big(SQ/P+1\big)\cdot\Llog^{-B}$-negligible rather than the
+worst case $PS(SQ/P+1)$. (Heuristic: for fixed $(a,s)$ the window
+position $pa/s\bmod1$ equidistributes as $p$ varies.)
+\end{hypothesis}
+
+\begin{proposition}[Family B count]\label{prop:familyB}
+\statusP{} modulo E2\quad
+Set $G_0:=R\,\Llog^{-B}$. Assume Hypothesis~E2 and the top trim. Then
+\[
+\#\Big\{(p,q)\in(P,2P]\times(Q,2Q]\ \text{prime pairs}:\
+q/p\ \text{fails (M2$^*$)}\Big\}
+\;\ll\;\frac{PQ\,\Llog^{\,B+1}}{R}
+\;+\;\frac{P^{2}\,\Llog^{\,B+1}}{R}\,,
+\]
+and the second term is $PQ\cdot x^{2u-1}$-type, power-small under the
+top trim. Moreover, unconditionally on E2 but on average over the band,
+the gap functional satisfies
+\[
+\frac{1}{\pi(P)\pi(Q)}\sum_{p\sim P}\sum_{q\sim Q}
+\mathcal D_R(q/p)\;\ll\;\Llog^{2},
+\]
+so polylogarithmic $\mathcal D_R$ is the typical case.
+\end{proposition}
+
+\begin{proof}
+$q/p$ fails (M2$^*$) iff some convergent $a/s$, $s\le R$, has
+$s^{+}>sG_0$, which by Lemma~\ref{lem:cf}(1) forces
+\[
+|qs-pa|\;=\;p\,\nm{s\,q/p}\;<\;\frac{p}{s\,G_0},\qquad (a,s)=1 .
+\]
+Count by dyadic $s\sim S\le R$. For fixed $p$ and $(a,s)$ the condition
+confines $q$ to an interval of length $2p/(s^2G_0)\ll P/(S^2G_0)$, so
+$\#q\ll P/(S^2G_0)+O(1)$, the $O(1)$ handled by E2. The admissible $a$
+per $s$ number $\ll SQ/P+1$. Hence at scale $S$:
+\[
+\#\;\ll\;P\cdot S\cdot\Big(\frac{SQ}P+1\Big)\cdot\frac{P}{S^{2}G_0}
+\;=\;\frac{PQ}{G_0}+\frac{P^{2}}{S\,G_0}\,,
+\]
+and summing the $O(\log x)$ dyadic scales gives the claim (the
+$P^2$-piece is dominated by $S\asymp1$, where only the exempt structural
+gap lives after the trim; what remains of it is the stated power-small
+term). For the average of $\mathcal D_R$: by the same lattice count, the
+number of pairs whose gap at scale $s\sim S$ has ratio $\ge G$ is
+$\ll PQ\log x/G$ per dyadic $G$, so
+$\mathbb E\big[\sqrt{s^{+}/s}\,\big]\ll\sum_{G\ \mathrm{dyadic}}
+\sqrt G\cdot G^{-1}\ll1$ per convergent scale, and there are $O(\log x)$
+scales; the second logarithm covers the dyadic-$G$ summation and
+constants.
+\end{proof}
+
+\subsection{Assembly of the digit layer}
+
+\begin{proposition}[D$^\dagger$-digit, $\sigma\equiv1$, modulo E1--E2]
+\label{prop:digit-assembly}
+\statusP{} modulo E1, E2\quad
+Let $c>0$, let $C$ be the harmonic cutoff exponent, and choose
+$B=C+c+4$. Assume Hypotheses~E1 and E2 and the trims: top of band
+$u,u'\le\tfrac12-\eta$ and corner
+$\sqrt R\ge\Llog^{\,B/2+c+5}$ (an $O(\eta)+O(\eta'')$ density cost).
+Then for each $0<\lambda\le\Llog^{C}$,
+\[
+\frac{1}{\pi(Q)}\sum_{q\sim Q}\;\sum_{p\sim P}\big|V_p(\lambda)\big|
+\;\ll\;\pi(P)\,R\;\Llog^{-c}
+\qquad(\sigma\equiv1),
+\]
+i.e.\ the digit layer of Estimate~D$^\dagger$ holds on average over the
+band.
+\end{proposition}
+
+\begin{proof}
+Split $p$ into minor and major at level $B$. Minor $p$ contribute, by
+Corollary~\ref{cor:minor},
+$\ll\pi(P)\big(\sqrt R\,\Llog^{B/2+4}+R\Llog^{2-B}\big)
+\le\pi(P)R\Llog^{-c-1}$
+under the trims and $B\ge c+4$. Major $p$ contribute at most $R$ each
+(trivial bound on $V_p$): Family A on $q$-average numbers
+$\ll P\Llog^{C+1-B}$ (Proposition~\ref{prop:familyA}), contributing
+$\ll PR\Llog^{C+1-B}\le\pi(P)R\Llog^{-c-1}$ for $B\ge C+c+3$; Family B
+numbers $\ll PQ\Llog^{B+1}/R$ pairs in total
+(Proposition~\ref{prop:familyB}), i.e.\ $\ll P\Llog^{B+1}/R$ per $q$ on
+average, contributing $\ll R\cdot P\Llog^{B+1}/R=P\Llog^{B+1}
+\le\pi(P)R\Llog^{-c-1}$ once $R\ge\Llog^{B+c+3}$ --- implied by the
+corner trim.
+\end{proof}

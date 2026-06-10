@@ -1,0 +1,232 @@
+\section{The independence architecture: Lemmas A--D}\label{sec:architecture}
+
+Write the governor indicator as a functional of two layers of data:
+\[
+\mathbf 1_{\D}(m)\;=\;\Phi\big(\mathcal A(m),\,\mathcal R(m)\big),
+\]
+where $\mathcal A(m)$ is the \emph{anatomy} (the multiset of sizes
+$u_i=\log p_i/\log m$ of the prime factors $p_i>m^{\delta}$, with
+multiplicity) and $\mathcal R(m)$ is the \emph{digit data} (the residues
+$m\bmod p_i^{j}$ at those primes, equivalently the fractional parts
+$\fr{m/p_i^j}$). Membership in $\D$ is: every large prime power
+$p^e\,\|\,m$ accrues $e$ carries; for the critical \emph{band} primes
+$p=m^{u}$, $u\in(1/3,1/2)$, exactly one digit position ($j=2$) is
+genuinely random --- position $j=1$ never carries beyond trivialities and
+positions $j\ge3$ are deterministic at this size --- so a band prime is a
+single near-fair coin. The proof of
+Corollary~\ref{cor:reduction}'s correlation statement is a cascade of four
+independence claims, stated here in the form used downstream.
+
+\subsection{Lemma A: small primes are ignorable}
+
+\begin{lemma}[A]\label{lem:A}
+\statusKA\quad
+For $0<\delta\le1$ write $n(n-1)=A_nB_n$ with
+$P^+(A_n)\le x^{\delta}<P^-(B_n)$. Then
+\[
+\#\Big\{n\le x:\ v_p(A_n)>\ka_p(n)\ \text{for some }p\le x^\delta\Big\}
+\;\ll\; x\,e^{-c/\delta},
+\]
+and the contribution of such $n$ to all correlation statements below is a
+removable $\varepsilon$-loss as $\delta\to0$ (after $x\to\infty$).
+Moreover, discarding $n$ with $p^2\mid n(n-1)$ for some $p>x^\delta$ costs
+$\ll x^{1-\delta}$.
+\end{lemma}
+
+\begin{proof}[Source and the one-line change]
+Ford--Konyagin's small-prime counting (\cite{FK21}, \S2) applies verbatim
+on the $n$-side: for $p^v\mid n$ the low base-$p$ digits of $n$ are $0^v$
+and failure of the carry budget forces an atypical digit pattern in the
+remaining positions, with a binomial digit-count bound. The single
+adaptation for the shifted side: for $q^v\mid n-1$ the low base-$q$ digits
+of $n$ are $(1,0^{v-1})$ rather than $0^v$; these positions likewise
+contribute no carries, and the identical counting applies to the remaining
+positions. Union over the two sides, over $p\le x^\delta$ and over $v$, as
+in \cite{FK21}, Proposition~1.
+\end{proof}
+
+\begin{remark}[a structural no-go worth recording]
+The loss $e^{-c/\delta}$ is a \emph{fixed positive density} for fixed
+$\delta$. Any proof design that requires a cofactor to be
+$x^{\delta}$-smooth pays a Dickman-type probability
+$\rho(c/\delta)$, which loses to $e^{-c/\delta}$ for every $\delta$: no
+smooth-cofactor design can work. This dead end is recorded so it is not
+re-entered.
+\end{remark}
+
+\subsection{Lemma B: anatomy independence}
+
+\begin{lemma}[B]\label{lem:B}
+\statusC\quad
+For finite unions of anatomy boxes
+$A,B\subseteq\{(u_1\ge u_2\ge\cdots):\sum_iu_i\le1\}$,
+\[
+\frac{1}{\log x}\sum_{n\le x}\frac{1}{n}\,
+\mathbf 1\big[\mathcal A(n)\in A\big]\,
+\mathbf 1\big[\mathcal A(n-1)\in B\big]
+\;=\;\mathrm{PD}(A)\,\mathrm{PD}(B)+O\big((\log x)^{-c}\big)
+\]
+at almost all scales, where $\mathrm{PD}$ denotes the
+Billingsley--Dickman measure of the box.
+\end{lemma}
+
+\noindent\emph{Citation route.} Tao--Ter\"av\"ainen
+\cite{TT25}, building on Pilatte \cite{Pil23}, prove quantitative binary
+correlations of $1$-bounded multiplicative functions with power-of-log
+savings at almost all scales; their Theorem~1.7 is the prototype
+(consecutive smooth pairs, $\rho(u)\rho(v)$). The hypotheses are
+asymmetric: $g_1$ must be equidistributed (real case) or non-pretentious,
+while $g_2$ need only be $1$-bounded multiplicative --- so the awkward
+function goes in the $g_2$ slot.
+
+\noindent\emph{The $z$-interpolation bridge.} Anatomy-box indicators are
+not multiplicative, but $n\le x$ has at most $3$ prime factors above
+$x^{1/3}$. For $z\in\C$ let $g_z$ be completely multiplicative with
+$g_z(p)=z$ on a band and $1$ off it; then $g_z(n)=z^{B(n)}$ with
+$B(n)\in\{0,1,2,3\}$ the band count, and Vandermonde interpolation at $4$
+values of $z$ recovers each $\mathbf 1[B(n)=j]$ as a finite linear
+combination of $1$-bounded multiplicative functions --- TT-admissible
+objects. General band-anatomy indicators are finite
+products/combinations across finitely many bands.
+
+\noindent\emph{Pending fine print} (\S\ref{sec:remaining}, items B1--B3):
+uniformity in the $x$-dependent band edges; the exact conclusion shape of
+their Theorem~3.1; and the verbatim statement of that theorem (the
+verification was interrupted and must be completed). Fallback for
+Theorem~\ref{thm:lower}: Hildebrand's elementary stable-set method
+\cite{Hil85} gives a positive-density lower bound for the anatomy layer
+without TT machinery.
+
+\subsection{Lemma C: within-side digit equidistribution, twisted}
+
+\begin{lemma}[C]\label{lem:C}
+\statusO{} (standard toolbox)\quad
+Conditional on the anatomies of $n$ and $n-1$, the digit data
+$\mathcal R(n)$ at the interior positions equidistributes at its product
+rate, uniformly against any $1$-bounded multiplicative weight $g(n-1)$:
+the Ford--Konyagin count of $n$ with prescribed large-prime data and digit
+successes, weighted by $g(n-1)$, factors as
+$(\text{FK main term})\times(\text{mean of }g)+o(1)$.
+\end{lemma}
+
+\noindent\emph{Two structural corrections baked into the statement.}
+(i) Equidistribution is claimed for digit positions strictly below the
+top; the \emph{top digit is deterministic} given the size ratio, following
+the explicit piecewise law in $\fr{1/u}$ of \cite{FK21} ($p^2\in(n,2n]$:
+forced success; $p^2\in(2n/3,n]$: forced failure; alternating at slot
+boundaries). (ii) For two band primes the joint residues live on thin
+progressions rather than filling the product grid; independence is
+restored only on ensemble average over the prime pairs --- the phenomenon
+treated by the Friedlander--Iwaniec analysis of simultaneous fractional
+parts, the hardest ingredient here.
+
+\noindent\emph{Where the new sums live.} Inserting $g(n-1)=g(pm-1)$ into
+FK's Fourier detection turns the $m$-sums into
+$\sum_{m\sim x/p}g(pm-1)\,\e{hm/p^{a-1}}$: mean values of bounded
+multiplicative functions in progressions to moduli $p^{a-1}$, needed on
+average over $p\sim x^u$ --- Bombieri--Vinogradov-for-multiplicative-functions
+territory (Granville--Shao \cite{GS}, Matom\"aki--Radziwi\l\l--Tao
+\cite{MRT}). Interface note: Lemma C is scheduled after the Lemma-D gate
+since its final form depends on which version of D it must feed.
+
+\subsection{Lemma D: cross-side digit independence (the hard core)}
+
+\begin{lemma}[D]\label{lem:D}
+\statusO\quad
+Conditional on the anatomies, the digit layers of the two sides are
+jointly independent: the $(n-1)$-side digit conditions (by
+Lemma~\ref{lem:sandwich}, the carry conditions of $n-1$ at its own primes)
+equidistribute after conditioning on the anatomy \emph{and} the digit
+outcome of the $n$-side. Equivalently, $\sum_{n\le x}F_1(n)F_2(n-1)$
+factors as the product of means when the $F_i$ carry anatomy and digit
+data.
+\end{lemma}
+
+\noindent\emph{Reduction to arithmetic form.} Parametrize the dominant
+configuration by band primes $p=x^u\mid n$, $q=x^{u'}\mid n-1$,
+$u,u'\in(1/3,1/2)$, writing $n=pa$, $n-1=qb$. The binding $(n-1)$-side
+digit condition at $q$ is
+\[
+n\equiv1\ (\mathrm{mod}\ q)
+\quad\text{and}\quad
+\frac{n-1}{q}\bmod q\in\Big[\frac q2,\,q\Big),
+\]
+a union of residue classes modulo $q^2$ lying above $1\bmod q$, with
+$q^2\in[x^{2/3},x]$ --- beyond classical dispersion for general
+coefficients. The harmonic dual of the mod-$q^2$ refinement is the family
+of \emph{depth-one (Fermat-quotient) characters}
+$\chi_\lambda(n)=\e{\lambda\fq(n)/q}$ developed in \S\ref{sec:dls}; the
+homomorphism property $\fq(pa)=\fq(p)+\fq(a)$ makes all phases completely
+bilinear. The quantitative core is:
+
+\begin{estimate}[D$^\dagger$; the residual core, AP-native form]\label{est:Ddagger}
+\statusO\quad
+There is $c>0$ such that for each fixed $0<|\lambda|\le(\log x)^{C}$, on
+average over band primes $q\sim Q=x^{u'}$,
+\[
+\sum_{m\le M_q}W_q(m)\,\e{\frac{\lambda m}{q}}\ \ll\ M_q\,(\log x)^{-c},
+\qquad
+W_q(m)=w(1+qm),\quad M_q=\frac{x-1}{q},
+\]
+where $w$ is the $1$-bounded, centered population-and-digit decoration of
+the $n$-side (anatomy indicator times centered digit weight).
+\end{estimate}
+
+\noindent The program's decomposition of Estimate~D$^\dagger$, with
+statuses:
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Layer & Status \\
+\midrule
+$|\lambda|\ge\Lambda_0$ (deep harmonics) &
+\statusP{} --- Proposition~\ref{prop:largelambda} \\
+digit layer, minor arcs & \statusP{} --- Theorem~\ref{thm:minor} \\
+digit layer, major arcs (two families) &
+counted; modulo Hypotheses~\ref{hyp:E1},~\ref{hyp:E2} \\
+anatomy layer, generic & exact unwinding --- \S\ref{sec:anatomy} \\
+anatomy layer, fine classes & \statusN{} --- \S\ref{sec:remaining} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\emph{Hardness diagnosis (settled).} The statement is parity-free
+(indicators are non-negative, positive-mean, local), so the Chowla parity
+wall does not apply; the true hardness class is Bombieri--Vinogradov-type
+equidistribution to large moduli on average. Orthogonality over the deep
+character family is a Wieferich-type condition (\S\ref{sec:dls}),
+pointwise hopeless, average-friendly. A direct citation of the
+Tao--Ter\"av\"ainen/Pilatte machinery is blocked: multiplicativity enters
+their argument at centring and dilation, and digit conditions are not
+dilation-invariant; only Pilatte's $1$-bounded spectral engine survives as
+a potential tool.
+
+\subsection{Assembly and trims}\label{subsec:assembly}
+
+\begin{proposition}[assembly]\label{prop:assembly}
+\statusN\quad
+Lemma~A (with $\delta\to0$ last), Lemma~B for the anatomy product,
+Lemmas~C and D for the conditional digit products, and the
+Ford--Konyagin computation of $c_1$ (\cite{FK21}, \S7) combine, with the
+error bookkeeping of the cascade
+\[
+\Pr^{\log}\big[n\in\D,\ n-1\in D_0^{(\pm)}\big]
+=\Pr[\mathcal A(n)\in\cdot]\;\Pr[\mathcal A(n-1)\in\cdot]
+\;\Pr[\mathcal R(n)\,|\,\mathcal A]\;\Pr[\mathcal R(n-1)\,|\,\text{rest}]
++o(1),
+\]
+to give Theorem~\ref{thm:main}. The limit constant is Ford--Konyagin's
+verbatim, squared.
+\end{proposition}
+
+\noindent\emph{Trim registry} (density losses accrued by the lower-bound
+track; each is $O(\eta)$ and acceptable for Theorem~\ref{thm:lower}):
+\begin{enumerate}
+\item top-of-band trim: exclude $u'\in(1/2-\eta,1/2]$;
+\item corner trim: exclude $u+u'\in(1-\eta'',1]$
+(needed by Proposition~\ref{prop:digit-assembly});
+\item margin costs: $\le6\times10^{-5}$ measured (Lemma~\ref{lem:margins});
+\item a single positive-proportion anatomy subclass suffices for
+Theorem~\ref{thm:lower}, and the automatic-carry band
+$q^2\in(n,2n]$ (log-measure $0.288$ of slot-$2$ successes) is free.
+\end{enumerate}

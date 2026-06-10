@@ -1,0 +1,226 @@
+\section{The minor-arc bound}\label{sec:minor}
+
+This section proves the minor-arc half of the dichotomy. The write-up
+forced a genuine correction to the working notes, recorded in
+Remark~\ref{rem:M2-strengthening}: the planned hypotheses (a single
+convergent denominator near $R$) do not suffice, and the planned
+conclusion (a polylogarithmic bound for every minor $p$) is not what the
+correct proof delivers. The true shape is a \emph{Diophantine-functional}
+bound: $|V_p|$ is controlled by the convergent-gap structure of $q/p$
+below scale $R$, polylogarithmic for typical pairs and
+$O(\sqrt R\,\Llog^{O(1)})$ --- still far within the budget of
+Proposition~\ref{prop:digit-assembly} --- on the whole minor set.
+
+Throughout: $\alpha:=q/p\in(0,1)$ in lowest terms,
+$\beta:=\fr{\lambda p/q}$, $\theta_\mu=\mu\alpha-\beta\ (\mathrm{mod}\ 1)$,
+$R=x/(pq)$, $\Llog=\log x$, $\langle\mu\rangle=\min(\mu,p-\mu)$, and
+$B\ge1$ a level parameter. Denominators of continued-fraction convergents
+of $\alpha$ are denoted $s$, with successor $s^{+}$ (for the rational
+$\alpha=q/p$ the final denominator is $p$; everything below concerns
+$s<p$).
+
+\begin{definition}[gap functional; minor conditions]\label{def:minor-conditions}
+Let $s_0=s_0(\alpha)$ be the largest convergent denominator $\le R$, and
+\[
+\mathcal D_R(\alpha)\;:=\;
+\sum_{\substack{s\ \mathrm{convergent\ denominator}\\ s\le R}}
+\sqrt{\frac{s^{+}}{s}}\,.
+\]
+Call the band prime $p$ \emph{minor for $(q,\lambda)$ at level $B$} if:
+\begin{itemize}
+\item[(M1)] $\displaystyle
+\frac{1}{\langle\mu\rangle}\,
+\min\Big(R,\ \frac{1}{2\nm{\theta_\mu}}\Big)\ \le\ \Llog^{B}$
+\quad for every $\mu$ with $0<\langle\mu\rangle\le R$;
+\item[(M2$^*$)] every convergent denominator $s\le R$ of $\alpha$
+satisfies $s^{+}/s\le R\,\Llog^{-B}$.
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+(M2$^*$) is \emph{not} the smallness of $\mathcal D_R$: the first
+partial quotient of $\alpha=q/p$ is $\asymp p/q$, so for $u>u'$
+\emph{every} pair has the structural gap $s=1$, $s^{+}\asymp p/q$, and
+$\mathcal D_R\ge\sqrt{p/q}$ wholesale. The threshold $R\Llog^{-B}$ is
+calibrated so that this structural gap is automatically exempt:
+$p/q\le R\Llog^{-B}$ amounts to $x^{2u-1}\le\Llog^{-B}$, which holds on
+the band after the top trim $u\le\tfrac12-\eta$. Gap ratios beyond
+$R\Llog^{-B}$ are genuinely rare (Proposition~\ref{prop:familyB}).
+\end{remark}
+
+\begin{lemma}[continued-fraction toolkit]\label{lem:cf}
+\statusP\quad
+Let $s\le M<s^{+}$ for a convergent denominator $s$ of $\alpha$, with
+convergent $a/s$. Then:
+\begin{enumerate}
+\item (best approximation)
+$\min_{0<k<s^{+}}\nm{k\alpha}=\nm{s\alpha}\in
+\big[\tfrac{1}{s+s^{+}},\tfrac1{s^{+}}\big]$;
+\item (lattice proximity) for any $\mu_0$ and $0\le k<s$,
+\[
+\theta_{\mu_0+k}\;=\;\theta_{\mu_0}+\frac{ka}{s}+O^*\Big(\frac1{s^{+}}\Big)
+\pmod 1,
+\]
+where $|O^*(t)|\le t$; the $s$ sites $\theta_{\mu_0}+ka/s$ are distinct
+points of a translated $\frac1s$-grid;
+\item (run shells) consequently, within any window of $s$ consecutive
+$\mu$, the $k$-th smallest value of $\nm{\theta_\mu}$ is
+$\ge\frac{k-4}{2s}$ for $k\ge5$;
+\item (across runs) writing a window of $\le M$ consecutive $\mu$ as
+$\le M/s+1$ runs of $s$ consecutive $\mu$, the per-run nearest values
+$\theta_{\mu_0+js}$ ($j=0,1,\ldots$) move along an arithmetic progression
+of step $\eta:=\nm{s\alpha}\le1/s^{+}$, up to the run-internal
+$O^*(1/s^{+})$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) is the best-approximation law together with the standard estimate
+for $\nm{s\alpha}$ \cite[Ch.~I--II]{Khin}. (2): $k\alpha=ka/s+k\delta$
+with $\delta=\alpha-a/s$, $|\delta|\le1/(ss^{+})$, $k<s$; distinctness
+since $(a,s)=1$. (3): the $k$-th nearest \emph{site} of a
+$\frac1s$-grid is at distance $\ge\fl{(k-1)/2}/s$, and the perturbation
+$1/s^{+}$ can displace each point by at most one half grid-step in rank
+terms; the stated bound is a safe form. (4): $\theta_{\mu_0+js}
+=\theta_{\mu_0}+js\alpha=\theta_{\mu_0}\pm j\eta\bmod 1$.
+\end{proof}
+
+\begin{theorem}[D$^\dagger$-minor, functional form]\label{thm:minor}
+\statusP\quad
+Assume (M1) at level $B$, and $\sigma\equiv1$ (anatomy off). Then
+\[
+|V_p(\lambda)|\ \ll\ \Llog^{\,B+3}\big(1+\mathcal D_R(q/p)\big)
+\;+\;\Llog^{2}\,\frac{R}{s_0(q/p)}\,.
+\]
+\end{theorem}
+
+\begin{corollary}[minor bound]\label{cor:minor}
+\statusP\quad
+If $p$ is minor at level $B$ (i.e.\ also (M2$^*$)), then
+$\mathcal D_R\le\Llog\sqrt{R\Llog^{-B}}$ and
+$R/s_0\le s_0^{+}/s_0\le R\Llog^{-B}$, so
+\[
+|V_p(\lambda)|\ \ll\ \sqrt R\;\Llog^{\,B/2+4}\;+\;R\,\Llog^{\,2-B}.
+\]
+With $B\ge c+4$ and the corner trim $\sqrt R\ge\Llog^{B/2+c+5}$, this is
+$\le R\Llog^{-c-1}$: within the budget of
+Proposition~\ref{prop:digit-assembly}, with room.
+\end{corollary}
+
+\begin{proof}[Proof of Theorem~\ref{thm:minor}]
+By Proposition~\ref{prop:two-freq} and
+$|\hat f_\mu|\le\tfrac1{2\langle\mu\rangle}$,
+\begin{equation}\label{eq:minor-start}
+|V_p(\lambda)|\;\le\;\frac12\sum_{0<\mu<p}
+\frac{1}{\langle\mu\rangle}\,X_\mu,
+\qquad
+X_\mu:=\min\Big(R,\ \frac{1}{2\nm{\theta_\mu}}\Big).
+\end{equation}
+Split $\{0<\mu<p\}$ into \emph{Region I} ($\langle\mu\rangle\le R$) and
+\emph{Region II} ($\langle\mu\rangle>R$), and each region into dyadic
+blocks: the $\mu$ with $\langle\mu\rangle\in(M,2M]$ form two intervals of
+at most $M$ consecutive integers, with weight
+$\langle\mu\rangle^{-1}\le1/M$. Fix such an interval $I$ at scale $M$ and
+let $s$ be the largest convergent denominator $\le\min(M,R)$, so that
+$s\le M<s^{+}$ in Region I.
+
+\medskip\noindent\emph{Region I, within-run shells.} Partition $I$ into
+$\le M/s+1$ runs of at most $s$ consecutive $\mu$. In each run,
+Lemma~\ref{lem:cf}(3) gives, for the terms beyond the four nearest,
+\[
+\sum_{k\ge5}X_{\mu(k)}\;\le\;\sum_{5\le k\le s}\frac{s}{k-4}
+\;\le\;2s\log x ,
+\]
+so the within-run shell totals contribute, with weight and run count,
+\[
+\frac1M\Big(\frac Ms+1\Big)\cdot 2s\log x\;\le\;4\log x .
+\]
+
+\medskip\noindent\emph{Region I, the near terms, two bounds.} It remains
+to treat the $\le4$ nearest terms of each run --- at most $4(M/s+1)$
+terms in the block. By (M1), each satisfies
+$X_\mu/\langle\mu\rangle\le\Llog^{B}$, whence the \emph{floor bound}
+\begin{equation}\label{eq:floor-branch}
+\frac1M\sum_{\text{near terms}}X_\mu
+\;\le\;4\Big(\frac Ms+1\Big)\Llog^{B}\Big/1
+\quad\text{(each weighted term $\le\Llog^B$),}
+\end{equation}
+i.e.\ block near-term contribution $\le4(M/s+1)\Llog^{B}$. Alternatively,
+by Lemma~\ref{lem:cf}(4) the near terms ride $\le4$ interleaved
+arithmetic progressions of step $\eta\ge1/(2s^{+})$
+(Lemma~\ref{lem:cf}(1)): in each progression at most two terms sit within
+$\eta$ of the minimum --- these are again (M1)-floored, weighted
+$\le\Llog^B$ each --- and the rest telescope:
+\begin{equation}\label{eq:ap-branch}
+\frac1M\sum_{\text{near terms}}X_\mu
+\;\le\;8\Llog^{B}
++\frac1M\cdot8\,\frac{1}{\eta}\log x
+\;\le\;8\Llog^{B}+\frac{16\,s^{+}}{M}\log x .
+\end{equation}
+Taking the minimum of \eqref{eq:floor-branch} and \eqref{eq:ap-branch}
+and summing over the dyadic $M$ in the convergent gap $[s,\min(s^{+},R))$
+--- the two branches cross at $M^*=\sqrt{s\,s^{+}\log x\,\Llog^{-B}}$,
+with value $\ll\sqrt{(s^{+}/s)\,\Llog^{B}\log x}$, and decay
+geometrically on either side ---
+\[
+\sum_{M\ \mathrm{dyadic}\ \in[s,\,s^{+})}
+\min\big(\eqref{eq:floor-branch},\eqref{eq:ap-branch}\big)
+\;\ll\;\sqrt{\frac{s^{+}}{s}}\;\Llog^{\,B/2+1}
+\;+\;\Llog^{B+1} .
+\]
+Summing over the convergent gaps with $s\le R$ (at most $O(\log x)$ of
+them) gives
+\[
+\text{Region I}\;\ll\;\Llog^{\,B/2+1}\,\mathcal D_R(\alpha)
++\Llog^{\,B+2}
+\;\ll\;\Llog^{\,B+3}\big(1+\mathcal D_R(\alpha)\big)/\Llog .
+\]
+
+\medskip\noindent\emph{Region II.} Here $\langle\mu\rangle>R$, the weight
+is $<1/R\le1/M\cdot(M/R)$, and (M1) is unavailable, but the trivial cap
+$X_\mu\le R$ together with the weight makes every term $\le R/M\le1$.
+Take $s=s_0$ (largest convergent $\le R$) and partition the block into
+$\le M/s_0+1$ runs of $s_0$ consecutive $\mu$. Within-run shells as
+before contribute $\le4\log x$ per block. The $\le4$ near terms per run
+contribute, using $X_\mu\le R$ and the weight $1/M$,
+\[
+\frac1M\cdot4\Big(\frac M{s_0}+1\Big)R
+\;=\;\frac{4R}{s_0}+\frac{4R}{M}
+\;\le\;\frac{4R}{s_0}+4 .
+\]
+Summing the $O(\log x)$ dyadic blocks of Region II:
+$\;\ll\;\log x\,\big(\log x+R/s_0\big)
+\ll\Llog^2\big(1+R/s_0\big)$.
+
+\medskip Combining the two regions in \eqref{eq:minor-start} yields the
+theorem.
+\end{proof}
+
+\begin{remark}[what changed, and why it matters; a WP4 correction]
+\label{rem:M2-strengthening}
+The working notes (WP2.1/2.2) stated the minor lemma as: (M1) plus
+``some convergent denominator in $[R\Llog^{-B},R\Llog^{B}]$'' implies
+$|V_p|\ll\Llog^{B}\log x$. Carrying out the proof shows both halves need
+repair. (i) The single-scale condition controls only the blocks at scale
+$\approx R$; at scale $M\ll R$ the relevant structure is the convergent
+gap \emph{at scale $M$}, and a long gap there lets a block carry mass
+$\asymp\sqrt{(s^{+}/s)}$ in perfect consistency with (M1) --- the
+``graze'' configuration: a run-progression approaching the origin at the
+(M1)-floor. Hence the all-scale character of (M2$^*$) and of the
+functional $\mathcal D_R$. (ii) The polylog conclusion is genuinely false
+under (M1) plus any reasonable sparsity condition: the structural $s=1$
+gap forces $\mathcal D_R\ge\sqrt{p/q}$ for the entire half-band $u>u'$.
+What is true --- and suffices, with room, for
+Estimate~D$^\dagger$ --- is the functional bound of
+Theorem~\ref{thm:minor}, whose worst minor-set value is
+$\sqrt R\,\Llog^{O(1)}$ and whose typical value is polylogarithmic
+(the band average of $\mathcal D_R$ is $O(\Llog^2)$;
+Proposition~\ref{prop:familyB}). The empirical record matches this
+precisely: the observed minor-arc medians sit at fixed multiples of
+$\sqrt R$-normalized $z\approx0.08$, i.e.\ square-root scale with small
+constants, not at $\Llog/\!\sqrt R$ scale
+(Appendix~\ref{app:numerics}). The WP2.2 conclusion ---
+\emph{D$^\dagger$-digit closes modulo the two average-equidistribution
+steps and the trims} --- survives with the repaired statements; the
+intermediate claims did not.
+\end{remark}

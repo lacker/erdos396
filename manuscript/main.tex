@@ -1,0 +1,96 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+\usepackage{booktabs}
+
+% ------------------------------------------------------------------ theorems
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{estimate}[theorem]{Estimate}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% ------------------------------------------------------------------ status tags
+% Every numbered statement carries a status tag so the spine is honest about
+% what is proved, what is cited, and what is open.
+\newcommand{\statusP}{\textcolor{green!50!black}{\textbf{[PROVED]}}}
+\newcommand{\statusPM}{\textcolor{green!50!black}{\textbf{[PROVED, machine-verified]}}}
+\newcommand{\statusC}{\textcolor{blue!60!black}{\textbf{[CITABLE, checks pending]}}}
+\newcommand{\statusKA}{\textcolor{blue!60!black}{\textbf{[KNOWN-ADAPT]}}}
+\newcommand{\statusN}{\textcolor{orange!80!black}{\textbf{[STANDARD TOOLBOX, to write]}}}
+\newcommand{\statusO}{\textcolor{red!70!black}{\textbf{[OPEN]}}}
+
+% ------------------------------------------------------------------ macros
+\newcommand{\e}[1]{e\!\left(#1\right)}                 % e(x) = exp(2 pi i x)
+\newcommand{\fl}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\fr}[1]{\left\{#1\right\}}                 % fractional part
+\newcommand{\nm}[1]{\left\| #1\right\|}                % distance to Z
+\newcommand{\D}{D_0}
+\newcommand{\Dp}{D_0^{(+)}}
+\newcommand{\Dm}{D_0^{(-)}}
+\newcommand{\W}{W_1}
+\newcommand{\ka}{\kappa}
+\newcommand{\fq}{\ell_q}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Pp}{\mathbb{P}}
+\newcommand{\Llog}{L}                                   % L = log x
+\DeclareMathOperator{\dens}{d}
+\DeclareMathOperator{\ldens}{\delta^{\log}}
+
+\title{The pair density of divisors of the central binomial coefficient:\\
+a manuscript spine for $n(n-1)\mid\binom{2n}{n}$\\
+\large (working draft -- WP4 consolidation; statuses as of June 9, 2026)}
+\author{}
+\date{June 9, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $\W=\{n\ge2:\ n(n-1)\mid\binom{2n}{n}\}$. We assemble the proof
+architecture for the statement that $\W$ has logarithmic density
+$c_1^2$, where $c_1=0.11424\ldots$ is the Ford--Konyagin density of the
+governor set $\D=\{m:\ m\mid\binom{2m}{m}\}$; even the infinitude of
+$\W$ appears to be absent from the literature. The reduction is exact: a
+margin-modified sandwich (Lemma~\ref{lem:sandwich}) replaces $\W$ by a
+binary correlation of two fixed sets, which then factors through four
+independence statements (Lemmas A--D). This draft records, with complete
+proofs, the parts of the program that are proved --- the sandwich, the deep
+large sieve for Fermat-quotient characters, the arithmetic-progression
+opening, the linearization and two-frequency reduction of Estimate
+D$^\dagger$, the minor-arc lemma, and the anatomy unwinding --- and isolates
+the remaining gaps as precisely stated hypotheses. It is the durable spine
+into which the remaining work packages land.
+\end{abstract}
+
+\tableofcontents
+
+\input{sections/01-intro}
+\input{sections/02-preliminaries}
+\input{sections/03-sandwich}
+\input{sections/04-architecture}
+\input{sections/05-deep-large-sieve}
+\input{sections/06-reduction}
+\input{sections/07-minor}
+\input{sections/08-major}
+\input{sections/09-anatomy}
+\input{sections/10-remaining}
+
+\appendix
+\input{sections/A-alpha}
+\input{sections/B-numerics}
+
+\input{sections/bibliography}
+
+\end{document}

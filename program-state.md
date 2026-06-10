@@ -83,7 +83,9 @@ Union bounds across the digit layer (failure mass $\Theta(1)$). Smooth-cofactor 
 
 **WP3b — Close Lemma B:** fetch TT Thm 3.1, run the three checks, write the half-page lemma, verify the $z$-interpolation reconstruction.
 
-**WP4 — Manuscript spine (parallel, zero risk):** re-creates the lost artifacts (skeleton, HYPOTHESES_CHECK, Lemma 0 writeup) in durable form; locks rung ii. *(Update June 9: the "lost" originals were recovered from the chat export into `archive/original-session/` — K1_SKELETON.md, HYPOTHESES_CHECK.md, all test scripts — and full session transcripts are in `archive/transcripts/`. WP4 is now "polish into manuscript form with the corrected accounting," not re-derivation from scratch.)*
+**WP4 — Manuscript spine: SPRINT DONE (June 9 evening).** `manuscript/main.tex` (+ 12 section files, compiles via `tectonic main.tex`) now holds, with full proofs: Kummer prelims, **Lemma 0** (exact sandwich, precise margin sets fixed), the **deep large sieve** (Props 1–2, Thm, Cors incl. the generalized AP version), **lemma β**, **linearization**, **large-λ coverage**, the **two-frequency reduction**, the **D†-minor bound (corrected — see below)**, the **anatomy unwinding**; plus precise statements with status tags for Lemmas A/B/C/D, Estimate D†, the major-arc counts modulo **Hypotheses E1/E2** (now precisely stated), lemma α (appendix), the numerics record (appendix), and the exhaustive remaining-gaps ledger (§10). *(The "lost" originals were also recovered from the chat export into `archive/original-session/`; full transcripts in `archive/transcripts/`.)*
+
+**WP4 finding (erratum-grade, recorded in `wp22-minor-major.md` §0):** writing the D†-minor proof showed the WP2.2 statement was wrong twice over — single-scale (M2) misses small-scale convergent-gap "grazes," and the polylog conclusion is structurally false for $u>u'$ (the $s{=}1$ gap). Corrected form: a Diophantine-functional bound $|V_p|\ll L^{B+3}(1+\mathcal D_R)+L^2R/s_0$, minor set by all-scale gap-ratio threshold $RL^{-B}$ (structural gap auto-exempt under the top trim), minor-set worst case $\sqrt R\,L^{O(1)}$ — **within budget with room**; Family B recounted, still sparse. Conclusion-level WP2.2 claims survive. The draft-the-proof discipline has now caught an overcount twice (WP2.0, WP4).
 
 **WP5 — Constructive route, general $k$** (parked): $k$-point correlation tech is the frontier (open even for smoothness; log-Chowla open for even $k\ge4$ — though our functions are parity-free). Revisit on G1 kill or after the $k=1$ paper.
 
@@ -103,9 +105,10 @@ Rung i full: **~45%** (post-WP2.3: all D† layers proved/counted/toolbox-pendin
 
 1. WP2.0 — **DONE** (`lemma-alpha-beta.md`): $\alpha,\beta$ proved; assembly accounting NEGATIVE; numerology erratum issued; residual = **Estimate D†** + its second-moment core.
 2. WP2.1 — **MAJOR PROGRESS** (`wp21-reduction.md`): D†'s digit layer reduced exactly to a two-frequency minor/major-arc dichotomy; minor arcs cancel to polylog (validated), major arcs localized on $p\approx q\sqrt{\mu/\lambda}$ and reduced to a Diophantine count. Kloosterman core bypassed on this route. WP2.2 — **DONE June 9** (`wp22-minor-major.md`): D†-minor stated (standard toolbox); both major-arc families counted out (A: polylog-sparse on q-average; B: sparse + power-small); **D†-digit closed modulo write-up**. WP2.3 — **DONE June 9** (`wp23-anatomy.md`): **PASS, elementary** — $u_f=3(1-u)<2$ gives an exact unwinding of the friable indicator into Type-I/II sums and primes-in-APs; friable literature demoted to fallback. **No identified structural obstruction remains on Lemma D.** Next: **consolidation sprint (WP4)** — the pile of closed-modulo-write-up items is now the binding constraint; then the fine-anatomy-class check and the two equidistribution rigorizations.
-3. **WP3b** TT Theorem 3.1 verification (top item in `citations.md`).
-4. **WP4** manuscript spine; LaTeX `prop-deep-large-sieve.md` and `lemma-0` first (they're proved).
-5. (When convenient) re-run `empirics_d.py` at $x=10^9$ to check the §4 flag shrinks like a boundary term.
+3. **WP3b** TT Theorem 3.1 verification (top item in `citations.md`; = items B1–B3 of manuscript §10).
+4. **WP4 — DONE June 9 evening** (see above): manuscript spine drafted and compiling; D†-minor proved in corrected form; E1/E2 isolated as the precise open hypotheses of the digit layer. Remaining manuscript debts are exactly manuscript §10's ledger: E1, E2, the anatomy Type-I/II ranges + ℓ-resonance count, the fine-class check, the Vaaler/completion packaging (D5), Lemma 0′ margins, Lemma A write-up, assembly bookkeeping.
+5. **Next binding items:** (a) E1/E2 — the two average-equidistribution steps, now precisely stated (manuscript §8); both look like exercises in equidistribution of branch endpoints/window positions on average — diagnose first; (b) the fine-anatomy-class check (D4); (c) WP3b.
+6. (When convenient) re-run `empirics_d.py` at $x=10^9$ to check the §4 flag shrinks like a boundary term.
 
 ## Method note
 
@@ -316,7 +319,7 @@ Work after the Lemma D gate (G1): C's final form depends on which version of D i
 
 # Lemma D: Cross-Side Digit Independence — THE HARD CORE
 
-**STATUS: OPEN — GATE G1 PASSED (June 9).** De-risking complete: no exponent gap (`numerology-D.md`), cancellation empirically clean on the real coupled object (`empirics-D.md`). Active work: write-up and uniformity bookkeeping — **no identified structural obstruction remains** (`wp23-anatomy.md`): digit layer closed modulo write-up; anatomy layer unwinds exactly ($u_f<2$) into Type-I/II + primes-in-AP sums; pending = fine-anatomy-class check, two equidistribution rigorizations, Type-II ranges. Calibration: **~45% full strength** (down from the inflated 35–40; the empirical truth-evidence stands, the provability path is a genuine dispersion fight); ~60% lower-bound version if D† resists in full. Empirically immaculate: cross-side ratio $1.003\pm0.012$ (original runs) and now the direct $E_q$-integrand probe at $x=10^8$: $z=O(1)$ at all strata (`empirics-D.md`).
+**STATUS: OPEN — GATE G1 PASSED (June 9); WP4 SPRINT DONE (June 9 evening, `manuscript/`).** De-risking complete: no exponent gap (`numerology-D.md`), cancellation empirically clean on the real coupled object (`empirics-D.md`). The minor-arc bound is now **proved** in corrected functional form (manuscript §7; see `wp22-minor-major.md` §0 Erratum — the polylog claim was wrong, the budget still closes); large-λ coverage, β, linearization, two-frequency reduction, and the anatomy unwinding are written with full proofs (manuscript §§5–9). Pending = Hypotheses E1/E2 (precisely stated, manuscript §8), fine-anatomy-class check, Type-II ranges. Calibration: **~45% full strength** (down from the inflated 35–40; the empirical truth-evidence stands, the provability path is a genuine dispersion fight); ~60% lower-bound version if D† resists in full. Empirically immaculate: cross-side ratio $1.003\pm0.012$ (original runs) and now the direct $E_q$-integrand probe at $x=10^8$: $z=O(1)$ at all strata (`empirics-D.md`).
 
 ---
 
@@ -649,7 +652,18 @@ D†'s digit layer is no longer an amorphous dispersion problem; it is: *(minor 
 
 # WP2.2: D†-Minor Lemma and the Major-Arc Counts
 
-**STATUS: D†-digit (anatomy off) CLOSED MODULO WRITE-UP (June 9, 2026).** The minor-arc lemma is standard-toolbox (inhomogeneous Vinogradov-type counting; statement and ingredients below); both major-arc families **count out** — Family A with polylog margin on average over $q$, Family B with $L^{2B}$ margin plus a power-small piece. Honest residue: two average-equidistribution steps to rigorize, the fiddly write-up, and the anatomy layer (§4, literature now pinned).
+**STATUS: SUPERSEDED IN PART BY THE WP4 WRITE-UP (`manuscript/`, June 9 evening) — see Erratum §0.** D†-digit (anatomy off) remains closed modulo the two average-equidistribution steps (now Hypotheses E1/E2, stated precisely in manuscript §8), but both the minor-lemma statement and the Family-B definition below needed repair when the proof was actually written. The corrected minor bound is **proved** (manuscript §7). The conclusion-level claims of this memo survive; the intermediate statements (§§1,3) do not.
+
+## 0. ERRATUM (June 9, evening — from the WP4 consolidation sprint)
+
+Writing the minor-arc proof rigorously (manuscript §7) exposed two errors, one per hypothesis:
+
+1. **(M2) as stated below is insufficient.** A convergent denominator near $R$ controls only the blocks at scale $\approx R$. At scale $M \ll R$ the governing structure is the convergent gap *at scale $M$*: a long gap there admits a "graze" configuration — a run-progression approaching the origin at the (M1)-floor — carrying mass $\asymp\sqrt{s^+/s}$ in full consistency with (M1).
+2. **The polylog conclusion is false in general.** The first partial quotient of $q/p$ is $\asymp p/q$, so for $u>u'$ *every* pair carries the structural gap $s=1$, $s^+\asymp p/q$, and the graze reaches $\sqrt{p/q}$ — a power. No sparsity condition can excise it.
+
+**The correct theorem (proved, manuscript §7):** under (M1) alone,
+$$|V_p(\lambda)| \ll L^{B+3}\bigl(1+\mathcal D_R(q/p)\bigr) + L^2\,R/s_0, \qquad \mathcal D_R(\alpha):=\sum_{s\le R \text{ convergent}}\sqrt{s^+/s},$$
+with $s_0$ the largest convergent denominator $\le R$. Minor set redefined by the all-scale gap-ratio threshold $s^+/s \le R L^{-B}$ ("(M2*)"), which **automatically exempts the structural $s=1$ gap** under the top trim ($p/q \le RL^{-B} \iff x^{2u-1} \le L^{-B}$). On the minor set: $|V_p| \ll \sqrt{R}\,L^{B/2+4} + RL^{2-B}$ — square-root scale, not polylog, but **within the assembly budget with room** ($\sqrt R \ge L^{B/2+c+5}$ corner trim). Typical pairs still see polylog: $\mathbb E_{p,q}\,\mathcal D_R \ll L^2$. Family B recounted at threshold $G_0=RL^{-B}$: $\ll PQL^{B+1}/R$ pairs (+ power-small), still ample. Empirics agree: observed minor medians sit at $z\approx0.08$ in $\sqrt R$-normalized units — square-root scale with small constants, which the original polylog claim would have contradicted at scale. Same genre as the WP2.0 erratum: the de-risk discipline (draft the proof before trusting the note) did its job twice.
 
 ---
 

@@ -1,0 +1,52 @@
+\section{Appendix: the weighted average bound (Lemma $\alpha$)}
+\label{app:alpha}
+
+Kept as a tool; not load-bearing after Remark~\ref{rem:negative}.
+
+\begin{lemma}[$\alpha$; weighted Shparlinski Theorem 8]\label{lem:alpha}
+\statusP{} (proof sketch recorded; write-through is verbatim
+\cite{Shp11} with weights)\quad
+Let $w:\N\to\C$, $|w|\le1$, \emph{independent of $q$}. For fixed
+$\nu\ge1$, $N\le Q^2$, and any lengths $N_q\sim N$:
+\[
+\sum_{q\sim Q\ \mathrm{prime}}\
+\max_{\chi\ \mathrm{primitive\ mod}\ q^2}
+\Big|\sum_{n\le N_q}w(n)\chi(n)\Big|^{2\nu}
+\;\ll\;\Big(Q^{3}+N^{\nu}+\min\big\{N^{\nu}Q^{1/2},\,
+N^{\nu/2}Q^{2}\big\}\Big)\,N^{\nu}\,Q^{o(1)} .
+\]
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+Garaev's completion \cite{Gar06} applies to the weighted restriction
+verbatim: write
+$\sum_{n\le N_q}w\chi=\sum_{m\le M}w(m)\chi(m)\mathbf 1[m\le N_q]$ with
+$M=2N$ and Fourier-expand the indicator; H\"older in the frequency; the
+$\nu$-th power produces coefficients
+$\rho^{w}_{b,\nu}(k)=\sum_{m_1\cdots m_\nu=k}\prod_iw(m_i)e_M(b\sum m_i)$
+with $|\rho^{w}(k)|\le\tau_\nu(k)=k^{o(1)}$; Gauss-sum conversion
+(primitivity); the Baier--Zhao large sieve for square moduli \cite{BZ08}
+applied to the coefficient sequence $\rho^{w}$. The load-bearing
+hypothesis is the $q$-independence of $w$: Baier--Zhao requires one fixed
+coefficient sequence across all moduli. This is exactly where the
+application to Estimate~D$^\dagger$ breaks
+(Remark~\ref{rem:negative}): D$^\dagger$'s weight is $q$-dependent
+through the progression.
+\end{proof}
+
+\begin{corollary}[$\alpha'$]\label{cor:alphaprime}
+For any $\varepsilon,\delta>0$ there is $\kappa>0$ such that for all but
+$O(Q^{1/2+\delta})$ primes $q\sim Q$,
+$\max_\chi|\sum_{n\le N_q}w\chi|\le Nq^{-\kappa}$ whenever
+$N\ge Q^{\varepsilon}$.
+\end{corollary}
+
+\begin{remark}[the shortfall, quantified]
+Composing Lemma~$\beta$ with $\alpha'$ (maximal route) gives
+$E_q\ll xq^{-\kappa}\log q$ against the requirement
+$\kappa\ge1-o(1)$: short by $q^{1-\kappa}$. The full-family bilinear
+route gives $E_q\ll q\sqrt x$: short by $x^{2u'-1/2}$. The
+coset-restricted route recovers the $1/q$ but discards the deep twist
+entirely. The two Cauchy--Schwarz routes bracket the problem; the gap
+between them is where Estimate~D$^\dagger$ lives.
+\end{remark}

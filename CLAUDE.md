@@ -32,6 +32,7 @@ Research program proving infinitude/log-density $c_1^2$ of $W_1=\{n: n(n-1)\mid\
 | `verify_dls.py` | Numerical verification of the deep large sieve (identities, fiber/energy/RMS) |
 | `wp21_test.py` | Model test of the WP2.1 two-frequency reduction |
 | `empirics_d.py` | WP1.5 band-empirics probe ($T_q(\lambda)$ on real populations, 5 strata; ~minutes at $x=10^8$) |
+| `manuscript/` | **The WP4 manuscript spine** — LaTeX, full proofs of everything proved, status tags on every statement, remaining-gaps ledger in §10. Build: `tectonic main.tex` (installed via brew). Keep it in sync with the per-lemma docs |
 | `archive/` | Recovered session artifacts + full transcripts — historical; see `archive/README.md` |
 
 ## Scripts

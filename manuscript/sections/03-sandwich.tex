@@ -1,0 +1,91 @@
+\section{The exact sandwich (Lemma 0)}\label{sec:sandwich}
+
+The first reduction is exact --- no exceptional set, no density-zero
+absorption.
+
+\begin{lemma}[Lemma 0; the governor sandwich]\label{lem:sandwich}
+\statusPM\quad
+\[
+\D\cap\big(\Dp+1\big)\ \subseteq\ \W\ \subseteq\ \D\cap\big(\Dm+1\big).
+\]
+\end{lemma}
+
+\begin{proof}
+\emph{Lower inclusion.} Let $n\in\D$ and $n-1\in\Dp$. We verify the
+criterion of Definition~\ref{def:W1-criterion}. For $p^e\,\|\,n$ the
+condition $\ka_p(n)\ge e$ is verbatim $n\in\D$ at $p$. For
+$q^e\,\|\,n-1$: since $n-1\in\Dp$ there are at least $e$ indices $j$ with
+$\fr{(n-1)/q^j}\in[\tfrac12,1-q^{-j})$. For each such $j$ the shift
+identity (Lemma~\ref{lem:shift}) applies in its no-wrap branch, giving
+\[
+\fr{n/q^j}\;=\;\fr{(n-1)/q^j}+q^{-j}\;\ge\;\tfrac12+q^{-j}\;>\;\tfrac12 .
+\]
+Distinct $j$ give distinct carry positions, so $\ka_q(n)\ge e$.
+
+\emph{Upper inclusion.} Let $n\in\W$. Taking $p^e\,\|\,n$ in
+Definition~\ref{def:W1-criterion} gives $\ka_p(n)\ge e$ for all such $p$,
+i.e.\ $n\in\D$, with no margin loss. Now take $q^e\,\|\,n-1$. There are at
+least $e$ indices $j$ with $\fr{n/q^j}\ge\tfrac12$. By the final clause of
+Lemma~\ref{lem:shift} none of these positions is wrapped, so for each,
+\[
+\fr{(n-1)/q^j}\;=\;\fr{n/q^j}-q^{-j}\;\ge\;\tfrac12-q^{-j},
+\]
+which is the defining condition of $I^{(-)}_j$. Hence
+$\ka_q^{(-)}(n-1)\ge e$ for every $q^e\,\|\,n-1$, i.e.\ $n-1\in\Dm$.
+\end{proof}
+
+\begin{remark}[machine verification]
+Both inclusions hold with zero exceptions for all $n\le 6\times10^4$, and
+on samples near $10^9$ (\texttt{lemma0\_test.py}; Appendix~\ref{app:numerics}).
+The lower set captures $98.7\%$ of $\W$ on the verified range, so the
+sandwich is quantitatively tight, not merely exact.
+\end{remark}
+
+\begin{lemma}[Lemma 0$'$; margins are free]\label{lem:margins}
+\statusKA\quad
+$\dens\big(D_0^{(\pm)}\big)=\dens(\D)=c_1$, and the same holds for
+logarithmic density.
+\end{lemma}
+
+\begin{proof}[Proof sketch (to be executed within the Ford--Konyagin
+framework)]
+If $m\in\Dm\setminus\Dp$ then for some $p^e\,\|\,m$ the carry counters
+$\ka_p^{(-)}(m)$ and $\ka_p^{(+)}(m)$ differ, which forces some digit datum
+$\fr{m/p^j}$ into one of the boundary windows
+$[\tfrac12-p^{-j},\tfrac12)\cup[1-p^{-j},1)$, of total length $2p^{-j}$, at
+a position $j$ relevant to the governor condition at $p$. Summing the
+window costs over the Ford--Konyagin decomposition of $\D$ by anatomy
+(their \S2 for small primes, \S\S3--5 for large) gives an upper bound for
+the density of the symmetric difference that tends to $0$; the windows at
+the binding positions ($j\le2$ at band primes) contribute
+$O(\sum_{p>x^{1/3}}p^{-1}\cdot p^{-1})=O(x^{-1/3})$ per side, and the
+small-prime positions are absorbed into the Lemma-A loss. This is routine
+within \cite{FK21} and is recorded as known-adapt; the empirical symmetric
+difference is $\approx6\times10^{-5}$ at $10^9$.
+\end{proof}
+
+\begin{corollary}[reduction of the main theorem]\label{cor:reduction}
+\statusP{} (given Lemma~\ref{lem:margins})\quad
+Theorem~\ref{thm:main} is equivalent to the binary correlation statement
+\[
+\ldens\Big(\D\cap\big(D_0^{(\pm)}+1\big)\Big)\;=\;c_1^2
+\qquad\text{(either sign, at almost all scales, with $\log^{-c}$ rate),}
+\]
+i.e.\ to the asymptotic independence of the events $n\in\D$ and
+$n-1\in\D$.
+\end{corollary}
+
+\begin{proof}
+Immediate from Lemma~\ref{lem:sandwich} and Lemma~\ref{lem:margins}: the
+upper and lower sandwich sets have the same logarithmic density
+asymptotics once the margin sets carry the same density, and the
+correlation target for the margin-modified pairs coincides with that for
+$(\D,\D)$ up to the symmetric-difference cost.
+\end{proof}
+
+\begin{remark}
+Compare Pomerance's reduction for the single-shift problem, which is exact
+only up to density-zero sets \cite{Pom15}. Here all windowing and shift
+bookkeeping has been eliminated identically; nothing else in the paper
+needs to remember the original divisibility problem.
+\end{remark}

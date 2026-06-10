@@ -1,0 +1,194 @@
+\section{Estimate D$^\dagger$: opening, linearization, and the
+two-frequency reduction}\label{sec:reduction}
+
+Throughout this section $q\sim Q=x^{u'}$ and $p\sim P=x^{u}$ are band
+primes, $u,u'\in(1/3,1/2)$, and the $n$-side configuration is $n=pa$ with
+$n\equiv1\pmod q$, so that $a$ ranges over $a\le x/p$,
+$a\equiv\bar p\pmod q$. We write $R:=x/(pq)$ for the progression length
+and $\Llog=\log x$.
+
+\subsection{Opening the progression: primitive characters mod $q^2$}
+
+\begin{lemma}[$\beta$; AP-opening]\label{lem:beta}
+\statusPM\quad
+Let $q$ be an odd prime, $\lambda\not\equiv0\pmod q$, and $w$ any weight.
+Then
+\[
+\sum_{\substack{n\le x\\ n\equiv1\,(q)}}w(n)\chi_\lambda(n)
+=\frac{1}{\varphi(q)}\sum_{\chi_1\ \mathrm{mod}\ q}\
+\sum_{\substack{n\le x\\(n,q)=1}}w(n)\,\big(\tilde\chi_1\chi_\lambda\big)(n),
+\]
+where $\tilde\chi_1$ is the lift of $\chi_1$ to modulus $q^2$; and
+\emph{every} product $\tilde\chi_1\chi_\lambda$ is primitive of conductor
+exactly $q^2$.
+\end{lemma}
+
+\begin{proof}
+The identity is orthogonality of the characters mod $q$ applied to
+$\mathbf 1[n\equiv1\ (q)]$ on $(n,q)=1$. For primitivity: a character mod
+$q^2$ is imprimitive iff it is trivial on the kernel
+$1+q\Z/q^2$ of reduction $(\Z/q^2)^*\to(\Z/q)^*$. The lift
+$\tilde\chi_1$ is trivial there by construction, while
+$\chi_\lambda(1+qu)=\e{-\lambda u/q}$ by \eqref{eq:fq-hom} is a nontrivial
+character of $1+q\Z/q^2\cong\Z/q$ when $\lambda\ne0$. Hence the product is
+nontrivial on the kernel and has conductor $q^2$.
+\end{proof}
+
+\begin{remark}[the assembly accounting; a negative result]\label{rem:negative}
+Lemma~$\beta$ composed with averaged bounds for primitive characters to
+square moduli (Lemma~$\alpha$, Appendix~\ref{app:alpha}) does \emph{not}
+prove Estimate~D$^\dagger$: the opening converts a log-saving target on a
+length-$x/q$ object into a power-of-$q$-saving target on length-$x$
+objects, while every family-average tool returns square-root-type savings
+--- short by a factor $\approx q^{1-\kappa}$ (maximal-character route) or
+$x^{2u'-1/2}$ (full-family bilinear route). The deeper reason: the
+load-bearing hypothesis of the averaged machinery is $q$-independence of
+the weight, and D$^\dagger$'s weight is $q$-dependent \emph{through the
+progression itself}, $m\mapsto w(1+qm)$ --- essentially, not technically.
+This dead end is recorded (with the two bracketing Cauchy--Schwarz routes)
+so it is not re-entered; the lemmas $\alpha,\beta$ are kept as tools.
+\end{remark}
+
+\subsection{Linearization on the progression}
+
+\begin{lemma}[linearization]\label{lem:linearization}
+\statusPM\quad
+Let $(a_0,q)=1$ and $a=a_0+qt$. Then for every $\lambda$,
+\[
+\chi_\lambda(a_0+qt)\;=\;\chi_\lambda(a_0)\,
+\e{-\frac{\lambda\,\bar a_0\,t}{q}},
+\qquad \bar a_0a_0\equiv1\ (\mathrm{mod}\ q).
+\]
+In particular, on $a\equiv\bar p\pmod q$ one has $\bar a_0\equiv p$, and
+the deep character becomes the \emph{classical} additive character
+$\e{-\lambda pt/q}$ in the progression coordinate $t$, with frequency
+$\lambda p/q$ moving with $p$.
+\end{lemma}
+
+\begin{proof}
+$a_0+qt\equiv a_0(1+qt\bar a_0)\pmod{q^2}$ (expand; the error is
+$q^2t\bar a_0\cdot(\ldots)$). Apply \eqref{eq:fq-hom}:
+$\fq(a_0+qt)=\fq(a_0)+\fq(1+qt\bar a_0)=\fq(a_0)-t\bar a_0\bmod q$.
+\end{proof}
+
+\begin{remark}
+Machine-checked to $10^{-14}$ against the true Fermat-quotient phase
+(\texttt{wp21\_test.py}). Consequence: for $v\equiv1$ the inner sum is
+geometric, $|T_p(\lambda)|\le\min(R,\nm{\lambda p/q}^{-1})$ --- the
+unweighted layer of D$^\dagger$ is main-term bookkeeping. All difficulty
+lives in the decorated weight.
+\end{remark}
+
+\subsection{Unconditional coverage of the deep harmonics}
+
+The binding digit condition at $q$ contributes Fourier weights
+$c_\lambda$ (of the interval $[q/2,q)$ in $\Z/q$) with
+$|c_\lambda|\ll\langle\lambda\rangle^{-1}$, where
+$\langle\lambda\rangle:=\min(|\lambda|,q-|\lambda|)$. Set
+\[
+\Lambda_0\;:=\;x^{\,u+2u'-1+\varepsilon}
+\qquad(\text{note }1<u+2u'<\tfrac32\text{ in the band, and }\Lambda_0<q).
+\]
+
+\begin{proposition}[large $\lambda$ are covered]\label{prop:largelambda}
+\statusP\quad
+Let $v$ be any $1$-bounded weight supported on
+$\{a\le x/p:\ a\equiv\bar p\ (\mathrm{mod}\ q)\}$ (no structure assumed).
+Then for every band prime $p$,
+\[
+\sum_{\Lambda_0\le\langle\lambda\rangle<q/2}|c_\lambda|\,
+\Big|\sum_{a}v(a)\chi_\lambda(a)\Big|
+\;\ll\;\frac{x}{pq}\,x^{-\varepsilon/3},
+\]
+and summing over $p\sim P$ bounds the deep-harmonic part of
+$E_q$ by $(x/q)\,x^{-\varepsilon/3}$: a power saving, far below the
+$L^{-c}$ requirement.
+\end{proposition}
+
+\begin{proof}
+Write $T_p(\lambda)=\sum_av(a)\chi_\lambda(a)$ and let
+$N_a=x/p$ be the range length, so the support size is
+$\le R+1=x/(pq)+1$ and $\|v\|_2^2\le R+1$. Decompose the $\lambda$-range
+into dyadic blocks $\langle\lambda\rangle\sim\Lambda$,
+$\Lambda_0\le\Lambda<q/2$. By Cauchy--Schwarz and
+Corollary~\ref{cor:ap} (progression-restricted deep large sieve, with
+$c=\bar p$),
+\[
+\sum_{\langle\lambda\rangle\sim\Lambda}|c_\lambda||T_p(\lambda)|
+\;\le\;\Big(\sum_{\langle\lambda\rangle\sim\Lambda}|c_\lambda|^2\Big)^{1/2}
+\Big(\sum_{\lambda\bmod q}|T_p(\lambda)|^2\Big)^{1/2}
+\;\ll\;\Lambda^{-1/2}\Big(\frac{N_a}{q}+q\Big)^{1/2}(R+1)^{1/2}.
+\]
+Since $N_a/q=R$ and $q/R=x^{u+2u'-1}$, the right side is
+\[
+\ll\;\Lambda^{-1/2}R\,\Big(\frac1R+\frac{q}{R^2}\Big)^{1/2}\sqrt{2}
+\;\ll\;R\,\Big(\frac{x^{u+2u'-1}}{\Lambda}\Big)^{1/2}
+\;\le\;R\,x^{-\varepsilon/2}
+\]
+for $\Lambda\ge\Lambda_0$ (using $q/R^2\ge1/R$ in the band). Summing over
+the $O(\log x)$ dyadic blocks loses a log, absorbed by
+$x^{-\varepsilon/2}\log x\ll x^{-\varepsilon/3}$.
+\end{proof}
+
+\begin{remark}
+Only $0<\langle\lambda\rangle<\Lambda_0$ --- polynomially many harmonics,
+but crucially \emph{including the bounded ones} --- survive. By a
+standard completion/Vaaler step the remaining task is equivalent to
+Estimate~D$^\dagger$ for each fixed $|\lambda|\le\Llog^{C}$; the empirics
+of Appendix~\ref{app:numerics} measure exactly these objects and find
+square-root cancellation with room to spare.
+\end{remark}
+
+\subsection{The two-frequency reduction of the digit layer}
+
+Insert the $n$-side decoration. The binding $n$-side digit condition at
+$p$ is $\fr{n/p^2}\ge\tfrac12$, i.e.\ $a\bmod p\in[p/2,p)$, detected by
+$f:\Z/p\to\R$, the \emph{centered} indicator of $[p/2,p)$, with Fourier
+expansion $f(y)=\sum_{0<\mu<p}\hat f_\mu\e{\mu y/p}$,
+$\hat f_0=0$, $|\hat f_\mu|\le\tfrac1{2\langle\mu\rangle}$,
+$\langle\mu\rangle=\min(\mu,p-\mu)$. The cofactor-anatomy indicator is
+$\sigma$ ($1$-bounded; \S\ref{sec:anatomy} handles it; this subsection
+takes $\sigma\equiv1$).
+
+\begin{proposition}[two-frequency reduction]\label{prop:two-freq}
+\statusPM\quad
+Fix the band primes $p,q$ and $0<|\lambda|\le\Llog^C$, and let
+$a_0\equiv\bar p\ (\mathrm{mod}\ q)$ parametrize the progression
+$a=a_0+qt$, $0\le t\le R$. Then the digit-decorated inner object of
+Estimate~D$^\dagger$ equals
+\[
+V_p(\lambda)\;:=\;\sum_{t\le R}\sigma(a_0+qt)\,
+f\big((a_0+qt)\bmod p\big)\,\e{-\frac{\lambda pt}{q}}
+\;=\;\sum_{0<\mu<p}\hat f_\mu\,\e{\frac{\mu a_0}{p}}
+\sum_{t\le R}\sigma(a_0+qt)\,\e{t\,\theta_\mu},
+\]
+with the \emph{two-frequency phases}
+\[
+\theta_\mu\;:=\;\frac{\mu q}{p}-\frac{\lambda p}{q}
+\;=\;\frac{\mu q^2-\lambda p^2}{pq}\pmod 1 .
+\]
+For $\sigma\equiv1$ each inner sum is geometric:
+$\big|\sum_{t\le R}\e{t\theta_\mu}\big|\le\min\big(R,\tfrac1{2\nm{\theta_\mu}}\big)$.
+\end{proposition}
+
+\begin{proof}
+Substitute the Fourier expansion of $f$ and
+$\e{\mu(a_0+qt)/p}=\e{\mu a_0/p}\e{(\mu q/p)t}$, then combine with the
+linearized deep phase $\e{-(\lambda p/q)t}$ of
+Lemma~\ref{lem:linearization}. The geometric bound is standard.
+\end{proof}
+
+\begin{definition}[the dichotomy]\label{def:dichotomy}
+The digit layer of D$^\dagger$ is a family of linear exponential sums at
+the phases $\theta_\mu$. Call $p$ \emph{minor} for $(q,\lambda)$ when no
+small $\mu$ makes $\nm{\theta_\mu}$ abnormally small and $q/p$ is not
+abnormally well approximable below scale $R$
+(Definition~\ref{def:minor-conditions} makes this precise); otherwise
+$p$ is \emph{major}. Since
+$\theta_\mu\approx0\iff p/q\approx\sqrt{\mu/\lambda}$, the major $p$
+localize on explicit Diophantine curves; they are counted, not bounded,
+in \S\ref{sec:major}. The flagged empirical drift at small
+$\lambda$ and top of band (Appendix~\ref{app:numerics}) is exactly the
+$\mu/\lambda=1$ curve ($p\approx q$) announcing itself: structure to be
+counted, not noise.
+\end{definition}

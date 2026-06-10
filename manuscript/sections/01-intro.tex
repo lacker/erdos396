@@ -1,0 +1,101 @@
+\section{Introduction}\label{sec:intro}
+
+\subsection{The problem}
+
+Erd\H{o}s and Graham \cite{ErGr80} asked (Erd\H{o}s problem 396) for which
+$k$ there exist infinitely many $n$ such that
+$\prod_{i=0}^{k}(n-i)\mid\binom{2n}{n}$. For the single shifted factor,
+Pomerance \cite{Pom15} showed that $(n-k)\mid\binom{2n}{n}$ has
+$\gg x/\log^2 x$ witnesses up to $x$ for every fixed $k$, and studied the
+\emph{governor set}
+\[
+\D \;:=\; \Big\{m\ge1:\ m\,\Big|\,\binom{2m}{m}\Big\},
+\]
+whose membership is, by Kummer's theorem, a condition on the base-$p$
+digits of $m$ at the primes $p\mid m$
+(Proposition~\ref{prop:kummer}). Ford and Konyagin \cite{FK21} proved that
+$\D$ has asymptotic density
+\[
+c_1 \;=\; 0.11424\ldots,
+\]
+and developed the digit-counting and exponential-sum machinery on which the
+present program rests.
+
+We study the first genuinely \emph{binary} case,
+\[
+\W \;:=\; \Big\{n\ge2:\ n(n-1)\,\Big|\,\binom{2n}{n}\Big\}
+\;=\;\{2,\,210,\,460,\,\ldots\},
+\]
+where two consecutive integers must divide the same central binomial
+coefficient. To our knowledge even the infinitude of $\W$ is not in the
+literature.
+
+\subsection{Results and targets}
+
+The program's targets, in decreasing strength:
+
+\begin{theorem}[Target 1$''$; rung i]\label{thm:main}
+\statusO\quad
+At a set of scales $x$ of logarithmic density $1$,
+\[
+\frac{1}{\log x}\sum_{n\le x}\frac{\mathbf 1_{\W}(n)}{n}
+\;=\; c_1^2 + O\big((\log x)^{-c}\big)
+\]
+for some $c>0$. In particular $\W$ is infinite and has logarithmic density
+$c_1^2$.
+\end{theorem}
+
+\begin{theorem}[Target 1$'$; rung i-minus]\label{thm:lower}
+\statusO\quad
+$\W$ has positive lower logarithmic density.
+\end{theorem}
+
+\begin{theorem}[Conditional form; rung ii]\label{thm:conditional}
+\textbf{[REDUCTION IN PLACE; see \S\ref{sec:remaining} for the precise
+hypothesis list]}\quad
+Theorem~\ref{thm:main} holds conditionally on Estimate~D$^\dagger$
+(Estimate~\ref{est:Ddagger}) together with Lemmas B and C
+(\S\ref{sec:architecture}).
+\end{theorem}
+
+The plan of proof is a conditional-independence cascade. Lemma~0
+(\S\ref{sec:sandwich}) replaces $\W$, \emph{exactly}, by the correlation
+set $\D\cap(\D^{(\pm)}+1)$ of two fixed digit-defined sets, so that
+Theorem~\ref{thm:main} becomes a binary independence statement. That
+statement then factors through: Lemma~A (small primes are ignorable),
+Lemma~B (independence of the \emph{anatomies} --- the large-prime
+factorization shapes --- of $n$ and $n-1$), Lemma~C (equidistribution of the
+$n$-side digit data against multiplicative weights on $n-1$), and Lemma~D
+(cross-side digit independence), the hard core. \S\ref{sec:architecture}
+states all four precisely.
+
+The hard core has been reduced (\S\S\ref{sec:dls}--\ref{sec:anatomy}) to:
+a proved deep large sieve for Fermat-quotient characters covering the deep
+harmonics; a two-frequency minor/major-arc dichotomy in which the minor
+arcs are proved (Theorem~\ref{thm:minor}) and the major arcs are counted
+subject to two average-equidistribution steps
+(Hypotheses~\ref{hyp:E1},~\ref{hyp:E2}); and an exact elementary unwinding
+of the anatomy layer into classical Type-I/II and primes-in-progressions
+sums (\S\ref{sec:anatomy}). No structural obstruction is currently
+identified; the residue is quantitative bookkeeping, listed exhaustively in
+\S\ref{sec:remaining}.
+
+\subsection{Status conventions}
+
+Every numbered statement carries a tag: \statusP{} (or \statusPM{} when a
+numerical verification at scale is also on record), \statusC, \statusKA{}
+(a known proof adapts with low risk), \statusN{} (new but
+standard-toolbox), or \statusO. The tags are the paper's contract with
+itself: Theorem~\ref{thm:conditional} is claimed only modulo the statements
+tagged open, each of which appears verbatim in the ledger of
+\S\ref{sec:remaining}.
+
+\subsection{Notation}
+
+$p,q,\ell$ denote primes. $\fr{y}$ is the fractional part, $\nm{y}$ the
+distance from $y$ to $\Z$, $\e{y}=e^{2\pi iy}$. $P^+(n)$ is the largest
+prime factor of $n$. For $x$ the basic scale we write $\Llog=\log x$.
+Throughout, $n$ ranges near $x$ and the \emph{band} refers to prime factors
+$p=x^{u}$ with $u\in(1/3,1/2)$; band primes carry the single binding digit
+condition (\S\ref{sec:architecture}). $A\ll B$ and $A=O(B)$ are Vinogradov
+and Landau notation; subscripts indicate parameter dependence.

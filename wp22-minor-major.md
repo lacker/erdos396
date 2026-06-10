@@ -1,6 +1,17 @@
 # WP2.2: D†-Minor Lemma and the Major-Arc Counts
 
-**STATUS: D†-digit (anatomy off) CLOSED MODULO WRITE-UP (June 9, 2026).** The minor-arc lemma is standard-toolbox (inhomogeneous Vinogradov-type counting; statement and ingredients below); both major-arc families **count out** — Family A with polylog margin on average over $q$, Family B with $L^{2B}$ margin plus a power-small piece. Honest residue: two average-equidistribution steps to rigorize, the fiddly write-up, and the anatomy layer (§4, literature now pinned).
+**STATUS: SUPERSEDED IN PART BY THE WP4 WRITE-UP (`manuscript/`, June 9 evening) — see Erratum §0.** D†-digit (anatomy off) remains closed modulo the two average-equidistribution steps (now Hypotheses E1/E2, stated precisely in manuscript §8), but both the minor-lemma statement and the Family-B definition below needed repair when the proof was actually written. The corrected minor bound is **proved** (manuscript §7). The conclusion-level claims of this memo survive; the intermediate statements (§§1,3) do not.
+
+## 0. ERRATUM (June 9, evening — from the WP4 consolidation sprint)
+
+Writing the minor-arc proof rigorously (manuscript §7) exposed two errors, one per hypothesis:
+
+1. **(M2) as stated below is insufficient.** A convergent denominator near $R$ controls only the blocks at scale $\approx R$. At scale $M \ll R$ the governing structure is the convergent gap *at scale $M$*: a long gap there admits a "graze" configuration — a run-progression approaching the origin at the (M1)-floor — carrying mass $\asymp\sqrt{s^+/s}$ in full consistency with (M1).
+2. **The polylog conclusion is false in general.** The first partial quotient of $q/p$ is $\asymp p/q$, so for $u>u'$ *every* pair carries the structural gap $s=1$, $s^+\asymp p/q$, and the graze reaches $\sqrt{p/q}$ — a power. No sparsity condition can excise it.
+
+**The correct theorem (proved, manuscript §7):** under (M1) alone,
+$$|V_p(\lambda)| \ll L^{B+3}\bigl(1+\mathcal D_R(q/p)\bigr) + L^2\,R/s_0, \qquad \mathcal D_R(\alpha):=\sum_{s\le R \text{ convergent}}\sqrt{s^+/s},$$
+with $s_0$ the largest convergent denominator $\le R$. Minor set redefined by the all-scale gap-ratio threshold $s^+/s \le R L^{-B}$ ("(M2*)"), which **automatically exempts the structural $s=1$ gap** under the top trim ($p/q \le RL^{-B} \iff x^{2u-1} \le L^{-B}$). On the minor set: $|V_p| \ll \sqrt{R}\,L^{B/2+4} + RL^{2-B}$ — square-root scale, not polylog, but **within the assembly budget with room** ($\sqrt R \ge L^{B/2+c+5}$ corner trim). Typical pairs still see polylog: $\mathbb E_{p,q}\,\mathcal D_R \ll L^2$. Family B recounted at threshold $G_0=RL^{-B}$: $\ll PQL^{B+1}/R$ pairs (+ power-small), still ample. Empirics agree: observed minor medians sit at $z\approx0.08$ in $\sqrt R$-normalized units — square-root scale with small constants, which the original polylog claim would have contradicted at scale. Same genre as the WP2.0 erratum: the de-risk discipline (draft the proof before trusting the note) did its job twice.
 
 ---
 

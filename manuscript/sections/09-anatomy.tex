@@ -1,0 +1,97 @@
+\section{The anatomy layer: exact unwinding}\label{sec:anatomy}
+
+It remains to reinstate the cofactor-anatomy indicator $\sigma$ in
+$V_p(\lambda)$. By the conditional architecture, $\sigma$ here is the
+\emph{anatomy-only} part of the cofactor weight: within-side digit
+conditions belong to Lemma~C's uniformity clause (this interface is part
+of the statements of \S\ref{sec:architecture}). The governing structural
+fact makes the friable-sums literature unnecessary for the dominant
+configuration.
+
+\begin{proposition}[at most one large prime]\label{prop:one-large}
+\statusPM\quad
+Let $a\le A=x^{1-u}$ be a cofactor in the dominant configuration and
+$y=(2x)^{1/3}$ the band floor. Since $u\ge\tfrac13$ implies $y^2\ge A$,
+every such $a$ has at most one prime factor exceeding $y$, counted with
+multiplicity. Consequently the friability indicator unwinds
+\emph{exactly}:
+\[
+\mathbf 1\big[P^{+}(a)\le y\big]
+\;=\;1-\sum_{\substack{\ell>y\ \mathrm{prime}\\ \ell\mid a}}1
+\qquad(a\le A).
+\]
+\end{proposition}
+
+\begin{proof}
+If $\ell_1\ell_2\mid a$ with $\ell_1,\ell_2>y$ (allowing
+$\ell_1=\ell_2$), then $a\ge y^2\ge A$, a contradiction (the boundary
+case forces $a=y^2$, excluded as $y^2>A$ for $u>1/3$ and handled
+trivially at $u=1/3$). So the sum on the right is $0$ or $1$, and equals
+$1$ exactly when $P^{+}(a)>y$.
+\end{proof}
+
+\begin{remark}
+In Dickman terms the cofactor's friability parameter is
+$u_f=\log A/\log y=3(1-u)\in(1.5,2)$: strictly below $2$, which is why
+the inclusion--exclusion truncates at the first term. The identity was
+verified with zero violations on the actual progressions
+(Appendix~\ref{app:numerics}).
+\end{remark}
+
+\begin{proposition}[decomposition into classical species]\label{prop:species}
+\statusPM\quad
+For any phase $\theta$, with $t_\ell$ the least index $t$ with
+$\ell\mid a_0+qt$ (a single class mod $\ell$, since $(q,\ell)=1$),
+\[
+W(\theta):=\sum_{t\le R}\mathbf 1\big[P^{+}(a_0+qt)\le y\big]\,\e{t\theta}
+\;=\;G(\theta)\;-\;\sum_{y<\ell\le A}\e{t_\ell\theta}
+\sum_{s\le(R-t_\ell)/\ell}\e{s\,\ell\theta},
+\]
+where $G(\theta)=\sum_{t\le R}\e{t\theta}$. The identity is exact
+(machine-checked to $10^{-14}$). Consequently D$^\dagger$-anatomy splits
+by the dyadic size $\Lambda$ of $\ell$ into:
+\begin{itemize}
+\item\textbf{small/medium $\Lambda$} (many terms per $\ell$): geometric
+sums at the \emph{dilated} frequencies $\ell\theta_\mu$ --- the same
+Vinogradov-type counting as \S\ref{sec:minor}; the resonant $\ell$
+(those with $\nm{\ell\theta_\mu}$ small) form a third, \emph{linear},
+major-arc family, to be counted with Families A--B;
+\item\textbf{large $\Lambda$} (one term per $\ell$): writing
+$a=\ell b$, Type-II bilinear sums over $(\ell,b)$ with
+$\ell b\equiv a_0\ (\mathrm{mod}\ q)$ --- standard bilinear
+cancellation; at the extreme $\Lambda\sim A$ ($b$ bounded): primes in
+arithmetic progressions mod $q$ against linear phases
+$\e{b\theta_\mu s}$ --- Vinogradov/Balog technology, with $q=x^{u'}$
+comfortably inside its range. Transition zones via the usual Vaughan
+splitting.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+By Proposition~\ref{prop:one-large},
+$\mathbf 1[P^+(a)\le y]=1-\sum_{\ell>y,\,\ell\mid a}1$ for every $a$ in
+range; insert into $W(\theta)$ and exchange sums; for fixed $\ell$ the
+solutions of $\ell\mid a_0+qt$, $t\le R$, are $t=t_\ell+s\ell$. The
+species classification is bookkeeping on the resulting double sum.
+\end{proof}
+
+\begin{remark}[status and fallback]
+\statusN\quad
+What remains for D$^\dagger$-anatomy is classical-toolbox write-up:
+(i) the Type-I/II ranges with uniformity in $(q,\mu,p)$ and the Vaughan
+gluing; (ii) the $\ell$-resonance count (third major-arc family, linear,
+hence easier than Family A); (iii) the one genuine check: Lemma~B's
+finer anatomy classes (sizes and counts of primes in sub-bands)
+condition beyond bare friability --- each class adds
+inclusion--exclusion layers of the \emph{same species}, but the
+per-class verification must be done. Fallback if (iii) misbehaves: the
+friable-exponential-sum literature, already pinned --- Harper
+\cite{Harper16} (minor/major dichotomy for smooth Weyl sums), de la
+Bret\`eche--Tenenbaum \cite{dlBT07} (friable sums at rational
+arguments), Fouvry--Tenenbaum \cite{FT91} (friable integers in
+progressions), Drappeau \cite{Drap15}, Drappeau--Shao \cite{DS16}, de la
+Bret\`eche--Granville \cite{dlBG22}. Note our cofactor condition (``no
+prime in the band above $p$'' plus size constraints) is smooth-\emph{type},
+not literally $y$-friable: an adaptation layer, not a citation, even in
+the fallback.
+\end{remark}

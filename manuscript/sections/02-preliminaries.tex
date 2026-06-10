@@ -1,0 +1,97 @@
+\section{Preliminaries: carries, the governor set, margin variants}\label{sec:prelim}
+
+\begin{definition}[carry counters]\label{def:kappa}
+For a prime $p$ and $m\ge1$ set
+\[
+\ka_p(m)\;:=\;\#\Big\{j\ge1:\ \fr{m/p^j}\ge\tfrac12\Big\}.
+\]
+The count is finite: $\fr{m/p^j}=m/p^j<\tfrac12$ once $p^j>2m$.
+\end{definition}
+
+\begin{proposition}[Kummer, via Legendre]\label{prop:kummer}
+\statusP\quad
+For every prime $p$ and $m\ge1$,
+\[
+v_p\binom{2m}{m}\;=\;\ka_p(m).
+\]
+\end{proposition}
+
+\begin{proof}
+By Legendre's formula,
+$v_p\binom{2m}{m}=\sum_{j\ge1}\big(\fl{2m/p^j}-2\fl{m/p^j}\big)$, and for
+any real $y$ one has $\fl{2y}-2\fl{y}=\mathbf 1[\fr{y}\ge\tfrac12]$.
+\end{proof}
+
+\begin{definition}[governor set and margin variants]\label{def:governor}
+\[
+\D\;:=\;\Big\{m:\ m\mid\binom{2m}{m}\Big\}
+\;=\;\Big\{m:\ \ka_p(m)\ge e\ \text{for every prime power }p^e\,\|\,m\Big\},
+\]
+the equality by Proposition~\ref{prop:kummer} applied prime by prime.
+For $\sigma\in\{+,0,-\}$ define the margin-modified carry counters
+\[
+\ka^{(\sigma)}_p(m)\;:=\;\#\Big\{j\ge1:\ \fr{m/p^j}\in I^{(\sigma)}_j\Big\},
+\qquad
+I^{(+)}_j=\big[\tfrac12,\,1-p^{-j}\big),\quad
+I^{(0)}_j=\big[\tfrac12,\,1\big),\quad
+I^{(-)}_j=\big[\tfrac12-p^{-j},\,1\big),
+\]
+and the margin governor sets
+\[
+D_0^{(\sigma)}\;:=\;\Big\{m:\ \ka^{(\sigma)}_p(m)\ge e
+\ \text{for every prime power }p^e\,\|\,m\Big\},
+\]
+so $D_0^{(0)}=\D$ and $\Dp\subseteq\D\subseteq\Dm$.
+\end{definition}
+
+\begin{remark}
+The margin sets differ from $\D$ only when some digit datum
+$\fr{m/p^j}$ falls within $p^{-j}$ of the interval endpoints
+$\tfrac12$ or $1$ at a prime power relevant to $m$'s governor condition.
+Numerically the sets are nearly identical: on $m\le6\times10^4$ one has
+$|\Dp|=|\D|$ exactly, and the density of $\Dm\setminus\D$ measured at
+$10^9$ is $\approx 6\times10^{-5}$ (Appendix~\ref{app:numerics}).
+Lemma~\ref{lem:margins} below asserts $\dens(D_0^{(\pm)})=c_1$.
+\end{remark}
+
+\begin{definition}[membership criterion for $\W$]\label{def:W1-criterion}
+Since $\gcd(n,n-1)=1$, every prime divides at most one of $n$, $n-1$, and
+\[
+n\in\W
+\iff
+\begin{cases}
+\ka_p(n)\ge e & \text{for every }p^e\,\|\,n,\\[2pt]
+\ka_q(n)\ge e & \text{for every }q^e\,\|\,n-1.
+\end{cases}
+\]
+Note carefully: both conditions constrain the digits \emph{of $n$} --- the
+second at the primes of $n-1$. The whole difficulty of the problem is that
+the second family of conditions couples the multiplicative structure of
+$n-1$ to the digit expansion of $n$.
+\end{definition}
+
+\begin{lemma}[shift identity]\label{lem:shift}
+\statusP\quad
+Let $q^j$ be any prime power and $n\ge2$. If $q\mid n-1$, then
+\[
+\fr{\frac{n}{q^j}}
+=\begin{cases}
+\fr{\dfrac{n-1}{q^j}}+q^{-j}, &
+\fr{\dfrac{n-1}{q^j}}<1-q^{-j}\quad(\text{no wrap}),\\[10pt]
+\fr{\dfrac{n-1}{q^j}}+q^{-j}-1, &
+\fr{\dfrac{n-1}{q^j}}\ge1-q^{-j}\quad(\text{wrap}).
+\end{cases}
+\]
+In the wrap case $\fr{n/q^j}<q^{-j}$, so $\fr{n/q^j}\ge\tfrac12$ is possible
+only when $q^j=2$, in which case $\fr{n/q^j}=0<\tfrac12$ anyway: \emph{a
+wrapped position never produces a carry.}
+\end{lemma}
+
+\begin{proof}
+$n/q^j=(n-1)/q^j+q^{-j}$ exactly; reduce mod $1$. (The hypothesis
+$q\mid n-1$ is not needed for the identity, only for its later use; we
+state it to fix the context.) For the final sentence: in the wrap case
+$\fr{n/q^j}<q^{-j}\le\tfrac12$, with equality $q^{-j}=\tfrac12$ only for
+$q^j=2$, and then $\fr{(n-1)/2}\ge1-\tfrac12$ forces $n-1$ odd, i.e.\
+$\fr{n/2}=0$.
+\end{proof}

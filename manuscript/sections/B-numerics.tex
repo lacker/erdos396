@@ -1,0 +1,71 @@
+\section{Appendix: numerical verification record}\label{app:numerics}
+
+All scripts live in the program repository; this appendix records what
+was verified and at what scale. Machine verification is treated as
+evidence about \emph{truth}, never as proof; statements verified here
+but not proved carry their own status tags in the text.
+
+\subsection*{Lemma 0 (\texttt{lemma0\_test.py})}
+Both sandwich inclusions: zero exceptions on $3\le n\le6\times10^4$.
+$|D_0^{(+)}|=|D_0|$ exactly on this range; $|D_0^{(-)}|$ is $2\%$
+larger; the lower set captures $98.7\%$ of $\W$. Margin symmetric
+difference measured $\approx6\times10^{-5}$ at $10^9$. Measured pair
+density at $10^9$: $0.92\,c_1^2$ (finite-scale, converging, drift
+direction matching FK's own slow convergence).
+
+\subsection*{Deep large sieve (\texttt{verify\_dls.py})}
+The homomorphism identities \eqref{eq:fq-hom}, Wieferich orthogonality,
+and the linearization of Lemma~\ref{lem:linearization}: exact (randomized,
+$q\le1009$, and re-run June 9, 2026 on the program machine: all PASS).
+Energy bound of Proposition~\ref{prop:energy}: ratio
+$E/(N^2/q+qN)\le0.75$ across $q\in\{101,401,1009\}$, $N\le3q^2$,
+approaching $1$ at $N\asymp q^2$ as the proof predicts. Observed RMS of
+$|S(\lambda)|$ over initial segments far below the proven $\sqrt{qN}$
+(e.g.\ $q=1009$, $N=255272$: observed $356$ vs guaranteed $16049$ vs
+trivial $255272$).
+
+\subsection*{Band empirics at $x=10^8$ (\texttt{empirics\_d.py})}
+The exact D$^\dagger$ integrand $T_q(\lambda)$ on real coupled
+populations (one simple band prime, cofactor digit decoration), five
+strata $\gamma\in\{0.37,0.40,0.43,0.46,0.48\}$, populations
+$3.6$k--$27.5$k:
+\begin{center}
+\begin{tabular}{cccccc}
+\toprule
+$\gamma$ & $q$ & $N_{\mathrm{pop}}$ & RMS $z$ & max $z$ &
+unweighted control $z$ ($\lambda=1,2,3$)\\
+\midrule
+0.37 & 919  & 27531 & 0.95 & 1.77 & 0.88, 0.45, 0.77\\
+0.40 & 1597 & 15854 & 1.19 & 2.53 & 0.52, 0.16, 0.87\\
+0.43 & 2767 & 9161  & 1.22 & 2.20 & 2.27, 1.25, 0.74\\
+0.46 & 4787 & 5273  & 1.19 & 2.01 & \textbf{5.47}, 1.93, 1.53\\
+0.48 & 6947 & 3615  & 1.39 & 2.46 & \textbf{3.72, 3.23, 2.97}\\
+\bottomrule
+\end{tabular}
+\end{center}
+($z=|T|/\sqrt{\sum w^2}$; square-root cancellation $\Rightarrow z=O(1)$;
+correlation-scale signal would be $z\approx30$--$80$.) Decorated sums
+flat at every stratum even where the unweighted control blows up
+(top strata): empirical confirmation of the division of labor between
+Lemmas B/C (population shape) and D (decoration decorrelation). The
+small-$\lambda$ drift at top of band ($z$: $0.82\to2.46$) is the
+$\mu/\lambda=1$ major arc announcing itself
+(Definition~\ref{def:dichotomy}); interior-$p$ restriction flattens it.
+
+\subsection*{Two-frequency reduction at $x_{\mathrm{model}}=10^{11}$
+(\texttt{wp21\_test.py})}
+$q=4787$, $\lambda\in\{1,2\}$, 260 primes $p\in[3000,60000]$,
+$\sigma\equiv1$: linearized phase equals the true Fermat-quotient phase
+to $10^{-14}$; median $z=|V|/\sqrt{R/4}=0.08$, 90th percentile $0.40$,
+aggregate $\sum_p|V_p|=0.8\%$ of trivial; major arcs observed exactly on
+the predicted curves ($p=4759,4813\approx q$: the $\mu/\lambda=1$ curve,
+$|V|\approx0.3R$, $z\approx41$; $p=8171$ at $\lambda=2$:
+$(p/q)^2\approx2.91$, the $\mu/\lambda=3$ curve). All 26 cases exceeding
+a naively truncated bound trace to major-arc width undercounting, none
+to a failure of the mechanism.
+
+\subsection*{Anatomy unwinding (WP2.3 session checks)}
+The identity of Proposition~\ref{prop:one-large}: zero violations on the
+actual progressions; the decomposition of
+Proposition~\ref{prop:species}: exact to $10^{-14}$; friable-weighted
+minor-frequency sums at $z=O(1)$.
