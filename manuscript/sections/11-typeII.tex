@@ -1,182 +1,66 @@
-\section{The anatomy layer: ranges and gluing}\label{sec:typeII}
+\section{The anatomy layer: the honest state}\label{sec:typeII}
 
-This section discharges the Type-I/II debt of \S\ref{sec:anatomy}: explicit
-range windows, the dilated-frequency (small-$\Lambda$) treatment, the
-$\ell$-resonance count, the bilinear (large-$\Lambda$) computation, and the
-gluing verdict. Throughout, $p,q$ are the band primes of the configuration,
-$\theta=\theta_\mu$ a two-frequency phase, $A=x^{1-u}$ the cofactor range,
-$y=(2x)^{1/3}$ the band floor, $R=x/(pq)$, and the subtraction term of
-Proposition~\ref{prop:species} is
+\textbf{[REWRITTEN after adversarial verification, June 10 (late).]}
+An earlier draft of this section claimed the anatomy layer glues from
+classical inputs. Verification showed the claim rested on a
+band-arithmetic error, and the correct picture is structural:
+\emph{in the band, $u+u'>\tfrac23$ and $u+2u'>1$ always}. Hence
+$R=x^{1-u-u'}<x^{1/3}=y$: every prime $\ell>y$ exceeds the progression
+length, the ``small-$\Lambda$'' regime is empty, and the subtraction
+term of Proposition~\ref{prop:species} is exactly
 \[
-\Sigma(\theta)\;=\;\sum_{y<\ell\le A}\e{t_\ell\theta}
-\sum_{s\le(R-t_\ell)/\ell}\e{s\ell\theta},
-\qquad
-|\Sigma(\theta)|\;\le\;\sum_{y<\ell\le A}
-\min\Big(\frac{R}{\ell},\ \frac{1}{2\nm{\ell\theta}}\Big).
+\Sigma(\theta)\;=\;\sum_{t\le R}\mathbf 1\big[P^{+}(a_0+qt)>y\big]\,
+\e{t\theta}
 \]
-We split $\ell$ at $\Lambda_1:=A\,x^{-\eta_1}$ (so $b=a/\ell\le x^{\eta_1}$
-above the cut is short) and at $\Lambda_0:=R$, and write
-$\Llog=\log x$.
+--- a genuine arithmetic exponential sum with no per-term damping.
+Moreover every weighted sub-object here lives in progressions whose
+modulus exceeds the square root of the sum length ($q>\sqrt{A/b}$
+always, since $u+2u'>1$): beyond Vaughan, beyond
+Bombieri--Vinogradov, at the dispersion frontier. Cauchy--Schwarz
+routes are structurally incapable of recovering the $1/q$ congruence
+density (even perfect square-root cancellation gives
+$\sqrt A>R$). The unweighted digit layer
+(\S\S\ref{sec:reduction}--\ref{sec:major}) is immune because its
+progression sums are exact geometric series; the anatomy weight is
+where that exactness ends.
 
-\subsection{Small and medium $\Lambda$: the harmonic-weighted count}
-
-\begin{lemma}[dilated minor bound]\label{lem:dilated}
-\statusP{} (via the standard harmonic-weighted Vinogradov lemma)\quad
-Suppose $\theta$ has a continued-fraction convergent with denominator
-$r\in[R\Llog^{-B},R\Llog^{B}]$. Then
+\begin{hypothesis}[E3; anatomy dispersion]\label{hyp:E3}
+\statusO{} (structural; the residual core of D$^\dagger$-anatomy)\quad
+Uniformly in $0<|\lambda|\le\Llog^{C}$,
 \[
-\sum_{y<\ell\le R}\min\Big(\frac R\ell,\ \frac{1}{2\nm{\ell\theta}}\Big)
-\;\ll\;\Big(\frac Rr+R\cdot\frac1y+r\Big)\log(2Rr)
-\;\ll\;R\,\Llog^{\,B+1},
+\frac{1}{\pi(Q)}\sum_{q\sim Q}\ \sum_{\substack{p\sim P\\
+p\ \mathrm{minor}}}\ \sum_{0<\mu<p}\frac{1}{\langle\mu\rangle}
+\Big|\sum_{t\le R}\mathbf 1\big[P^{+}(a_0+qt)>y\big]\,\e{t\theta_\mu}
+\Big|\;\ll\;\pi(P)\,R\,\Llog^{-c-1}.
 \]
-the middle term (from the harmonic weight at the range bottom) being
-power-small since $y=x^{1/3}$.
-\end{lemma}
+\end{hypothesis}
 
-\begin{proof}
-This is the classical estimate
-$\sum_{\ell\le L_0}\min(N/\ell,\nm{\ell\theta}^{-1})
-\ll(N/r+L_0+r)\log(2L_0r)$ for $|\theta-a/r|\le r^{-2}$
-\cite[Lemma~2.2]{Vau97}, applied with $N=R$, $L_0=R$, and the convergent
-denominator $r\asymp R$ supplied by the hypothesis; the restriction
-$\ell>y$ only helps (it removes the largest individual terms
-$N/\ell$).
-\end{proof}
-
-\begin{remark}
-The hypothesis is an (M2)-type certificate for the \emph{phase}
-$\theta_\mu$ rather than for the ratio $q/p$. Its failure set is the
-third, \emph{linear}, major-arc family: $\theta_\mu$ abnormally well
-approximable means $|s\mu q^2-s\lambda p^2-jpq|$ small for some small
-$s$, a lattice count near the same conics as Family~A with one extra
-divisor-bounded parameter; on average over $q\sim Q$ it is
-polylog-sparse by exactly the argument of
-Proposition~\ref{prop:familyA} (the additional $s$-sum converges since
-the window widths decay like $1/s$). \statusP{} modulo E1, with the
-$s$-aggregation written in the obvious way. Each such failure
-contributes its trivial bound and is absorbed by the major-arc budget
-of Proposition~\ref{prop:digit-assembly}.
+\begin{remark}[evidence and attack surface]
+The empirical record bears directly on E3: the WP1.5/WP2.4 probes
+measured the \emph{fully decorated} sums (anatomy weight included) and
+found square-root cancellation at every stratum
+(Appendix~\ref{app:numerics}); the fine-class probes confirm it within
+classes. The plausible tools are dispersion in $q$ (the phase
+differences $\theta_{\mu_1}-\theta_{\mu_2}=(\mu_1-\mu_2)q/p$ move with
+$q$; BFI-style), the deep large sieve as the unconditional backstop,
+and the friable-in-APs literature (Fouvry--Tenenbaum) for the weight's
+own equidistribution. A pure $L^2$ in $t$ fails (the weight has
+variance $\asymp R$); the $\mu$- and $q$-averages are where the
+cancellation must come from. For the \emph{lower-bound track}, sieve
+(Buchstab) decompositions of the friability indicator with positivity
+may substitute for E3 on a positive-proportion subclass --- to be
+investigated.
 \end{remark}
 
-\subsection{The $\ell$-resonance count}
-
-\begin{lemma}[linear resonances]\label{lem:ell-resonance}
-\statusP\quad
-Fix $\theta$ and $\delta\le\tfrac12$, and let $s_\theta$ be the largest
-convergent denominator of $\theta$ with $s_\theta\le\Lambda$. Then
-\[
-\#\{\ell\sim\Lambda:\ \nm{\ell\theta}\le\delta\}
-\;\le\;\Big(\frac{\Lambda}{s_\theta}+1\Big)\big(2\delta\,s_\theta^{+}+2\big)
-\;\ll\;\delta\Lambda\,\Llog^{O(B)}+\frac{\Lambda}{s_\theta}+1
-\]
-under the certificate of Lemma~\ref{lem:dilated} (which bounds
-$s_\theta^{+}/s_\theta$ at the scales used).
-\end{lemma}
-
-\begin{proof}
-Partition $\ell\sim\Lambda$ into $\le\Lambda/s_\theta+1$ runs of
-$s_\theta$ consecutive integers; within a run the points $\ell\theta$
-are $1/(2s_\theta^{+})$-separated (Lemma~\ref{lem:cf}(2)), so at most
-$2\delta\cdot2s_\theta^{+}+2$ of them lie within $\delta$ of $0$.
-\end{proof}
-
-\subsection{Large $\Lambda$: the bilinear computation}
-
-\begin{lemma}[Type-II bound]\label{lem:typeII}
-\statusP\quad
-Let $\Lambda\in[R, \Lambda_1]$, $B_0=A/\Lambda$ ($\ge x^{\eta_1}$), let
-$\alpha_\ell,\beta_b$ be $1$-bounded coefficients, $\gamma$ a real
-phase, and $q$ the band modulus. Then
-\[
-\Big|\sum_{\ell\sim\Lambda}\sum_{\substack{b\sim B_0\\ \ell b\equiv
-a_0\,(q)}}\alpha_\ell\beta_b\,\e{\gamma\ell b}\Big|
-\;\le\;\frac{1}{q}\sum_{h\bmod q}\Big(B_0\Big[\,\Lambda B_0+
-2\Lambda\sum_{0<d<\Lambda}\min\big(B_0,\tfrac{1}{2}\nm{\gamma_hd}^{-1}\big)
-\Big]\Big)^{1/2},\qquad\gamma_h:=\gamma+\frac hq,
-\]
-and under the Lemma~\ref{lem:dilated} certificate for the $\gamma_h$ at
-scale $\min(\Lambda,B_0)$ (on average over $h$) this is
-\[
-\ll\;\Lambda B_0\Big(B_0^{-1/2}+\Lambda^{-1/2}+r_\gamma^{-1/2}
-+\Big(\frac{r_\gamma}{\Lambda B_0}\Big)^{1/2}\Big)\Llog^{O(B)}
-\;\ll\;\Lambda B_0\,x^{-\eta_1/2}\,\Llog^{O(B)} .
-\]
-\end{lemma}
-
-\begin{proof}
-Open the congruence $\ell b\equiv a_0\ (q)$ by additive characters
-$\frac1q\sum_{h\bmod q}\e{h(\ell b-a_0)/q}$, absorbing $\e{h\ell b/q}$
-into the phase: each $h$-term is a free bilinear sum with phase
-$\gamma_h\ell b$, $\gamma_h=\gamma+h/q$. Cauchy--Schwarz in $b$:
-\[
-\Big|\sum_\ell\sum_b\Big|^2\le B_0\sum_{b}\Big|\sum_{\ell}\alpha_\ell
-\e{\gamma_h\ell b}\Big|^2
-= B_0\sum_{\ell_1,\ell_2}\alpha_{\ell_1}\bar\alpha_{\ell_2}
-\sum_b\e{\gamma_h(\ell_1-\ell_2)b}
-\le B_0\Big[\Lambda B_0+2\Lambda\sum_{0<d<\Lambda}
-\min\big(B_0,\tfrac{1}{2\nm{\gamma_hd}}\big)\Big].
-\]
-The $d$-sum is the object of Lemma~\ref{lem:dilated} (unweighted form
-\cite[Lemma~2.2]{Vau97}): $\ll(\Lambda/r+1)(B_0+r\log r)$ with $r$ a
-convergent denominator of $\gamma_h$ at scale
-$\min(\Lambda,B_0,\ldots)$. Taking square roots, averaging the $q$
-values of $h$ (the certificate is demanded on average over $h$; the
-exceptional $h$ are counted into the linear resonance family), and
-using $\min(\Lambda,B_0)\ge x^{\eta_1}$ gives the display.
-\end{proof}
-
-\subsection{The extreme range and the gluing}
-
-\begin{lemma}[extreme range]\label{lem:extreme}
-\statusN{} (standard ingredients: Vinogradov's method for primes in
-progressions against linear phases)\quad
-For $\Lambda\in(\Lambda_1,A]$ (so $b\le x^{\eta_1}$): writing
-$a=\ell b$ with $b$ fixed and $\ell$ prime (or an almost-prime forced
-by the fine class), the inner sums are
-$\sum_{\ell\sim A/b,\ \ell\equiv a_0\bar b\,(q)}\xi(\ell)\,\e{(b\theta)\ell}$
-with $\xi$ the prime/almost-prime indicator weight: primes in an
-arithmetic progression mod $q=x^{u'}$, $u'<\tfrac12$, against a linear
-phase --- Vinogradov/Vaughan technology; the needed saving is
-$\Llog^{-c}$ against an available power saving except on the
-$O(\Llog^{O(1)})$-sparse set of phases $b\theta$ near rationals of tiny
-denominator, which joins the linear resonance count.
-\end{lemma}
-
-\begin{proposition}[ranges glue; the Type-II verdict]\label{prop:glue}
-\statusP{} modulo Lemma~\ref{lem:extreme}'s standard write-up and E1
-\quad
-Fix $\eta_1\in(0,\tfrac{1}{20})$. The three regimes
-$\ell\in(y,R]$, $[R,\Lambda_1]$, $(\Lambda_1,A]$ cover $(y,A]$ with the
-stated treatments, and there is \emph{no gap}: for every
-$u\in(\tfrac13,\tfrac12-\eta)$ one has $y<R$ exactly when
-$u+u'<\tfrac23$, and in the complementary band corner the small-$\Lambda$
-regime is empty and Lemmas~\ref{lem:typeII}--\ref{lem:extreme} alone
-cover $(y,A]$ (their hypotheses hold down to $\ell>y$ since
-$y\ge x^{1/3}\ge x^{\eta_1}$). Aggregating with the weights
-$|\hat f_\mu|\le1/(2\langle\mu\rangle)$ and the major-arc counts of
-\S\ref{sec:major} reproduces the budget of
-Proposition~\ref{prop:digit-assembly} with $\sigma$ reinstated: the
-anatomy layer costs a multiplicative $\Llog^{O(B)}$ against power
-savings, absorbed by the same trims.
-\end{proposition}
-
-\begin{proof}
-Range arithmetic: $y<R\iff x^{1/3}<x^{1-u-u'}\iff u+u'<\tfrac23$;
-$R<\Lambda_1\iff x^{1-u-u'}<x^{1-u-\eta_1}\iff u'>\eta_1$ (always);
-$\Lambda_1<A$ always. Each regime's lemma delivers a saving that is a
-power of $x$ (Lemmas~\ref{lem:typeII},~\ref{lem:extreme}) or a polylog
-bound against the $R$-trivial scale (Lemma~\ref{lem:dilated});
-the resonance exceptions are counted by Lemma~\ref{lem:ell-resonance}
-and the Family-A/B machinery. Summing over $\mu$ with the
-$1/\langle\mu\rangle$ weights costs $\Llog$; the $\Lambda$-dyadics cost
-$\Llog$; both absorbed.
-\end{proof}
-
-\begin{remark}[honest residue]
-What remains non-self-contained here: the verbatim write-up of
-Lemma~\ref{lem:extreme} from the standard sources (Vaughan's identity
-+ exponential sums over primes in APs), and the uniformity-in-$(q,\mu,p)$
-bookkeeping when the three lemmas are summed --- mechanical, recorded
-in the ledger as the residue of (D3). The \emph{ranges themselves}
-close with room: that was the named risk, and it is retired.
+\begin{remark}[what survives from the earlier draft]
+The bilinear computation (Cauchy--Schwarz with the congruence opened
+by additive characters) is algebraically valid and recorded in the
+repository history; it is not budget-compliant for the reason above.
+The linear $\ell$-resonance count survives as a tool with corrected
+hypotheses (grid-site counting; it needs gap control \emph{at the
+scale used}, the same all-scale subtlety as
+Remark~\ref{rem:M2-strengthening}). The extreme range
+($b\le x^{\eta_1}$) is primes in APs with modulus beyond the square
+root of the length --- the BFI/large-moduli frontier, not
+``standard toolbox.''
 \end{remark}

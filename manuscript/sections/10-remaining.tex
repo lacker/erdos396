@@ -1,17 +1,28 @@
 \section{The remaining gaps, exhaustively}\label{sec:remaining}
 
-This section is the paper's ledger: Theorem~\ref{thm:conditional} (rung
-ii) is claimed modulo exactly the items below. After the consolidation
-of \S\S\ref{sec:typeII}--\ref{sec:bookkeeping}, every remaining item is
-either a \emph{citation debt} (a named classical input to be transcribed
-verbatim from its source) or a \emph{mechanical write-up}; none is
-structural.
+This section is the paper's ledger: Theorem~\ref{thm:conditional}
+(rung ii) is claimed modulo exactly the items below. \textbf{After the
+adversarial verification pass (June 10, late), the honest summary is:}
+the \emph{unweighted digit layer} is solid (proved modulo the open but
+benign-diagnosed E1--E2); the \emph{weighted/anatomy layers} rest on
+two genuinely structural open hypotheses, E3
+(Hypothesis~\ref{hyp:E3}) and C$^\dagger$
+(Hypothesis~\ref{hyp:Cdagger}) --- both beyond-$\sqrt{}$ dispersion
+statements, both empirically true with square-root room, both
+parity-free. The remaining items below are citation debts and
+mechanical write-ups.
+
+\subsection*{Structural open hypotheses}
+E1, E2 (\S\ref{sec:major}, \S\ref{sec:e1e2}: partial results + named
+routes); E3 (\S\ref{sec:typeII}); C$^\dagger$
+(\S\ref{sec:lemmaC-red}). These four are where Estimate D$^\dagger$
+and Lemma C now live.
 
 \subsection*{Citation debts (classical, sourced, non-structural)}
 \begin{itemize}
 \item[(SL1)] Exponential sums over primes with hyperbolic phases
 (Lemma~\ref{lem:SL1}; Vaughan + van der Corput, \cite[Ch.~13]{IK04}).
-Feeds E1 (Proposition~\ref{prop:E1}).
+Feeds the partial E1 results (\S\ref{sec:e1e2}).
 \item[(SL2/SL2$'$)] Linear rational phases over primes / the
 $\psi$-over-primes cancellation (Lemmas~\ref{lem:SL2},~\ref{lem:SW};
 Vinogradov). Feed E2 and Siegel--Walfisz for $g_{\mathbf z}$.
@@ -25,16 +36,14 @@ Proposition~\ref{prop:C-weighted}).
 the v2 source; transcription into the final manuscript pending.
 \item[(GS/DGS)] \cite{GS} and the smooth-supported extension
 (Drappeau--Granville--Shao) at the stated ranges.
-\item[(Vin)] Primes in progressions against linear phases for the
-extreme anatomy range (Lemma~\ref{lem:extreme}).
+\item[(Vin)] (Absorbed into Hypothesis E3: the extreme anatomy range
+is beyond-$\sqrt{}$, not classical.)
 \end{itemize}
 
 \subsection*{Mechanical write-ups}
 \begin{itemize}
-\item[(W1)] Uniformity bookkeeping in $(q,\mu,p)$ when summing the
-three anatomy regimes (Proposition~\ref{prop:glue}); the
-$s$-aggregation in the linear-resonance average (remark after
-Lemma~\ref{lem:dilated}).
+\item[(W1)] Uniformity bookkeeping in $(q,\mu,p)$ across the digit
+layer's minor/major assembly (\S\ref{sec:major}).
 \item[(W2)] The fine-class inclusion--exclusion bookkeeping
 (\S\ref{sec:anatomy}, item (iii); structure verified, WP2.4).
 \item[(W3)] The FK gluing for Lemma C: carrying the weight through
@@ -43,6 +52,7 @@ Lemma~\ref{lem:dilated}).
 \item[(W4)] The Dickman--Billingsley identification of the band sums
 $\Sigma_{\mathbf j}$ with the box measures
 (Proposition~\ref{prop:B-assembled}).
+\item[(W6/W6$'$)] Generalized interpolation (bounded multiplicity, general bands) and the scale-drift average conversion for Lemma B (\S\ref{sec:lemmaB-closure}).
 \item[(W5)] Final manuscript assembly: theorem statements
 re-verified against the composed error budget of
 Proposition~\ref{prop:cascade}.
@@ -52,21 +62,22 @@ Proposition~\ref{prop:cascade}.
 \begin{center}
 \begin{tabular}{ll}
 \toprule
-Piece & Status after this consolidation\\
+Piece & Status after verification (June 10, late)\\
 \midrule
-Lemma 0, margins (0$'$) & \statusP{} (\S\ref{sec:sandwich},
+Lemma 0, margins (0$'$) & \statusP{} (Chernoff-repaired,
 \S\ref{sec:bookkeeping})\\
-Lemma A & \statusP{} (\S\ref{sec:bookkeeping})\\
-Lemma B & \statusP{} modulo (TT), (SL2$'$), (W4)\\
-Lemma C & reduced; \statusP{} modulo (DMV), (Hal), (GS/DGS), (W3)\\
+Lemma A & \statusP{} (repaired, \S\ref{sec:bookkeeping})\\
+Lemma B & \statusP{} modulo (TT), (SL2$'$), (W4), (W6$'$)\\
+Lemma C, unweighted core & reduced to \S\S\ref{sec:minor}--\ref{sec:major}
+(Prop.~\ref{prop:C-cov})\\
+Lemma C, weighted layer & \statusO{} modulo C$^\dagger$\\
 D$^\dagger$: deep harmonics & \statusP\\
-D$^\dagger$: digit, minor & \statusP\\
-D$^\dagger$: digit, major (E1, E2) & \statusP{} modulo (SL1), (SL2)\\
-D$^\dagger$: anatomy ranges & glued; \statusP{} modulo (Vin), (W1),
-(W2)\\
+D$^\dagger$: digit, minor & \statusP{} (verified; constants repaired)\\
+D$^\dagger$: digit, major & \statusO{} modulo E1, E2 (partial E2;
+routes named)\\
+D$^\dagger$: anatomy & \statusO{} modulo E3\\
 Depth packaging (D5) & \statusP{} (\S\ref{sec:bookkeeping})\\
-Assembly cascade & \statusP{} given A--D
-(Proposition~\ref{prop:cascade})\\
+Assembly cascade & \statusP{} given A--D (rate unspecified)\\
 \bottomrule
 \end{tabular}
 \end{center}

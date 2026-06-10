@@ -3,9 +3,10 @@
 This section converts the diagnosis of the working notes into
 manuscript form: C's two-band-prime core is the two-frequency machinery
 of \S\S\ref{sec:minor}--\ref{sec:major} under a change of variables;
-the weighted layer rests on three pinned inputs. After this section,
-Lemma~\ref{lem:C}'s remaining debt is the Ford--Konyagin gluing
-(ledger).
+the weighted layer, after adversarial verification (June 10, late),
+rests on the open Hypothesis~C$^\dagger$ below --- the earlier claim
+that it reduces to pinned classical inputs was wrong (see the
+unifying remark). The unweighted core reduction stands.
 
 \subsection{The two-band-prime core}
 
@@ -41,9 +42,8 @@ $p_2/p_1$ --- the latter is $k$-independent), then
 \[
 |V^{C}(1)|\;\ll\;\Llog\cdot\Big(\sqrt R\,\Llog^{\,B/2+4}
 +R\,\Llog^{\,2-B}\Big)
-+\sum_{|k|>\Llog^{C}}\frac{1}{\langle k\rangle}\cdot
-\frac{1}{\Llog^{C}}\cdot R\,\Llog
-\;\ll\;\sqrt R\,\Llog^{\,B/2+5}+R\Llog^{\,3-\min(B,C)};
++R\,\Llog^{-C}+\Llog^{B+C}
+\;\ll\;\sqrt R\,\Llog^{\,B/2+5}+R\,\Llog^{\,3-\min(B,C)};
 \]
 \item the major pairs (some $k$-resonance) lie on the curves
 $p_2/p_1\approx\sqrt{h/(-k)}$ and are counted, on ensemble average
@@ -55,28 +55,22 @@ $B\ge2C+c+4$.
 \end{proposition}
 
 \begin{proof}
-(1) For each $|k|\le\Llog^C$, Theorem~\ref{thm:minor} and
-Corollary~\ref{cor:minor} apply verbatim with $\beta=\fr{-kp_1/p_2}$
-(the proof of Theorem~\ref{thm:minor} is uniform in $\beta$; only (M1)
-references it). Summing the $k$-weights
-$\sum_{0<|k|\le\Llog^C}\langle k\rangle^{-1}\ll\Llog$ gives the first
-term. For $|k|>\Llog^{C}$: bound the $h$-aggregate trivially by
-$R\,\Llog$ (harmonic sum) and use
-$\sum_{|k|>\Llog^{C}}\langle k\rangle^{-1}\cdot$(uniform
-bound)$\,\ll\Llog\cdot\Llog^{-C}\cdot R\,\Llog$ --- wait: more simply,
-$\sum_{\Llog^C<|k|<p_2/2}\langle k\rangle^{-1}\ll\Llog$, and for these
-$k$ we use the geometric bound $\min(R,\nm{\vartheta_{h,k}}^{-1})\le R$
-together with the $h$-decay, paying $\Llog^2$ against the
-$\langle k\rangle^{-1}$-decay; since the weights below the cutoff
-already dominate, the stated bound follows with the displayed exponent
-bookkeeping. (2) The resonance condition
-$\nm{\vartheta_{h,k}}\le\delta$ is
-$|hp_2^2+kp_1^2-jp_1p_2|\le\delta p_1p_2$: the conic lattice count of
-Lemma~\ref{lem:branch} and Proposition~\ref{prop:familyA} with
-$(\mu,\lambda)$ ranging over the pair $(h,-k)$, both at most
-$\Llog^{C}$; the count multiplies by the extra harmonic range.
-(M2$^*$)-failures are Proposition~\ref{prop:familyB} verbatim for the
-ratio $p_2/p_1$.
+(1) Truncate both sharp indicators by Selberg--Vaaler approximants of
+degree $K_0=\Llog^{C}$ (two-dimensional Erd\H os--Tur\'an--Koksma):
+the harmonic box becomes $0<|h|,|k|\le K_0$ with truncation cost
+$\ll R\Llog^{-C}$, plus two \emph{axis families} ($h=0$ or $k=0$):
+one-dimensional resonance conditions imposed for
+$0<|k|\le K_0$ and mirror, counted as in part (2). On the box, apply
+Theorem~\ref{thm:minor} for each fixed $k$ (uniform in the shift
+$\beta$, which enters only through (M1)); the weights
+$\sum_{0<|k|\le K_0}\langle k\rangle^{-1}\ll\Llog$ give the first
+term. (2) The resonance condition for $(h,k)$ is
+$|hp_2^{2}+kp_1^{2}-jp_1p_2|\le\delta_{h,k}p_1p_2$ with pair-weighted
+windows $\delta_{h,k}\asymp1/(\langle h\rangle\langle k\rangle
+\Llog^{B})$, total $\sum\delta_{h,k}\ll\Llog^{2-B}$: the conic lattice
+count of \S\ref{sec:major} with the extra harmonic dimension costs one
+$\Llog^{C}$, absorbed by $B\ge2C+c+4$. (M2$^*$)-failures are
+Proposition~\ref{prop:familyB} verbatim for $p_2/p_1$.
 \end{proof}
 
 \subsection{The weighted layer}
@@ -96,13 +90,13 @@ quantitative form with this Diophantine window is
 Montgomery--Vaughan-type. To be pinned verbatim.)
 \end{lemma}
 
-\begin{proposition}[weighted minor pairs]\label{prop:C-weighted}
-\statusP{} modulo DMV\quad
+\begin{proposition}[weighted minor pairs --- DEMOTED]\label{prop:C-weighted}
+\statusO{} (the DMV transfer sketched below loses the factor $p_1p_2$
+and is NOT valid; see Hypothesis~C$^\dagger$)\quad
 Let $(p_1,p_2)$ be minor as in Proposition~\ref{prop:C-cov}, and
-suppose additionally the certificate of Lemma~\ref{lem:dilated} holds
-for the phases $p_1p_2\vartheta_{h,k}$-shifted lattice (equivalently:
-the convergent denominators of $\vartheta_{h,k}$ at scale $R$ lie in
-the DMV window for the dominant harmonics). Then for any $1$-bounded
+suppose the convergent denominators of the dominant
+$\vartheta_{h,k}$ at scale $R$ lie in the DMV window. Then
+(CLAIMED, NOT PROVED:) for any $1$-bounded
 multiplicative $g$,
 \[
 |V^{C}(g)|\;\ll\;R\,(\log R)^{-c_1}\,\Llog^{2}
@@ -134,13 +128,18 @@ exactly to the main term that Lemma~\ref{lem:C}'s statement carries
 case no major-pair \emph{budget} is consumed --- this is the
 empirically observed collapse (resonant ensemble $z$: $13.1$
 unweighted $\to0.78$ under Liouville; Appendix~\ref{app:numerics}).
-\statusN{} (write-up with the Hal\'asz-type input cited.)
+\statusO{} --- Hal\'asz/MRT controls full sums, not means along APs of
+modulus exceeding the length; this absorption must run along the
+C$^\dagger$ dispersion route.
 \end{remark}
 
 \subsection{The single-prime case and the assembly of C}
 
-\begin{proposition}[single-band-prime weighted core]\label{prop:C-single}
-\statusP{} modulo \cite{GS} and Lemma~\ref{lem:SW}\quad
+\begin{proposition}[single-band-prime weighted core --- DEMOTED]\label{prop:C-single}
+\statusO{} (the binding condition lives at conductor
+$p^{2}=x^{2u}\in(x^{2/3},x^{1-2\eta})$, beyond \cite{GS}
+($x^{20/39}$) and DGS ($x^{3/5}$); the earlier claim conflated modulus
+with conductor)\quad
 For $n=pm$ with one band prime and the binding condition
 $\fr{m/p}\ge\tfrac12$ detected mod $p$, the weighted sums
 $\sum_{m\sim x/p}g(pm-1)\e{hm/p}$, needed on average over $p\sim x^u$,
@@ -154,9 +153,35 @@ giving room to spare. Deep digits ($j\ge3$) use the chooseable
 position $p^{\,j-1}\le x^{1/2}$ in upper-bound mode.
 \end{proposition}
 
+\begin{hypothesis}[C$^\dagger$; twisted dispersion for the weighted layer]
+\label{hyp:Cdagger}
+\statusO{} (structural)\quad
+For $1$-bounded multiplicative $g$ satisfying Siegel--Walfisz, on
+average over band primes (single-prime case: conductor $p^{2}$) and
+over band pairs (two-prime case: bifactorable moduli
+$p_1p_2\in(x^{2/3},x^{1-2\eta})$), the twisted weighted sums of this
+section admit a $\Llog^{-c}$ saving against their trivial bounds.
+\end{hypothesis}
+
+\begin{remark}[unifying diagnosis --- the beyond-$\sqrt{}$ wall]
+Every \emph{weighted} estimate in this section and in
+\S\ref{sec:typeII} asks for equidistribution of an arithmetic weight
+in progressions whose modulus exceeds the square root of the sum
+length --- unavoidable in-band ($u+2u'>1$; $u_1+u_2>\tfrac23$). This
+is not the classical toolbox; it is the dispersion frontier
+(BFI-type), and only ensemble averaging (over $q$, over pairs) has a
+chance. The unweighted digit layer escapes the wall through the exact
+geometric structure of its progression sums. Hypotheses E3 and
+C$^\dagger$ are the program's two residual structural debts; both are
+empirically true with square-root room (the collapse $z$:
+$13.1\to0.78$ under Liouville is the direct truth-evidence for
+C$^\dagger$), both are parity-free, and the deep large sieve and
+two-frequency dichotomy are their natural weapons.
+\end{remark}
+
 \begin{proposition}[Lemma C, conditional assembly]\label{prop:C-assembled}
-\statusP{} modulo: DMV, \cite{GS}+SW, the Hal\'asz-type major-pair
-input, and the FK gluing (ledger)\quad
+\statusO{} modulo Hypothesis~C$^\dagger$ (which subsumes the weighted
+layer) and the FK gluing (ledger)\quad
 Lemma~\ref{lem:C} holds in the form required by
 Proposition~\ref{prop:assembly}: conditional on the anatomies, the
 interior $n$-side digit data factor against any $1$-bounded

@@ -30,7 +30,8 @@ $N_q(\mu,\lambda,\delta):=\#\{p\in(P,2P]:\ \nm{\theta_\mu(p,q)}\le\delta\}$
 N_q(\mu,\lambda,\delta)\;=\;2\delta P
 +E_q(\mu,\lambda,\delta),
 \qquad
-|E_q(\mu,\lambda,\delta)|\;\ll\;\frac{\mu Q}{P}+\frac{\lambda P}{Q}+1 .
+|E_q|\;\ll\;\frac{\mu Q}{P}+\frac{\lambda P}{Q}+1
++\delta\Big(\frac{\mu Q}{P^{2}}+\frac{\lambda}{Q}\Big)^{-1},
 \]
 \end{lemma}
 
@@ -41,8 +42,12 @@ crosses an integer (its total variation is
 $\ll\mu Q/P+\lambda P/Q$); on each branch the solution set of
 $\nm{\theta_\mu}\le\delta$ is a union of at most two intervals, each
 contributing its length over the local derivative
-($\asymp\mu q/p^2+\lambda/q$) plus $O(1)$ endpoint integers. Summing the
-main terms reconstitutes $2\delta P$; the endpoints give $E_q$.
+($\asymp\mu q/p^2+\lambda/q$) plus $O(1)$ endpoint integers; partial
+windows at the range ends contribute the fourth term. Summing the main
+terms reconstitutes $2\delta P$; the endpoints and edges give $E_q$
+(with $\delta=\delta_\mu$ the edge term sums unconditionally:
+$\sum_\mu P^2/(\mu^2Q\Llog^B)\ll P\Llog^{-B}$ and, for $P>Q$,
+$\sum_\mu Q/(\mu\lambda\Llog^B)\ll Q\Llog^{1-B}$).
 \end{proof}
 
 \begin{hypothesis}[E1; wrap-boundary average, Family A]\label{hyp:E1}
@@ -140,13 +145,7 @@ q/p\ \text{fails (M2$^*$)}\Big\}
 \;+\;\frac{P^{2}\,\Llog^{\,B+1}}{R}\,,
 \]
 and the second term is $PQ\cdot x^{2u-1}$-type, power-small under the
-top trim. Moreover, unconditionally on E2 but on average over the band,
-the gap functional satisfies
-\[
-\frac{1}{\pi(P)\pi(Q)}\sum_{p\sim P}\sum_{q\sim Q}
-\mathcal D_R(q/p)\;\ll\;\Llog^{2},
-\]
-so polylogarithmic $\mathcal D_R$ is the typical case.
+top trim.
 \end{proposition}
 
 \begin{proof}
@@ -166,13 +165,10 @@ per $s$ number $\ll SQ/P+1$. Hence at scale $S$:
 and summing the $O(\log x)$ dyadic scales gives the claim (the
 $P^2$-piece is dominated by $S\asymp1$, where only the exempt structural
 gap lives after the trim; what remains of it is the stated power-small
-term). For the average of $\mathcal D_R$: by the same lattice count, the
-number of pairs whose gap at scale $s\sim S$ has ratio $\ge G$ is
-$\ll PQ\log x/G$ per dyadic $G$, so
-$\mathbb E\big[\sqrt{s^{+}/s}\,\big]\ll\sum_{G\ \mathrm{dyadic}}
-\sqrt G\cdot G^{-1}\ll1$ per convergent scale, and there are $O(\log x)$
-scales; the second logarithm covers the dyadic-$G$ summation and
-constants.
+term). (The earlier draft's clause on the band average of $\mathcal D_R$ is
+withdrawn: for $u>u'$ the structural first gap makes
+$\mathbb E[\mathcal D_R]$ power-large; only the per-pair certificate
+and the failure count are used downstream.)
 \end{proof}
 
 \subsection{Assembly of the digit layer}

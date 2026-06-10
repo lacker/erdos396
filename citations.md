@@ -61,7 +61,7 @@ Theorems and papers this proof needs (or may need) to cite. **Status:** PINNED =
 | Bombieri–Friedlander–Iwaniec (dispersion series) | dispersion to large moduli — what D sits beyond for general coefficients | D framing | TO-PIN |
 | **Granville–Shao, arXiv:1703.06865** (Adv. Math 2019) | BV for mult. functions; fixed residue class to moduli $x^{20/39-\delta}$ (beyond $x^{1/2}$); companion (Forum Math. Sigma): BV $\iff$ Siegel–Walfisz criterion for $g$ | Lemma C weighted layer | **PINNED (WP3, June 10)** |
 | **Drappeau–Granville–Shao, arXiv:1704.04831** | *smooth-supported* mult. functions in APs to $x^{3/5-\varepsilon}$ — native fit (our weights live on $\sqrt{}$-smooth populations) | Lemma C, extra range | PINNED (located June 10) |
-| Daboussi; Montgomery–Vaughan | mult. function vs $e(a\theta)$, minor arcs, uniform in $g$ | Lemma C minor pairs | TO-PIN (quantitative form at rational $\theta$, large denominator) |
+| **Montgomery–Vaughan 1977, Invent. Math. 43, 69–82** | $\sum_{n\le x}f(n)e(n\alpha)\ll x/\log x+(x/\sqrt R)(\log R)^{3/2}$, uniform over 1-bounded multiplicative $f$, where $|\alpha-a/q|\le q^{-2}$, $(a,q)=1$, $R=\min(q,x/q)$ | Lemma C minor pairs (the DMV input, manuscript §14) | **PINNED (June 10)** |
 | ~~Friedlander–Iwaniec, simultaneous fractional parts~~ | **RETIRED (WP3, June 10): not locatable as an actual paper (session-memory artifact); the thin-progression phenomenon is handled by our own two-frequency machinery (manuscript §§6–8)** | Lemma C | RESOLVED |
 | Vaaler | trigonometric approximation of interval indicators, degree $H$ | D harmonic form | TO-PIN |
 | Burgess | character sums mod cube-free $q^2$, nontrivial for $N>q^{2(1/4+\varepsilon)}$ | D (classical layer) | TO-PIN |

@@ -1,10 +1,19 @@
-\section{Proofs of the equidistribution hypotheses E1 and E2}\label{sec:e1e2}
+\section{Towards the equidistribution hypotheses E1 and E2}\label{sec:e1e2}
 
-This section upgrades Hypotheses~\ref{hyp:E1} and~\ref{hyp:E2} to
-propositions, each proved modulo one classical exponential-sum input,
-stated here as named standard lemmas with sources. The diagnosis facts
-of the working notes (only the signed average is needed for E1; two of
-its three boundary pieces are unconditional) are used throughout.
+\textbf{[REWRITTEN after adversarial verification, June 10 (late).]}
+An earlier draft claimed proofs of E1 and E2 modulo classical inputs;
+verification found the E1 proof fatally flawed (the per-$\mu$ Selberg
+coefficient mass is $\asymp\log H$, not $\delta_\mu\log H$, and no
+van der Corput exponent recovers the resulting factor $R$) and the E2
+proof valid only on the upper sub-band (roughly $16u+10u'>10$; the
+$(1/3,1/3)$ corner is excluded by no registered trim). \emph{Both
+revert to hypothesis status.} This section records what is proved:
+the corrected branch-count lemma, the partial E2 result, and the named
+route for E1 (lattice counting near the hyperbolas $\mu q\approx kp$
+\emph{before} prime cancellation, per Remark~\ref{rem:E1-signed}; the
+low-frequency window is covered by Kusmin--Landau, and the
+high-frequency window is empty in-band since
+$x^{2-3u-3u'}\le Q^{1-\varepsilon}$).
 
 \begin{lemma}[SL1; exponential sums over primes, hyperbolic
 phases]\label{lem:SL1}
@@ -27,8 +36,10 @@ $\big|\sum_{p\sim P}\e{ap/s}\big|
 
 \subsection{E1}
 
-\begin{proposition}[E1, signed form]\label{prop:E1}
-\statusP{} modulo SL1\quad
+\begin{proposition}[E1, signed form --- PARTIAL]\label{prop:E1}
+\statusO{} (unconditional pieces and the reduction are proved; the
+oscillatory core is open --- the argument below is retained for its
+correct steps, with the failed step marked)\quad
 For each $0<\lambda\le\Llog^{C}$, with $\delta_\mu=1/(2\mu\Llog^{B})$
 and $E_q$ as in Lemma~\ref{lem:branch},
 \[
@@ -58,7 +69,7 @@ contributes, per $\mu$, $\ll P/H$ from the main terms plus oscillatory
 terms of the same shape as Step~3; summed over $\mu\le R\Llog^{-B}$
 this is $\ll PR\Llog^{-B}/H\le P\Llog^{-B-1}$.
 
-\emph{Step 3: the oscillatory sum.} The remaining error is
+\emph{Step 3 (THIS STEP IS FLAWED --- see the preamble; kept to document the failure mode).} The remaining error is
 \[
 \sum_{0<|h|\le H}c_h^{\pm}\;\frac1{\pi(Q)}\sum_{q\sim Q}
 \sum_{p\sim P}\e{h\theta_\mu(p,q)},\qquad
@@ -82,8 +93,9 @@ summing the $\pm$ approximants yields the claim.
 
 \subsection{E2}
 
-\begin{proposition}[E2]\label{prop:E2}
-\statusP{} modulo SL2\quad
+\begin{proposition}[E2 --- PARTIAL: upper sub-band only]\label{prop:E2}
+\statusP{} modulo SL2 on the sub-band $16u+10u'>10$ (and the cognate
+constraints listed in the proof); \statusO{} below it\quad
 In the Family-B lattice count
 (Proposition~\ref{prop:familyB}), at each dyadic scale $s\sim S\le R$
 the endpoint terms aggregate to
@@ -93,12 +105,10 @@ the endpoint terms aggregate to
 \;\ll\;S\Big(\frac{SQ}P+1\Big)
 \Big(\sqrt S+\frac{P}{\sqrt S}+P^{4/5}\Big)\Llog^{O(1)},
 \]
-which is $\ll PQ\Llog^{O(1)-B}$ plus power-small terms across the
-trimmed band;
+which is $\ll PQ\,x^{-\varepsilon_0}$ on the stated sub-band (sufficient for the assembly budget; on the lower band the bound is currently vacuous);
 where $\psi(t)=t-\lfloor t\rfloor-\tfrac12$ and $w_s=p/(sG_0)$; i.e.\
 the $O(1)$-per-pair worst case is replaced, on average over $p$, by a
-power-saving, and Proposition~\ref{prop:familyB} holds unconditionally
-modulo SL2.
+power-saving on the stated sub-band.
 \end{proposition}
 
 \begin{proof}
@@ -113,21 +123,23 @@ $\ll(\sqrt s+P/\sqrt s+P^{4/5})\Llog^{O(1)}$ uniformly in the edge
 shift. Summing over $a$ and $s\sim S$ and comparing with the main term
 $PQ/G_0$ of Proposition~\ref{prop:familyB}: the worst case is
 $S\asymp R$, where the bound is
-$\ll(RQ/P+1)(R^{3/2}+P/R^{1/2}+P^{4/5}R)\Llog^{O(1)}$; in the band
-$R^{3/2}\cdot RQ/P=R^{5/2}Q/P$ and $P^{4/5}RQ/P$ are both
-$x^{-\varepsilon_0}\cdot PQ/G_0$ for an explicit $\varepsilon_0>0$
-except in the corner $u+u'\to1$ already excluded by the corner trim
-(the exponent inequalities are
-$\tfrac52(1-u-u')+u'-u<1-u-u'+\ldots$, checked across the trimmed band;
-the tightest case is the $(\tfrac13,\tfrac13)$ corner, where the trim
-is invoked). The $O(\min(1,1/(H\nm t)))$ truncation error contributes
+$\ll(RQ/P+1)(R^{3/2}+P\sqrt R+P^{4/5}R)\Llog^{O(1)}$ (note the middle
+term is $P\sqrt S$, not $P/\sqrt S$). The three binding exponent
+constraints are $5u+3u'>3$, $9u+5u'>5$, $16u+10u'>10$: all hold on the
+upper sub-band and all FAIL toward the $(\tfrac13,\tfrac13)$ corner,
+which no registered trim excludes --- hence the sub-band restriction
+in the statement. The $O(\min(1,1/(H\nm t)))$ truncation error contributes
 the same shape with an extra $1/H$ and is absorbed.
 \end{proof}
 
-\begin{remark}[status flip]
-With Propositions~\ref{prop:E1} and~\ref{prop:E2},
-Proposition~\ref{prop:digit-assembly} (D$^\dagger$-digit on band
-average) holds \emph{modulo SL1--SL2 only} --- classical, sourced,
-non-structural inputs. The hypotheses E1/E2 are retired from the open
-ledger and replaced by the citation debts (SL1), (SL2).
+\begin{remark}[honest status]
+E1 and E2 remain open hypotheses. This section adds: the corrected
+error form of Lemma~\ref{lem:branch} (with the edge-window term
+$\delta(\mu Q/P^{2}+\lambda/Q)^{-1}$, which sums acceptably without
+averaging), the partial proof of E2 on the upper sub-band, the
+emptiness of the high-frequency window, and the Kusmin--Landau
+coverage of the low window. Both hypotheses are numerically true with
+large margins (Appendix~\ref{app:numerics}) and parity-free.
+Proposition~\ref{prop:digit-assembly} stands modulo E1--E2, as stated
+in \S\ref{sec:major}.
 \end{remark}

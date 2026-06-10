@@ -5,64 +5,67 @@
 
 \begin{lemma}[few carries are rare]\label{lem:fewcarries}
 \statusP\quad
-Fix a prime $p$, integers $e\ge0$, $J\ge1$, and residues data as
-follows: among $n\le x$ in any fixed congruence class modulo $p^{e}$,
-the proportion whose base-$p$ digits at positions $e+1,\ldots,J$
-(i.e.\ the values $\fr{n/p^{j}}$, $e<j\le J$) produce fewer than $t$
-carries is at most
-\[
-\sum_{i<t}\binom{J-e}{i}\Big(\frac{1}{2}+\frac1p\Big)^{J-e-i}
-+O\Big(\frac{p^{J}}{x}\Big)
-\;\le\;(J{-}e{+}1)^{t}\,\Big(\frac12+\frac1p\Big)^{J-e-t}
-+O\Big(\frac{p^{J}}{x}\Big).
-\]
+Fix a prime $p$ and integers $0\le e<J$, and set $D=J-e$. Among $n\le x$
+in any fixed congruence class modulo $p^{e}$, the proportion whose
+base-$p$ digit data at positions $e<j\le J$ produce fewer than $D/8$
+carries is at most $e^{-D/50}+O(p^{J}/x)$.
 \end{lemma}
 
 \begin{proof}
-The digit vector $(n\bmod p^{J})$ equidistributes exactly over the
-$p^{J-e}$ admissible classes up to $O(p^{J}/x)$ each. A carry at
-position $j$ is the event $\fr{n/p^j}\ge\tfrac12$, determined by the
-class; for each position the non-carry proportion is
-$\lceil p^j/2\rceil/p^j\le\tfrac12+\tfrac1p$, and distinct positions
-are determined by distinct digit coordinates, so the count of classes
-with fewer than $t$ carries is bounded by the binomial expression.
+The digit vector $(n\bmod p^{J})$ equidistributes over admissible
+classes up to $O(p^{J}/x)$ each. Condition bottom-up: given all digits
+below position $j$, the carry event $\fr{n/p^{j}}\ge\tfrac12$ holds for
+at least $(p-1)/2$ of the $p$ values of the digit $d_{j-1}$
+(unconditionally for $d_{j-1}\ge\tfrac{p+1}2$; the boundary digit
+depends on the lower history), so the conditional carry probability is
+$\ge\tfrac{p-1}{2p}\ge\tfrac13$ at every position, uniformly in the
+history ($=\tfrac12$ for $p=2$). The carry count therefore
+stochastically dominates $\mathrm{Bin}(D,\tfrac13)$, and by Chernoff
+$\Pr[\mathrm{Bin}(D,\tfrac13)<D/8]\le e^{-D/50}$.
+\end{proof}
+
+\begin{lemma}[margin successes are plentiful]\label{lem:marginwins}
+\statusP\quad
+For each prime $p$ there is a two-digit pattern $(a,b)$ such that
+$d_{j-1}=a$, $d_{j-2}=b$ forces $\fr{m/p^{j}}\in
+I^{(+)}_j=[\tfrac12,1-p^{-j})$, for every $j\ge3$. Consequently, among
+$m\le x$ in a fixed class mod $p^{e}$, the proportion with fewer than
+$D'/(4p^{2})$ margin-strict successes at the positions
+$j=e+3,e+5,\ldots$ (with $D'=\lfloor(J-e-2)/2\rfloor$ disjoint digit
+pairs) is at most $e^{-cD'/p^{2}}+O(p^{J}/x)$, $c$ absolute.
+\end{lemma}
+
+\begin{proof}
+For $p=2$ take $(a,b)=(1,0)$: then
+$\fr{m/2^{j}}\in[\tfrac12,\tfrac12+\tfrac14)\subset I^{(+)}_j$ for
+$j\ge2$. For odd $p$ take $(a,b)=(\tfrac{p+1}2,0)$: then
+$\fr{m/p^{j}}\in[\tfrac{p+1}{2p},\tfrac{p+1}{2p}+p^{-2})\subset
+I^{(+)}_j$ for $j\ge3$. The patterns sit on disjoint digit pairs, so
+the success events are independent uniform draws with probability
+$p^{-2}$ each; Chernoff applies.
 \end{proof}
 
 \subsection{Lemma 0$'$: margins are free (full proof)}
 
 \begin{proof}[Proof of Lemma~\ref{lem:margins}]
-It suffices to show $\dens\big(\Dm\setminus\Dp\big)=0$; both margin
-densities then equal $\dens(\D)=c_1$ \cite{FK21}. Let
-$m\in\Dm\setminus\Dp$. Then for some $p^{e}\,\|\,m$ the two margin
-counters differ at a load-bearing level:
-$\ka_p^{(+)}(m)<e\le\ka_p^{(-)}(m)$, which forces (i) some position
-$j$ with $\fr{m/p^{j}}$ in the margin windows
-$[\tfrac12-p^{-j},\tfrac12)\cup[1-p^{-j},1)$, and (ii)
-$\ka^{(+)}_p(m)\le e-1$: at most $e-1$ non-marginal carries.
+It suffices to show $\dens(\Dm\setminus\Dp)=0$. Let
+$m\in\Dm\setminus\Dp$: for some $p^{e}\,\|\,m$,
+$\ka^{(+)}_p(m)<e\le\ka^{(-)}_p(m)$, forcing (i) a digit in a margin
+window at some level, and (ii) fewer than $e$ margin-strict successes.
 
-Fix $\varepsilon>0$ and split at $P_0=P_0(\varepsilon)$.
-
-\emph{Large $p>P_0$.} Condition (i) alone: the margin windows at level
-$j$ consist of at most $4$ residue classes mod $p^{j}$; jointly with
-$p\mid m$ this is impossible at $j=1$ (the windows avoid the class
-$0$) and has density $\le4p^{-j}$ for $j\ge2$. Hence the density of
-$m$ with (i) at some $p>P_0$ is at most
-$\sum_{p>P_0}\sum_{j\ge2}4p^{-j}\le\sum_{p>P_0}8p^{-2}<\varepsilon$
-for $P_0$ large.
-
-\emph{Small $p\le P_0$.} Fix $p$ and $e=v_p(m)$. Condition (ii) with
-$t=e$, $J=\lfloor\log_p\sqrt x\rfloor$ in Lemma~\ref{lem:fewcarries}:
-the density of such $m$ in the class $p^{e}\,\|\,m$ is at most
-\[
-p^{-e}\Big[(J{+}1)^{e}\big(\tfrac12+\tfrac1p\big)^{J-e-\,e}
-+O\big(x^{-1/2}\big)\Big],
-\]
-which, summed over $e\le J$ (splitting $e\le J/4$, where the binomial
-factor is $\le(\tfrac12+\tfrac1p)^{J/2}(J{+}1)^{J/4}=o_x(1)$, and
-$e>J/4$, where $p^{-e}\le x^{-1/8}$), tends to $0$ as $x\to\infty$ for
-each fixed $p$. Summing over the finitely many $p\le P_0$ keeps it
-$o_x(1)$.
-
+Fix $\varepsilon>0$, split at $P_0(\varepsilon)$.
+\emph{Large $p>P_0$:} condition (i): the margin windows at level $j$
+are at most $4$ classes mod $p^{j}$, impossible at $j=1$ jointly with
+$p\mid m$, density $\le4p^{-j}$ for $j\ge2$; total
+$\sum_{p>P_0}8p^{-2}<\varepsilon$.
+\emph{Small $p\le P_0$:} fix $p$ and $e=v_p(m)$, take
+$J=\lfloor\log_p\sqrt x\rfloor$, $D'=\lfloor(J-e-2)/2\rfloor$. If
+$e\le D'/(4p^{2})$, condition (ii) puts $m$ in the exceptional set of
+Lemma~\ref{lem:marginwins}: density $\le
+p^{-e}(e^{-cD'/p^{2}}+O(x^{-1/2}))$, and $\sum_{e}p^{-e}e^{-cD'/p^2}
+=o_x(1)$ for fixed $p$ since $D'\to\infty$. If $e>D'/(4p^{2})$, then
+$p^{-e}\le\exp(-cJ\log p/(8p^{2}))=x^{-c'(p)}$, again $o_x(1)$ summed
+over $e\le2J$ (and $e>2J$ has density $\le p^{-2J}\le x^{-1}$).
 Hence $\limsup_x\dens_x(\Dm\setminus\Dp)\le\varepsilon$ for every
 $\varepsilon$.
 \end{proof}
@@ -74,24 +77,23 @@ $\varepsilon$.
 
 \begin{proof}[Proof of Lemma~\ref{lem:A}]
 Fix $p\le x^{\delta}$ and $v\ge1$, and count $n\le x$ with
-$p^{v}\mid n$ but $\ka_p(n)<v$. The low digits of $n$ are $0^{v}$
-(no carries there), so all carries must come from positions
-$v<j\le J:=\lfloor\log_p2x\rfloor$, and failure means fewer than $v$
-carries among them: by Lemma~\ref{lem:fewcarries} (with $e=v$, $t=v$)
-the count is
-\[
-\ll\;\frac{x}{p^{v}}\Big[(J{+}1)^{v}\big(\tfrac12+\tfrac1p\big)^{J-2v}
-+x^{-1/2}\Big].
-\]
-For the shifted side, $q^{v}\mid n-1$ pins the low digits of $n$ base
-$q$ to $(1,0^{v-1})$ --- likewise carry-free --- and the identical
-count applies to the upper positions. Summing over $v\ge1$ and
-$p\le x^{\delta}$: the dominant range is $v=1$, $p$ near $x^{\delta}$,
-where $J\asymp1/\delta$ and the bound is
-$\ll x\,p^{-1}(\tfrac12+\tfrac1p)^{c/\delta}\ll xp^{-1}e^{-c'/\delta}$;
-the $p$-sum costs $\log\log$, absorbed by adjusting $c'$. Small $p$
-contribute super-exponentially less ($J\asymp\log x$). Total:
-$\ll xe^{-c/\delta}$. The square-discard:
+$p^{v}\mid n$ but $\ka_p(n)<v$. Take $J_p=\lfloor\log_p\sqrt
+x\rfloor$ and $D=J_p-v$ (failure overall implies failure among
+positions $\le J_p$, the correct monotone direction; the
+equidistribution error is then $O(x^{-1/2})$ per class). If
+$v\le D/8$: by Lemma~\ref{lem:fewcarries} the count is $\ll
+xp^{-v}(e^{-D/50}+x^{-1/2})$. If $v>D/8$: then
+$p^{v}\ge p^{D/8}\ge(\sqrt x\,p^{-v})^{1/8}$, so $p^{v}\ge x^{1/18}$
+and the trivial count $x/p^{v}\le x^{1-1/18}$ suffices, summed over
+the $O(\log^2x)$ such pairs $(p,v)$. For the main range, sum over
+$p$ by dyadic exponent: for $p\in(x^{\delta/2^{k+1}},x^{\delta/2^{k}}]$
+one has $D\ge2^{k}/(4\delta)$ (for $v\le D/8$), Mertens gives
+$\sum1/p=\log2+o(1)$ per range, and
+$\sum_{k\ge0}e^{-c2^{k}/\delta}\ll e^{-c/\delta}$ geometrically ---
+no $\log\log$ loss. The $v$-sum is geometric in $p^{-v}$. The shifted
+side is identical with the low digits $(1,0^{v-1})$ (carry-free for
+$p$ odd; for $p=2$, $j=1$ the digit gives a free carry --- the
+favorable direction). The square-discard costs
 $\sum_{p>x^{\delta}}x/p^{2}\ll x^{1-\delta}$.
 \end{proof}
 
@@ -137,7 +139,7 @@ total cost $O(\eta_{\mathrm{tot}})$. Then, at almost all scales,
 \[
 \frac1{\log x}\sum_{n\le x}\frac{\mathbf 1_{\W}(n)}{n}
 =c_1^{2}+O\big(\Llog^{-c}\big)+O\big(\varepsilon(\delta)\big)
-+O(\eta_{\mathrm{tot}}),\qquad c=\tfrac12\min(c_B,c_C,c_D),
++O(\eta_{\mathrm{tot}}),\qquad c=c(c_B,c_C,c_D,K)>0,
 \]
 and Theorem~\ref{thm:main} follows by $\delta\to0$,
 $\eta_{\mathrm{tot}}\to0$ after $x\to\infty$.
@@ -154,9 +156,12 @@ indicator as (anatomy pair indicator)$\times$(digit indicator of $n$
 given class)$\times$(digit indicator of $n-1$ given the rest). Replace
 the third factor by its class mean via Lemma~\ref{lem:D} (cost
 $\Llog^{-c_D}$ per class, times trivially bounded remaining factors);
-replace the second by its class mean via Lemma~\ref{lem:C} with the
-$(n-1)$-side data carried as the $1$-bounded weight (cost
-$\Llog^{-c_C}$); replace the anatomy pair probability by the product
+replace the second by its class mean via Lemma~\ref{lem:C}, the
+remaining $(n-1)$-side data (anatomy only, after the D-step) being
+rendered $1$-bounded \emph{multiplicative} by the generalized
+interpolation of Lemma~\ref{lem:interp} (general bands above
+$x^{\delta}$, bounded multiplicity $\le1/\delta$, $O_{\delta}(1)$
+nodes --- ledger item W6) (cost $\Llog^{-c_C}$); replace the anatomy pair probability by the product
 via Lemma~\ref{lem:B} (cost $\Llog^{-c_B}$). Each step's exceptional
 scale set has logarithmic density $\ll\Llog^{-c}$; their union over
 the $O_\rho(1)$ classes likewise. Summing the factored class
