@@ -1,0 +1,80 @@
+# Roadmap — $n(n-1)\mid\binom{2n}{n}$ Program
+
+**v0.4, June 9, 2026.** This file holds strategy, sequencing, risk, and everything without a home. Mathematical content lives in the per-lemma documents; sources live in `citations.md`. Supersedes the single-file v0.3.
+
+## Document map
+
+| File | Status at a glance |
+|---|---|
+| `lemma-0-sandwich.md` | PROVED (machine-verified; writeup pending) |
+| `lemma-A-small-primes.md` | KNOWN-ADAPT (~95%) |
+| `lemma-B-anatomy-independence.md` | LIKELY CITABLE, 3 checks pending (~85%) |
+| `lemma-C-within-side.md` | OPEN, standard toolbox (~75%) |
+| `lemma-D-cross-side.md` | OPEN — the hard core (~25–30% full / ~60% lower-bound after weakened pass) |
+| `prop-deep-large-sieve.md` | PROVED June 9, numerically verified |
+| `numerology-D.md` | WP1.4 ANALYSIS COMPLETE |
+| `empirics-D.md` | WP1.5 COMPLETE — **G1: PASS** |
+| `lemma-alpha-beta.md` | WP2.0: $\alpha,\beta$ PROVED; assembly NEGATIVE; D† defined |
+| `wp21-reduction.md` | WP2.1: two-frequency reduction, validated |
+| `wp22-minor-major.md` | WP2.2: D†-digit closed modulo write-up |
+| `wp23-anatomy.md` | WP2.3: anatomy layer PASS — elementary unwinding; **no structural obstruction left on D** |
+| `citations.md` | ledger; verification statuses inside |
+
+## Targets
+
+- **Theorem 1″ (rung i, realistic form):** density of $W_1=\{n:n(n-1)\mid\binom{2n}{n}\}$ equals $c_1^2+O(\log^{-c}x)$ at almost all scales $\Rightarrow$ infinitude + log-density $c_1^2$ ($c_1=0.11424$, Ford–Konyagin). As far as our review found, even infinitude of $W_1$ is not in the literature.
+- **Theorem 1′ (rung i-minus):** positive log-density lower bound, via Lemma D's mitigations.
+- **Rung ii:** conditional paper — "pair density $=c_1^2$ modulo Estimate D\*" with everything else proved. Locked in barring surprises.
+- **Rung iii:** machinery feeds the constructive (Balog–Wooley-style) track for literal Erdős 396, general $k$.
+
+Assembly: Lemma 0 (sandwich) reduces Theorem 1 to independence of $D_0$ and its shift; A×B×C×D with error bookkeeping gives Theorem 1″.
+
+## Dead-ends registry (program-wide; proofs of death recovered — do not repay)
+
+Union bounds across the digit layer (failure mass $\Theta(1)$). Smooth-cofactor designs ($\rho(c/\delta)$ vs $e^{-c/\delta}$ — also explains the Tier-B $m^2$ disappointment). Semiprime trick (dies on the prime case). D-specific dead ends: see `lemma-D-cross-side.md` §8.
+
+## Work packages (hardest first; de-risk before prove)
+
+**WP1 — Lemma D de-risk (in progress).**
+- WP1.1 Formal Estimate D\* — **DONE in reduced form** (`lemma-D` §2); formal LaTeX pending.
+- WP1.2 TT/Pilatte verdict — **DONE** (`lemma-D` §4).
+- WP1.3 Deep large sieve writeup — **DONE June 9** (`prop-deep-large-sieve.md`).
+- WP1.4 Numerology table — **DONE June 9** (`numerology-D.md`). Headline: required savings are only logarithmic; no exponent gap on average over the band; gap = three adaptation lemmas ($\alpha,\beta,\gamma$) + the bilinear assembly ($\delta$). G1: leaning PASS pending WP1.5.
+- WP1.5 Band empirics — **DONE June 9** (`empirics-D.md`): square-root cancellation on real coupled populations at five strata; conditional structure of D confirmed; one flag at smallest harmonics / top of band. Original design (kept for re-runs at larger $x$): $T_q(\lambda)$ over real band populations ($\sim$5 primes $q\in[10^3,10^4]$, inner populations $10^4$–$10^5$), $|T|/\sqrt{N_{\text{class}}}$ vs benchmark, stratified by $\gamma$ (top stratum = diagnostic), phase-aligned $\sum_qS(q,h)$ per stratum, $E_q$ validation near $10^9$. ~1 day compute.
+- WP1.6 **Gate G1: PASS (June 9; basis revised same day).** Original numerology basis partially withdrawn (Erratum, `numerology-D.md` §9); pass retained on: empirics directly on D†'s object + log-target, parity-free residual with a named second-moment core. → **WP2 is live.**
+
+**WP2 — Prove D** (post-pass): toolkit (a) deep large sieve + bilinearity + $q$-averaged Wieferich counting; (b) tailored $(q,\lambda)$-averaged mean-value theorem (the flagged main question); (c) re-weighted Pilatte engine.
+
+**WP2′ — Lower-bound theorem** via the four mitigations (`lemma-D` §7).
+
+**WP3 — Lemma C** (after G1; interface depends on which D survives).
+
+**WP3b — Close Lemma B:** fetch TT Thm 3.1, run the three checks, write the half-page lemma, verify the $z$-interpolation reconstruction.
+
+**WP4 — Manuscript spine (parallel, zero risk):** re-creates the lost artifacts (skeleton, HYPOTHESES_CHECK, Lemma 0 writeup) in durable form; locks rung ii. The chat export is the only backup of several derivations — paper form is the durable one.
+
+**WP5 — Constructive route, general $k$** (parked): $k$-point correlation tech is the frontier (open even for smoothness; log-Chowla open for even $k\ge4$ — though our functions are parity-free). Revisit on G1 kill or after the $k=1$ paper.
+
+## Decision tree & calibration
+
+```
+WP1.4–1.5 ─► G1 ─┬─ PASS ────► WP2 ─┬─ success + WP3/3b ─► Theorem 1″
+                 │                  └─ stall ─► weakened handling
+                 ├─ WEAKENED ► WP2′ ─► Theorem 1′ + rung-ii paper
+                 └─ KILL ────► exact obstruction ─► rung-ii paper + WP5
+                       (WP4 runs in parallel throughout)
+```
+
+Rung i full: **~45%** (post-WP2.3: all D† layers proved/counted/toolbox-pending-write-up; residual risk = uniformity bookkeeping at scale, Type-II pinches, fine-anatomy classes; one-day swing 25→45 noted — treat with corresponding humility) · Route-B lower bound: **+~25%** · rung ii: **~90%** · general-$k$ contribution: **15–40%**.
+
+## Immediate next actions
+
+1. WP2.0 — **DONE** (`lemma-alpha-beta.md`): $\alpha,\beta$ proved; assembly accounting NEGATIVE; numerology erratum issued; residual = **Estimate D†** + its second-moment core.
+2. WP2.1 — **MAJOR PROGRESS** (`wp21-reduction.md`): D†'s digit layer reduced exactly to a two-frequency minor/major-arc dichotomy; minor arcs cancel to polylog (validated), major arcs localized on $p\approx q\sqrt{\mu/\lambda}$ and reduced to a Diophantine count. Kloosterman core bypassed on this route. WP2.2 — **DONE June 9** (`wp22-minor-major.md`): D†-minor stated (standard toolbox); both major-arc families counted out (A: polylog-sparse on q-average; B: sparse + power-small); **D†-digit closed modulo write-up**. WP2.3 — **DONE June 9** (`wp23-anatomy.md`): **PASS, elementary** — $u_f=3(1-u)<2$ gives an exact unwinding of the friable indicator into Type-I/II sums and primes-in-APs; friable literature demoted to fallback. **No identified structural obstruction remains on Lemma D.** Next: **consolidation sprint (WP4)** — the pile of closed-modulo-write-up items is now the binding constraint; then the fine-anatomy-class check and the two equidistribution rigorizations.
+3. **WP3b** TT Theorem 3.1 verification (top item in `citations.md`).
+4. **WP4** manuscript spine; LaTeX `prop-deep-large-sieve.md` and `lemma-0` first (they're proved).
+5. (When convenient) re-run `empirics_d.py` at $x=10^9$ to check the §4 flag shrinks like a boundary term.
+
+## Method note
+
+Hardest-first governs risk-resolution order, not all effort; the first unit of work on a risky item is diagnosis; dead ends are recorded with proofs of death; and anything derived must be written immediately — a derivation that lives only in a session's working memory is one context limit away from oblivion.
