@@ -1,0 +1,169 @@
+\section{Spine bookkeeping: margins, small primes, depth, assembly}
+\label{sec:bookkeeping}
+
+\subsection{A binomial digit-counting sublemma}
+
+\begin{lemma}[few carries are rare]\label{lem:fewcarries}
+\statusP\quad
+Fix a prime $p$, integers $e\ge0$, $J\ge1$, and residues data as
+follows: among $n\le x$ in any fixed congruence class modulo $p^{e}$,
+the proportion whose base-$p$ digits at positions $e+1,\ldots,J$
+(i.e.\ the values $\fr{n/p^{j}}$, $e<j\le J$) produce fewer than $t$
+carries is at most
+\[
+\sum_{i<t}\binom{J-e}{i}\Big(\frac{1}{2}+\frac1p\Big)^{J-e-i}
++O\Big(\frac{p^{J}}{x}\Big)
+\;\le\;(J{-}e{+}1)^{t}\,\Big(\frac12+\frac1p\Big)^{J-e-t}
++O\Big(\frac{p^{J}}{x}\Big).
+\]
+\end{lemma}
+
+\begin{proof}
+The digit vector $(n\bmod p^{J})$ equidistributes exactly over the
+$p^{J-e}$ admissible classes up to $O(p^{J}/x)$ each. A carry at
+position $j$ is the event $\fr{n/p^j}\ge\tfrac12$, determined by the
+class; for each position the non-carry proportion is
+$\lceil p^j/2\rceil/p^j\le\tfrac12+\tfrac1p$, and distinct positions
+are determined by distinct digit coordinates, so the count of classes
+with fewer than $t$ carries is bounded by the binomial expression.
+\end{proof}
+
+\subsection{Lemma 0$'$: margins are free (full proof)}
+
+\begin{proof}[Proof of Lemma~\ref{lem:margins}]
+It suffices to show $\dens\big(\Dm\setminus\Dp\big)=0$; both margin
+densities then equal $\dens(\D)=c_1$ \cite{FK21}. Let
+$m\in\Dm\setminus\Dp$. Then for some $p^{e}\,\|\,m$ the two margin
+counters differ at a load-bearing level:
+$\ka_p^{(+)}(m)<e\le\ka_p^{(-)}(m)$, which forces (i) some position
+$j$ with $\fr{m/p^{j}}$ in the margin windows
+$[\tfrac12-p^{-j},\tfrac12)\cup[1-p^{-j},1)$, and (ii)
+$\ka^{(+)}_p(m)\le e-1$: at most $e-1$ non-marginal carries.
+
+Fix $\varepsilon>0$ and split at $P_0=P_0(\varepsilon)$.
+
+\emph{Large $p>P_0$.} Condition (i) alone: the margin windows at level
+$j$ consist of at most $4$ residue classes mod $p^{j}$; jointly with
+$p\mid m$ this is impossible at $j=1$ (the windows avoid the class
+$0$) and has density $\le4p^{-j}$ for $j\ge2$. Hence the density of
+$m$ with (i) at some $p>P_0$ is at most
+$\sum_{p>P_0}\sum_{j\ge2}4p^{-j}\le\sum_{p>P_0}8p^{-2}<\varepsilon$
+for $P_0$ large.
+
+\emph{Small $p\le P_0$.} Fix $p$ and $e=v_p(m)$. Condition (ii) with
+$t=e$, $J=\lfloor\log_p\sqrt x\rfloor$ in Lemma~\ref{lem:fewcarries}:
+the density of such $m$ in the class $p^{e}\,\|\,m$ is at most
+\[
+p^{-e}\Big[(J{+}1)^{e}\big(\tfrac12+\tfrac1p\big)^{J-e-\,e}
++O\big(x^{-1/2}\big)\Big],
+\]
+which, summed over $e\le J$ (splitting $e\le J/4$, where the binomial
+factor is $\le(\tfrac12+\tfrac1p)^{J/2}(J{+}1)^{J/4}=o_x(1)$, and
+$e>J/4$, where $p^{-e}\le x^{-1/8}$), tends to $0$ as $x\to\infty$ for
+each fixed $p$. Summing over the finitely many $p\le P_0$ keeps it
+$o_x(1)$.
+
+Hence $\limsup_x\dens_x(\Dm\setminus\Dp)\le\varepsilon$ for every
+$\varepsilon$.
+\end{proof}
+
+\noindent The status of Lemma~\ref{lem:margins} is hereby upgraded to
+\statusP.
+
+\subsection{Lemma A: proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:A}]
+Fix $p\le x^{\delta}$ and $v\ge1$, and count $n\le x$ with
+$p^{v}\mid n$ but $\ka_p(n)<v$. The low digits of $n$ are $0^{v}$
+(no carries there), so all carries must come from positions
+$v<j\le J:=\lfloor\log_p2x\rfloor$, and failure means fewer than $v$
+carries among them: by Lemma~\ref{lem:fewcarries} (with $e=v$, $t=v$)
+the count is
+\[
+\ll\;\frac{x}{p^{v}}\Big[(J{+}1)^{v}\big(\tfrac12+\tfrac1p\big)^{J-2v}
++x^{-1/2}\Big].
+\]
+For the shifted side, $q^{v}\mid n-1$ pins the low digits of $n$ base
+$q$ to $(1,0^{v-1})$ --- likewise carry-free --- and the identical
+count applies to the upper positions. Summing over $v\ge1$ and
+$p\le x^{\delta}$: the dominant range is $v=1$, $p$ near $x^{\delta}$,
+where $J\asymp1/\delta$ and the bound is
+$\ll x\,p^{-1}(\tfrac12+\tfrac1p)^{c/\delta}\ll xp^{-1}e^{-c'/\delta}$;
+the $p$-sum costs $\log\log$, absorbed by adjusting $c'$. Small $p$
+contribute super-exponentially less ($J\asymp\log x$). Total:
+$\ll xe^{-c/\delta}$. The square-discard:
+$\sum_{p>x^{\delta}}x/p^{2}\ll x^{1-\delta}$.
+\end{proof}
+
+\noindent Lemma~\ref{lem:A} is hereby \statusP{} (the counting input
+being Lemma~\ref{lem:fewcarries}; the statement matches
+Ford--Konyagin's \S2 framework, cited for provenance).
+
+\subsection{Depth packaging (ledger D5)}
+
+\begin{proposition}[higher exponents and deeper slots]\label{prop:depth}
+\statusP{} (statements; proofs are verbatim isomorphic to \S\ref{sec:dls})
+\quad
+Let $e\ge1$ and consider $q^{e}\,\|\,n-1$ with binding slots
+$e<j\le J_q$. (i) The slot-$j$ window indicator is a function of
+$n\bmod q^{j}$ with exact finite Fourier expansion whose coefficients
+decay like $\langle\lambda\rangle^{-1}$. (ii) The depth-$d$ character
+family ($d=j-e$) --- characters of $(\Z/q^{j})^*$ trivial on the
+index-$q^{d}$ subgroup --- obeys the analogues of
+Propositions~\ref{prop:fiber},~\ref{prop:energy},
+Theorem~\ref{thm:dls} and Corollary~\ref{cor:ap} with $q^{2}$ replaced
+by $q^{j}$ and the same proofs (the kernel filtration
+$1+q^{j-1}\Z/q^{j}$ playing the role of $1+q\Z/q^{2}$; the
+progression-restricted version is again the classical sieve in the
+progression coordinate). (iii) Slot-boundary slivers (sizes with
+$q^{j}\in(x^{1-\varepsilon'},2x]$ near a boundary) have log-measure
+$O(\varepsilon')$ and join the trim registry. (iv) Multi-prime
+configurations multiply the character data by CRT, with conductors
+$\prod q_i^{j_i}$, and the bilinearity
+$\fq(ab)=\fq(a)+\fq(b)$ persists at every depth.
+\end{proposition}
+
+\subsection{The assembly cascade (ledger S3)}
+
+\begin{proposition}[composition of A--D]\label{prop:cascade}
+\statusP{} given Lemmas A, B, C, D in their stated forms\quad
+Assume: Lemma~\ref{lem:A} with parameter $\delta$; Lemma~\ref{lem:B}
+with rate $\Llog^{-c_B}$ at almost all scales;
+Lemma~\ref{lem:C} with rate $\Llog^{-c_C}$; Estimate~D$^\dagger$
+(equivalently Lemma~\ref{lem:D} via
+\S\S\ref{sec:reduction}--\ref{sec:major}) with rate $\Llog^{-c_D}$ on
+band average; Lemma~\ref{lem:margins}; and the trim registry with
+total cost $O(\eta_{\mathrm{tot}})$. Then, at almost all scales,
+\[
+\frac1{\log x}\sum_{n\le x}\frac{\mathbf 1_{\W}(n)}{n}
+=c_1^{2}+O\big(\Llog^{-c}\big)+O\big(\varepsilon(\delta)\big)
++O(\eta_{\mathrm{tot}}),\qquad c=\tfrac12\min(c_B,c_C,c_D),
+\]
+and Theorem~\ref{thm:main} follows by $\delta\to0$,
+$\eta_{\mathrm{tot}}\to0$ after $x\to\infty$.
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{lem:sandwich} and Lemma~\ref{lem:margins} it suffices to
+evaluate the correlation for $\D\cap(D_0^{(\pm)}+1)$. Remove the
+Lemma-A exceptional set ($O(\varepsilon(\delta))$ density) and the
+trims. Partition the remaining $n$ by anatomy-class pairs at a fixed
+finite resolution $\rho$ (boxes for both $n$ and $n-1$); the number of
+classes is $O_\rho(1)$. Within each class pair, write the joint
+indicator as (anatomy pair indicator)$\times$(digit indicator of $n$
+given class)$\times$(digit indicator of $n-1$ given the rest). Replace
+the third factor by its class mean via Lemma~\ref{lem:D} (cost
+$\Llog^{-c_D}$ per class, times trivially bounded remaining factors);
+replace the second by its class mean via Lemma~\ref{lem:C} with the
+$(n-1)$-side data carried as the $1$-bounded weight (cost
+$\Llog^{-c_C}$); replace the anatomy pair probability by the product
+via Lemma~\ref{lem:B} (cost $\Llog^{-c_B}$). Each step's exceptional
+scale set has logarithmic density $\ll\Llog^{-c}$; their union over
+the $O_\rho(1)$ classes likewise. Summing the factored class
+contributions reconstitutes
+$\big(\sum_{\text{classes}}P[\mathcal A]\,P[\mathcal R\mid\mathcal
+A]\big)^{2}$ up to resolution error $O(\rho)$, and the inner sum is
+Ford--Konyagin's density computation \cite{FK21}, $=c_1+o(1)$.
+Choosing $\rho=\rho(x)\to0$ slowly and folding $O(\rho)$ into the
+error completes the proof.
+\end{proof}

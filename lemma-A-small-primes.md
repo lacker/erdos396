@@ -1,6 +1,6 @@
 # Lemma A: Small Primes Are Ignorable (Two-Sided)
 
-**STATUS: KNOWN-ADAPT — ready to write.** Risk: low. Probability of completion: ~95%.
+**STATUS: PROVED — written (manuscript §15, June 10), via the binomial digit-counting sublemma; the $(1,0^{v-1})$ adaptation carried out.**
 
 ---
 

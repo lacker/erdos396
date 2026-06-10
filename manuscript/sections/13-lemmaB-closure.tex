@@ -1,0 +1,145 @@
+\section{Closing Lemma B: interpolation, B0, and Siegel--Walfisz}
+\label{sec:lemmaB-closure}
+
+This section supplies every supporting lemma Lemma~\ref{lem:B} needs in
+order to follow from \cite{TT25}, Theorem~3.1 (statement verified
+against the v2 source; ledger items B1--B3). After it, Lemma~B's only
+remaining debt is the final assembly bookkeeping of
+\S\ref{sec:bookkeeping}.
+
+Fix finitely many disjoint bands
+$\mathfrak B_1,\ldots,\mathfrak B_J\subset(x^{1/3},x^{1/2}]$ (the
+fine-class boxes; $J=O(1)$). For $\mathbf z=(z_1,\ldots,z_J)\in[-1,1]^J$
+let $g_{\mathbf z}$ be completely multiplicative with
+$g_{\mathbf z}(p)=z_j$ for $p\in\mathfrak B_j$ and $g_{\mathbf z}(p)=1$
+otherwise.
+
+\begin{lemma}[$z$-interpolation]\label{lem:interp}
+\statusP\quad
+For $n\le x$ let $B_j(n)=\#\{p\in\mathfrak B_j:p\mid n\}$; then
+$B_1(n)+\cdots+B_J(n)\le3$, and for any target vector
+$(m_1,\ldots,m_J)$ with $\sum_jm_j\le3$ there are absolutely bounded
+coefficients $(c_{\mathbf z})$ supported on
+$\mathbf z\in\{-1,-\tfrac13,\tfrac13,1\}^J$ with
+\[
+\mathbf 1\big[B_j(n)=m_j\ \forall j\big]
+=\sum_{\mathbf z}c_{\mathbf z}\,g_{\mathbf z}(n)
+\qquad\text{for all squarefree-banded }n\le x,
+\]
+and the non-squarefree-banded $n$ number $O(x^{1-1/3})$.
+\end{lemma}
+
+\begin{proof}
+On squarefree-banded $n$,
+$g_{\mathbf z}(n)=\prod_jz_j^{B_j(n)}$ with each $B_j\le3$. One-variable
+Lagrange interpolation on the four nodes $\{-1,-\tfrac13,\tfrac13,1\}$
+expresses $\mathbf 1[B=m]$ ($0\le m\le3$) as
+$\sum_ic_i^{(m)}z_i^{B}$ with $|c_i^{(m)}|\le C_0$ absolute (the
+Vandermonde determinant on these nodes is bounded away from $0$);
+tensoring over $j$ gives the claim with
+$|c_{\mathbf z}|\le C_0^J$. Non-squarefree: $p^2\mid n$ for some
+$p>x^{1/3}$ happens for $O(\sum_{p>x^{1/3}}x/p^2)=O(x^{2/3})$ values.
+\end{proof}
+
+\begin{lemma}[B0; the equidistribution axiom for
+$g_{\mathbf z}$]\label{lem:B0}
+\statusP\quad
+Let $X$ be large, $\mathcal L=\log X$. For all $X^{0.4}\le N\le X$ and
+all $a,q\in\N$,
+\[
+\sum_{\substack{N<n\le2N\\ n\equiv a\,(q)}}g_{\mathbf z}(n)
+=\frac Nq\,\delta_N+O\Big(\frac{N}{\log N}\Big),
+\qquad
+\delta_N:=\sum_{j_1,\ldots,j_J}\prod_t(z_t-1)^{j_t}
+\Sigma_{\mathbf j}(N),
+\]
+where $\Sigma_{\mathbf j}(N)=\sum^{*}1/(p_1\cdots p_{j})$ runs over the
+admissible band-prime tuples with $p_1\cdots p_j\le2N$, and $\delta_N$
+is real, $O(1)$, and independent of $(a,q)$. In particular
+axiom (i) of \cite{TT25}, Theorem~3.1 holds for $g_1=g_{\mathbf z}$
+with parameter $\mathcal L$, and the technical condition
+$g_1(p)=1$ on $[\exp(\log^{1/11}X),\exp(\log^{1/10}X)]$ holds since the
+bands start at $x^{1/3}$.
+\end{lemma}
+
+\begin{proof}
+For $q\ge\mathcal L$ the statement is trivial ($N/q\le N\mathcal
+L^{-1}$ and the sum is $\ll N/q+1$ termwise), so assume
+$q<\mathcal L$; then $(p,q)=1$ for every band prime. Write $n=n_0m$
+with $n_0$ the banded part. Discard $n$ with a square banded factor:
+$O(\sum_{p>X^{1/3}}N/p^2)=O(NX^{-1/3})$. On the rest,
+$g_{\mathbf z}(n)=\prod_tz_t^{B_t(n)}$ and the binomial identity
+$z^{B}=\sum_{j\ge0}\binom Bj(z-1)^j$ (terminating at $j\le3$ overall)
+gives
+\[
+\sum_{\substack{n\sim N\\ n\equiv a\,(q)}}g_{\mathbf z}(n)
+=\sum_{\mathbf j}\prod_t(z_t-1)^{j_t}
+\sum_{\substack{p_1<\cdots\ \mathrm{admissible}\\ P=p_1\cdots p_j\le2N}}
+\#\{n\sim N:\ n\equiv a\,(q),\ P\mid n\}.
+\]
+Each inner count is $N/(qP)+O(1)$ (one congruence class mod $qP$ by
+CRT --- valid for every $a$, coprime or not). The main terms assemble
+$(N/q)\delta_N$. The $O(1)$-errors total at most the number of
+admissible tuples with $P\le2N$: for $j=1$ this is
+$\le\pi(\min(x^{1/2},2N))\ll N/\log N$; for $j=2,3$ the tuple counts
+are smaller by factors of $\log$. Hence the total error is
+$O(N/\log N+NX^{-1/3})=O(N\mathcal L^{-1})$ with an absolute constant,
+as the axiom permits. Boundedness and realness of $\delta_N$ are
+immediate ($\Sigma_{\mathbf 0}=1$, $\Sigma_{\mathbf j}\ll(\log\tfrac
+{1/2}{1/3})^{j}=O(1)$).
+\end{proof}
+
+\begin{lemma}[Siegel--Walfisz for $g_{\mathbf z}$]\label{lem:SW}
+\statusP{} modulo SL2$'$ (the classical
+$\psi$-over-primes/divisor-switch estimate; same family as
+Lemma~\ref{lem:SL2})\quad
+For every $A>0$, uniformly in $q\le(\log N)^{A}$ and all $a$,
+\[
+\sum_{\substack{n\le N\\ n\equiv a\,(q)}}g_{\mathbf z}(n)
+=\frac Nq\,\delta_N'+O_A\big(N(\log N)^{-A}\big).
+\]
+Consequently, by the Granville--Shao criterion \cite{GS} (Forum Math.\
+Sigma companion), the weights $g_{\mathbf z}$ are admissible for the
+Bombieri--Vinogradov-type inputs used in Lemma~\ref{lem:C}.
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+Identical opening to Lemma~\ref{lem:B0}; the only term not already
+$O(N(\log N)^{-A})$ is the $j=1$ floor-error sum
+$\sum_{p\in\mathfrak B,\,p\le2N}\theta_p$ with
+$\theta_p=\#\{n\le N:n\equiv a\,(q),p\mid n\}-N/(qp)$. Writing
+$\theta_p=\psi$-differences at the points $N/(qp)$ shifted by the CRT
+offsets and applying the classical cancellation for
+$\sum_{p\le P_0}\psi(y_p)$ along these structured families
+(divisor-switch + SL2-type sums; power saving) upgrades
+$O(N/\log N)$ to $O(N^{1-\delta_1})$. This is the one cited input;
+everything else is as in B0.
+\end{proof}
+
+\begin{proposition}[Lemma B, assembled]\label{prop:B-assembled}
+\statusP{} modulo \cite{TT25} Thm.~3.1 (PINNED) and SL2$'$\quad
+Lemma~\ref{lem:B} holds: for finite unions of anatomy boxes, at almost
+all scales,
+\[
+\frac1{\log x}\sum_{n\le x}\frac1n\,
+\mathbf 1[\mathcal A(n)\in A]\,\mathbf 1[\mathcal A(n-1)\in B]
+=\mathrm{PD}(A)\,\mathrm{PD}(B)+O\big((\log x)^{-c}\big).
+\]
+\end{proposition}
+
+\begin{proof}
+Interpolate both indicators (Lemma~\ref{lem:interp}); for each node
+pair $(\mathbf z,\mathbf z')$ apply \cite{TT25} Theorem~3.1 with
+$g_1=g_{\mathbf z}$ (axiom (i) by Lemma~\ref{lem:B0}),
+$g_2=g_{\mathbf z'}$ (only $1$-boundedness needed), shifts $(0,1)$:
+the centered correlation is $\ll\mathcal L^{-c}$ outside an exceptional
+scale set of logarithmic density $\ll\mathcal L^{-c}$; the
+uncentered main terms reassemble, via $\delta_N$ of B0 applied to both
+sides, to the product of the box measures, whose identification with
+$\mathrm{PD}(A)\mathrm{PD}(B)$ is the standard
+Dickman--Billingsley computation for the band sums
+$\Sigma_{\mathbf j}$. The $O(C_0^{2J})$ interpolation coefficients and
+the $O(x^{2/3})$ non-squarefree exceptions are absorbed. Natural
+averages convert to the logarithmic average by dyadic summation over
+the same almost-all set.
+\end{proof}

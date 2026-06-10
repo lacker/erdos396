@@ -1,93 +1,92 @@
 \section{The remaining gaps, exhaustively}\label{sec:remaining}
 
 This section is the paper's ledger: Theorem~\ref{thm:conditional} (rung
-ii) is claimed modulo exactly the items below, each stated precisely
-where cited. No other unproved ingredient is used anywhere.
+ii) is claimed modulo exactly the items below. After the consolidation
+of \S\S\ref{sec:typeII}--\ref{sec:bookkeeping}, every remaining item is
+either a \emph{citation debt} (a named classical input to be transcribed
+verbatim from its source) or a \emph{mechanical write-up}; none is
+structural.
 
-\subsection*{On Lemma B (citation-grade; low risk)}
+\subsection*{Citation debts (classical, sourced, non-structural)}
 \begin{itemize}
-\item[(B1)] \textbf{RESOLVED} (verified against the v2 TeX source of
-\cite{TT25}, June 9, 2026): the hypotheses of their Theorem~3.1 are
-fully quantitative with absolute constants; the functions enter only
-through the equidistribution axiom at scale $X$, so $x$-dependent band
-edges are admissible. Their consecutive-smooth theorem states the
-analogous uniformity explicitly.
-\item[(B2)] \textbf{RESOLVED}: the conclusion is the centered
-correlation bound
-$\frac WN\sum_{N<n\le2N}(g_1(n+h_1)-\delta_N)g_2(n+h_2)
-\mathbf 1_{n\equiv b\,(W)}\ll\mathcal L^{-c}$ at almost all scales,
-with $\delta_N$ the mean of $g_1$ up to $O(\mathcal L^{-1})$ --- product
-of means follows given the AP-mean of $g_2$ (same B0 input).
-\item[(B3)] \textbf{Statement retrieved} (recorded verbatim in the
-program's Lemma-B document); the technical condition $g_1(p)=1$ on
-$[\exp(\log^{1/11}X),\exp(\log^{1/10}X)]$ holds trivially for our $g_z$.
-\emph{Still owed:} the formal write-up of the half-page equidistribution
-lemma B0 for $g_z$ (proof sketched: binomial unwinding of $z^{B(n)}$
-into band-prime tuples; defect $O(\sqrt N\log N)$).
+\item[(SL1)] Exponential sums over primes with hyperbolic phases
+(Lemma~\ref{lem:SL1}; Vaughan + van der Corput, \cite[Ch.~13]{IK04}).
+Feeds E1 (Proposition~\ref{prop:E1}).
+\item[(SL2/SL2$'$)] Linear rational phases over primes / the
+$\psi$-over-primes cancellation (Lemmas~\ref{lem:SL2},~\ref{lem:SW};
+Vinogradov). Feed E2 and Siegel--Walfisz for $g_{\mathbf z}$.
+\item[(DMV)] The quantitative Daboussi--Montgomery--Vaughan bound
+(Lemma~\ref{lem:DMV}), uniform over $1$-bounded multiplicative
+weights. Feeds the weighted minor pairs of Lemma~C.
+\item[(Hal)] A Hal\'asz--MRT-type mean-value input for the
+major-pair absorption (remark after
+Proposition~\ref{prop:C-weighted}).
+\item[(TT)] \cite{TT25}, Theorem~3.1 --- statement verified against
+the v2 source; transcription into the final manuscript pending.
+\item[(GS/DGS)] \cite{GS} and the smooth-supported extension
+(Drappeau--Granville--Shao) at the stated ranges.
+\item[(Vin)] Primes in progressions against linear phases for the
+extreme anatomy range (Lemma~\ref{lem:extreme}).
 \end{itemize}
 
-\subsection*{On Lemma C (diagnosed; low--medium risk)}
+\subsection*{Mechanical write-ups}
 \begin{itemize}
-\item[(C1)] The full statement and proof of Lemma~\ref{lem:C}.
-\textbf{Diagnosis (June 10):} the two-band-prime thin-progression core
-is this paper's own two-frequency machinery under the substitution
-$(\mu,\lambda,q,p)\to(h,-k,p_2,p_1)$ --- the phases are
-$a(hp_2^2+kp_1^2)/(p_1p_2)$ with the same range $R$ --- so
-Theorem~\ref{thm:minor} and the counts of \S\ref{sec:major} apply
-verbatim (the $\lambda$-free case, strictly simpler). The weighted
-layer rests on Granville--Shao \cite{GS} (moduli to $x^{20/39-\delta}$,
-covering the band) and its smooth-supported extension
-(Drappeau--Granville--Shao, moduli to $x^{3/5-\varepsilon}$ ---
-applicable since our weights live on $\sqrt{2n}$-smooth populations),
-with Daboussi/Montgomery--Vaughan for minor-pair weighted sums.
-Empirically the major arcs are absorbed by the weight (resonant
-ensemble $z$: $13.1$ unweighted $\to0.78$ under Liouville). Owed: the
-formal reduction, the Siegel--Walfisz check for the interpolation
-weights (shareable with B0), the quantitative Daboussi--MV input, and
-the FK gluing.
+\item[(W1)] Uniformity bookkeeping in $(q,\mu,p)$ when summing the
+three anatomy regimes (Proposition~\ref{prop:glue}); the
+$s$-aggregation in the linear-resonance average (remark after
+Lemma~\ref{lem:dilated}).
+\item[(W2)] The fine-class inclusion--exclusion bookkeeping
+(\S\ref{sec:anatomy}, item (iii); structure verified, WP2.4).
+\item[(W3)] The FK gluing for Lemma C: carrying the weight through
+\cite{FK21} \S\S3--5 with Propositions~\ref{prop:C-cov}--%
+\ref{prop:C-single} as inputs.
+\item[(W4)] The Dickman--Billingsley identification of the band sums
+$\Sigma_{\mathbf j}$ with the box measures
+(Proposition~\ref{prop:B-assembled}).
+\item[(W5)] Final manuscript assembly: theorem statements
+re-verified against the composed error budget of
+Proposition~\ref{prop:cascade}.
 \end{itemize}
 
-\subsection*{On Lemma D / Estimate D$^\dagger$}
-\begin{itemize}
-\item[(D1)] Hypothesis~E1 (Family-A wrap-boundary average over
-$q\sim Q$).
-\item[(D2)] Hypothesis~E2 (Family-B endpoint average over $p\sim P$).
-\item[(D3)] The $\ell$-resonance count and Type-I/II ranges of the
-anatomy layer, with the Vaughan gluing
-(Proposition~\ref{prop:species}; statuses there).
-\item[(D4)] The fine-anatomy-class check: Lemma~B classes refine bare
-friability; per-class inclusion--exclusion of the same species
-(\S\ref{sec:anatomy}, item (iii)).
-\item[(D5)] The completion/Vaaler step packaging the binding digit
-condition into the harmonics $0<|\lambda|\le\Llog^C$ with the stated
-weights, uniformly over slot levels, multi-prime configurations, and
-higher exponents $q^e\|n-1$ (deeper characters mod $q^{e+1}$;
-bookkeeping of the same shape).
-\end{itemize}
-
-\subsection*{On the assembly}
-\begin{itemize}
-\item[(S1)] Lemma~\ref{lem:margins} (margins are free), within the
-Ford--Konyagin framework.
-\item[(S2)] Lemma~\ref{lem:A} write-up (one-line adaptation of FK \S2).
-\item[(S3)] The cascade bookkeeping of
-Proposition~\ref{prop:assembly}: composing A--D with explicit error
-budgets at almost all scales; FK \S7 for the constant.
-\end{itemize}
+\subsection*{Status summary}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Piece & Status after this consolidation\\
+\midrule
+Lemma 0, margins (0$'$) & \statusP{} (\S\ref{sec:sandwich},
+\S\ref{sec:bookkeeping})\\
+Lemma A & \statusP{} (\S\ref{sec:bookkeeping})\\
+Lemma B & \statusP{} modulo (TT), (SL2$'$), (W4)\\
+Lemma C & reduced; \statusP{} modulo (DMV), (Hal), (GS/DGS), (W3)\\
+D$^\dagger$: deep harmonics & \statusP\\
+D$^\dagger$: digit, minor & \statusP\\
+D$^\dagger$: digit, major (E1, E2) & \statusP{} modulo (SL1), (SL2)\\
+D$^\dagger$: anatomy ranges & glued; \statusP{} modulo (Vin), (W1),
+(W2)\\
+Depth packaging (D5) & \statusP{} (\S\ref{sec:bookkeeping})\\
+Assembly cascade & \statusP{} given A--D
+(Proposition~\ref{prop:cascade})\\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \subsection*{Trims (lower-bound track unaffected)}
 Top of band $u,u'\le\tfrac12-\eta$; corner
-$\sqrt R\ge\Llog^{B/2+c+5}$; margin costs. For
-Theorem~\ref{thm:lower} additionally: E1/E2 are not needed
-(worst-case-per-modulus versions suffice), and a single
+$\sqrt R\ge\Llog^{B/2+c+5}$; slot-boundary slivers $O(\varepsilon')$;
+margin costs (now proved free). For Theorem~\ref{thm:lower}: E1/E2 are
+not needed (worst-case-per-modulus versions suffice), and a single
 positive-proportion anatomy class suffices.
 
 \subsection*{Known dead ends (recorded; do not re-enter)}
 Union bounds across the digit layer (failure mass $\Theta(1)$);
 smooth-cofactor designs ($\rho(c/\delta)$ loses to $e^{-c/\delta}$);
-the semiprime trick (dies on the prime case); TT/Pilatte as a black box
-(dilation step); crude Cauchy--Schwarz over the mod-$q$ family (discards
-the deep twist); Heilbronn completion via max-over-intervals (error
-dominates); the citation-adaptation route $\alpha+\beta$ for small
-$\lambda$ (Remark~\ref{rem:negative}); single-scale (M2) and the
-polylog minor claim (Remark~\ref{rem:M2-strengthening}).
+absolute-counting comparisons at any smoothness level (WP5 \S3:
+requires $u<2^{1/(k+1)}$ against the forced $u\ge2$);
+the semiprime trick; TT/Pilatte as a black box (dilation);
+crude Cauchy--Schwarz over the mod-$q$ family;
+Heilbronn completion via max-over-intervals;
+the citation-adaptation route $\alpha+\beta$
+(Remark~\ref{rem:negative}); single-scale (M2) and the polylog minor
+claim (Remark~\ref{rem:M2-strengthening}); pure Balog--Wooley plus
+CRT forcing (entropy count, WP5 \S5).

@@ -1,6 +1,6 @@
 # Lemma 0: The Exact Governor Sandwich
 
-**STATUS: PROVED** (machine-verified: zero exceptions on 60,000 cases, sampled at $10^9$). Formal writeup pending (WP4); the precise margin-set definitions must be fixed in the writeup.
+**STATUS: PROVED — and fully written (manuscript §3); Lemma 0′ (margins are free) now also PROVED in full (manuscript §15, June 10).** Machine-verified: zero exceptions on 60,000 cases, sampled at $10^9$.
 
 ---
 

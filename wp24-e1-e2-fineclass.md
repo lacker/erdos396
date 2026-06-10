@@ -1,6 +1,6 @@
 # WP2.4: Diagnosis of Hypotheses E1/E2 + the Fine-Anatomy-Class Check
 
-**STATUS: DIAGNOSIS COMPLETE (June 9, 2026, late evening). All three items LOW RISK; none promoted to proved yet.** E1: true with large margin in data; only the *signed* average is needed (a refinement over the manuscript's statement); proof route classical. E2: tail law and moments confirmed in data; elementary counting + possibly a BV corner. Fine classes (ledger D4): PASS — structural argument + clean probe. Scripts: `e1_probe.py`, `e2_probe.py`, `fine_class_probe.py`.
+**STATUS: SUPERSEDED IN PART (June 10): E1 and E2 are now PROVED modulo the classical inputs SL1/SL2 (manuscript §12) — no longer open hypotheses. The diagnosis below stands as the record of why.** E1: true with large margin in data; only the *signed* average is needed (a refinement over the manuscript's statement); proof route classical. E2: tail law and moments confirmed in data; elementary counting + possibly a BV corner. Fine classes (ledger D4): PASS — structural argument + clean probe. Scripts: `e1_probe.py`, `e2_probe.py`, `fine_class_probe.py`.
 
 ---
 

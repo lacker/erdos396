@@ -1,6 +1,6 @@
 # Lemma B: Anatomy Independence of $n$ and $n-1$
 
-**STATUS: CITABLE — the three fine-print checks are DONE (WP3b, June 9 late evening; verified against the v2 TeX source, arXiv 2512.01739v2, April 2026). Remaining: write the half-page lemma B0 (proof sketched in §5 below) and the ≤3-band-prime bookkeeping.** Probability: ~95%.
+**STATUS: ASSEMBLED (manuscript §13, June 10): interpolation lemma, B0 (full proof), Siegel–Walfisz (modulo one classical ψ-sum input SL2′), and the assembled proposition — Lemma B holds modulo TT Thm 3.1 (PINNED) + SL2′ + the Dickman–Billingsley identification (W4).** Probability: ~97%.
 
 ---
 

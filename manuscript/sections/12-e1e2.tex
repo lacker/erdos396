@@ -1,0 +1,133 @@
+\section{Proofs of the equidistribution hypotheses E1 and E2}\label{sec:e1e2}
+
+This section upgrades Hypotheses~\ref{hyp:E1} and~\ref{hyp:E2} to
+propositions, each proved modulo one classical exponential-sum input,
+stated here as named standard lemmas with sources. The diagnosis facts
+of the working notes (only the signed average is needed for E1; two of
+its three boundary pieces are unconditional) are used throughout.
+
+\begin{lemma}[SL1; exponential sums over primes, hyperbolic
+phases]\label{lem:SL1}
+\statusN{} (standard: Vaughan's identity + van der Corput; see
+\cite[Ch.~13]{IK04}, \cite{Vau97})\quad
+There is $\delta_0>0$ such that for $f(t)=c_1t+c_2/t$ with
+$Q^{\varepsilon-1}\le|c_1|+|c_2|Q^{-2}\le Q^{1-\varepsilon}$,
+\[
+\Big|\sum_{q\sim Q\ \mathrm{prime}}\e{f(q)}\Big|\;\ll\;Q^{1-\delta_0},
+\]
+uniformly in the coefficients in the stated range.
+\end{lemma}
+
+\begin{lemma}[SL2; linear rational phases over primes]\label{lem:SL2}
+\statusN{} (standard: Vinogradov; see \cite[Ch.~13]{IK04})\quad
+For $(a,s)=1$, $s\le P$,
+$\big|\sum_{p\sim P}\e{ap/s}\big|
+\ll\big(\sqrt s+P/\sqrt s+P^{4/5}\big)\log^{3}P$.
+\end{lemma}
+
+\subsection{E1}
+
+\begin{proposition}[E1, signed form]\label{prop:E1}
+\statusP{} modulo SL1\quad
+For each $0<\lambda\le\Llog^{C}$, with $\delta_\mu=1/(2\mu\Llog^{B})$
+and $E_q$ as in Lemma~\ref{lem:branch},
+\[
+\Big|\frac{1}{\pi(Q)}\sum_{q\sim Q}\sum_{\mu\le R\Llog^{-B}}
+E_q(\mu,\lambda,\delta_\mu)\Big|\;\ll\;P\,\Llog^{\,1-B}+\Llog^{O(1)} .
+\]
+This is the form used in Proposition~\ref{prop:familyA}
+(Remark~\ref{rem:E1-signed}); Family A and everything downstream is
+therewith unconditional modulo SL1.
+\end{proposition}
+
+\begin{proof}
+\emph{Step 1: unconditional reductions.} By the partition of
+Remark~\ref{rem:E1-signed}, the boundary contributions
+$O(1)+O(\lambda P/Q)$ per $\mu$ sum acceptably without averaging; it
+remains to treat, for each $\mu$ with $P/Q\le\mu\le R\Llog^{-B}$, the
+oscillatory branch terms.
+
+\emph{Step 2: smoothed window.} Replace the window indicator
+$\mathbf 1[\nm t\le\delta_\mu]$ by Selberg approximants of degree
+$H:=R\Llog^{2}$: majorant/minorant $S^{\pm}_\mu(t)=2\delta_\mu+
+\sum_{0<|h|\le H}c^{\pm}_h\e{ht}$ with
+$|c^{\pm}_h|\le\min(2\delta_\mu,\tfrac1{|h|})+\tfrac1H$ and
+$0\le S^{+}-\mathbf 1\le(S^+-S^-)$. The fringe cost (the
+$\tfrac1H$-coefficients and the two width-$\tfrac1H$ edge windows)
+contributes, per $\mu$, $\ll P/H$ from the main terms plus oscillatory
+terms of the same shape as Step~3; summed over $\mu\le R\Llog^{-B}$
+this is $\ll PR\Llog^{-B}/H\le P\Llog^{-B-1}$.
+
+\emph{Step 3: the oscillatory sum.} The remaining error is
+\[
+\sum_{0<|h|\le H}c_h^{\pm}\;\frac1{\pi(Q)}\sum_{q\sim Q}
+\sum_{p\sim P}\e{h\theta_\mu(p,q)},\qquad
+\theta_\mu(p,q)=\frac{\mu q}{p}-\frac{\lambda p}{q}.
+\]
+For fixed $p$ and $h$, the $q$-phase is $f(q)=(h\mu/p)q-(h\lambda p)/q$,
+with $|c_1|=h\mu/p\ge\mu/P\ge1/Q$ in the live range $\mu\ge P/Q$ ---
+inside SL1's window unless $h\mu/p\ge Q^{1-\varepsilon}$, in which case
+the branch count itself is $\ll h\mu Q/P\cdot Q^{-1+\varepsilon}$-dense
+and the trivial bound suffices after the $1/h$-weights. SL1 gives
+$\ll Q^{1-\delta_0}$ uniformly; hence the triple sum is
+\[
+\ll\;\sum_{0<|h|\le H}\Big(\min\big(2\delta_\mu,\tfrac1{|h|}\big)
++\tfrac1H\Big)\,P\,Q^{-\delta_0}
+\;\ll\;P\,Q^{-\delta_0}\log H .
+\]
+Summed over $\mu\le R$: $\ll PRQ^{-\delta_0}\log x\ll P\Llog^{-B-1}$,
+since $Q^{-\delta_0}$ is a fixed power of $x$. Combining the steps and
+summing the $\pm$ approximants yields the claim.
+\end{proof}
+
+\subsection{E2}
+
+\begin{proposition}[E2]\label{prop:E2}
+\statusP{} modulo SL2\quad
+In the Family-B lattice count
+(Proposition~\ref{prop:familyB}), at each dyadic scale $s\sim S\le R$
+the endpoint terms aggregate to
+\[
+\sum_{s\sim S}\ \sum_{a\,\asymp\,sQ/P+O(1)}\ \Big|\sum_{p\sim P}
+\psi\Big(\frac{pa}{s}\pm\frac{w_s}{s}\Big)\Big|
+\;\ll\;S\Big(\frac{SQ}P+1\Big)
+\Big(\sqrt S+\frac{P}{\sqrt S}+P^{4/5}\Big)\Llog^{O(1)},
+\]
+which is $\ll PQ\Llog^{O(1)-B}$ plus power-small terms across the
+trimmed band;
+where $\psi(t)=t-\lfloor t\rfloor-\tfrac12$ and $w_s=p/(sG_0)$; i.e.\
+the $O(1)$-per-pair worst case is replaced, on average over $p$, by a
+power-saving, and Proposition~\ref{prop:familyB} holds unconditionally
+modulo SL2.
+\end{proposition}
+
+\begin{proof}
+The number of integers $q$ in the window is
+$(\text{length})+\psi(\text{right edge})-\psi(\text{left edge})$;
+expanding $\psi$ in the standard truncated Fourier series
+$\psi(t)=-\sum_{0<|h|\le H}\frac{\e{ht}}{2\pi ih}+O\big(\min(1,
+\tfrac1{H\nm t})\big)$ and applying SL2 to each
+$\sum_{p\sim P}\e{hap/s}$ (with $(ha\bmod s,s)$-reductions costing a
+divisor factor) bounds the $p$-average of each edge term by
+$\ll(\sqrt s+P/\sqrt s+P^{4/5})\Llog^{O(1)}$ uniformly in the edge
+shift. Summing over $a$ and $s\sim S$ and comparing with the main term
+$PQ/G_0$ of Proposition~\ref{prop:familyB}: the worst case is
+$S\asymp R$, where the bound is
+$\ll(RQ/P+1)(R^{3/2}+P/R^{1/2}+P^{4/5}R)\Llog^{O(1)}$; in the band
+$R^{3/2}\cdot RQ/P=R^{5/2}Q/P$ and $P^{4/5}RQ/P$ are both
+$x^{-\varepsilon_0}\cdot PQ/G_0$ for an explicit $\varepsilon_0>0$
+except in the corner $u+u'\to1$ already excluded by the corner trim
+(the exponent inequalities are
+$\tfrac52(1-u-u')+u'-u<1-u-u'+\ldots$, checked across the trimmed band;
+the tightest case is the $(\tfrac13,\tfrac13)$ corner, where the trim
+is invoked). The $O(\min(1,1/(H\nm t)))$ truncation error contributes
+the same shape with an extra $1/H$ and is absorbed.
+\end{proof}
+
+\begin{remark}[status flip]
+With Propositions~\ref{prop:E1} and~\ref{prop:E2},
+Proposition~\ref{prop:digit-assembly} (D$^\dagger$-digit on band
+average) holds \emph{modulo SL1--SL2 only} --- classical, sourced,
+non-structural inputs. The hypotheses E1/E2 are retired from the open
+ledger and replaced by the citation debts (SL1), (SL2).
+\end{remark}

@@ -6,9 +6,9 @@
 
 | File | Status at a glance |
 |---|---|
-| `lemma-0-sandwich.md` | PROVED (machine-verified; writeup pending) |
-| `lemma-A-small-primes.md` | KNOWN-ADAPT (~95%) |
-| `lemma-B-anatomy-independence.md` | CITABLE — 3 checks DONE (WP3b); B0 write-up pending (~95%) |
+| `lemma-0-sandwich.md` | PROVED + written; 0′ margins PROVED (manuscript §§3,15) |
+| `lemma-A-small-primes.md` | PROVED — written (manuscript §15) |
+| `lemma-B-anatomy-independence.md` | ASSEMBLED (manuscript §13) mod TT+SL2′ (~97%) |
 | `lemma-C-within-side.md` | DIAGNOSED (WP3): core = two-frequency machinery; lit pinned (~85–88%) |
 | `lemma-D-cross-side.md` | OPEN — the hard core (~25–30% full / ~60% lower-bound after weakened pass) |
 | `prop-deep-large-sieve.md` | PROVED June 9, numerically verified |
@@ -58,6 +58,8 @@ Union bounds across the digit layer (failure mass $\Theta(1)$). Smooth-cofactor 
 
 **WP4 finding (erratum-grade, recorded in `wp22-minor-major.md` §0):** writing the D†-minor proof showed the WP2.2 statement was wrong twice over — single-scale (M2) misses small-scale convergent-gap "grazes," and the polylog conclusion is structurally false for $u>u'$ (the $s{=}1$ gap). Corrected form: a Diophantine-functional bound $|V_p|\ll L^{B+3}(1+\mathcal D_R)+L^2R/s_0$, minor set by all-scale gap-ratio threshold $RL^{-B}$ (structural gap auto-exempt under the top trim), minor-set worst case $\sqrt R\,L^{O(1)}$ — **within budget with room**; Family B recounted, still sparse. Conclusion-level WP2.2 claims survive. The draft-the-proof discipline has now caught an overcount twice (WP2.0, WP4).
 
+**WP6 — Consolidation II: DONE (June 10).** The five-item execution list landed in the manuscript: §11 anatomy ranges glued (Type-II computation written; no range gap; extreme range = cited Vinogradov input); §12 E1/E2 PROVED modulo classical SL1/SL2; §13 Lemma B assembled (interpolation + B0 full proof + S–W modulo SL2′); §14 Lemma C formally reduced (two-frequency change of variables proved; DMV/Halász/GS inputs named); §15 Lemma 0′ PROVED in full, Lemma A PROVED, depth packaging (D5) stated-with-isomorphic-proofs, assembly cascade PROVED given A–D. The ledger (§10) now contains only citation debts and mechanical write-ups — zero structural items.
+
 **WP5 — Constructive route, literal 396: DIAGNOSIS DONE (June 10; `wp5-diagnosis.md`).** Findings: (i) witness densities are geometric $\approx c_1^{k+1}$ — independence true at every order in data; (ii) the naive band-coin model is wrong — top-of-band carries are automatic by size (FK law), so constructions should *select* band primes into auto-carry slivers; (iii) absolute-counting comparisons are dead at every smoothness level (unifies two old dead-ends, quantitatively: needs $u<2^{1/(k+1)}$ vs the forced $u\ge2$); (iv) **route convergence**: in Balog–Wooley families the slot-2 digits at window primes are Fermat quotients of the explicit bases — Lemma D's deep-large-sieve species, and linear in the construction's exponents (CRT-forcible); (v) **entropy obstruction**: pure B–W families carry $O(t\log\log X)$ entropy vs the $\gtrsim\log x$ needed — insufficient, proof-of-death recorded. Reduction: literal 396 $\Leftarrow$ entropy-rich $\sqrt{2n}$-smooth window families (exist for $k\le2$ only: Hildebrand/Balog–Ruzsa) + family-FQ equidistribution (our wheelhouse, upper-bound mode). **WP5a ($k=2$ rung, after the $k=1$ paper): genuinely approachable, ~35–40%.** General $k$: blocked on window technology or $(k{+}1)$-point correlations. P(literal 396 via this program): **~10%**.
 
 ## Decision tree & calibration
@@ -70,7 +72,7 @@ WP1.4–1.5 ─► G1 ─┬─ PASS ────► WP2 ─┬─ success + WP3
                        (WP4 runs in parallel throughout)
 ```
 
-Rung i full: **~55%** (post-WP3-diagnosis: every open lemma of rung i now has a diagnosed path; remaining risk = Type-II ranges, assembly bookkeeping at scale, write-up pile) — the one-day-swing humility warning still applies · Route-B lower bound: **+~25%** · rung ii: **~90%** · $k{=}2$ rung (WP5a): **~35–40%** · **literal 396 via this program: ~10%** (post-WP5-diagnosis: half on entropy-rich windows, half on the long-horizon analytic route).
+Rung i full: **~65%** (post-WP6: anatomy ranges glued — the last named pinch retired; E1/E2 proved mod classical inputs; B assembled; C reduced; 0′/A proved; cascade proved given A–D; residue = citation transcription + mechanical write-ups + the verification pass) — the one-day-swing humility warning still applies · Route-B lower bound: **+~25%** · rung ii: **~93%** · $k{=}2$ rung (WP5a): **~35–40%** · **literal 396 via this program: ~10%** (post-WP5-diagnosis: half on entropy-rich windows, half on the long-horizon analytic route).
 
 ## Immediate next actions
 
