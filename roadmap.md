@@ -9,7 +9,7 @@
 | `lemma-0-sandwich.md` | PROVED (machine-verified; writeup pending) |
 | `lemma-A-small-primes.md` | KNOWN-ADAPT (~95%) |
 | `lemma-B-anatomy-independence.md` | CITABLE — 3 checks DONE (WP3b); B0 write-up pending (~95%) |
-| `lemma-C-within-side.md` | OPEN, standard toolbox (~75%) |
+| `lemma-C-within-side.md` | DIAGNOSED (WP3): core = two-frequency machinery; lit pinned (~85–88%) |
 | `lemma-D-cross-side.md` | OPEN — the hard core (~25–30% full / ~60% lower-bound after weakened pass) |
 | `prop-deep-large-sieve.md` | PROVED June 9, numerically verified |
 | `numerology-D.md` | WP1.4 ANALYSIS COMPLETE |
@@ -20,6 +20,7 @@
 | `wp23-anatomy.md` | WP2.3: anatomy layer PASS — elementary unwinding; **no structural obstruction left on D** |
 | `wp24-e1-e2-fineclass.md` | WP2.4: E1/E2 diagnosed LOW-RISK (signed form suffices, true in data); fine-class check PASS |
 | `wp5-diagnosis.md` | WP5: constructive-route diagnosis — FQ convergence, entropy obstruction, $k=2$ rung viable |
+| `wp3-lemma-C-diagnosis.md` | WP3: C's core = D's machinery; GS/DGS pinned; FI retired; major arcs absorb into main term |
 | `citations.md` | ledger; verification statuses inside |
 
 ## Targets
@@ -49,7 +50,7 @@ Union bounds across the digit layer (failure mass $\Theta(1)$). Smooth-cofactor 
 
 **WP2′ — Lower-bound theorem** via the four mitigations (`lemma-D` §7).
 
-**WP3 — Lemma C** (after G1; interface depends on which D survives).
+**WP3 — Lemma C: DIAGNOSIS DONE (June 10; `wp3-lemma-C-diagnosis.md`).** The thin-progression core ≡ the two-frequency machinery (change of variables; the λ-free case, strictly simpler than D†); major arcs are absorbed into the main term (empirically: resonant ensemble z 13.1 → 0.78 under Liouville); weighted layer on GS ($x^{20/39}$) + DGS smooth-supported ($x^{3/5}$) + Daboussi–MV. FI dependency retired. Remaining: the formal reduction, S–W check for $g_z$ (shareable with B0), Daboussi–MV quantitative form, FK gluing, pretentious main-term bookkeeping. C: ~85–88%.
 
 **WP3b — Close Lemma B: CHECKS DONE (June 9 late evening).** TT Thm 3.1 fetched from the v2 TeX source and verified: all three fine-print checks pass (uniformity in $x$-dependent functions YES — constants absolute, hypotheses quantitative; conclusion shape YES — centered correlation + their $\delta_N$ remark gives product of means; verbatim statement retrieved, now in `lemma-B-anatomy-independence.md` with the technical condition checked trivially for our $g_z$). Lemma B0 (the equidistribution axiom for $g_z$) proof-sketched with defect $O(\sqrt N\,\mathrm{polylog})$ — ample. Remaining: write B0 formally + the $\le3$-band-prime bookkeeping. Lemma B: ~85% → **~95%**.
 
@@ -69,7 +70,7 @@ WP1.4–1.5 ─► G1 ─┬─ PASS ────► WP2 ─┬─ success + WP3
                        (WP4 runs in parallel throughout)
 ```
 
-Rung i full: **~50%** (post-WP2.4/WP3b: B citable, E1/E2 benign, fine classes pass; remaining risk = Lemma C, Type-II ranges, uniformity bookkeeping) — the one-day-swing humility warning still applies · Route-B lower bound: **+~25%** · rung ii: **~90%** · $k{=}2$ rung (WP5a): **~35–40%** · **literal 396 via this program: ~10%** (post-WP5-diagnosis: half on entropy-rich windows, half on the long-horizon analytic route).
+Rung i full: **~55%** (post-WP3-diagnosis: every open lemma of rung i now has a diagnosed path; remaining risk = Type-II ranges, assembly bookkeeping at scale, write-up pile) — the one-day-swing humility warning still applies · Route-B lower bound: **+~25%** · rung ii: **~90%** · $k{=}2$ rung (WP5a): **~35–40%** · **literal 396 via this program: ~10%** (post-WP5-diagnosis: half on entropy-rich windows, half on the long-horizon analytic route).
 
 ## Immediate next actions
 

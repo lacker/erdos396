@@ -9,9 +9,9 @@ DOCS = [
     "roadmap.md", "citations.md", "lemma-0-sandwich.md", "lemma-A-small-primes.md",
     "lemma-B-anatomy-independence.md", "lemma-C-within-side.md", "lemma-D-cross-side.md",
     "prop-deep-large-sieve.md", "numerology-D.md", "empirics-D.md", "lemma-alpha-beta.md",
-    "wp21-reduction.md", "wp22-minor-major.md", "wp23-anatomy.md", "wp24-e1-e2-fineclass.md", "wp5-diagnosis.md",
+    "wp21-reduction.md", "wp22-minor-major.md", "wp23-anatomy.md", "wp24-e1-e2-fineclass.md", "wp5-diagnosis.md", "wp3-lemma-C-diagnosis.md",
 ]
-SCRIPTS = ["verify_dls.py", "wp21_test.py", "empirics_d.py", "e1_probe.py", "e2_probe.py", "fine_class_probe.py", "wp5_witness_scan.py"]
+SCRIPTS = ["verify_dls.py", "wp21_test.py", "empirics_d.py", "e1_probe.py", "e2_probe.py", "fine_class_probe.py", "wp5_witness_scan.py", "lemma_c_probe.py"]
 SEP = "=" * 78
 
 today = datetime.date.today().strftime("%B %-d, %Y")

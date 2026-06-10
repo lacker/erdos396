@@ -26,15 +26,25 @@ lemma B0 for $g_z$ (proof sketched: binomial unwinding of $z^{B(n)}$
 into band-prime tuples; defect $O(\sqrt N\log N)$).
 \end{itemize}
 
-\subsection*{On Lemma C (standard toolbox; medium risk)}
+\subsection*{On Lemma C (diagnosed; low--medium risk)}
 \begin{itemize}
-\item[(C1)] The full statement and proof of Lemma~\ref{lem:C}:
-Ford--Konyagin's within-side machinery re-run against a
-$1$-bounded multiplicative weight on the other side; key inputs
-Granville--Shao \cite{GS}, MRT \cite{MRT}; hardest ingredient the
-simultaneous-fractional-parts analysis (Friedlander--Iwaniec; the exact
-source is to be pinned). Scheduled after the Lemma-D interface
-stabilizes.
+\item[(C1)] The full statement and proof of Lemma~\ref{lem:C}.
+\textbf{Diagnosis (June 10):} the two-band-prime thin-progression core
+is this paper's own two-frequency machinery under the substitution
+$(\mu,\lambda,q,p)\to(h,-k,p_2,p_1)$ --- the phases are
+$a(hp_2^2+kp_1^2)/(p_1p_2)$ with the same range $R$ --- so
+Theorem~\ref{thm:minor} and the counts of \S\ref{sec:major} apply
+verbatim (the $\lambda$-free case, strictly simpler). The weighted
+layer rests on Granville--Shao \cite{GS} (moduli to $x^{20/39-\delta}$,
+covering the band) and its smooth-supported extension
+(Drappeau--Granville--Shao, moduli to $x^{3/5-\varepsilon}$ ---
+applicable since our weights live on $\sqrt{2n}$-smooth populations),
+with Daboussi/Montgomery--Vaughan for minor-pair weighted sums.
+Empirically the major arcs are absorbed by the weight (resonant
+ensemble $z$: $13.1$ unweighted $\to0.78$ under Liouville). Owed: the
+formal reduction, the Siegel--Walfisz check for the interpolation
+weights (shareable with B0), the quantitative Daboussi--MV input, and
+the FK gluing.
 \end{itemize}
 
 \subsection*{On Lemma D / Estimate D$^\dagger$}

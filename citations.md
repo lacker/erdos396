@@ -59,8 +59,10 @@ Theorems and papers this proof needs (or may need) to cite. **Status:** PINNED =
 | Ref | What it gives us | Used in | Status |
 |---|---|---|---|
 | Bombieri–Friedlander–Iwaniec (dispersion series) | dispersion to large moduli — what D sits beyond for general coefficients | D framing | TO-PIN |
-| Granville–Shao | BV for multiplicative functions | Lemma C | TO-PIN |
-| Friedlander–Iwaniec, *(which work?)* §4 simultaneous fractional parts | the thin-progression phenomenon; Lemma C's hardest ingredient | Lemma C | **TO-PIN (priority — identify the actual paper)** |
+| **Granville–Shao, arXiv:1703.06865** (Adv. Math 2019) | BV for mult. functions; fixed residue class to moduli $x^{20/39-\delta}$ (beyond $x^{1/2}$); companion (Forum Math. Sigma): BV $\iff$ Siegel–Walfisz criterion for $g$ | Lemma C weighted layer | **PINNED (WP3, June 10)** |
+| **Drappeau–Granville–Shao, arXiv:1704.04831** | *smooth-supported* mult. functions in APs to $x^{3/5-\varepsilon}$ — native fit (our weights live on $\sqrt{}$-smooth populations) | Lemma C, extra range | PINNED (located June 10) |
+| Daboussi; Montgomery–Vaughan | mult. function vs $e(a\theta)$, minor arcs, uniform in $g$ | Lemma C minor pairs | TO-PIN (quantitative form at rational $\theta$, large denominator) |
+| ~~Friedlander–Iwaniec, simultaneous fractional parts~~ | **RETIRED (WP3, June 10): not locatable as an actual paper (session-memory artifact); the thin-progression phenomenon is handled by our own two-frequency machinery (manuscript §§6–8)** | Lemma C | RESOLVED |
 | Vaaler | trigonometric approximation of interval indicators, degree $H$ | D harmonic form | TO-PIN |
 | Burgess | character sums mod cube-free $q^2$, nontrivial for $N>q^{2(1/4+\varepsilon)}$ | D (classical layer) | TO-PIN |
 | Balog–Wooley | explicit constructions with congruence freedom | Route C (general $k$) | TO-PIN |
