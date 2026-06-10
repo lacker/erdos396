@@ -8,7 +8,7 @@
 |---|---|
 | `lemma-0-sandwich.md` | PROVED (machine-verified; writeup pending) |
 | `lemma-A-small-primes.md` | KNOWN-ADAPT (~95%) |
-| `lemma-B-anatomy-independence.md` | LIKELY CITABLE, 3 checks pending (~85%) |
+| `lemma-B-anatomy-independence.md` | CITABLE — 3 checks DONE (WP3b); B0 write-up pending (~95%) |
 | `lemma-C-within-side.md` | OPEN, standard toolbox (~75%) |
 | `lemma-D-cross-side.md` | OPEN — the hard core (~25–30% full / ~60% lower-bound after weakened pass) |
 | `prop-deep-large-sieve.md` | PROVED June 9, numerically verified |
@@ -18,6 +18,7 @@
 | `wp21-reduction.md` | WP2.1: two-frequency reduction, validated |
 | `wp22-minor-major.md` | WP2.2: D†-digit closed modulo write-up |
 | `wp23-anatomy.md` | WP2.3: anatomy layer PASS — elementary unwinding; **no structural obstruction left on D** |
+| `wp24-e1-e2-fineclass.md` | WP2.4: E1/E2 diagnosed LOW-RISK (signed form suffices, true in data); fine-class check PASS |
 | `citations.md` | ledger; verification statuses inside |
 
 ## Targets
@@ -49,7 +50,7 @@ Union bounds across the digit layer (failure mass $\Theta(1)$). Smooth-cofactor 
 
 **WP3 — Lemma C** (after G1; interface depends on which D survives).
 
-**WP3b — Close Lemma B:** fetch TT Thm 3.1, run the three checks, write the half-page lemma, verify the $z$-interpolation reconstruction.
+**WP3b — Close Lemma B: CHECKS DONE (June 9 late evening).** TT Thm 3.1 fetched from the v2 TeX source and verified: all three fine-print checks pass (uniformity in $x$-dependent functions YES — constants absolute, hypotheses quantitative; conclusion shape YES — centered correlation + their $\delta_N$ remark gives product of means; verbatim statement retrieved, now in `lemma-B-anatomy-independence.md` with the technical condition checked trivially for our $g_z$). Lemma B0 (the equidistribution axiom for $g_z$) proof-sketched with defect $O(\sqrt N\,\mathrm{polylog})$ — ample. Remaining: write B0 formally + the $\le3$-band-prime bookkeeping. Lemma B: ~85% → **~95%**.
 
 **WP4 — Manuscript spine: SPRINT DONE (June 9 evening).** `manuscript/main.tex` (+ 12 section files, compiles via `tectonic main.tex`) now holds, with full proofs: Kummer prelims, **Lemma 0** (exact sandwich, precise margin sets fixed), the **deep large sieve** (Props 1–2, Thm, Cors incl. the generalized AP version), **lemma β**, **linearization**, **large-λ coverage**, the **two-frequency reduction**, the **D†-minor bound (corrected — see below)**, the **anatomy unwinding**; plus precise statements with status tags for Lemmas A/B/C/D, Estimate D†, the major-arc counts modulo **Hypotheses E1/E2** (now precisely stated), lemma α (appendix), the numerics record (appendix), and the exhaustive remaining-gaps ledger (§10). *(The "lost" originals were also recovered from the chat export into `archive/original-session/`; full transcripts in `archive/transcripts/`.)*
 
@@ -67,15 +68,15 @@ WP1.4–1.5 ─► G1 ─┬─ PASS ────► WP2 ─┬─ success + WP3
                        (WP4 runs in parallel throughout)
 ```
 
-Rung i full: **~45%** (post-WP2.3: all D† layers proved/counted/toolbox-pending-write-up; residual risk = uniformity bookkeeping at scale, Type-II pinches, fine-anatomy classes; one-day swing 25→45 noted — treat with corresponding humility) · Route-B lower bound: **+~25%** · rung ii: **~90%** · general-$k$ contribution: **15–40%**.
+Rung i full: **~50%** (post-WP2.4/WP3b: B citable, E1/E2 benign, fine classes pass; remaining risk = Lemma C, Type-II ranges, uniformity bookkeeping) — the one-day-swing humility warning still applies · Route-B lower bound: **+~25%** · rung ii: **~90%** · general-$k$ contribution: **15–40%**.
 
 ## Immediate next actions
 
 1. WP2.0 — **DONE** (`lemma-alpha-beta.md`): $\alpha,\beta$ proved; assembly accounting NEGATIVE; numerology erratum issued; residual = **Estimate D†** + its second-moment core.
 2. WP2.1 — **MAJOR PROGRESS** (`wp21-reduction.md`): D†'s digit layer reduced exactly to a two-frequency minor/major-arc dichotomy; minor arcs cancel to polylog (validated), major arcs localized on $p\approx q\sqrt{\mu/\lambda}$ and reduced to a Diophantine count. Kloosterman core bypassed on this route. WP2.2 — **DONE June 9** (`wp22-minor-major.md`): D†-minor stated (standard toolbox); both major-arc families counted out (A: polylog-sparse on q-average; B: sparse + power-small); **D†-digit closed modulo write-up**. WP2.3 — **DONE June 9** (`wp23-anatomy.md`): **PASS, elementary** — $u_f=3(1-u)<2$ gives an exact unwinding of the friable indicator into Type-I/II sums and primes-in-APs; friable literature demoted to fallback. **No identified structural obstruction remains on Lemma D.** Next: **consolidation sprint (WP4)** — the pile of closed-modulo-write-up items is now the binding constraint; then the fine-anatomy-class check and the two equidistribution rigorizations.
-3. **WP3b** TT Theorem 3.1 verification (top item in `citations.md`; = items B1–B3 of manuscript §10).
+3. **WP3b — DONE June 9 late evening** (see above; `lemma-B-anatomy-independence.md` has the verbatim theorem + resolved checks; TT row in `citations.md` now PINNED).
 4. **WP4 — DONE June 9 evening** (see above): manuscript spine drafted and compiling; D†-minor proved in corrected form; E1/E2 isolated as the precise open hypotheses of the digit layer. Remaining manuscript debts are exactly manuscript §10's ledger: E1, E2, the anatomy Type-I/II ranges + ℓ-resonance count, the fine-class check, the Vaaler/completion packaging (D5), Lemma 0′ margins, Lemma A write-up, assembly bookkeeping.
-5. **Next binding items:** (a) E1/E2 — the two average-equidistribution steps, now precisely stated (manuscript §8); both look like exercises in equidistribution of branch endpoints/window positions on average — diagnose first; (b) the fine-anatomy-class check (D4); (c) WP3b.
+5. **WP2.4 — DONE June 9 late evening** (`wp24-e1-e2-fineclass.md`): E1/E2 diagnosed — both LOW RISK (E1: only the *signed* average is needed, true in data with 10–300× margin, two of three boundary pieces unconditional; E2: tail law and moments confirmed, elementary + one BV corner); fine-class check (D4) **PASS** (bounded-depth exact I–E, same species; class-restricted probes all at $z=O(1)$). **Next binding items:** (a) write-ups: E1/E2 proofs, B0, D†-anatomy Type-I/II ranges (the one remaining named risk); (b) Lemma C (WP3) — now the largest open surface; (c) re-read FK with our notation (citations.md row A3).
 6. (When convenient) re-run `empirics_d.py` at $x=10^9$ to check the §4 flag shrinks like a boundary term.
 
 ## Method note

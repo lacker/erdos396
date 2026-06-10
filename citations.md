@@ -16,7 +16,7 @@ Theorems and papers this proof needs (or may need) to cite. **Status:** PINNED =
 
 | Ref | What it gives us | Used in | Status |
 |---|---|---|---|
-| Tao–Teräväinen, arXiv:2512.01739 (Dec 2025), **Thm 3.1** | quantitative binary correlations; asymmetric hypotheses ($g_1$ equidistributed/non-pretentious, $g_2$ only 1-bounded multiplicative); smooth-pair $\rho(u)\rho(v)$ at almost all scales | Lemma B (cite); D verdict | **PARTIAL — top verification task** (fetch died at cutoff) |
+| Tao–Teräväinen, arXiv:2512.01739 (**v2, Apr 2026**), **Thm 3.1** (§3, `thm:correlation`) | quantitative binary correlations; asymmetric hypotheses ($g_1$ equidistributed w/ explicit axiom + technical condition $g_1(p)=1$ on $[\exp(\log^{1/11}X),\exp(\log^{1/10}X)]$, $g_2$ only 1-bounded multiplicative); $W$-trick + shifts $O(\mathcal L^c)$; exceptional scale set $\mathcal L^{-c}$; smooth-pair $\rho(u)\rho(v)$ uniform in $u,v\le c\log_2x/\log_3x$ | Lemma B (cite); D verdict | **PINNED** (WP3b done June 9: v2 TeX source close-read; verbatim statement in `lemma-B-anatomy-independence.md`) |
 | Pilatte, arXiv:2310.19357 | two-point log-Chowla, power-of-log saving; Thm 2.4 spectral engine needs only 1-boundedness; multiplicativity at exactly two steps (centring, dilation) | Lemma B engine; D attack (c) | PARTIAL |
 | Matomäki–Radziwiłł–Tao | mult. fns in short intervals; averaged Elliott | Pilatte centring; Lemma C inputs | TO-PIN (which paper(s)) |
 | Hildebrand (consecutive smooth, elementary) | positive-density lower bound for anatomy layer | Lemma B fallback | TO-PIN |

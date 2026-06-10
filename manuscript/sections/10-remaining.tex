@@ -6,15 +6,24 @@ where cited. No other unproved ingredient is used anywhere.
 
 \subsection*{On Lemma B (citation-grade; low risk)}
 \begin{itemize}
-\item[(B1)] Uniformity of the Tao--Ter\"av\"ainen estimates
-\cite{TT25} in the $x$-dependent band edges (their Theorem~1.7 handles
-the analogous $x^{1/u}$-threshold dependence; verify the general
-Theorem~3.1 does too).
-\item[(B2)] Conclusion shape of \cite{TT25}, Theorem~3.1: correlation
-$=$ product of means $+$ error, in the equidistributed real case.
-\item[(B3)] The verbatim statement of Theorem~3.1 (the original
-verification was interrupted; re-fetch and finish), plus the half-page
-equidistribution lemma for the interpolation functions $g_z$.
+\item[(B1)] \textbf{RESOLVED} (verified against the v2 TeX source of
+\cite{TT25}, June 9, 2026): the hypotheses of their Theorem~3.1 are
+fully quantitative with absolute constants; the functions enter only
+through the equidistribution axiom at scale $X$, so $x$-dependent band
+edges are admissible. Their consecutive-smooth theorem states the
+analogous uniformity explicitly.
+\item[(B2)] \textbf{RESOLVED}: the conclusion is the centered
+correlation bound
+$\frac WN\sum_{N<n\le2N}(g_1(n+h_1)-\delta_N)g_2(n+h_2)
+\mathbf 1_{n\equiv b\,(W)}\ll\mathcal L^{-c}$ at almost all scales,
+with $\delta_N$ the mean of $g_1$ up to $O(\mathcal L^{-1})$ --- product
+of means follows given the AP-mean of $g_2$ (same B0 input).
+\item[(B3)] \textbf{Statement retrieved} (recorded verbatim in the
+program's Lemma-B document); the technical condition $g_1(p)=1$ on
+$[\exp(\log^{1/11}X),\exp(\log^{1/10}X)]$ holds trivially for our $g_z$.
+\emph{Still owed:} the formal write-up of the half-page equidistribution
+lemma B0 for $g_z$ (proof sketched: binomial unwinding of $z^{B(n)}$
+into band-prime tuples; defect $O(\sqrt N\log N)$).
 \end{itemize}
 
 \subsection*{On Lemma C (standard toolbox; medium risk)}

@@ -61,6 +61,24 @@ $(p,\mu,\lambda)$ the branch endpoints equidistribute as $q$ varies over
 the band.
 \end{hypothesis}
 
+\begin{remark}[diagnosis: only the signed average is needed]
+\label{rem:E1-signed}
+The Family-A application below sums the nonnegative counts $N_q$, so
+E1 is only ever invoked for the \emph{signed} average
+$\mathbb E_q\sum_\mu E_q$ --- strictly weaker than the stated absolute
+form, and what equidistribution heuristics actually deliver. Moreover,
+two of the three boundary pieces are unconditionally acceptable:
+$\sum_{\mu\le R}O(1)\ll R\le P$ and
+$\sum_{\mu\le R}\lambda P/Q\ll\Llog^{C}RP/Q$ with $R/Q=x^{1-u-2u'}<1$
+in the band; only the $\mu Q/P$ branch piece, in the sub-range
+$\mu\ge P/Q$, requires the $q$-average. Numerically the signed average
+sits at $1$--$4\%$ of the main term, $10$--$300\times$ below the
+worst-case bound, in both band geometries
+(Appendix~\ref{app:numerics}). Proof route: Erd\H os--Tur\'an expansion
+plus lattice counting near the hyperbolas $\mu q\approx kp$; Vaughan
+for the prime variable.
+\end{remark}
+
 \begin{proposition}[Family A count]\label{prop:familyA}
 \statusP{} modulo E1\quad
 Assume Hypothesis~E1. Then
