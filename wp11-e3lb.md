@@ -1587,3 +1587,307 @@ closed. Grade of the negative result: the V1-V3 estimates are
 PROVED-MODULO-[4.3.4's Korolev transcription caveats, no new]; the
 V4 floor argument is unconditional arithmetic. Next (only) move: the
 h-inside dispersion E_{p,q}|D_Lambda|^2 through §3.2-3.4's ladder.
+
+### 4.7 The full-square ladder
+
+The h-inside dispersion forced by 4.4.2/4.5/4.6 (all other aggregation
+orders priced and closed). MICRO-STAGED: this session executes W1-W2
+(bookkeeping: object, variance target, square-opening, and the exact
+completion-CRT-flip identity chain for the generic off-diagonal); W3+
+(the (p,q)-phase average, near-diagonal top blocks, assembly) are LATER
+stages. All numerics at the top cell P = Q = x^{0.425}, A = x^{0.575},
+R = x^{0.15}, eta = 0.05, L = log x; standing identities A = QR,
+H-degrees < Q < q throughout. E_{p,q} = (pi(P)pi(Q))^{-1} Sum_{q ~ Q
+prime} Sum_{p ~ P prime, p != q} (probability average, mass 1-o(1);
+4.6's convention).
+
+#### 4.7.1 (W1) Object, variance target, and the three-way split
+
+THE OBJECT. Per dyadic block (Lambda, 2Lambda], Lambda = 2^j Q,
+j = 0..J-1, J = ceil(log_2 R) <= 0.22 L (A/Q = R exactly; top block
+clipped at A), per (p,q):
+
+    D_Lambda(p,q) := Sum_{ell ~ Lambda, ell prime, ell != q}
+                     ( 1[nu_ell <= R] - (R+1)/ell ),
+    nu_ell := (-a_0 qbar_ell) mod ell,   a_0 = a_0(p,q) in [1,q).
+
+Exact decomposition (4.1 + 4.4.1 conventions; the ell = q term of
+N_hard bounded by 1):
+
+    N_hard(p,q) = M + Sum_Lambda D_Lambda(p,q) + O(1),
+    M := Sum_{ell in (Q,A]} (R+1)/ell = 0.3023 (R+1) (1+o(1))
+       = 6.05 eta (R+1)   (4.1's Mertens value, top cell).
+
+SELBERG LAYER (forced BEFORE squaring — D1.1's inflation law makes the
+sharp window unusable in any completed square; D1.2's repair, here at
+the PER-ELL degree the staging prescribes):
+
+    H_ell := ceil( ell/(R+1) ),     so H_ell + 1 >= ell/(R+1),
+    S^-_ell <= 1_{[0,R] mod ell} <= S^+_ell   (Vaaler, window R+1),
+    S^pm_ell(nu/ell) = Sum_{|h| <= H_ell} chat^pm_h(ell) e(h nu/ell),
+    chat^pm_0(ell) = (R+1)/ell pm 2 theta/(H_ell+1),  theta in [0,1],
+    |chat^pm_h(ell)| <= 1/(H_ell+1) + min((R+1)/ell, 1/(pi|h|)),
+    Sum_{0<|h|<=H_ell} |chat^pm_h(ell)| <= 2 + 2/pi + (2/pi)(1 +
+        log(pi(1+(R+1)/ell))) <= 4.1 =: m_1   (computed, absolute).
+
+Per-ell degree halves D1's drift: 2/(H_ell+1) <= 2(R+1)/ell, and
+H_ell <= A/(R+1) + 1 <= Q < q on EVERY block: q | h remains IMPOSSIBLE
+for the single-modulus harmonics (D1's bonus, per-ell form). Pointwise,
+with the centered oscillatory part
+
+    y^pm_ell := S^pm_ell(nu_ell/ell) - chat^pm_0(ell)
+              = Sum_{0<|h|<=H_ell} chat^pm_h(ell) e(h nu_ell/ell)
+    (REAL: chat_{-h} = conj(chat_h), S^pm real),
+
+one has the two-run sandwich at the linear level (D4 bullet 1):
+
+    D^-_Lambda - delta^-_Lambda <= D_Lambda <= D^+_Lambda + delta^+_Lambda,
+    D^pm_Lambda := Sum_{ell ~ Lambda, != q} y^pm_ell,
+    0 <= delta^pm_Lambda := Sum_{ell ~ Lambda} |chat^pm_0 - (R+1)/ell|
+       <= 2(R+1) Sum_{ell ~ Lambda} 1/ell <= 3.4(R+1)/L,
+    Sum_Lambda delta^pm_Lambda <= 2(R+1)(0.3023) = 12.1 eta (R+1).
+
+THE VARIANCE TARGET (from §3.4's (b3)-absorption requirement
+E_{p,q} N_hard <= C eta R, C absolute, after which Markov/Chebyshev
+prices the bad set into delta_0 and the loss into the sandwich's
+O(eta) — §3.4(2) verbatim). It SUFFICES that, for every dyadic block
+Lambda and the majorant sign (minorant only if a matching lower bound
+is ever needed — D4's two-run convention):
+
+    E_{p,q} |D^+_Lambda|^2 <= 20 delta_0 (eta R)^2 L^{-2}.      (W1.1)
+
+Aggregation chain, exact. (i) Chebyshev/delta_0 layer: by Cauchy-
+Schwarz over the J <= 0.22 L blocks and Chebyshev,
+
+    P_{p,q}( Sum_Lambda D^+_Lambda > eta R )
+      <= (eta R)^{-2} J Sum_Lambda E|D^+_Lambda|^2
+      <= (0.22 L)^2 (eta R)^{-2} max_Lambda E|D^+_Lambda|^2
+      <= (0.22)^2 (20) delta_0 = 0.97 delta_0 <= delta_0,
+
+so OUTSIDE a (p,q)-set of probability <= delta_0:
+N_hard <= M + 12.1 eta(R+1) + eta R + O(1) <= 20 eta R, i.e. the
+absorption constant C = 20 (vs D1's C = 32: per-ell degree). On the
+bad set the trivial §3.4-bound N_hard <= 2(R+1) applies: loss
+<= 2 delta_0 (R+1) into the delta_0 budget. (ii) First-moment form
+(the literal §3.4(2) inequality) follows from the SAME (W1.1):
+E N_hard <= M + 12.1 eta(R+1) + Sum_Lambda (E|D^+_Lambda|^2)^{1/2}
++ O(1) <= 18.2 eta(R+1) + 0.22 L (20 delta_0)^{1/2} eta R / L + O(1)
+<= 20 eta R (delta_0 <= 1). Both layers from one inequality; with
+delta_0 polylog (program budget, §1 notation), (W1.1)'s right side is
+0.05 delta_0 R^2 L^{-2} = x^{0.3 - o(1)}-grade — D5's feasibility
+floor (diagonal R L-grade, below) leaves room R/L^3-grade =
+x^{0.15-o(1)}: the target is NOT floor-blocked, unlike 4.5/4.6.
+
+THE SQUARE, OPENED (exact; y's real, split PER q since the
+near/generic dichotomy depends on q — V1's precedent):
+
+    E_{p,q}|D^pm_Lambda|^2 = Diag_Lambda + Near_Lambda + Gen_Lambda,
+    Diag_Lambda := E_{p,q} Sum_{ell ~ Lambda, != q} (y^pm_ell)^2,
+    Near_Lambda := E_{p,q} Sum_{ell1 != ell2 ~ Lambda, != q,
+                   q | ell1 - ell2} y^pm_{ell1} y^pm_{ell2},
+    Gen_Lambda  := E_{p,q} Sum_{ell1 != ell2 ~ Lambda, != q,
+                   q NOT| ell1 - ell2} y^pm_{ell1} y^pm_{ell2}.
+
+Throughout: N_Lambda := #{ell ~ Lambda prime} <= 2.4 Lambda/L (V2's
+constant), and per pair ell1 != ell2 AT MOST ONE prime q ~ Q divides
+ell1 - ell2 (0 < |ell1 - ell2| < Lambda <= A = x^{0.575} < Q^2 =
+x^{0.85}).
+
+DIAGONAL (computed explicitly, from the proved first-moment mass =
+the §3.1-species unconditional window count). Pointwise envelope:
+|S^pm - 1_I| <= V_ell := S^+_ell - S^-_ell (S^- <= S^pm, 1_I <= S^+),
+so |y^pm_ell| <= 1[nu_ell <= R] + V_ell(nu_ell/ell) + 3(R+1)/ell
+(|chat^pm_0| <= 3(R+1)/ell). The two proved inputs:
+(a) WINDOW COUNTS at enlarged windows (one-large-prime, the proved
+first-moment mass): nu_ell <= s or nu_ell >= ell - s iff ell divides
+a_0 + qt (0 <= t <= s) or a_0 - qt' (1 <= t' <= s), nonzero values
+<= 2Q(s+1); for s <= Lambda/2-grade these are < 2 Lambda^2, each with
+<= 2 prime factors > Lambda, and the t-parametrization is injective:
+  #{ell ~ Lambda : nu_ell within s of {0, R} mod ell} <= 4(s + R + 1).
+In particular N_win,Lambda := Sum_ell 1[nu_ell <= R] <= R+1 pointwise
+(values < Lambda^2: ONE large prime factor; 4.5/4.6 never used this).
+(b) VAALER DEFECT DECAY: V_ell >= 0, degree H_ell, integral
+2/(H_ell+1), and pointwise V_ell(x) <= c_V min(1, ((H_ell+1)
+||x - edge||)^{-2}) with c_V absolute (<= 3; the explicit constant is
+the same deferred-calculus class as D1's flagged check — not
+load-bearing for structure). Banding nu_ell by distance
+j/(H_ell+1) <= (j+1)(R+1)/ell from the window edges and applying (a)
+per band (count <= 4(j+2)(R+1) at band j):
+
+    Sum_ell V_ell(nu_ell/ell)^2 <= c_V^2 [ 20(R+1)
+        + Sum_{j>=2} 4(j+2)(R+1)/j^4 ] <= 23 c_V^2 (R+1),   (W1.2)
+    Sum_ell V_ell(nu_ell/ell)   <= c_V (R+1)(28 + 1.7 log H_ell)
+        <= 2 c_V (R+1) L   (j^{-2} x band-count ~ 1/j: log H),(W1.3)
+
+so, with (a+b+c)^2 <= 3(a^2+b^2+c^2) and Sum_ell 1/ell^2 <= 1.7/(Lambda L):
+
+    Diag_Lambda <= 3[ (R+1) + 23 c_V^2 (R+1) + 9(R+1)^2 (1.7)/(Lambda L) ]
+                <= c_7 (R+1),   c_7 := 3(1 + 23 c_V^2)(1 + o(1)) <= 630,
+
+POINTWISE in (p,q), uniformly in the block. Against (W1.1):
+absorbed iff R >= c_7 L^2/(20 delta_0 eta^2) — free at R = x^{0.15}
+with x^{0.15-o(1)} of room. This is D5's "feasibility floor" made
+explicit and PROVED (the L^3-grade of D5's R >= eta^{-2} L^3 is the
+L^2 here x the L of the block count). DIAGONAL CLOSED. [Sharp-window
+variant, for the record: X_ell^2 <= 1_I + (R+1)^2/ell^2 gives
+Diag_sharp <= (R+1)(1 + o(1)) — the j = 0 band alone.]
+
+NEAR-DIAGONAL (pairs counted, trivial-bounded — as staged). Pair
+count per q: for fixed ell1, ell2 = ell1 + kq with 0 < |k| <=
+Lambda/q, so #pairs <= 2 N_Lambda Lambda/q <= 2 N_Lambda Lambda/Q
+<= 4.8 Lambda^2/(QL). Two trivial bounds, recorded honestly:
+(i) sup-trivial: sup|y^pm| <= 1 + c_V + o(1) <= 4.1 =: c_y gives
+  Near_Lambda <= c_y^2 (4.8) Lambda^2/(QL) <= 82 Lambda^2/(QL),
+  x-exponent 2 lam - 0.425 in [0.425, 0.725] vs target 0.3:
+  FAILS on EVERY block by x^{0.125}..x^{0.425} — the sup-trivial
+  bound is dead, as in V2 it survived only against the Lambda^2
+  normalization, which (W1.1) does not grant.
+(ii) Window-refined trivial: Sum_{near} |y1 y2| <=
+  (Sum_{ell1} |y_{ell1}|) sup_{ell1} min( c_y 2Lambda/q,
+  Sum_{ell2} |y_{ell2}| ), and by (a) + (W1.3): Sum_ell |y_ell| <=
+  (R+1) + 2 c_V (R+1) L + o(R) <= 7(R+1)L, hence
+
+    Near_Lambda <= 7(R+1)L min( 8.2 Lambda/Q, 7(R+1)L ).      (W1.4)
+
+  Against (W1.1) (= 0.05 delta_0 R^2 L^{-2}): (W1.4) closes iff
+  Lambda <= delta_0 Q R/(1150 L^3); since Lambda/Q runs up to R,
+  ALL BUT THE TOP ~ log_2(1150 L^3/delta_0) = O(log L) blocks close,
+  and those top blocks are POLYLOG-short (factor <= 1150 L^3/delta_0)
+  — the §3.3 (b2) top-sliver signature reproduced exactly ("top
+  ~ K log_2 L dyadic blocks ... polylog-short of target, needs its
+  own polylog-only treatment"). NEAR-DIAGONAL: closed at trivial
+  grade on all but the top O(log L) blocks; the top blocks are a
+  W3+ item (polylog-only demand, no power deficit — contrast every
+  prior dead route). No leakage: the d = 0 (mod q) pairs here are
+  EXACTLY the ones excluded from Gen, per q.
+
+GENERIC OFF-DIAGONAL: Gen_Lambda carries the full budget
+(W1.1) - c_7(R+1) - (W1.4) = (1 - o(1)) 20 delta_0 (eta R)^2 L^{-2}.
+Passed to W2. W1 DONE.
+
+#### 4.7.2 (W2) The generic off-diagonal: completion-CRT-flip chain
+
+Fix a generic pair (ell1, ell2): ell1 != ell2 ~ Lambda prime, both
+!= q, q NOT| ell1 - ell2. Every identity below is EXACT (numerically
+verified this session: 2000 random tuples p, q ~ 2000..4000,
+ell_i ~ 4000..9000 prime, 0 < |h_i| <= 9; max deviation of the full
+(i)-(iii) chain < 1.1e-10; /tmp, system python).
+
+(i) PER-ELL SELBERG-TRUNCATED COMPLETION (D1's repair, per-ell degree
+H_ell = ceil(ell/(R+1)), coefficient masses O(1) — the W1 layer).
+Since the drift chat^pm_0 - (R+1)/ell was already pulled out at the
+LINEAR level (W1's 12.1 eta(R+1) ledger), the factors are the pure
+oscillatory y^pm_ell, and the product expands with NO (0,0) term and
+NO h_i = 0 lines:
+
+    y^pm_{ell1} y^pm_{ell2} = Sum_{0<|h1|<=H_{ell1}} Sum_{0<|h2|<=H_{ell2}}
+        c_{h1,h2} e( h1 nu_{ell1}/ell1 + h2 nu_{ell2}/ell2 ),
+    c_{h1,h2} := chat^pm_{h1}(ell1) chat^pm_{h2}(ell2),
+    |c_{h1,h2}| <= [1/(H_{ell1}+1) + min((R+1)/ell1, 1/(pi|h1|))] x
+                   [1/(H_{ell2}+1) + min((R+1)/ell2, 1/(pi|h2|))],
+    Sum_{h1,h2} |c_{h1,h2}| <= m_1^2 <= 17    (per pair, absolute).
+
+[The prompt-level sum "(h1,h2) != (0,0)" is realized with
+c_{h1,h2} = 0 whenever h1 h2 = 0: keeping the drift inside the square
+instead would cost a (0,0) term of mass 4(R+1)^2 Sum 1/ell1 ell2 ~
+11.6 (R+1)^2/L^2 — over (W1.1) by 230/delta_0 — and h2 = 0 lines of
+mass 46 Lambda R/L^2 = x^{0.725}/L^2-grade trivially: the linear-level
+drift removal is FORCED, recorded here once.]
+
+(ii) CRT-COMBINATION to the modulus m := ell1 ell2. Using
+nu_ell = (-a_0 qbar_ell) mod ell and the exact integer identity
+h1/ell1 + h2/ell2 = (h1 ell2 + h2 ell1)/m:
+
+    COMBINED FREQUENCY   h* := h1 ell2 + h2 ell1   (integer),
+    h1 nu_{ell1}/ell1 + h2 nu_{ell2}/ell2
+        == -a_0 ( h1 qbar_{ell1}/ell1 + h2 qbar_{ell2}/ell2 )
+        == -a_0 h* qbar_m / m              (mod 1),
+
+since h1 qbar_{ell1} ell2 + h2 qbar_{ell2} ell1 == h* qbar_m (mod m)
+(check mod ell1: both == h1 ell2 qbar_{ell1}, as qbar_m == qbar_{ell1}
+(mod ell1) and the h2-term dies; mod ell2 symmetric). Combined
+coefficient: c_{h1,h2} as in (i). Frequency facts, all exact:
+  - h* == h1 ell2 (mod ell1), h* == h2 ell1 (mod ell2); since
+    0 < |h_i| <= H_{ell_i} < ell_i and (ell1, ell2) = 1:
+    (h*, m) = 1 and h* != 0 — NO degenerate (h1,h2) at all.
+  - Integer size: 0 < |h*| <= H_{ell1} ell2 + H_{ell2} ell1
+    <= 2m/(R+1) + ell1 + ell2 <= 3m/R.
+  - h* CAN exceed q, and q | h* is possible (contrast 4.3.1/V3 where
+    the numerator was < Q): per tuple (ell1,ell2,h1,h2), |h*| <=
+    3 x^{1.0} < Q^3 admits AT MOST TWO primes q ~ Q with q | h*
+    (those q-terms have constant phase) — counted, left inside the
+    phase average for W3+; this is the W-ladder's one NEW degenerate
+    sector, and it is q-MEASURE <= 2/pi(Q) per tuple.
+
+(iii) THE PROVED FLIP (§4.3.1's mechanism = §2.2's three-term
+reciprocity, valid verbatim for the coprime pair (q, m): q != ell1,
+ell2 prime; q qbar_m + m mbar_q == 1 (mod qm) gives qbar_m/m ==
+1/(qm) - mbar_q/q (mod 1)). Applied to n = -h* a_0:
+
+    e( -h* a_0 qbar_m / m )
+      = e( h* a_0 mbar_q / q ) e( -h* a_0/(q m) ),
+
+and since a_0 == pbar_q (mod q) and e(./q) sees only residues mod q,
+THE PHASE BECOMES
+
+    e( h* a_0 mbar_q / q ) = e( h* (p m)bar_q / q )
+                           = e( h* (p ell1 ell2)bar_q / q ),
+
+times the SMOOTH FACTOR sigma := e( -h* a_0/(q m) ). Smooth-factor
+bounds (a_0 <= q, |h*| <= 3m/R): pointwise |sigma - 1| <=
+2 pi |h*| a_0/(qm) <= 2 pi |h*|/m <= 19/R; derivative in a_0:
+|d sigma/d a_0| = 2 pi |h*|/(qm) <= 19/(qR); total variation over
+a_0 in [1,q]: <= 2 pi |h*|/m <= 19/R. Partial-summation cost
+(MULTIPLICATIVE — the additive route sigma -> 1 + O(19/R) per term
+costs 19/R x 17 N_Lambda^2 ~ x^{1.0}/L^2 trivially and is dead):
+writing sigma(a_0) = sigma(q) - Int_1^q 1[a_0 <= T] sigma'(T) dT
+inside E_{p,q},
+
+    |E_{p,q}[ 1' sigma e(h* (pm)bar_q/q) ]|
+      <= (1 + 19/R) sup_{1<=T<=q}
+         |E_{p,q}[ 1[a_0 <= T] 1' e( h* (p ell1 ell2)bar_q / q ) ]|,
+
+i.e. cost factor 1 + 19/R = 1 + o(1) against the a_0-truncated phase
+average. (1' := 1[q NOT| ell1 - ell2, q != ell1, ell2], which RIDES
+INSIDE the average: discarding it would cost <= 17 N_Lambda^2/pi(Q)
+= 42 Lambda^2 x^{-0.425}/L <= x^{0.725}/L-grade, over budget — kept.)
+
+CLEAN STATEMENT (end of W2). For each block Lambda and each sign:
+
+  Gen_Lambda = Sum_{ell1 != ell2 ~ Lambda, prime}
+               Sum_{0<|h1|<=H_{ell1}} Sum_{0<|h2|<=H_{ell2}}
+        chat^pm_{h1}(ell1) chat^pm_{h2}(ell2) x
+        E_{p,q}[ 1[q NOT| ell1-ell2, q != ell_i] e(-h* a_0/(qm))
+                 e( h* (p ell1 ell2)bar_q / q ) ]            (W2.1)
+
+with h* = h1 ell2 + h2 ell1, (h*, ell1 ell2) = 1, 0 < |h*| <= 3m/R —
+an EXACT identity, every constant tracked: coefficient masses <= 17
+per pair (absolute), <= N_Lambda^2 <= 5.76 Lambda^2/L^2 pairs, smooth
+factor removable at multiplicative cost (1 + 19/R) against the
+a_0-truncated average, q | h* on <= 2 primes q per tuple, and NO
+other degenerate or error terms — the additive errors of this ladder
+all live in W1 (drift 12.1 eta(R+1) ledger; diagonal <= c_7(R+1);
+near-diagonal (W1.4)).
+
+Forward demand, priced (one line, for W3+): if Phi(ell1,ell2,h1,h2)
+:= sup_T |E_{p,q}[1[a_0 <= T] 1' e(h*(p ell1 ell2)bar_q/q)]|, then
+(W1.1) needs the tuple-AVERAGE of Phi <= 20 delta_0 (eta R)^2 L^{-2}
+/ (17 x 5.76 Lambda^2/L^2) = 0.20 delta_0 (eta R/Lambda)^2 — the L's
+cancel: x^{-0.55} (bottom block) to x^{-0.85} (top). Per-tuple
+square-root grade (x^{-0.425}) misses by x^{2 lam - u' - 2r} =
+x^{0.125}..x^{0.425} — EXACTLY §3.2's (b1) GOD-MODE ladder line
+reproduced, as it must be; but in this honest (unfrozen) ordering the
+per-tuple FLOOR is (pi(P)pi(Q))^{-1} = x^{-0.85} (full (p,q)-average
+alive, conductor q only — the flip), so the demand is no longer
+floor-blocked: it is the gap between citable and the 4-fold
+(ell1,ell2,h1,h2)-aggregate that W3+ must close. STOP (W3-W6 later).
+
+STATUS (Sec. 4.7, micro-stage 1): W1-W2-COMPLETE. W1: variance target
+(W1.1) derived from §3.4's (b3)-absorption with C = 20 and the
+Chebyshev/delta_0 layer exact; diagonal CLOSED pointwise at c_7(R+1)
+(c_V-constant flagged, D1's deferred-calculus class); near-diagonal
+closed on all but the top O(log L) blocks, those polylog-short (W3+
+item, (b2)-species). W2: completion-CRT-flip identity chain (W2.1)
+EXACT (machine-verified), masses and degenerate sectors tracked, no
+additive leakage. Open for W3+: the a_0-truncated (p,q)-phase average
+Phi, the q | h* sector, the near-diagonal top blocks.
