@@ -1891,3 +1891,289 @@ item, (b2)-species). W2: completion-CRT-flip identity chain (W2.1)
 EXACT (machine-verified), masses and degenerate sectors tracked, no
 additive leakage. Open for W3+: the a_0-truncated (p,q)-phase average
 Phi, the q | h* sector, the near-diagonal top blocks.
+
+#### 4.7.3 (W3) The per-tuple (p,q)-average, priced against the forward demand
+
+Question (this micro-stage, only): can the per-tuple average
+Phi(ell1,ell2,h1,h2) := sup_T |E_{p,q}[ 1[a_0 <= T] 1'
+e( h* (p ell1 ell2)bar_q / q ) ]| (W2's forward object) be beaten to
+the demand 0.20 delta_0 (eta R/Lambda)^2 by per-tuple machinery —
+routes (a) q-sum at fixed p, (b) manufactured bilinear DFI,
+(c) Korolev in p per (q, tuple)? All numerics at the top cell
+P = Q = x^{0.425}, A = x^{0.575}, R = x^{0.15}, eta = 0.05 (and at the
+eta = 0.02 cell P = Q = x^{0.47}, A = x^{0.53}, R = x^{0.06} where
+tabulated); lam := log_x Lambda in [0.425, 0.575].
+
+(W3.0) THE DEMAND EXPONENT, computed exactly. eta is a constant and
+delta_0 polylog, so 0.20 delta_0 (eta R/Lambda)^2 = x^{2(0.15-lam)-o(1)}
+= x^{-0.85 + 2(0.575-lam) - o(1)}:
+
+  lam:     0.425   0.45    0.4737  0.50    0.55    0.575
+  demand:  -0.55   -0.60   -0.6474 -0.70   -0.80   -0.85
+
+(eta = 0.02: 2(0.06 - lam) = -0.82 at lam = 0.47 to -0.94 at 0.53.)
+Per-tuple reference scales: trivial = 1; FULL-(p,q) SQUARE-ROOT grade
+(both the proof ceiling of any absolute-value estimate and the
+random-model TRUTH of |E_{p,q}|, ~ (#terms)^{-1/2}) =
+(pi(P)pi(Q))^{-1/2} = x^{-0.425-o(1)} (x^{-0.47} at eta = 0.02);
+absolute floor = (pi(P)pi(Q))^{-1} = x^{-0.85} (x^{-0.94}). The demand
+sits strictly BETWEEN square-root grade and the floor on EVERY block:
+no per-tuple bound short of better-than-square-root cancellation can
+meet it pointwise. So the routes are priced exactly, and then (W3d)
+audits whether any aggregation reading relaxes the per-tuple level —
+the prompt's "right aggregation level" check, derived, not guessed.
+
+(W3a) ROUTE (a): the q-sum at fixed (p, tuple) — RANGE-DEAD. At fixed
+p and tuple the q-sum is Sum_{q ~ Q prime} e( h* n*bar_q / q ),
+n* := p ell1 ell2 ~ P Lambda^2 = x^{0.425 + 2 lam} in [x^{1.275},
+x^{1.575}]. The modulus is the summation variable; flip it out by
+reciprocity ((q, n*) = 1: p != q in E, q != ell_i in 1'):
+e(h* n*bar_q/q) = e(-h* qbar_{n*}/n*) e(h*/(q n*)), smooth factor
+1 + O(3/(Rqp)) — negligible pointwise and in variation. Result: an
+incomplete Kloosterman sum over PRIMES q ~ Q to the FIXED composite
+modulus n*, fixed numerator h*: length N = Q = x^{0.425} vs modulus
+n* >= x^{1.275}, i.e. N ~ (modulus)^{1/3} or shorter.
+- Every prime-variable Kloosterman citation in §1 needs N >=
+  (modulus)^{1/2+eps} = x^{0.6375+}: out of range by x^{0.2125+} on
+  every block (Korolev 2018 Thm 3 window N >= modulus^{5/8} =
+  x^{0.797+}: worse; Thm 1 and Bourgain 2005 are prime-modulus only —
+  n* has three prime factors — AND out of range; Korolev-Changa 2020:
+  same N >= q^{1/2+eps} failure). NO usable fixed-numerator
+  single-variable form exists in §4.3.2 either: the DFI 1997
+  statements pinned there are BILINEAR-only; the degenerate cast
+  (alpha = point mass at m = n*, beta = 1_{q ~ Q prime}) gives
+  ||alpha|| ||beta|| (M+N)^{1/2} >= pi(Q)^{1/2} (P Lambda^2)^{1/2} =
+  x^{0.85..1.0}, ABOVE the trivial pi(Q) = x^{0.425} by x^{0.425+}:
+  the l^2-normalization is vacuous on a point mass.
+- Even GOD-MODE square-root cancellation in the q-sum alone (the
+  a_0-truncation riding inside, 1-bounded) gives per-tuple
+  pi(Q)^{-1/2} = x^{-0.2125-o(1)} after the trivial p-average: misses
+  the demand by x^{0.3375} (Lambda = Q) to x^{0.6375} (Lambda = A).
+ROUTE (a) DEAD — no citation reaches the range, and the target is out
+of reach even granting perfect cancellation in q.
+
+(W3b) ROUTE (b): the manufactured bilinear — STRUCTURAL BLOCKER,
+plus the thin-support arithmetic REDONE for this support.
+
+BLOCKER FIRST (structural, decisive): DFI's B(M,N) requires ONE fixed
+numerator a; here the numerator h* = h1 ell2 + h2 ell1 VARIES with
+the m-variable's own factorization (m := p ell1 ell2). This is the
+wp9-frontier §2c pair-dependence blocker, PRESENT — exactly the
+blocker §4.3.3 noted was absent there ("the numerator a = |h| is
+fixed"). DFI is inapplicable VERBATIM; everything below GRANTS the
+false premise of a fixed a, to locate the second failure honestly.
+
+THE SUPPORT, recomputed (the L^3 configuration): m = p ell1 ell2,
+p ~ P, ell_i ~ Lambda prime: dyadic M = P Lambda^2-grade, m in
+(P Lambda^2, 8 P Lambda^2] (O(1) dyadic blocks); multiplicity per m
+<= 3! = 6, so #supp >= pi(P) N_Lambda^2/6 ~ P Lambda^2 / L^3-grade.
+Support DENSITY #supp/M ~ L^{-3}: POLYLOG-thin, NOT power-thin — the
+§4.3.3 sparsity obstruction (there: ell FIXED, support density
+x^{-lam}, deficit x^{0.21..0.29} below the (MN)^{1/2} baseline) is
+ABSENT here because ell1, ell2 now VARY inside m. New finding: the
+l^2-normalization costs only x^{o(1)} for THIS support. Inequality
+chain (alpha_m := Sum_{tuples with p ell1 ell2 = m} c_{h1,h2},
+per-m mass <= 6 m_1^2 <= 102, ||alpha||_2^2 <= 102^2 #supp-grade
+= x^{0.425 + 2 lam - o(1)}; ||beta||_2^2 = pi(Q)):
+
+  |Gen_Lambda| <= (pi(P)pi(Q))^{-1} |B(M,N)|,
+  demand |B| <= pi(P)pi(Q) 20 delta_0 (eta R)^2 L^{-2} = x^{1.15-o(1)}
+  ==>  D <= x^{1.15-o(1)} / (||alpha|| ||beta||)
+         = x^{1.15 - (0.425 + lam) - o(1)} = x^{0.725 - lam - o(1)},
+
+i.e. demanded quality D = x^{0.30} at Lambda = Q down to x^{0.15} at
+Lambda = A — as a power of MN: (MN)^{0.176} down to (MN)^{0.075}.
+Evaluation, eta = 0.05 (x-exponents of D; M = x^{1.275}/x^{1.575},
+N = x^{0.425}, MN = x^{1.7}/x^{2.0}, a <= 3M/R << MN so the
+(1 + a/MN)-factors are 1):
+
+  | bound (D)                          | Lambda=Q | Lambda=A | vs demand 0.30/0.15 |
+  |---|---|---|---|
+  | trivial (1.3): (MN)^{1/2}          | 0.85     | 1.0      | FAIL +0.55/+0.85 |
+  | Thm 1: (M+N)^{1/2} + N ~ M^{1/2}   | 0.6375   | 0.7875   | FAIL +0.3375/+0.6375 |
+  | Thm 2: (MN)^{3/8}(M+N)^{11/48}     | 0.9297   | 1.1109   | FAIL +0.63/+0.96 (worse than trivial) |
+  | Thm 3: (MN)^{14/29}(M+N)^{1/58}    | 0.8427   | 0.9927   | FAIL +0.54/+0.84 |
+  | DRZ26 (§4.3.3 row)                 | 0.6729   | 0.7729   | FAIL +0.37/+0.62 |
+
+eta = 0.02 (M = x^{1.41}/x^{1.53}, N = x^{0.47}, demand on D:
+x^{1.06 - (0.47+lam)} = x^{0.12} at Lambda = Q, x^{0.06} at Lambda = A;
+best, Thm 1 ~ M^{1/2} = x^{0.705}/x^{0.765}): FAIL +0.585/+0.705.
+
+READING: with the ells unfrozen the route no longer dies on sparsity
+— it dies on RANGE IMBALANCE: N = Q ~ M^{1/3.0..3.7}, while DFI Thm 2
+is nontrivial only for N > M^{5/6+eps}, and every DFI/DRZ D carries
+(M+N)^{1/2} >= M^{1/2} = x^{0.6375+}, already x^{0.3375} over the
+demanded quality at the BEST block; the demanded (MN)^{0.075..0.176}
+is far beyond the technology class (best known savings over
+(MN)^{1/2} are (MN)^{-1/48} ~ x^{-0.027}-grade, §4.3.3). ROUTE (b)
+OBSTRUCTED-[numerator pair-dependence (structural, wp9-frontier §2c);
+plus quality gap x^{0.3375}..x^{0.6375} even granting fixed numerator
+(x^{0.585}..x^{0.705} at eta = 0.02)].
+
+(W3c) ROUTE (c): Korolev in p per (q, tuple) — THE PROVED PER-TUPLE
+BOUND, with the a_0-truncation handled. This is the main event. Fix a
+generic tuple t = (ell1,ell2,h1,h2) and q ~ Q with 1' = 1 and
+q NOT| h*. Since a_0 == pbar_q (mod q) (W2(iii)), the W2 phase is
+LINEAR in a_0:
+
+    e( h* (p ell1 ell2)bar_q / q ) = e( c a_0 / q ),
+    c := h* mbar_q mod q,  (c, q) = 1   (q NOT| h*, q != ell_i),
+
+so as p varies the p-sum IS a Kloosterman sum over primes, modulus q,
+numerator riding on pbar_q — Korolev applies per (q, ell-pair, h*).
+The truncation 1[a_0 <= T] is a function of a_0 mod q: finite-Fourier
+completion is EXACT (machine-verified this session, 300 random
+(q,T,c,a_0), max deviation < 8e-13, /tmp-grade check, system python):
+
+    1[1 <= a_0 <= T] e(c a_0/q) = Sum_{t mod q} g_t e((c+t) a_0/q),
+    g_t = q^{-1} Sum_{a <= T} e(-ta/q),  |g_t| <= min(1, 1/(2 q ||t/q||))
+    (verified: excess 0.0),  Sum_t |g_t| <= 2 + log q.
+
+Hence per (q, tuple), uniformly in T (so sup_T passes through):
+
+    |Sum_{p ~ P, p != q} 1[a_0 <= T] e(c a_0/q)|
+      <= |g_{-c}| N_P + (2 + log q) max_{(u,q)=1} |K_q(u)|,    (W3.1)
+    K_q(u) := Sum_{p ~ P, p != q} e( u pbar_q / q ),
+
+and (V3.1) applies VERBATIM to K_q(u) (same species: modulus q ~ Q,
+length P, numerator-uniform; Korolev 2018 Thm 3 middle regime, both
+eta, eta_0 = 37/640; fallback stack 4.3.4 — NO new citation weight):
+max_u |K_q(u)| <= N_P x^{-0.02457 + o(1)} (x^{-0.02717} at eta = 0.02).
+
+DEGENERATE-FREQUENCY SECTOR (new, elementary, divisor-counting):
+|g_{-c}| <= 1/(2j) on the q-set {min(c, q-c) = j}, and c == +-j
+(mod q) iff q | h* -+ j m — a NONZERO integer (0 < |h*| <= 3m/R < m
+<= jm) of size <= (j+1)m <= 8 x^{1.575} < Q^4, so <= 3 prime divisors
+q ~ Q per sign: <= 6 moduli per j. Summing over q ~ Q:
+
+    Sum_{q generic} |g_{-c(q)}| <= Sum_{j >= 1} 6/(2j) <= 3(1 + log Q).  (W3.2)
+
+q | h* SECTOR (W2's one new degenerate sector, now PRICED inside
+Phi): <= 2 moduli q ~ Q per tuple (0 < |h*| <= 12 x^{1.0} < Q^3),
+p-sum <= N_P each: contribution <= 2/N_Q. Assembling E_{p,q}:
+
+    Phi(t) <= (N_P N_Q)^{-1} [ 3(1 + log Q) N_P
+              + N_Q (2 + log 2Q) N_P x^{-0.02457+o(1)} + 2 N_P ]
+           <= x^{-0.425+o(1)} + x^{-0.02457+o(1)} + 2 x^{-0.425+o(1)}
+           <= x^{-0.02457 + o(1)}    (eta = 0.05;
+              x^{-0.02717 + o(1)} at eta = 0.02),               (W3.3)
+
+UNIFORMLY over generic tuples — PROVED-MODULO-[4.3.4's Korolev
+transcription caveats, none new]. This is the best per-tuple bound
+the proved toolkit yields. Against (W3.0)'s demand:
+
+  | per-tuple level            | available       | demand Lam=Q | demand Lam=A | deficit |
+  |---|---|---|---|---|
+  | citation (W3.3), eta=0.05  | -0.02457        | -0.55        | -0.85        | x^{0.5254}..x^{0.8254} |
+  | citation (W3.3), eta=0.02  | -0.02717        | -0.82        | -0.94        | x^{0.7928}..x^{0.9128} |
+  | god-mode sqrt, eta=0.05    | -0.425          | -0.55        | -0.85        | x^{0.125}..x^{0.425} |
+  | god-mode sqrt, eta=0.02    | -0.47           | -0.82        | -0.94        | x^{0.35}..x^{0.47} |
+
+ANSWER to the question as posed: NO — Korolev-in-p per tuple, though
+proved, uniform, and with every degenerate sector priced, misses the
+per-tuple-average demand by x^{0.5254+o(1)} (bottom block) widening
+to x^{0.8254+o(1)} (top); and NO per-tuple bound can close it, since
+the demand sits x^{0.125}..x^{0.425} BELOW full-(p,q) square-root
+grade, which is simultaneously the proof ceiling AND the random-model
+truth of per-tuple |E_{p,q}|. Route (c): proved, reusable ((W3.1)-
+(W3.3)), insufficient. Whether this kills W3 depends on the
+aggregation level — audited next.
+
+(W3d) THE AGGREGATION AUDIT — the demand IS per-tuple for every
+absolute-value chain; the deficit is created at the |.|-step, not by
+the citation. Derived, both chains, from (W2.1):
+
+(i) l^1 x sup (W2's line, re-derived): |Gen_Lambda| <= (1 + 19/R)
+Sum_{pairs} Sum_{h1,h2} |c| Phi <= 17 N_Lambda^2 sup_t Phi, demand on
+sup_t Phi = 0.20 delta_0 (eta R/Lambda)^2. (ii) Parseval + CS on
+(h1,h2) per pair: squaring the D1.2 envelope (crossover |h| =
+ell/(pi(R+1)), H_ell + 1 >= ell/(R+1)):
+
+    Sum_{0<|h|<=H_ell} |chat_h(ell)|^2 <= 4(R+1)/ell + 8(R+1)/(pi ell)
+        <= 7(R+1)/Lambda,                                      (W3.4)
+
+the Bernoulli-variance mass — Sum_{h1,h2} |c|^2 <= 49 ((R+1)/Lambda)^2
+per pair, EXACTLY the (R/Lambda)^2-grade that makes the variance
+target (W1.1) what it is. Then per pair, CS: Sum_{h1,h2} |c| |E| <=
+7((R+1)/Lambda) (4 H_{ell1} H_{ell2})^{1/2} sup|E| <= 29 sup_t Phi
+(H_ell <= 2Lambda/(R+1) + 1): |Gen_Lambda| <= 29 N_Lambda^2 sup_t Phi.
+SAME inequality as (i), worse constant: CS over the harmonics cannot
+beat l^1 x sup when the chain ends in a per-tuple sup (or per-tuple
+average — (W3.3) is tuple-uniform, so average = sup here). The
+per-tuple demand (W3.0) is therefore ROBUST across aggregation
+arrangements: the comparison in (W3c) was done at the right level.
+
+WHERE THE PARSEVAL MASS ACTUALLY PAYS: only while the tuple-sum stays
+SIGNED. Total mass (Sum_t |c_t|^2)^{1/2} <= 7 N_Lambda (R+1)/Lambda
+<= 16.8 (R+1)/L, so the random model (per-tuple E_t independent, rms
+(N_P N_Q)^{-1/2} = x^{-0.425}) gives
+
+    Gen_rms ~ (Sum_t |c_t|^2)^{1/2} x^{-0.425}
+            <= 16.8 (R+1) x^{-0.425} / L = x^{-0.275 - o(1)},
+
+BELOW the absolute budget 20 delta_0 (eta R)^2 L^{-2} = x^{0.3-o(1)}
+by x^{0.575} (eta = 0.02: x^{-0.41} vs x^{0.12-o(1)}: room x^{0.53}).
+(W1.1) is sound — consistent with W1's "not floor-blocked". But ANY
+chain through Sum_t |c_t| |E_t| delivers, even at god-mode per-tuple
+truth,
+
+    Sum_t |c_t||E_t| ~ 17 N_Lambda^2 x^{-0.425}
+                     = x^{2 lam - 0.425 - o(1)}   vs demand x^{0.3}:
+    EXCESS x^{2 lam - 0.725} = x^{0.125} (Lambda = Q) .. x^{0.425}
+    (Lambda = A)   [eta = 0.02: x^{2 lam - 0.59} = x^{0.35}..x^{0.47}],
+
+reproducing W2's forward note EXACTLY — now established as the
+unimprovable arithmetic of the per-tuple-absolute level, not a
+citation artifact. The x^{0.575} of signed room and the x^{0.125+} of
+absolute-value excess are two sides of one fact: |Sum_t| -> Sum_t |.|
+throws away the tuple-sign structure worth x^{0.7}..x^{1.0} (ratio of
+17 N_Lambda^2 to (Sum_t|c_t|^2)^{1/2}, x-exponent 2lam - 0.15), of
+which the demand only needs x^{0.125}..x^{0.425} back.
+
+THE FORCED W4 OBJECT (stated precisely, with its missing estimate):
+bound, on q-average with tuple-signs kept,
+
+    T(q; p) := Sum_{generic (ell1,ell2)} Sum_{h1,h2} c_{h1,h2}
+               e( h* (p ell1 ell2)bar_q / q ),
+
+equivalently a bilinear form Sum_q Sum_m alpha_m beta_q
+e(a_m mbar_q/q) with m-DEPENDENT numerators a_m = h* (the
+wp9-frontier §2c pair-dependence class — no pinned citation admits
+it), imbalance N = Q ~ M^{1/3.0..1/3.7}, needing quality
+D <= x^{0.725 - lam} = (MN)^{0.176..0.075} ((W3b)'s demand line). The
+one visible lever: the numerators are STRUCTURED — h*/m = h1/ell1 +
+h2/ell2 EXACTLY, so the tuple phases are Farey-clustered with
+denominators ell_i ~ Lambda; sums-of-Kloosterman-sums / spectral
+(Kuznetsov-class) machinery is the natural habitat, NOT in the
+program's pinned toolkit. Alternatively W4 re-enters through
+E_{p,q}-second-moment structures that keep Sum_t inside (the §3.2
+(b1) double-completion ladder applied to the Selberg-truncated
+square), where (W3.4)'s mass works FOR the bound.
+
+(W3e) VERDICT: W3-SHORT-[at the per-tuple-absolute aggregation level
+(shown in (W3d) to be the level the demand lives at for EVERY chain
+ending in sup-or-average of per-tuple |E_{p,q}|): citation grade
+(Korolev-in-p, (W3.3), PROVED) deficit x^{0.5254+o(1)} at Lambda = Q
+widening to x^{0.8254+o(1)} at Lambda = A (eta = 0.05; x^{0.7928}..
+x^{0.9128} at eta = 0.02); absolute-value floor deficit
+x^{2 lam - 0.725} = x^{0.125}..x^{0.425} (x^{0.35}..x^{0.47}) even at
+god-mode per-tuple square-root grade — no missing per-tuple estimate
+exists to be named: square-root is the per-tuple truth and still
+loses]. Routes (a) and (b) independently dead ((W3a): range, no
+citation within x^{0.21} of applicability, god-mode short x^{0.3375+};
+(W3b): numerator pair-dependence structural + quality gap
+x^{0.3375}..x^{0.705}). The full square (W1.1) target itself remains
+SOUND: signed random-model room x^{0.575} (x^{0.53}) — the W-ladder
+continues iff W4 bounds the SIGNED tuple-aggregate T(q; p).
+
+STATUS (Sec. 4.7, micro-stage 2): W3 EXECUTED, negative, with proved
+deliverables: (W3.1)-(W3.3) the uniform per-tuple bound Phi <=
+x^{-0.02457+o(1)} (a_0-truncation completed exactly, machine-checked;
+degenerate-frequency sector priced by divisor-counting (W3.2); W2's
+q | h* sector PRICED at <= 2/N_Q inside Phi — one W2 forward item
+closed); (W3.4) the Parseval mass 7(R+1)/Lambda per ell. Citation
+weight: 4.3.4's stack only, none new. Per-tuple-absolute aggregation
+is now priced and closed alongside 4.4.2/4.5/4.6 — within the square,
+only SIGNED tuple-aggregation survives. Open for W4: T(q; p) (signed,
+Farey-structured numerators), the near-diagonal top O(log L) blocks
+(polylog-short, (b2)-species, untouched by W3).
