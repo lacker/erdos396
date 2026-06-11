@@ -11,6 +11,19 @@ Research program proving infinitude/log-density $c_1^2$ of $W_1=\{n: n(n-1)\mid\
 - Any derivation must be written to a file immediately; chat sessions are not durable storage.
 - `program-state.md` is a generated single-file bundle (`python3 make_bundle.py`), **retired as of June 10, 2026**: the claude.ai phone-side mirror is no longer used (the user drives this repo from anywhere via Claude Code remote control). Kept as an archival snapshot; regenerate only if a single-file export is needed. Never edit it directly.
 
+## Glossary (plain-language decoder for the accreted names)
+
+| Code | Meaning |
+|---|---|
+| Lemmas A/B/C/D | The four pieces of the k=1 proof, lettered in order; D = the hard core |
+| D\* → D† | The key estimate in D; † = the corrected version after erratum 1 |
+| C† | Lemma C's hard kernel, named by analogy with D† (same species of object) |
+| -lb | "lower bound" — the weakened form sufficing for Theorem 1′ |
+| Theorem 1′ / 1″ | Infinitude+positive density / exact density $c_1^2$, both for k=1 |
+| E1, E2, E3 | Equidistribution hypotheses, numbered by discovery. E1, E2: closed. E3-lb = **the rough-cofactor count** (needs a bespoke dispersion estimate) |
+| C†-lb | **The weighted coin-flip estimate** (untouched; difficulty unknown) |
+| wpN-\*.md | Work-package reports; DRAFT = unverified agent output, trusted only after a wp-verify pass |
+
 ## Document map
 
 | File | What it is |
