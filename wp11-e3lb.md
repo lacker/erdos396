@@ -2177,3 +2177,386 @@ is now priced and closed alongside 4.4.2/4.5/4.6 — within the square,
 only SIGNED tuple-aggregation survives. Open for W4: T(q; p) (signed,
 Farey-structured numerators), the near-diagonal top O(log L) blocks
 (polylog-short, (b2)-species, untouched by W3).
+
+#### 4.7.4 (W4) The signed tuple-aggregate: duality / large sieve over the Farey family
+
+Question (this micro-stage, only): does W3d's sole survivor — keeping
+the tuple-signs and bounding the aggregate by duality / a large-sieve
+inequality over the spaced Farey family of tuple-frequencies (the
+seed: spacing + fiber-counting + Cauchy-Schwarz, thm:dls's own proof
+pattern from manuscript 05) — close (W1.1)? All numerics at the top
+cell P = Q = x^{0.425}, A = x^{0.575}, R = x^{0.15}, eta = 0.05
+(eta = 0.02 cell P = Q = x^{0.47}, A = x^{0.53}, R = x^{0.06} where
+tabulated); lam := log_x Lambda in [0.425, 0.575].
+
+(W4.0) REDUCTION TO THE LINEAR LEVEL — the aggregate factors, and the
+flip is NOT needed. Two exact simplifications, both new to the ladder:
+
+(a) The W3d pair phase FACTORS over the two ells: since
+h* = h1 ell2 + h2 ell1 and (p ell1 ell2)bar == (p ell1)bar ell2bar
+... etc. mod q,
+
+    e( h* (p ell1 ell2)bar_q / q )
+      = e( h1 (p ell1)bar_q / q ) e( h2 (p ell2)bar_q / q )   (exact),
+
+so T(q;p) = U(q;p)^2 - (diagonal + same-ell corrections) with U the
+LINEAR signed aggregate. The four-fold tuple family was never
+irreducible: W4's object is the linear one.
+
+(b) Better, the reciprocity flip of W2(iii) can be skipped entirely:
+by periodicity of e(.) the linear phase is EXACTLY
+
+    e( h nu_ell / ell ) = e( -a_0 h qbar_ell / ell ),
+
+no smooth factor sigma, no a_0-truncation, no 1', no q | h* sector.
+So the W4 object IS the full block variance again, written as a
+dilated exponential sum over a q-dependent point family:
+
+    E_{p,q} |D^pm_Lambda|^2,
+    D^pm_Lambda = Sum_{t = (ell, h)} chat^pm_h(ell) e( a_0 theta_t(q) ),
+    theta_t(q) := -h qbar_ell / ell mod 1,
+    t in T_lin := {(ell, h): ell ~ Lambda prime, != q, 0 < |h| <= H_ell},
+    #T_lin = Sum_ell 2 H_ell <= 4.8 Lambda^2 / ((R+1) L) = x^{2 lam - 0.15 - o(1)}
+           in [x^{0.7}, x^{1.0}]   (eta = 0.02: x^{2 lam - 0.06} in
+           [x^{0.88}, x^{1.0}]),
+
+dilation variable a_0 = pbar_q in [1, q). The square-opening is a
+FIXED POINT of the ladder (opening |D|^2 and re-assembling gives D^2
+back): the honest W4 question is whether a large-sieve inequality for
+the system {a -> e(a theta_t(q))} beats the absolute-value floor.
+This kills three W2/W3 forward items at once (smooth factor, q | h*
+sector, a_0-truncation: none exists at the linear level), at zero
+cost.
+
+(W4.1) SPACING STRUCTURE of the two families (seed step 1, computed).
+
+(a) The q-INDEPENDENT pair-level family F_pair := {h1/ell1 + h2/ell2
+mod 1}, ell_i ~ Lambda prime distinct, 0 < |h_i| <= H_{ell_i}
+(= the W3d frequencies h*/m):
+  - MULTIPLICITY exactly 2. (h*, m) = 1 (W2(ii)), so the fraction
+    h*/m is in lowest terms with denominator exactly m = ell1 ell2:
+    the unordered pair {ell1, ell2} is recovered from the point by
+    unique factorization, and h1 == h* ell2bar (mod ell1) with
+    |h1| <= H_{ell1} < ell1/2 recovers h1 (h2 symmetric): the only
+    collision is the swap (ell1,ell2,h1,h2) <-> (ell2,ell1,h2,h1).
+    ADDITIVE ENERGY = Sum mult^2 = 2 #T_pair: MINIMAL, no cluster
+    multiplicity at scale 0.
+  - SUPPORT: |theta| <= H_{ell1}/ell1 + H_{ell2}/ell2 <= 2/(R+1)
+    + 2/Lambda: the WHOLE family lives in the macro-cluster
+    [-2.1/R, 2.1/R] mod 1, an interval of length x^{-0.15}-grade.
+  - GAPS, three scales: same denominator pair {ell1, ell2}: distinct
+    points differ by a nonzero integer over m: gap >= 1/m >=
+    1/(4 Lambda^2). Different denominators m != m': gap >= 1/(m m')
+    >= 1/(16 Lambda^4), and this scale is ATTAINED up to O(1)
+    (numerics, W4.7). Mean gap = (4.2/R)/(#T_pair/2) =
+    0.4 R L^2/Lambda^4-grade = x^{0.15 + o(1)} x Lambda^{-4}.
+  - VERDICT on the seed's guess: F_pair is NOT delta-spaced at the
+    Lambda^{-2} scale. The true structure is THREE-SCALE: macro-
+    cluster 4/R (all points), per-denominator lattice 1/m ~
+    Lambda^{-2} (each pair {ell1,ell2} contributes <= 4 H^2 points
+    on the rank-1 lattice (1/m)Z, a 4H^2/(m/R...) = O(1/(R...))-
+    density subset), cross-denominator fine scale Lambda^{-4}. The
+    family is cluster-heavy: min gap sits x^{0.15+o(1)} BELOW the
+    mean gap; any unweighted (N + delta^{-1})-sieve pays
+    delta^{-1} = 16 Lambda^4 = x^{4 lam} >= x^{1.7}.
+(b) The q-DEPENDENT linear family F_lin(q) := {theta_t(q)} of (W4.0):
+    all #T_lin points distinct (same ell: (h - h') qbar_ell != 0 mod
+    ell since 2 H_ell < ell; cross ell: h qbar_ell ell' - h'
+    qbar_ell' ell != 0 mod ell ell' by primality), all lying in the
+    Farey set {b/ell or b/(ell ell')}-grade: min gap >= 1/(4 Lambda^2)
+    same-ell, >= 1/(16 Lambda^4)-grade cross-ell as in (a) — but the
+    SELECTED residues b = h qbar_ell mod ell are multiplicative
+    dilates of the interval [+-H_ell], pseudo-randomized by qbar_ell:
+    the q-AVERAGED coincidence structure is what the sieve can use,
+    and it is controlled by divisor-counting — (W4.2), the one new
+    proved input of this stage.
+
+(W4.2) THE FIBER COUNT (thm:dls's proof pattern adapted; PROVED,
+elementary). In manuscript 05 the deep large sieve is: orthogonality
+-> fibers -> CS within fibers -> fiber-size bound (prop:fiber). Here
+the "characters" are a -> e(a theta_t(q)) and the fibers are the
+q-values at which two tuple-phases nearly align. Fiber-size bound:
+
+  LEMMA (W4.2). Fix t = (ell, h) != t' = (ell', h') as in (W4.0)
+  (any block). For every k >= 0:
+    #{q ~ Q prime, q != ell, ell' :
+                ||theta_t(q) - theta_{t'}(q)|| < 2^k/q}  <=  2^{k+4}.
+  Proof. Set m := ell ell' (case ell != ell') or m := ell (case
+  ell = ell', h != h'); q != ell, ell' gives (q, m) = 1, all that is
+  used. Write theta_t - theta_{t'} == n/m (mod 1), n the residue
+  -(h qbar_ell ell' - h' qbar_ell' ell) mod m (cross) or
+  -(h - h') qbar_ell mod ell (same). Multiplying by q kills the
+  inverses: q n == -w0 (mod m) with the FIXED nonzero integer
+    w0 := h ell' - h' ell   (cross; w0 != 0 else ell | h),
+          |w0| <= 9 Lambda^2 / R < m/2;
+    w0 := h - h'            (same; 0 < |w0| <= 2 H_ell < ell = m).
+  The hypothesis gives an integer r == n (mod m), |r| <= 2^k m / q.
+  Then q r + w0 == 0 (mod m): q r + w0 = j m with |j| <=
+  (2^k m + m/2)/m <= 2^k + 1. For each such j, q divides the FIXED
+  integer n_j := j m - w0 (so q | n_j via q r = j m - w0), which is
+  NONZERO (j = 0: w0 != 0; j != 0: |jm| >= m > |w0|) and of size
+  |n_j| <= (2^k + 2) m <= (2Q + 2) 4 Lambda^2 <= x^{1.58} < Q^4 =
+  x^{1.7} (using 2^k <= 2Q, the only nonvacuous range): at most 3
+  prime divisors q ~ Q per j. Count <= 3 (2(2^k + 1) + 1)
+  <= 2^{k+4}. QED. [Same species as (W3.2),
+  promoted from single frequencies to frequency PAIRS; no
+  equidistribution of qbar input — pure divisor counting, hence NOT
+  circular in the Kloosterman problem.]
+
+(W4.3) COROLLARY (per-pair q-average of the Fejer kernel). For every
+t != t', with Delta_q := theta_t(q) - theta_{t'}(q):
+
+    Sum_{q ~ Q prime} min(1, 1/(2 q ||Delta_q||))
+      <= Sum_{k=0}^{log_2(2Q)} 2^{-(k+1)} #{q: ||Delta_q|| < 2^{k+1}/q}
+         + N_Q/(2Q)
+      <= Sum_k 2^{-(k+1)} 2^{k+5} + 1 <= 16 log_2(2Q) + 17 <= 10 L,
+
+so, with N_Q >= 2.3 Q/L (primes in (Q, 2Q]):
+
+    E_q [ min(1, 1/(2 q ||Delta_q||)) ] <= 10 L / N_Q <= 4.4 L^2 / Q
+       =: c_8 L^2/Q,   c_8 = 4.4.                              (W4.3)
+
+This is x^{-0.425 + o(1)} PER PAIR — exactly full-(p,q) square-root
+grade (W3.0's god-mode line), now PROVED, uniformly over pairs.
+
+(W4.4) THE SIEVE, ASSEMBLED. Chain, each step exact:
+(i) p -> a_0 = pbar_q is injective into [1, q) (p ~ P distinct primes,
+    |p - p'| < Q < q), so by POSITIVITY (cost: the prime density,
+    q/pi_{(P,2P]}(P) <= 2Q L/(2.35 P) <= 0.85 L at P = Q):
+    E_p |D^pm|^2 <= 0.85 L (1/q) Sum_{a=1}^{q} |Sum_t chat_t e(a theta_t)|^2.
+    This DISCARDS primality of p — Korolev exits the chain — and the
+    a_0-truncation never enters ((W4.0)(b)).
+(ii) Kernel bound: (1/q) Sum_{a<=q} e(a Delta) <= min(1, 1/(2q||Delta||)).
+(iii) E_q + (W4.3) per pair; diagonal t = t' kept exact; same-ell and
+    cross-ell pairs split (their chat-masses differ):
+    diagonal:  Sum_t |chat_t|^2 <= N_Lambda 7(R+1)/Lambda
+               <= 16.8 (R+1)/L                          ((W3.4));
+    same-ell:  Sum_ell (Sum_h |chat_h|)^2 c_8 L^2/Q
+               <= N_Lambda m_1^2 c_8 L^2/Q <= 178 Lambda L / Q;
+    cross-ell: (Sum_t |chat_t|)^2 c_8 L^2/Q <= (m_1 N_Lambda)^2 c_8 L^2/Q
+               <= 426 Lambda^2 / Q.
+Multiplying by the 0.85 L of (i):
+
+    E_{p,q} |D^pm_Lambda|^2 <= 14.3 (R+1) + 152 Lambda L^2 / Q
+                               + 363 L Lambda^2 / Q.           (W4.4)
+
+x-exponents of the three terms: 0.15;  lam - 0.425 + o(1) in
+[o(1), 0.15 + o(1)];  2 lam - 0.425 + o(1) in [0.425 + o(1),
+0.725 + o(1)] — vs the (W1.1) budget 0.05 delta_0 R^2/L^2 =
+x^{0.3 - o(1)}. Terms 1 and 2 CLOSE on every block with x^{0.15-o(1)}
+of room; term 3 (the cross-denominator coincidence mass) is over
+budget by x^{2 lam - 0.725 + o(1)} on every block. Three structural
+notes, each checked:
+  - (W4.4) bounds the WHOLE square at once: it INDEPENDENTLY reproves
+    W1's diagonal (= the t = t' term plus the same-ell h != h' term)
+    at 14.3 (R+1) + 152 Lambda L^2/Q <= x^{0.15 + o(1)}, constant
+    14.3 vs W1's c_7 = 630, and with no c_V-calculus flag. The
+    near-diagonal pairs (ell1 != ell2, q | ell1 - ell2) sit inside
+    the CROSS-ell term — the failing one — so the (b2) top-sliver
+    item of W1 is NOT independently closed here: it stays open,
+    bundled into the same cross-denominator mass.
+  - The deficit is PURELY cross-denominator: the Farey cross-terms
+    ell != ell', exactly the (b1)-species.
+  - Closure condition of (W4.4): 2 lam - 0.425 <= 0.3, i.e. Lambda <=
+    x^{0.3625} = (Q R^2)^{1/2}: every block of the ladder (lam >=
+    0.425) misses; the method would close only if A^2 <= Q R^2
+    x^{-eps}, i.e. Q >= A^2/R^2 — false by x^{0.125} exactly.
+
+(W4.5) DUALITY / OVERCROWDING AUDIT — no large-sieve arrangement
+passes the (W4.4) level; the floor is truth-grade. Seed step 2, all
+three readings priced:
+
+(i) Pair-level dual (the seed's literal swap): for the system
+phi_t(q) := e(h*_t (p m_t)bar_q / q), t in the 4-fold family
+(#T_pair ~ 23 Lambda^4/(R^2 L^2) = x^{4 lam - 0.3 - o(1)} in
+[x^{1.4}, x^{2.0}]), the large-sieve constant Delta (both directions
+share it: operator norm) obeys
+
+    Delta >= max_q Sum_t |phi_t(q)|^2 = #T_pair
+
+(unimodular columns) — OVERCROWDING: #T_pair >> N_Q = x^{0.425}
+forces Delta ~ #T_pair, i.e. the sieve saves AT MOST the sample count
+N_Q over trivial, never more. Yield: E_q|T(q;p)|^2 <=
+(Delta/N_Q)||c||_2^2 = x^{4 lam - 0.725} x^{0.3} = x^{4 lam - 0.425},
+need x^{0.6}: short x^{4 lam - 1.025} in [x^{0.675}, x^{1.275}] —
+WORSE than the linear route by exactly the squaring. Dual swap
+refuted at the pair level.
+
+(ii) Linear level, q-samples (the (W4.4) route): #T_lin =
+x^{2 lam - 0.15} in [x^{0.7}, x^{1.0}] vs samples q = x^{0.425}:
+still overcrowded on every block, by x^{0.275}..x^{0.575}. The
+thm:dls threshold transferred: the deep sieve's per-character gain
+needs sample range >= conductor (cor:rms: N > q^{1+eps}, conductor
+q^2 vs N); here conductor = min-gap^{-1} = 4 Lambda^2 (same-ell
+lattice scale; Lambda^4 cross), samples q: q >= Lambda^2 FAILS by
+x^{0.425}..x^{0.725} on every block (would need Q >= A^2 — absurd).
+(W4.4) evades nothing: its cross term IS the conductor deficit.
+
+(iii) Joint (p,q)-samples, linear level: samples N_P N_Q = x^{0.85}
+vs #T_lin = x^{0.7..1.0}: NOT overcrowded for lam < 0.5! Priced via
+the Gram matrix G(t,t') = Sum_{p,q} e((h ellbar_q - h' ell'bar_q)
+pbar_q / q): quasi-orthogonality (Delta ~ N_P N_Q, which would give
+E|D|^2 <= ||chat||_2^2 (1 + #T_lin/(N_P N_Q)) = x^{0.15 + o(1)},
+CLOSED with room) needs row sums Sum_{t'} |G| <= N_P N_Q, i.e.
+per-pair |G| <= N_P N_Q / #T_lin = x^{1.0 - 2 lam} in
+[x^{-0.15}, x^{0.15}]. Available per pair: u(t,t';q) := h ellbar_q -
+h' ell'bar_q == 0 (mod q) iff q | h ell' - h' ell (nonzero, < Q^3):
+<= 3 degenerate q (divisor count again); else Korolev (V3.1):
+|G| <= 3 N_P + N_P N_Q x^{-0.0245} = N_P N_Q x^{-0.0245 + o(1)};
+god-mode double square root: |G| ~ (N_P N_Q)^{1/2} = x^{0.425}. vs
+needed x^{1.0 - 2 lam} <= x^{0.15}: Korolev short x^{2 lam - 0.0245
+- (1.0 - ...)} — i.e. Schur rows carry #T_lin x^{-0.0245} >> 1 —
+short x^{2 lam - 0.175} in [x^{0.675}, x^{0.975}]; god-mode short
+x^{2 lam - 0.575} in [x^{0.275}, x^{0.575}] (and for lam >= 0.5 even
+|G| = 0 off-diagonal would not help: overcrowded again). Schur IS an
+absolute-value chain: same wall, one level up.
+
+TRUTH-GRADE OF THE FLOOR (why (W4.4)'s cross term is not an artifact
+of the divisor bound's L^2): for a TYPICAL pair t != t' the integers
+n_j = jm - w0, |j| <= 2, have ~ Sum_{Q<q<=2Q} 1/q ~ 1.6/L expected
+prime divisors ~ Q, so the typical per-pair q-average of the kernel
+is ~ L^{-1} x (1/N_Q)-grade ~ x^{-0.425 - o(1)} — the (W4.3) bound is
+tight up to L^3. At any q where a coincidence ||Delta_q|| < 1/q
+HOLDS, the pair contributes |chat_t chat_{t'}| x (phase of modulus
+>= cos(pi...) ~ 1, NO a_0-oscillation: e(a Delta) moves < 2 pi over
+a in [1,q]): the coincidence mass ~ Sum_{t != t'} |chat chat'|/Q ~
+x^{2 lam - 0.425 - o(1)} is REAL and irreducible for every chain that
+takes absolute values at the pair level — passing below it REQUIRES
+cancellation among the SIGNED coincidence terms chat_t chat_{t'}
+e(a_0 Delta_q): the same signed-aggregate problem one generation
+down. SELF-SIMILARITY, made exact in (W4.6).
+
+EXPONENT TABLES (seed step 3) — (W4.4) vs budget, and what duality
+bought over W3. eta = 0.05 (budget exponent 0.3):
+
+  lam:                0.425   0.4737  0.50    0.55    0.575
+  (W4.4) cross term:  0.425   0.5224  0.575   0.675   0.725
+  deficit:            0.125   0.2224  0.275   0.375   0.425
+
+eta = 0.02 (budget 0.12; blocks lam in [0.47, 0.53]):
+
+  lam:                0.47    0.50    0.53
+  (W4.4) cross term:  0.47    0.53    0.59
+  deficit:            0.35    0.41    0.47
+
+SIDE-BY-SIDE WITH W3's FLOORS (per-pair q-average level, eta = 0.05):
+
+  | chain                                | per-pair avail. | status   | deficit vs (W3.0) demand |
+  |---|---|---|---|
+  | W3c Korolev l^1 chain (W3.3)         | x^{-0.0245}     | PROVED   | x^{0.5254}..x^{0.8254} |
+  | W3d god-mode sqrt (unprovable)       | x^{-0.425}      | ceiling  | x^{0.125}..x^{0.425}  |
+  | W4 fiber sieve (W4.3)-(W4.4)         | x^{-0.425+o(1)} | PROVED   | x^{0.125}..x^{0.425}  |
+
+WHAT DUALITY BUYS (the seed's question, answered exactly): it
+PROMOTES the god-mode per-tuple square-root line from unprovable
+ceiling to PROVED bound — a gain of x^{0.4005 + o(1)} over the best
+citation chain (W3.3), achieved by pure divisor counting with zero
+citation weight, Korolev not even needed. It does NOT buy the seed's
+hoped extra factor ~ sqrt(family/Q) = x^{0.1375}..x^{0.2875}: over-
+crowding ((i)-(ii)) caps every duality arrangement AT the floor. The
+deficit x^{2 lam - 0.725} (eta = 0.05; x^{2 lam - 0.59} at 0.02) is
+invariant across ALL aggregation arrangements audited in W3d + W4.5
+— it is the price of the |.| at the pair level, wherever placed.
+
+(W4.6) THE ONE ESTIMATE THAT WOULD CLOSE, stated precisely — and its
+self-similarity. From the (W4.4) chain, (W1.1) follows on every block
+(with everything else already closed there) IF: for all but
+delta_0 N_Q / L of the primes q ~ Q,
+
+    | Sum_{t != t', ell != ell'} chat^pm_t chat^pm_{t'}
+        F_q( theta_t(q) - theta_{t'}(q) ) |
+      <= 0.01 delta_0 (eta R)^2 / L^3,
+    F_q(beta) := q^{-1} Sum_{a=1}^{q} e(a beta)                (W4.6)
+
+(the signed cross-denominator coincidence sum; F_q = normalized
+Dirichlet kernel, |F_q(beta)| <= min(1, 1/(2q||beta||)), so (W4.6)
+with |.| INSIDE is exactly (W4.4)'s failing term). Random-model truth
+of (W4.6): the coincidence graph at fixed q has ~ #T_lin^2/Q =
+x^{4 lam - 0.725} edges, signed-rms ~ (Sum_{coinc} |chat chat'|^2)^{1/2}
+~ (R/Lambda)^2 x^{(4 lam - 0.725)/2} = x^{-0.0625 - o(1)} at every
+lam (eta = 0.05) — BELOW the demand x^{0.12-o(1)}-grade by x^{0.18+}:
+(W4.6) is TRUE in the random model, with room (numerics: W4.7, E1).
+But as a proof object it is a signed exponential aggregate whose
+absolute-value floor (apply (W4.2)-counting to ITS terms) again sits
+x^{2 lam - 0.725} above ITS demand — the gap exponent is INVARIANT
+under one generation of the ladder: square-opening + completion +
+fiber-counting maps the (W1.1)-vs-floor gap to the (W4.6)-vs-floor
+gap with NO contraction. The ladder is self-similar at gap
+x^{2 lam - 0.725}; iterating W1 -> W4 -> (W4.6) -> ... converges to
+no proof. Closure requires an input that beats absolute values on
+the coincidence graph in one stroke: sums-of-Kloosterman-sums /
+spectral (Kuznetsov) machinery (W3d's habitat note, reaffirmed), or
+a cross-moduli coincidence count beating divisor-counting on
+q-average — the e(./q)-analogue of EXACTLY the "tailored
+(q,lambda)-averaged sieve / cross-moduli Wieferich-pair counting"
+that manuscript 05 (cor:crude) already flags as the program's main
+theoretical question. The two flagged gaps are the same species; W4
+adds the precise exponent it must produce: x^{2 lam - 0.725 + eps}
+below trivial on the coincidence graph, uniformly in lam in
+[0.425, 0.575].
+
+(W4.7) NUMERICS (wp11_w4_probe.py, .venv python, this session; model
+of the top cell at x = 1e8: Q = P = 2512, R = 16, A = 39811,
+L = 18.42; blocks Lambda = Q, 4Q, A/2; 300 (p,q)-samples for E1, 48
+for E2, 1500 random cross-ell pairs for E3; E4 exact in rationals).
+  E1 (signed truth of the square): sharp-window E D_Lambda^2 vs the
+  Bernoulli diagonal: ratios 1.11 / 0.73 / 0.82 on the three blocks —
+  the signed off-diagonal is O(diagonal), of BOTH signs. The measured
+  absolute coincidence mass on the Q-block ((Sum|c|)^2 x measured
+  kernel average = 236^2 x 0.00246 ~ 137, x 0.85 L from positivity
+  ~ 2.1e3) vs measured signed truth 1.50: the |.|-step throws away
+  ~3 orders of magnitude AT TOY SCALE, all of it sign cancellation —
+  (W4.6) is true with room in the model, (W1.1) remains sound.
+  E2 (linear aggregate vs random model): rms|U| / ||c||_2 = 1.01 /
+  0.87 / 0.68 on the three blocks (#T_lin up to 6.8e6): square-root
+  cancellation in the signed aggregate, on the nose; the absolute
+  chain pays ||c||_1/||c||_2 = 276 / 1017 / 1953 ~ sqrt(#T_lin).
+  E3 ((W4.2)-(W4.3) verified + floor truth-graded): fiber counts
+  mean 0.153 at k = 0 scaling ~ 0.15 x 2^k, max 3..15, ALL within
+  the proved 2^{k+4}; kernel q-average mean 0.00246 ~ 6.2/Q, max
+  0.0092 < bound 0.594 — note the TRUTH is ~ 6/Q = x^{-0.425 - o(1)}
+  (L^0-grade): the per-pair floor is not a polylog artifact; the
+  cross mass x^{2 lam - 0.425} stands at truth level for any
+  absolute chain.
+  E4 (pair-level Farey structure, Lambda_0 = 100, R_0 = 10, exact):
+  337568 tuples -> 168784 points, multiplicity EXACTLY 2 (min = max
+  = 2, energy/2#tuples = 1.0000); support max 0.19636 <= 2/(R_0+1) +
+  2/Lambda_0 = 0.20182; min gap = 1.53/(16 Lambda_0^4) — the
+  Lambda^{-4} floor IS attained — vs mean gap 5.9e-6: cluster-heavy
+  by ~ 6.2e3, as computed in (W4.1). All four (W4.0)-(W4.1) claims
+  machine-confirmed.
+
+(W4.8) VERDICT: W4-SHORT-[exact deficit x^{2 lam - 0.725 + o(1)} =
+x^{0.125} (Lambda = Q) .. x^{0.425} (Lambda = A) at eta = 0.05,
+x^{0.35}..x^{0.47} at eta = 0.02 — numerically IDENTICAL to W3's
+god-mode floor line, which W4 has now PROVED ((W4.2)-(W4.4), zero
+citation weight) but cannot pass; the single estimate that would
+close is (W4.6), signed cancellation of exponent x^{2 lam - 0.725 +
+eps} on the cross-denominator coincidence graph, for a.e. q ~ Q].
+OBSTRUCTION RIDER, stated honestly: (W4.6) is the (W1.1) species
+with the SAME demand-vs-floor gap — the ladder is self-similar and
+non-contracting within the pinned toolkit, so no W5 of the same
+species can help; the missing input is EXTERNAL (Kuznetsov-class
+sums of Kloosterman sums, or a cross-moduli coincidence count
+beating divisor-counting on q-average — the same flagged species as
+manuscript 05's cor:crude question). The seed's duality idea is thus
+half-right: the spacing/fiber-counting machinery transfers verbatim
+and buys x^{0.4005} over the citation chain (the full
+citation-to-square-root gap, unconditionally), but overcrowding
+(#family >> #samples on every block, (W4.5)) caps EVERY duality
+arrangement at the absolute-value floor.
+
+STATUS (Sec. 4.7, micro-stage 3): W4 EXECUTED, negative at the same
+floor as W3 but with the floor now PROVED. Unconditional
+deliverables: (W4.0) exact linear reduction (kills three W2/W3
+forward items: smooth factor, q | h* sector, a_0-truncation — none
+exists at the linear level); (W4.2) fiber-count lemma and (W4.3)
+per-pair kernel average <= 4.4 L^2/Q (divisor-counting, uniform);
+(W4.4) E_{p,q}|D^pm_Lambda|^2 <= 14.3(R+1) + 152 Lambda L^2/Q + 363
+L Lambda^2/Q — diagonal independently reproved at constant 14.3 (vs
+c_7 = 630, no c_V flag); (W4.1)+(W4.7) the complete spacing atlas of
+the Farey family (multiplicity 2, three-scale cluster structure,
+Lambda^{-4} floor attained). Open after W4: ONLY (W4.6) (external-
+input species), and the near-diagonal top O(log L) blocks ((b2),
+polylog-short, now bundled inside the same cross-denominator mass).
+Citation weight of W4: zero.
