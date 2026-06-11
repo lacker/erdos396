@@ -1306,3 +1306,284 @@ square-root ceiling — quantified, both eta values]. First moment NOT
 closed by Steps A-D; A, B proved, C proved-with-power-saving (4.3),
 D priced and closed (4.5): the §3 variance/dispersion ladder is the
 unique remaining route, with feasibility floor verified.
+
+### 4.6 The bespoke dispersion — the (p,q)-average outside, executed this session
+
+Object: D5's forced survivor T_h(Lambda), i.e. the first-moment error
+in 4.5's flipped form with the ell-sum inside, now treated by SIGNED
+(p,q)-averaging instead of D3's per-(h,q,p) absolute values. Per
+dyadic block (Lambda, 2Lambda], Lambda = 2^j Q clipped at A, Selberg
+sandwich at degree H_Lambda = ceil(Lambda/(R+1)) (D1.2), per (p,q):
+
+    D_Lambda(p,q) = Sum_{0<|h|<=H_Lambda} F_h(p,q;Lambda),
+    F_h(p,q;Lambda) := Sum_{ell ~ Lambda, ell prime, ell != q}
+                       chat_h(ell) s_h(ell) e( h (p ell)bar_q / q ),
+
+and the first moment needs |E_{p,q} D| <= 0.95 eta R-grade, where
+E_{p,q} = (pi(P)pi(Q))^{-1} Sum_{q ~ Q prime} Sum_{p ~ P prime, p!=q}
+is a PROBABILITY average (mass 1). Design: bound E_{p,q}|F_h| by
+Cauchy-Schwarz so the ell-SQUARE comes inside the (p,q)-average —
+the per-(h,q,p) bound (D2.1) is never used pointwise. All numerics at
+the top cell P = Q = x^{0.425}, A = x^{0.575}, R = x^{0.15},
+eta = 0.05, L = log x (and at eta = 0.02 where tabulated). Standing:
+A = QR, H_Lambda <= Q < q (D1), so q | h is impossible throughout.
+Steps V1-V6 below; each verified adversarially before being recorded.
+
+#### 4.6.1 V1: the squared ell-sum on (p,q)-average — exact opening
+
+Smooth factor FIRST (tracked, as required): s_h(ell) = e(-h a_0(p,q)
+/(q ell)) depends on (p,q), so it may NOT be pulled through E_{p,q}
+after squaring. Remove it by Abel BEFORE squaring. With w_h(t) :=
+chat_h(t) s_h(t; p,q) (C^1 in t on the block, D1.1/D1.2 shapes),
+
+    F_h = w_h(2Lambda) G_h(block) - Int_Lambda^{2Lambda} w_h'(t)
+          G_h((Lambda, t]) dt,
+    G_h(I; p,q) := Sum_{ell in I, ell prime, ell != q}
+                   e( h (p ell)bar_q / q )      (UNIT coefficients),
+
+and the (p,q)-UNIFORM envelope |w_h'(t; p,q)| <= u_h(t) :=
+|chat_h'(t)| + |chat_h(t)| 2 pi |h|/t^2 (a_0 <= q kills the a_0/q
+factor), Int u_h + sup|w_h| <= W^pm(h,Lambda) of (D1.2) — on the
+truncated support |h| <= H_Lambda the smooth-factor variation is
+<= 2 pi(1/(R+1) + 1/Lambda) = o(1), already inside D1.2's C_2. Hence,
+taking E_{p,q} through the integral against the uniform envelope and
+applying Cauchy-Schwarz AT EACH t (the (p,q)-measure has mass 1):
+
+    E_{p,q}|F_h| <= W(h,Lambda) sup_{I subset block}
+                    ( V_h(I) )^{1/2},                        (V1.1)
+    V_h(I) := E_{p,q} |G_h(I; p,q)|^2
+            = (pi(P)pi(Q))^{-1} Sum_{q ~ Q} Sum_{ell1, ell2 in I}
+              Sum_{p ~ P, p != q} e( h pbar_q d / q ),       (V1.2)
+    d = d(ell1, ell2; q) := (ellbar1 - ellbar2) mod q,
+
+ell_i prime, ell_i != q. Note the sup over subintervals I lands
+OUTSIDE E_{p,q} but inside nothing: (V1.2) will be bounded uniformly
+in I, so no maximal-function machinery is needed. The square is now
+inside the (p,q)-average: (V1.2) is exact (inverses mod q; for fixed
+q the pair (ell1, ell2) enters through d only). Diagonal split must
+be done PER q (whether q | ell1 - ell2 depends on q). V1 DONE.
+
+#### 4.6.2 V2: near-diagonal ell1 == ell2 (mod q)
+
+d = 0 iff q | ell1 - ell2 (inversion mod q is a bijection; ell_i != q
+prime so (ell_i, q) = 1). Per q ~ Q, with N_I := #{ell in I prime}
+<= pi(2Lambda) - pi(Lambda) <= 2.4 Lambda/L: exact diagonal
+ell1 = ell2 gives N_I pairs (phase identically 0); off-diagonal
+multiples |ell1 - ell2| in [q, Lambda) give <= N_I (Lambda/q + 1 - 1)
+<= N_I Lambda/Q further pairs. Trivial p-sum <= pi(P) on these:
+
+    V_h^{near}(I) <= (pi(Q))^{-1} Sum_{q ~ Q} N_I (1 + Lambda/q)
+                  <= 2.4 (Lambda/L)(1 + Lambda/Q)
+                  <= 2.4 Lambda^2/(Q L) + 2.4 Lambda/L,        (V2.1)
+
+the prompt-shape Lambda^2/q + Lambda with explicit constants. Checked
+against the Lambda^2-normalization: relative size <= 2.4/(QL)
++ 2.4/(Lambda L) <= 5 x^{-0.425}/L (both terms, every block Lambda in
+[Q, A], since Lambda >= Q = x^{0.425}; at eta = 0.02: <= 5x^{-0.47}/L).
+TINY versus the off-diagonal V3 bound x^{-0.0245}-relative — the
+near-diagonal never matters here. (Two residues booked: ell_i != q
+removes <= 1 prime from I per q — shifts N_I by <= 1, absorbed; the
+excluded p = q term costs <= 1 per (q, ell1, ell2) pair, total
+<= N_I^2/pi(P) <= Lambda^2 x^{-0.425+o(1)}, absorbed into (V2.1)'s
+grade.) NOTE for V4: the exact-diagonal term N_I ~ 2.4 Lambda/L in
+(V2.1) is an IDENTITY (each (p,q)-term equals 1), not an estimate —
+it is the irreducible floor of any provable bound on V_h. V2 DONE.
+
+#### 4.6.3 V3: off-diagonal — incomplete Kloosterman over primes p, Korolev Thm 3
+
+Fixed (q, ell1, ell2) with d != 0: the inner sum is
+
+    S(q; hd) := Sum_{p ~ P, p prime, p != q} e( (h d) pbar_q / q ),
+
+EXACTLY the §4.3.4 species — same modulus q ~ Q, same length P, only
+the numerator differs (there a = h ellbar_q; here a = h d). Numerator
+checks, as demanded: (i) q | h impossible (0 < |h| <= H_Lambda <= Q
+< q, by A = QR); (ii) q | d excluded by the off-diagonal definition —
+the exceptional pairs q | hd are EXACTLY the near-diagonal of V2, no
+leakage; so (hd, q) = 1 for every off-diagonal triple. (iii)
+UNIFORMITY: d ranges over ALL nonzero residues mod q as (ell1, ell2)
+varies, so the citation must be uniform in the numerator a with
+(a, q) = 1 — Korolev's Delta is numerator-free; this is the same
+§2.5-audit uniformity class already consumed by 4.3.4, no new weight.
+
+Range check (Korolev 2018 Thm 3, §1.3), identical to 4.3.4 since the
+p-sum is block-independent: q in (Q, 2Q], all cutoffs N in [P, 2P]:
+- eta = 0.05: q^{85/96} <= x^{0.3763} < P = x^{0.425}, 2P = x^{0.425+}
+  < q^{107/96}-floor = x^{0.4737}: MIDDLE regime, margins 0.0487/0.0487.
+- eta = 0.02: x^{0.4161} < P = x^{0.47} < 2P < x^{0.5239}: middle
+  regime, margins 0.0539/0.0539.
+Middle-regime Delta = q^{-1/128} N^{-1/20} <= 2^{1/20} q^{-37/640}
+(N >= P >= q/2). Lambda-to-primes + Abel + p = q removal: the 4.3.4
+chain verbatim, uniform in a. Hence, with eta_0 := 37/640 (q-aspect):
+
+    |S(q; hd)| <= C P q^{-eta_0 + o(1)} = pi(P) x^{-0.02457 + o(1)}
+    (eta = 0.05;  x^{-0.02717+o(1)} at eta = 0.02),         (V3.1)
+
+KEY CONTRAST with D2: the saving is in the p-aspect (modulus q,
+length P — both FIXED across blocks), so the x-exponent 0.02457 holds
+on EVERY block, top included; D2's ell-aspect Delta decayed to
+x^{-0.0169} at Lambda = A and leaned on N = Lambda > q (the new
+citation weight (ii) of D2). Here N = P ≍ q: the prime-modulus
+fallback stack of 4.3.4 (Korolev Thm 1 for p <= q, eps = 1/2 - o(1);
+Korolev-Changa 2020 for p in (q, 2P]) applies VERBATIM — Step V3
+carries NO citation weight beyond 4.3.4's. Summing (V3.1) over the
+<= N_I^2 off-diagonal pairs and averaging:
+
+    V_h^{off}(I) <= (pi(P)pi(Q))^{-1} Sum_{q ~ Q} N_I^2
+                    pi(P) x^{-0.0245+o(1)}
+                 <= Lambda^2 x^{-0.0245 + o(1)},             (V3.2)
+
+uniformly in 0 < |h| <= H_Lambda and I subset block (the bound used
+only (hd, q) = 1). V3 DONE — and it is the best provable input of
+its kind: the variance is genuinely bounded, with no exceptional
+moduli. The failure, if any, must come from the assembly. V4 next.
+
+#### 4.6.4 V4: assembly — the RMS budget table, and the OBSTRUCTION
+
+Variance, assembled ((V2.1) + (V3.2)), the prompt-shape verified:
+
+    V_h(I) <= Lambda^2 [ x^{-0.0245+o(1)} + 5/(QL) + 3/(Lambda L) ]
+           <= Lambda^2 x^{-0.0245 + o(1)}   (all blocks, both eta),
+
+so by (V1.1) the RMS bound is, per (h, Lambda), uniformly in h:
+
+    E_{p,q}|F_h| <= W(h,Lambda) Lambda x^{-0.01229 + o(1)}
+    (eta = 0.05;  x^{-0.01359+o(1)} at eta = 0.02).          (V4.1)
+
+D3's budget table REDONE with (V4.1) in place of the per-tuple
+(D2.1), Sum_h W <= C_0 <= 30 (D1.2), <= 0.22 L blocks, eta = 0.05
+(lambda := log_x Lambda; D3's failed line reproduced side-by-side):
+
+  lambda:                0.425   0.45    0.4737  0.50    0.55    0.575
+  D3 per-tuple LamDelta: 0.4004  0.4242  0.4467  0.4756  0.5306  0.5581
+  V4 RMS Lam q^{-e0/2}:  0.4127  0.4377  0.4614  0.4877  0.5377  0.5627
+
+    Sum_Lambda Lambda x^{-0.01229} <= 2.1 x^{0.5627};
+    budget 0.95 eta R = x^{0.15}/21:
+    DEFICIT = x^{0.4127 + o(1)}      [D3: x^{0.408 + o(1)}].
+  eta = 0.02: total <= 2.1 x^{0.53 - 0.01359} = 2.1 x^{0.5164};
+    budget 0.02 x^{0.06}: DEFICIT = x^{0.4564+o(1)} [D3: x^{0.441}].
+
+THE OBSTRUCTION, quantified honestly: the design's premise — "the
+(p,q)-average is a probability average, so the normalization divides
+the saving by nothing extra, THE key difference from D3" — is TRUE as
+stated but INERT: D3's per-tuple bound (D2.1) was ALSO already
+per-(p,q)-normalized (D(p,q) is a per-(p,q) object; D3 divided the
+saving by nothing either). The deficit was never a normalization
+artifact. It is the LENGTH factor Lambda in front of the saving, and
+the (p,q)-variance leaves that factor INTACT: V_h <= Lambda^2 x
+(saving) gives RMS = Lambda x (saving)^{1/2} — Cauchy-Schwarz HALVES
+the only available exponent (0.02457 -> 0.01229) while D3's worst
+per-tuple ell-aspect Delta was already x^{-0.0169}. Line-by-line the
+RMS bound LOSES to D3 on every block (+0.0123 at Lambda = Q shrinking
+to +0.0046 at Lambda = A). The bespoke dispersion at citation
+strength is strictly WORSE than the route it was built to replace.
+
+And the failure is STRUCTURAL, not a citation deficit — the V2 floor:
+the exact-diagonal identity in (V2.1) puts N_I ~ 2.4 Lambda/L inside
+V_h as a sum of exact 1's; no provable treatment of the off-diagonal
+(short of asymptotically evaluating it WITH SIGN below the diagonal,
+which is circular — it contains the first moment itself) takes the
+provable V_h below N_I-grade. So within ANY scheme that routes
+E|F_h| through V_h^{1/2}:
+
+    E-bound per (h, Lambda) >= W(h,Lambda) (2.4 Lambda/L)^{1/2};
+    per block >= C_0' (Lambda/L)^{1/2}; total >= 3.4 C_0'(A/L)^{1/2}
+    = x^{0.2875 - o(1)}  vs  x^{0.15}/21:
+    FLOOR-DEFICIT = x^{0.1375 - o(1)} = x^{1/4 - 2.25 eta - o(1)},
+
+EXACTLY D3's square-root-ceiling deficit (x^{0.205} at eta = 0.02;
+vanishes only at eta = 1/9, the band edge). Granting perfect
+square-root cancellation in every off-diagonal p-sum (Weil-strength
+P^{1/2}, beyond any prime-sum citation) only improves (V4.1) to
+Lambda x^{-0.10625}, total x^{0.4688}: still a x^{0.32} deficit —
+the floor, not the input, is binding. The (p,q)-average bought
+nothing: Cauchy-Schwarz per h RE-IMPOSES through its diagonal the
+very square-root ceiling that D3 hit per tuple. V4 DONE (negative);
+per the design's own stopping rule, V5 is executed pro forma only.
+
+#### 4.6.5 V5: h-aggregation, residues, and the full exponent table (pro forma)
+
+All complete and leak-free — the verdict rests on V4 alone:
+- h-aggregation: Selberg sandwich per D1's repair, degree H_Lambda =
+  ceil(Lambda/(R+1)): weight mass Sum_{0<|h|<=H} W^pm(h,Lambda)
+  <= C_0 <= 30 per block (D1.2, O(1) as designed); main-term sandwich
+  slack <= 24.2 eta (R+1) (C: 7 -> 32, unchanged from D1). The
+  h-aggregation itself is NOT where mass is lost: C_0 is O(1).
+- Dyadic Lambda: <= 0.22 L blocks; all block sums geometric,
+  top-block dominated (Sum Lambda <= 2.1 A; Sum Lambda^{1/2}
+  <= 3.5 A^{1/2}): no log-pileup beyond x^{o(1)}.
+- E_AP: none — the sandwich REPLACES the completion identity; the
+  h != 0 mass IS the E_AP aggregate (D4 bullet 1 verbatim).
+- Sliver ell in (Q, 2Q] and ell = q: <= 1 prime removed from each I
+  per q, cost O(1) per (p,q) per block (V2, D4). p = q: relative
+  x^{-0.425+o(1)} (V2). ell = p legitimate, no degeneracy.
+- Exceptional residues q | hd: EMPTY off-diagonal (V3(i)-(ii):
+  H_Lambda <= Q < q by A = QR, and d != 0); the near-diagonal d = 0
+  is priced in (V2.1). Lambda(n)-to-primes/Abel: O(P^{1/2} L) per
+  triple, absorbed in (V3.1)'s o(1).
+
+Numeric exponent table (x-exponents of E_{p,q}|D|-contributions):
+
+  | quantity                     | eta = 0.05      | eta = 0.02      |
+  |---|---|---|
+  | p-sum saving (V3.1)          | -0.02457        | -0.02717        |
+  | RMS saving (post-CS)         | -0.01229        | -0.01359        |
+  | top-block RMS term           | 0.5627          | 0.5164          |
+  | total (all blocks, x C_0)    | 0.5627 + o(1)   | 0.5164 + o(1)   |
+  | near-diag total (V2, RMS)    | <= 0.3625       | <= 0.295        |
+  | sandwich slack (main term)   | 0.15 (24 eta R) | 0.06 (24 eta R) |
+  | budget 0.95 eta R            | 0.15            | 0.06            |
+  | DEFICIT (citation strength)  | 0.4127          | 0.4564          |
+  | DEFICIT (Weil-grade ceiling) | 0.3188          | 0.3525          |
+  | DEFICIT (V2-floor, absolute) | 0.1375          | 0.2050          |
+
+V5 DONE: no residue alters V4; the obstruction stands at every grade.
+
+#### 4.6.6 V6: verdict
+
+OBSTRUCTED-[h-outside Cauchy-Schwarz diagonal floor: deficit
+x^{0.4127+o(1)} at Korolev-Thm-3 strength at eta = 0.05 (x^{0.4564}
+at eta = 0.02) — strictly WORSE than D3's x^{0.408}/x^{0.441}, since
+CS halves the p-aspect saving while leaving D3's Lambda-factor
+intact; >= x^{1/4 - 2.25 eta - o(1)} (= x^{0.1375}/x^{0.205})
+ABSOLUTELY, from the exact-diagonal identity in (V2.1), even granting
+perfect off-diagonal cancellation — the same ceiling, same exponent,
+as D3's]. FIRST MOMENT REMAINS OPEN. The bespoke dispersion as
+designed (T_h(Lambda) of D5's payload: h OUTSIDE the square) is
+hereby priced and CLOSED.
+
+What this run PROVES beyond D3/D5 (sound, reusable):
+- (V3.2): the per-h variance bound V_h(I) <= Lambda^2 x^{-0.0245+o(1)}
+  (top cell), uniform in h, I, with EMPTY exceptional sector and no
+  citation weight beyond 4.3.4's stack — the h1 = h2 slice of any
+  future full dispersion's off-diagonal, ready-made.
+- D5's closing claim is SHARPENED: signed (p,q)-averaging jointly
+  with ell-cancellation is NOT sufficient either — this section
+  harvested both and still failed, because absolute values were taken
+  at the h-level. Corrected forced object: the h-sum must ALSO go
+  inside the square. D5's own "feasibility floor" (variance diagonal
+  ~ R/L per block, room x^{0.15-o(1)}) was computed for the
+  UN-completed object Sum_h F_h — h inside — and is consistent: the
+  diagonal of E_{p,q}|Sum_h F_h|^2 is R/L-grade (Bernoulli window
+  variance), versus this section's Sum_h (per-h diagonals)^{1/2}
+  ~ Lambda^{1/2}/L^{1/2} per block. The gap between those two
+  diagonals is (Lambda/R)^{1/2}-grade per block — cross-check at the
+  top block: x^{0.2875}/x^{0.075} = x^{0.2125} = x^{(0.575-0.15)/2}
+  = (A/R)^{1/2}: consistent; the floor-deficit x^{0.1375} is this
+  gap net of the budget's L-grade slack. Arithmetic verified.
+- The unique survivor is therefore EXACTLY the §3 variance ladder
+  (§3.2-3.4 pricing: (b1) generic off-diagonal (h1,ell1) != (h2,ell2)
+  Weil-after-double-completion, (b2) near-diagonal h1 = h2), applied
+  to E_{p,q}|Sum_{0<|h|<=H_Lambda} F_h|^2 with the Selberg-truncated
+  harmonics (D1.2) — no other aggregation order remains: per-(ell,h)
+  (4.4.2), per-(h,q,p) (4.5), and per-h-after-(p,q)-averaging (4.6)
+  are all now priced and closed.
+
+STATUS (Sec. 4.6): EXECUTED, OBSTRUCTED-[x^{0.4127} at citation
+strength; x^{1/4-2.25 eta} absolute floor from the CS diagonal —
+quantified, both eta values, side-by-side with D3]. First moment NOT
+closed. Grade of the negative result: the V1-V3 estimates are
+PROVED-MODULO-[4.3.4's Korolev transcription caveats, no new]; the
+V4 floor argument is unconditional arithmetic. Next (only) move: the
+h-inside dispersion E_{p,q}|D_Lambda|^2 through §3.2-3.4's ladder.
