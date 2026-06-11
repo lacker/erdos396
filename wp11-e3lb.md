@@ -156,3 +156,268 @@ the seam sliver Lambda in (Q, Q^{1+2eps}], where (ii-a) (or Sec. 3) covers.
 
 STATUS: BRIDGE-COMPATIBLE-[(ii-a) full hard sub-range Lambda in (Q, A];
 (ii-b)/double-q on Lambda >= Q^{1+eps}; (i) obstructed, deficit <= 0.15].
+
+### 2.1 STEP 1: completion of the window (exact identity + truncated form)
+
+Fix band primes p != q, a_0 = (pbar mod q) in [1,q), a prime ell ~ Lambda
+(dyadic: ell in (Lambda, 2Lambda]), ell != q, and the root
+nu_ell = (-a_0 qbar) mod ell in [0, ell) (Prop S, wp8-e3 §1). For theta real
+put G_R(beta) = sum_{0<=t<=R} e(t beta), so |G_R(beta)| <= min(R+1,
+1/(2||beta||)). Viewing f(nu) = 1[nu <= R] e(nu theta) as a function of the
+canonical residue nu in {0,...,ell-1}, discrete Fourier inversion on Z/ell
+gives the EXACT identity (h running over symmetric representatives
+|h| <= (ell-1)/2):
+
+  1[nu_ell <= R] e(nu_ell theta) - (1/ell) G_R(theta)
+    = sum_{0 < |h| <= (ell-1)/2} c_h(ell; theta) e(h nu_ell / ell),
+  c_h(ell; theta) := (1/ell) G_R(theta - h/ell)
+    = (1/ell) sum_{0<=t<=R} e(t theta) e(-t h/ell).
+
+The h = 0 term (1/ell)G_R(theta) is the main/centering term: at theta = 0 it
+is (R+1)/ell (the "R/ell" of the section header), and summed over ell it is
+the kappa' G(theta_mu) main term absorbed exactly by cor:minor (wp8-e3 §2
+item 6) — so the CENTERED root sum over the block,
+
+  E_Lambda(q; theta) := sum_{ell ~ Lambda prime, ell != q}
+      ( 1[nu_ell <= R] e(nu_ell theta) - (1/ell) G_R(theta) ),
+
+is exactly sum_{ell} sum_{0<|h|<=(ell-1)/2} c_h(ell;theta) e(h nu_ell/ell).
+
+Coefficient shape. Since ||theta - h/ell|| >= (|h - ell theta'|)/ell for the
+representative theta' of theta nearest h/ell-scale, one has the
+min(R/ell, 1/|h|)-shape RECENTERED at the dilation point h_0(ell) =
+round(ell theta) (theta taken in (-1/2,1/2]):
+  |c_h(ell; theta)| <= min( (R+1)/ell , 1/(2 |h - ell theta|) ),
+and at theta = 0 this is the classical |c_h| <= min((R+1)/ell, 1/(2|h|)).
+Uniformly in theta, the total mass is logarithmic:
+  sum_{0<|h|<=(ell-1)/2} |c_h(ell;theta)| <= 2 + log ell.
+(Proof: the h with ||theta - h/ell|| <= 1/(2(R+1)) number at most
+ell/(R+1) + 2, each contributing <= (R+1)/ell, total <= 3; the rest
+contribute <= 2 sum_{1<=j<=ell} 1/(2j) <= log ell + 1.)
+
+Truncation at H (stated for completeness; NOT used below): for any
+1 <= H <= ell/2,
+  1[nu_ell <= R] e(nu_ell theta) - (1/ell)G_R(theta)
+    = sum_{0<|h - ell theta| <= H} c_h e(h nu_ell/ell) + O(E_H),
+  E_H := sum_{|h - ell theta| > H} |c_h| <= log(ell/(2H)) + 2,
+i.e. sharp-cutoff truncation saves only down to log-size error; the proof
+below therefore uses the EXACT (untruncated) identity — legitimate because
+Step 3 applies one and the same uniform bound to EVERY harmonic h, so no
+tail needs a trivial estimate. (A Vaaler-smoothed completion would give
+error <= (R+1)/H per point; unnecessary here.)
+
+Caution recorded for Step 3: the dominant-harmonic location h_0(ell) =
+round(ell theta) MOVES with ell across the dyadic block (the dilated-phase
+phenomenon flagged in link 7's "dilated-phase species"); for fixed integer h
+the sup over ell ~ Lambda of |c_h(ell;theta)| therefore has total h-mass
+  sum_h sup_{ell ~ Lambda} |c_h(ell;theta)| <= 3 + log Lambda + 2||theta||R
+(the resonance h/ell ≈ theta sweeps through ~ ||theta||*Lambda integers h,
+each at sup (R+1)/Lambda). At theta = 0 (population count) the sweep is
+absent and the mass is O(L). Both cases are priced in Step 4.
+
+### 2.2 STEP 2: reciprocity — one flip, prime ell-variable vs prime modulus q
+
+Exact identity. For (q, ell) = 1 with qbar q == 1 (mod ell) and
+ellbar ell == 1 (mod q):
+  q qbar + ell ellbar == 1 (mod q ell)
+(check mod ell: q qbar == 1; mod q: ell ellbar == 1; CRT), so
+k := (q qbar + ell ellbar - 1)/(q ell) is an INTEGER and
+  qbar/ell + ellbar/q = (1 + k q ell)/(q ell) == 1/(q ell)  (mod 1).
+Hence for every integer n (here n = h a_0):
+  e(n qbar/ell) = e(-n ellbar/q) * e(n/(q ell)),
+exactly the section-header form e(h a_0 qbar/ell) =
+e(-h a_0 ellbar/q) e(h a_0/(q ell)). Applied to the completed phase of 2.1,
+e(h nu_ell/ell) = e(-h a_0 qbar/ell) (since nu_ell == -a_0 qbar mod ell and
+e(./ell) depends only on the residue):
+  e(h nu_ell/ell) = e( h a_0 ellbar / q ) * e( -h a_0 / (q ell) ).
+
+The smooth factor. phi_h(ell) := -h a_0/(q ell) has
+|phi_h'(ell)| = |h| a_0 / (q ell^2) < |h|/ell^2 (a_0 < q), so its total
+variation over ell ~ Lambda is < |h|/Lambda <= 1/2 + O(1) for the harmonics
+|h| <= ell/2 — i.e. e(phi_h(ell)) is a monotone-phase factor of total
+variation O(1), removable by partial summation in ell at multiplicative
+cost O(1) (it converts the bound on the pure sum below into the same bound
+times 1 + 2 pi |h| a_0/(q Lambda) <= 1 + pi).
+
+Resulting object. For FIXED q (and fixed p, mu, lambda through a_0, theta)
+and fixed harmonic h, the inner sum of 2.1 becomes, after stripping
+c_h(ell;theta) e(phi_h(ell)) by partial summation,
+
+  T_{q,h}(I) = sum_{ell in I, ell prime, ell != q} e( h a_0 ellbar / q ),
+  I a subinterval of (Lambda, 2Lambda],
+
+a KLOOSTERMAN-TYPE SUM OVER PRIMES ell to the PRIME modulus q, numerator
+a = h a_0 mod q, b = 0 (the e(b ell)-part is empty — the smooth factor
+carried it away), length N = Lambda.
+
+Range placement (the §2.0 table, row (ii-a), now read at BOTH ends):
+- Lower end: N >= q^{1/2+eps} amply satisfied — N = x^lam, q = x^{u'},
+  lam - u'/2 >= 0.213 (eta = 0.05) resp. 0.235 (eta = 0.02) on the whole
+  hard sub-range: eps may be taken up to 1/2 - o(1).
+- Upper end (NEW, not in the §2.0 table, which checked only
+  N >= m^{1/2+eps}): on the hard sub-range Lambda > Q, i.e. N > q
+  THROUGHOUT (up to the dyadic sliver Lambda in (Q, 2Q]). The verbatim
+  Bourgain 2005 and Baker 2012 statements (§1.1, §1.2) carry the upper
+  restriction N <= q and therefore cover NONE of the hard sub-range in this
+  orientation. The geometry: Lambda <= A = x/p = qR, so
+  N/q <= R = x^{1-u-u'} <= x^{4 eta}, i.e. N <= q^{rho} with
+  rho = lam/u' in (1, 1.353] at eta = 0.05, (1, 1.128] at eta = 0.02 —
+  squarely inside Korolev 2018 Thm 3's window [q^{5/8+eps}, q^{7/4-eps}]
+  (§1.3; b = 0 there, which is exactly our shape) and inside
+  Korolev-Changa 2020's window [q^{1/2+eps}, q^{3/2}) (§1.4). Citation
+  selection and savings: Step 3.
+
+### 2.3 STEP 3: the citation, and the per-q assembly
+
+Citation choice for (ii-a): **Korolev 2018 Theorem 3** (§1.3, slide-verbatim),
+NOT Bourgain 2005. Why. The prompt-level expectation was that prime modulus
+q makes Bourgain 2005 the clean citation; but Bourgain's stated range is
+q^{1/2+eps} <= N <= q, and 2.2 shows (ii-a) lives at N = q^rho, rho > 1, on
+the ENTIRE hard sub-range — Bourgain (and Baker 2012, same upper end)
+verbatim-covers only the dyadic seam sliver Lambda in (Q, 2Q]. Thm 3 fits
+(ii-a) exactly: b = 0 (our post-partial-summation phase), N-window
+[q^{5/8+eps}, q^{7/4-eps}] containing our rho-range with margins >= 0.375
+(bottom) and >= 0.397 (top) in the rho-variable at both eta values, and an
+EXPLICIT saving. TRANSCRIPTION CAVEAT (flagged): the slide says "arbitrary
+composite q"; if "composite" is exclusive (prime q not allowed), the
+prime-modulus/N > q fallback is Korolev-Changa 2020 (§1.4 — "arbitrary
+modulus", but abstract-grade, exact Delta unpinned). This caveat is
+inherited by the status line (2.6).
+
+Savings, in q-exponents (eta_0 defined by Delta <= q^{-eta_0}; ell-sum over
+(Lambda, 2Lambda] obtained from two initial segments T(2Lambda) - T(Lambda),
+both in-window; Lambda(n) -> primes costs one L by partial summation +
+O(sqrt N) prime powers):
+  rho in (1, 107/96]:    eta_0(rho) = 1/128 + rho/20   (middle regime),
+  rho in (107/96, 7/4):  eta_0(rho) = (7/4 - rho)/10   (top regime);
+on our range: eta_0 in [0.0397, 0.0635] at eta = 0.05 (worst at
+rho = 1.353), eta_0 in [0.0578, 0.0635] at eta = 0.02. So per (q,h) with
+q NOT dividing h (coprimality (h a_0, q) = 1 then holds, see Step 5):
+
+  |T_{q,h}(I)| <= N Delta q^{o(1)} <= Lambda q^{-eta_0(rho)} L^{O(1)},
+
+a saving of q^{eta_0}/L^{O(1)} against the trivial bound
+pi(2Lambda) - pi(Lambda) ~ Lambda/log Lambda = Lambda/L-grade.
+
+DEGENERATE SECTOR q | h (nonempty precisely because Lambda > q — in the
+N <= q regime |h| <= ell/2 < q would forbid it): for h = qm != 0 the phase
+is e(h a_0 ellbar/q) = 1 identically — the citation hypothesis (a, q) = 1
+FAILS and no cancellation in the mod-q aspect exists. Writing
+q m nu_ell == -m a_0 (mod ell), these terms equal
+sum_ell c_{qm}(ell;theta) e(-m a_0/ell): a q-free oscillation, generically
+non-cancelling (e.g. a_0 |m| <= Lambda/10 makes the phase nearly constant).
+Trivial pricing of the sector: sum_{m != 0} min(R/Lambda, 1/(q|m|)) * Lambda
+<= (Lambda/q)(1 + log R) <= R L — recorded as E_degen <= (Lambda/q) L-grade.
+
+Per-q bound for the centered inner root sum (collecting 2.1 + 2.2 + the
+citation, with the Step-1 coefficient masses; partial-summation Var-cost of
+c_h(ell;theta) in ell is >= sup-grade only for the resonant h, absorbed in
+the same ||theta||R sweep term):
+
+  |E_Lambda(q; theta)| <= [ (3 + log Lambda + 2||theta||R) L^{O(1)} ]
+                          * Lambda q^{-eta_0(rho)}
+                          + (Lambda/q) L-grade
+  <= Lambda q^{-eta_0} L^{O(1)} * (1 + ||theta||R)  +  (Lambda/q) L.
+
+This is a genuine, unconditional, POINTWISE-IN-q estimate (modulo the
+named citation), uniform in a_0, i.e. in p, and in mu, lambda through
+theta. Whether it has any value is pure exponent arithmetic: Step 4.
+
+### 2.4 STEP 4: exponent arithmetic — the pointwise-in-q test FAILS
+
+If the 2.3 bound met link 7's per-q scale R L^{-c-C-5} (so that
+(1/pi(Q)) sum_q |E_Lambda|^2 <= delta_0 R^2 L^{-2c-2C-10} held with NO
+exceptional set), the variance/Chebyshev layer of links 7/10 would
+collapse. Test, in x-exponents, BEST case (theta-sweep and degenerate
+sector set aside, i.e. granting the idealized bound Lambda q^{-eta_0}
+L^{O(1)}): need
+  lam - u' eta_0(rho) < r := 1 - u - u'   (any polylog then absorbable),
+i.e. deficit d(lam) := lam - u' eta_0(lam/u') - r < 0. Computed on a
+1001-point lam-grid (/tmp/wp11_step4.py, this session, .venv python):
+
+| top cell | r | hard sub-range lam | eta_0 range | deficit d(lam) | d at Weil ceiling eta_0 = 1/2 |
+|---|---|---|---|---|---|
+| eta = 0.05 (u = u' = 0.425) | 0.150 | (0.425, 0.575] | [0.0397, 0.0635] | min 0.2504 (at lam = Q+), max 0.4081 (at A) | min 0.0625, max 0.2125 |
+| eta = 0.02 (u = u' = 0.47) | 0.060 | (0.47, 0.53] | [0.0578, 0.0635] | min 0.3828, max 0.4407 | min 0.1750, max 0.2350 |
+
+The deficit is a POSITIVE POWER OF x everywhere on the hard sub-range, at
+both eta values — and remains so even at the absolute ceiling eta_0 = 1/2
+(complete-Kloosterman/Weil-grade cancellation, unattainable for sums over
+primes). The trim direction makes it WORSE (smaller eta shrinks r faster
+than the range). Structural reading: the per-q completed bound
+Lambda q^{-eta_0} is not merely short of the target — it exceeds the
+TRIVIAL count ~ R/L of the windowed sum (Lambda/R >= x^{lam - r} >=
+x^{0.225} resp. x^{0.41}), because the window nu_ell <= R has relative
+density R/Lambda below Lambda^{-1/2}-scale: a Polya-Vinogradov-type
+barrier — NO single-(q,h) completion bound, however strong, can detect a
+window this far below the square-root scale. The degenerate sector
+(Lambda/q) L of 2.3 says the same thing intrinsically: at the top of the
+range it alone reaches R L > target. CONCLUSION: in orientation (ii-a) the
+citation bridge produces a true theorem whose strength is VOID for link 7;
+the pointwise-in-q shortcut does NOT exist, and the q-average (variance /
+exceptional-set layer) is NOT dispensable — the saving must come from
+summing OVER q against the citation (orientations (i)/(ii-b)), not from a
+fixed-q application. The §2.0 range margins of (ii-a) (>= 0.21) are real
+but cannot be cashed: range-compatibility != budget-compatibility, exactly
+the deferral §2.0's commentary stipulated.
+
+### 2.5 STEP 5: uniformity in the numerator h a_0 mod q
+
+Requirement: for FIXED q the Step-3 bound must hold for ALL numerators
+a = h a_0 mod q with (a, q) = 1 — a_0 = (pbar mod q) sweeps essentially
+arbitrary reduced residues as p varies over the band, h sweeps all
+non-degenerate harmonics, and the proof fixes (q, h, p) before citing.
+Audit of the §1 statements:
+- Korolev 2018 Thm 3 (the load-bearing choice): stated for
+  sum_{n<=N} Lambda(n) e_q(a n*) with the standing convention (a, q) = 1 of
+  the survey's T_q/W_q definitions (§1 provenance note); the bound carries
+  no dependence on a — uniformity over ALL reduced residues a, as is
+  standard throughout this literature (the Vinogradov/Vaughan + bilinear
+  machinery never localizes a). NOT an almost-all statement. Grade:
+  slide-verbatim; the "for all (a,q)=1" quantifier should be re-confirmed
+  against the original paper when Thm 3's transcription is upgraded
+  (same caveat-class as §1.2's b-uniformity note for Baker).
+- Bourgain 2005 / Baker 2012 (seam-sliver only, after 2.2/2.3): full phase
+  a n* + b n, (a, q) = 1, uniform in a and b per the slide statements and
+  §1.2's commentary. Same paper-level re-confirmation flag.
+- Korolev-Changa 2020 (fallback if Thm 3 excludes prime q): abstract-grade
+  only; uniformity in a UNVERIFIED — transcription pending (§1.4).
+So: no almost-all-numerators defect among the pinned statements.
+The one GENUINE uniformity failure is internal, not in the citations: the
+degenerate harmonics q | h (2.3), where (h a_0, q) = q != 1 and the
+hypothesis itself is violated. For fixed q this is a structural sector of
+the completion (present because Lambda > q), not a removable technicality:
+it survives every choice of citation and is part of the 2.4 obstruction.
+Verdict: uniformity OK for all numerators COPRIME to q (as the §1
+statements provide); the needed quantifier "all (a,q)=1, fixed prime q,
+N up to q^{1.36}" is exactly what Korolev Thm 3 / Korolev-Changa assert,
+modulo the two named transcription caveats.
+
+### 2.6 STEP 6: status + downstream deltas
+
+STATUS: OBSTRUCTED-[(ii-a)-pointwise: window/completion budget — per-q
+citation output Lambda q^{-eta_0} L^{O(1)} exceeds even the trivial R/L by
+x^{lam-r-u' eta_0} >= x^{0.25} (Korolev Thm 3 saving) and >= x^{0.0625}
+even at the unattainable Weil ceiling eta_0 = 1/2; independently, the
+degenerate harmonics q | h (nonempty since Lambda > q) carry uncancellable
+mass up to (Lambda/q) L ~ R L. Steps 2.1-2.3 ARE proved (completion,
+reciprocity, citation application — modulo Korolev-2018-Thm-3
+slide-transcription incl. its prime-q/"arbitrary composite" reading), but
+the resulting pointwise theorem is void for link 7's target.]
+
+Downstream deltas (3):
+1. E3-lb does NOT follow pointwise in q; the delta_0-exceptional-set /
+   Chebyshev layer of links 7+10 remains NECESSARY, and the live reduction
+   routes stay (ii-b) (Lambda >= Q^{1+eps}, K-single mod q1q2, q-average
+   kept through C-S) + (i)-variance + the Sec. 3 seam — unchanged.
+2. §2.0's table needs an upper-end column (N <= q vs N <= q^{7/4}): with it,
+   Bourgain 2005/Baker 2012 verbatim cover NO part of the (ii-a) hard
+   sub-range (Lambda > Q = q there); §1.5's Bourgain row ("seam top edge"
+   role) stands, its Baker row's "K-single" role is (ii-b)-only.
+3. WARNING for the (ii-b) write-up (next session): the same completion-loss
+   barrier ((Lambda/R)^2 harmonics vs Q^{2 eta_0} saving) threatens any
+   variant that takes absolute values in (ell, h) before summing over q;
+   wp9-frontier §4's "power room is available" claim must be re-priced with
+   the 2.4 arithmetic before (ii-b) is drafted — the q-average must hit the
+   phase BEFORE the coefficient masses are paid, or the budget dies the
+   same death at exponent scale lam - r vs u' eta_0.
