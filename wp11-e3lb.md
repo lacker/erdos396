@@ -1013,4 +1013,296 @@ class] at strength pi(P)pi(Q) x^{-0.0245}, all 0 < |h| < ell/2,
 all ell in (Q,A]. FIRST MOMENT NOT CLOSED: the §4.2 pointwise budget
 is refuted (deficit x^{0.40} at proved strength; >= constant-to-L
 even at the square-root ceiling); requires dispersion in ell
-(Step D, framed above).
+(Step D, framed above; EXECUTED in 4.5).
+
+### 4.5 Step D: the ell-sum brought inside — executed this session
+
+Object (4.4's framing, via 4.3.1's flip): per (p,q), with the ell-range
+(Q,A] tiled by dyadic blocks (Lambda, 2Lambda], Lambda = 2^j Q (top block
+clipped at A), the first-moment error is
+
+    D(p,q) = Sum_{Lambda} Sum_{h != 0} [ Sum_{ell ~ Lambda, ell prime}
+             c_h(ell) s_h(ell) e( a_h ellbar_q / q ) ],
+
+    a_h := h pbar_q mod q,   s_h(ell) := e(-h a_0(p,q)/(q ell))  (smooth),
+
+and the first moment closes iff sup_{p,q} |D(p,q)| <= 0.95 eta R-grade
+(C = 7; signed (p,q)-averaging would also do, but Step D as framed bounds
+per (p,q) — see D3/D5). All numerics at BOTH eta = 0.05 (top cell
+P = Q = x^{0.425}, A = x^{0.575}, R = x^{0.15}) and eta = 0.02
+(Q = x^{0.47}, A = x^{0.53}, R = x^{0.06}). Standing identity used
+throughout: A = Q R exactly (x^{1-u} = x^{u'} x^{1-u-u'}).
+
+#### 4.5.1 D1: the completion coefficients as functions of ell
+
+Exact shape (geometric sum; window [0,R] mod ell, §4.2):
+
+    c_h(ell) = (1/ell) Sum_{n=0}^{R} e(-h n/ell)
+             = (1/ell) e(-hR/(2 ell)) sin(pi h (R+1)/ell)/sin(pi h/ell).
+
+NO arithmetic content in ell: c_h(t) is C^infty in t on each dyadic
+block. Bounds (|h| <= t/2): sup |c_h(t)| <= min((R+1)/t, 1/(2t||h/t||))
+<= min((R+1)/Lambda, 1/(2|h|))-grade on t ~ Lambda; derivative
+(term-by-term, Abel on Sum_n n e(-hn/t)):
+
+    |c_h'(t)| <= min(R+1, t/(2|h|)) t^{-2} (1 + 4 pi |h| R / t),
+
+so Var_{(Lambda,2Lambda]}(c_h) <= min((R+1)/Lambda, 1/(2|h|))
+(1 + 4 pi |h| R/Lambda). The smooth factor: sup|s_h| = 1,
+Var(s_h) <= 2 pi |h| a_0/(q Lambda) <= 2 pi |h|/Lambda. Partial
+summation (BV x oscillation), for any phase X(ell) on the block:
+
+    |Sum_{ell ~ Lambda} c_h s_h X(ell)|
+        <= W(h,Lambda) max_{I subset block} |Sum_{ell in I} X(ell)|,
+    W(h,Lambda) := C_1 min((R+1)/Lambda, 1/|h|) (1 + |h| R/Lambda).  (D1.1)
+
+THE INFLATION (1 + |h|R/Lambda) IS REAL: the endpoint phase
+e(-hR/(2t)) rotates ~ |h|R/Lambda times across the block; it cannot be
+removed by smarter calculus (opening the n-sum gives the same mass).
+It destroys the 1/|h| tail: Sum_{0<|h|<=Lambda/2} W(h,Lambda)
+= [h <= Lambda/R: ~3/2] + [Lambda/R < h <= Lambda/2: ~log R + R/2]
+~ R/2 per block. Sharp-window verdict: even with the D2 Kloosterman
+input the assembly is Sum_Lambda (R/2) Lambda Delta ~ x^{0.15+0.558}
+= x^{0.708} per (p,q) (eta = 0.05) — WORSE than 4.4.2's pointwise
+route. The sharp completion is dead in this orientation too.
+
+Repair — truncate BEFORE the oscillation threshold. Only harmonics
+|h| <= Lambda/(R+1) are inflation-free, and that is exactly the
+Selberg budget. Per block, replace the sharp window by the
+Vaaler-Selberg sandwich S^- <= 1_{[0,R] mod ell} <= S^+ of degree
+
+    H_Lambda := ceil(Lambda/(R+1)),
+
+(Vaaler 1985 / Montgomery, Ten Lectures, Ch. 1; window length R+1
+mod ell): S^pm(nu/ell) = Sum_{|h| <= H} chat^pm_h(ell) e(h nu/ell),
+
+    chat^pm_0(ell) = (R+1)/ell pm 2 theta/(H+1),  theta in [0,1],
+    |chat^pm_h(ell)| <= 1/(H+1) + min((R+1)/ell, 1/(pi |h|)).
+
+The ell-dependence of chat^pm_h enters only through 1/ell amplitudes
+and endpoint phases e(-h R'/ell)-type with R' <= R+1 (explicit Vaaler
+formula), so the derivative has the SAME shape as (D1.1); on the
+truncated support |h| R/Lambda <= H R/Lambda <= 1 + R/Lambda <= 2,
+hence inflation <= 1 + 8 pi = O(1) and
+
+    W^pm(h,Lambda) <= C_2 (1/(H+1) + min((R+1)/Lambda, 1/|h|)),
+    C_0 := Sum_{0<|h|<=H} W^pm(h,Lambda) <= 30  (absolute).      (D1.2)
+
+[Lemma-grade check deferred: the ell-derivative of the explicit Vaaler
+coefficients — pure calculus, no arithmetic; flagged, not load-bearing
+for the verdict below.]
+
+Sandwich price (main term): |chat^pm_0 - (R+1)/ell| <= 2/(H+1)
+<= 4(R+1)/ell on the block, so the extra main-term mass is
+<= 4(R+1) Sum_{ell in (Q,A]} 1/ell = 4(R+1)(0.3023) = 1.21(R+1)
+= 24.2 eta (R+1) at eta = 0.05: absorbed into the target constant
+(C: 7 -> 32; still "<= C eta R"-form). BONUS (kills the framed
+exceptional sector): H_Lambda <= ceil(A/(R+1)) <= Q < q for EVERY
+block, by A = QR — so q | h is IMPOSSIBLE throughout Step D, the
+exact analogue of 4.3.1's "degenerate sector empty" mechanism. D1
+DONE: ell-dependence tamed at O(1) weight-mass per block, O(eta R)
+sandwich slack, no exceptional moduli.
+
+#### 4.5.2 D2: the prime-ell Kloosterman sum per (h,q,p) — Korolev Thm 3
+
+After (D1.2)'s partial summation the arithmetic factor per
+(h, q, p, Lambda) is the incomplete Kloosterman sum over primes
+
+    K_q(a; I) := Sum_{ell in I, ell prime, ell != q} e(a ellbar_q/q),
+    I = (Lambda', Lambda''] subset block,  a = h pbar_q mod q.
+
+Coprimality: 0 < |h| <= H_Lambda <= Q < q (D1, A = QR) and p != q
+prime, so q does not divide h p: (a, q) = 1 for EVERY (h,q,p) in the
+sum — no exceptional moduli at all (the framing's "O(1) per (h,p)"
+allowance is unused). q | ell impossible (ell != q excluded; cost in
+D4). Conversion: Korolev's T_q(N) = Sum_{n<=N} Lambda(n) e_q(a n*) to
+primes-in-I by prime-power removal O(Lambda^{1/2} L) + Abel against
+1/log t + differencing two cutoffs, all uniform in a with (a,q)=1
+(§2.5 audit class; same chain as 4.3.4).
+
+Range check, Korolev 2018 Thm 3 (§1.3), both cutoffs of every I:
+- eta = 0.05: q = x^{0.425+o(1)}; q^{5/8} = x^{0.2656} << Lambda in
+  [x^{0.425}, x^{0.575}] <= q^{7/4-eps} = x^{0.7438-}: margins
+  x^{0.159} (bottom) / x^{0.169} (top). Regime boundary
+  q^{107/96} = x^{0.4737}: MIDDLE regime (Delta = q^{-1/128}
+  N^{-1/20}) for Lambda <= x^{0.4737}, TOP regime
+  (Delta = (N q^{-7/4})^{1/10}) above. (q^{85/96} = x^{0.3763} < Q:
+  the bottom Thm-3 regime is never entered.)
+- eta = 0.02: q = x^{0.47+o(1)}; q^{5/8} = x^{0.2938} << Lambda in
+  [x^{0.47}, x^{0.53}] <= q^{7/4} = x^{0.8225}: margins x^{0.176} /
+  x^{0.293}. Boundary q^{107/96} = x^{0.5238}.
+
+OUTPUT, per (h, q, p, Lambda):
+
+    |Sum_{ell ~ Lambda} chat^pm_h(ell) s_h(ell) e(a ellbar_q/q)|
+      <= W^pm(h,Lambda) max_I |K_q(a;I)|
+      <= C_3 W^pm(h,Lambda) Lambda Delta(q,Lambda) q^{o(1)},     (D2.1)
+
+with Delta x-exponents (continuous in lambda = log_x Lambda):
+- eta = 0.05: Delta = x^{-0.0246} (Lambda = Q) -> x^{-0.0270}
+  (Lambda = x^{0.4737}, regime break, continuous) -> x^{-0.0169}
+  (Lambda = A). Worst block: x^{-0.0169}.
+- eta = 0.02: x^{-0.0272} (Q) -> x^{-0.0299} (x^{0.5238}) ->
+  x^{-0.0293} (A). Worst block: x^{-0.0272}.
+
+Citation caveats (recorded; one NEW weight vs 4.3.4): (i) "arbitrary
+composite q" wording vs our prime q — the inherited §2.3/§2.5 class.
+(ii) NEW: here N = Lambda EXCEEDS the modulus q on all but the bottom
+block (N/q up to x^{0.15}); the prime-modulus-verbatim fallbacks
+(Korolev Thm 1, Bourgain 2005: both need N <= q) cover ONLY
+Lambda in (Q, q]; everything above leans on Thm 3's stated range
+N <= q^{7/4}, with Korolev-Changa 2020 (arbitrary modulus,
+N << q^{3/2} = x^{0.6375} >= A, margin x^{0.0625}; abstract grade,
+Delta unpinned) as backup. This caveat is IMMATERIAL for the verdict:
+D3 shows even Delta = Lambda^{-1/2} q^{o(1)} — square-root
+cancellation, far beyond any citation — cannot close. D2 DONE.
+
+#### 4.5.3 D3: assembly — the budget arithmetic, every line
+
+Sum (D2.1) over 0 < |h| <= H_Lambda ((D1.2): mass C_0 <= 30) and over
+the <= 0.22 L dyadic blocks; add D1's sandwich slack and D4's
+residues:
+
+    |D(p,q)| <= C_4 Sum_{Lambda = 2^j Q} Lambda Delta(q,Lambda)
+                q^{o(1)}  +  24.2 eta (R+1)  +  (D4: O(1) + tiny).
+
+Sanity: per (h, Lambda) Korolev DOES beat trivial — Lambda Delta vs
+pi(Lambda) ~ Lambda/L is a win of Delta L = x^{-0.017+o(1)}. The
+failure is the budget, not absence of cancellation. Exponent ledger
+of f(Lambda) = Lambda Delta (eta = 0.05; lambda := log_x Lambda;
+exponent = 0.95 lambda - 0.0033 middle / 1.1 lambda - 0.0744 top —
+increasing in lambda, so the TOP block dominates geometrically):
+
+  lambda:    0.425    0.45     0.4737   0.50     0.55     0.575
+  Delta:    -0.0246  -0.0258  -0.0270  -0.0244  -0.0194  -0.0169
+  LamDelta:  0.4004   0.4242   0.4467   0.4756   0.5306   0.5581
+
+    Sum_Lambda Lambda Delta <= 2.1 x^{0.5581};
+    budget 0.95 eta R = x^{0.15}/21:
+    DEFICIT = x^{0.5581 - 0.15 + o(1)} = x^{0.408 + o(1)}.
+
+  eta = 0.02: exponent peaks at lambda = 0.53: ledger
+  lambda:    0.47     0.50     0.5238   0.53
+  Delta:    -0.0272  -0.0287  -0.0299  -0.0293
+  LamDelta:  0.4428   0.4713   0.4940   0.5008
+    total <= 2.1 x^{0.5008}; budget 0.02 x^{0.06}:
+    DEFICIT = x^{0.441 + o(1)}.  (Smaller eta is WORSE: R shrinks
+    as x^{3 eta} while A only as x^{1/2 + 1.5 eta}.)
+
+Where the framing's heuristic ("O(1) harmonic mass per block x
+#blocks x q^{-eta_0} vs eta") broke: the per-h inner object is a sum
+of LENGTH pi(Lambda) ~ x^{0.575}/L, so the O(1)-mass line reads
+O(1) x Lambda Delta per block, not O(1) x Delta. Closing needs
+Lambda Delta <= eta R/L-grade, i.e.
+
+    Delta <= eta R/(Lambda L):  x-exponent -0.275 (bottom block)
+             to -0.425 (top block) at eta = 0.05,
+
+a power OF LAMBDA, not a power-saving margin. Korolev's currency
+(x-exponent -0.017..-0.030) is the wrong denomination by x^{0.25-0.41}.
+
+CEILING TEST (grant |K_q(a;I)| <= Lambda^{1/2} for every (h,q,p,I):
+square-root cancellation over the primes ell, strictly stronger than
+anything provable for a single modulus): per block C_0 Lambda^{1/2},
+total <= 3.5 C_0 A^{1/2}:
+  eta = 0.05: x^{0.2875+o(1)} vs x^{0.15}/21: DEFICIT x^{0.1375+o(1)}.
+  eta = 0.02: x^{0.265+o(1)}  vs 0.02 x^{0.06}: DEFICIT x^{0.205+o(1)}.
+General eta (top cell u = u' = 1/2 - 1.5 eta):
+
+    ceiling-deficit exponent = (1-u)/2 - (1-u-u') = 1/4 - 2.25 eta,
+
+POSITIVE for all eta < 1/9 — and eta = 1/9 is exactly the in-band
+edge u + u' = 2/3 (R = y). The per-(h,q,p) route fails by a power of
+x throughout the band, INDEPENDENTLY of the prime-ell Kloosterman
+input's quality.
+
+Structural reading (exact dual of 4.4.2). Per (p,q) and top block,
+Step D asks the harmonic count of {ell ~ Lambda : nu_ell <= R}
+(true size ~ R/L) to absolute accuracy eta R/L-grade out of a sum of
+pi(Lambda) ~ x^{0.575}/L unimodular terms: relative accuracy
+x^{-0.425}, BELOW the square-root floor x^{-0.2875} of any
+harmonic-analysis treatment of one (p,q). So absolute values may not
+be taken even at the per-(p,q) level (a fortiori per-(h,q,p));
+4.4.2 showed they may not be taken at the per-(ell,h) level. Together:
+NO single-variable aggregation closes the first moment — it requires
+SIGNED averaging over at least one of p, q jointly with the
+ell-cancellation. D3 DONE (negative).
+
+#### 4.5.4 D4: residues — E_AP, sliver, exceptional q, conversions
+
+- E_AP: no separate term. The sandwich REPLACES the §4.2 completion
+  identity; the h != 0 sandwich mass IS the E_AP aggregate (as §4.2
+  noted for the sharp window), and both inequalities
+  S^- <= 1 <= S^+ are exact pointwise — bookkeeping is two runs of
+  D1-D3 (majorant for the upper bound on E[N_hard]; minorant only if
+  a matching lower bound is ever needed).
+- Sliver ell in (Q, 2Q] (4.4.1 carries over verbatim): the ell = q
+  column is excluded from K_q at cost sup_h |chat^pm_h s_h| summed
+  over |h| <= H: <= C_0-grade = O(1) per (p,q) per block, total O(1)
+  << eta R. p = q excluded as in 4.3 (cost pi(Q)-grade, absorbed).
+  ell = p is NOT excluded — a legitimate term, no degeneracy
+  (q does not divide h p^2).
+- Exceptional q | h p: EMPTY (D1/D2: H_Lambda <= Q < q by A = QR;
+  q != p prime). The framing's fallback handling is not needed.
+- Lambda(n)-to-primes + Abel + interval differencing:
+  O(Lambda^{1/2} L) per (h,q,p,I); summed with (D1.2)-mass this is
+  <= C_0 Lambda^{1/2} L per block — the same size as D3's ceiling
+  line, hence absorbed in its constants (and at Korolev strength
+  absorbed by q^{o(1)}).
+- Smooth factor s_h(ell): handled INSIDE the BV weight (D1) — exact;
+  Step D needs no E_smooth term and no |h| <= L^{B'} truncation
+  anywhere (contrast 4.3.1; this is why h up to H ~ Lambda/R is
+  admissible here).
+D4 DONE: all residues O(1) per (p,q) or absorbed; nothing leaks into
+the D3 verdict.
+
+#### 4.5.5 D5: verdict for Step D
+
+OBSTRUCTED-[per-(h,q,p) ell-aggregation deficit: x^{0.408+o(1)} at
+Korolev-2018-Thm-3 strength at eta = 0.05 (x^{0.441+o(1)} at
+eta = 0.02); >= x^{1/4 - 2.25 eta} (= x^{0.1375} / x^{0.205}) even
+granting square-root cancellation in every prime-ell sum; the deficit
+exponent vanishes only at eta = 1/9, the band edge u + u' = 2/3].
+FIRST MOMENT REMAINS OPEN. Step D as framed — absolute values at the
+(h,q,p) level after bringing the ell-sum inside — is hereby priced
+and CLOSED: it is the exact dual of the 4.4.2 failure (there:
+x^{0.40} deficit on per-(ell,h) absolute values of (p,q)-sums; here:
+x^{0.41} on per-(h,p,q) absolute values of ell-sums — the symmetry is
+A x (best saving)/(eta R) in both orientations). Together the pair
+PROVES: no aggregation that takes absolute values at any
+single-variable level closes E[N_hard] <= C eta R anywhere in the
+band; cancellation must be harvested jointly in ell AND (signed) in
+at least one of p, q.
+
+Positive payload (sound, reusable, this session's net gain):
+- (D1.1): the completion coefficients c_h(ell) are BV in ell with the
+  exact inflation law (1 + |h| R/Lambda); sharp windows are
+  unusable in ANY ell-inside route (Sum_h W ~ R per block).
+- (D1.2): the Selberg-sandwich-at-degree-Lambda/(R+1) packaging:
+  O(1) weight-mass per block, <= 24.2 eta (R+1) main-term slack,
+  q | h sector emptied by the identity A = QR. This is the correct
+  completion for every future treatment of this object.
+- (D2.1): per-(h,q,p) prime-ell Kloosterman bound
+  Lambda Delta q^{o(1)}, Delta <= x^{-0.0169} on all blocks (both
+  eta values), no exceptional moduli — the per-modulus input any
+  dispersion argument will call as its "first moment after Cauchy".
+- The forward object, now FORCED (unique survivor): per block,
+    T_h(Lambda) := Sum_{q ~ Q} Sum_{p ~ P}
+                   | Sum_{ell ~ Lambda} chat_h(ell) s_h(ell)
+                     e( h (p ell)bar_q / q ) |^2
+  — BFI-grade dispersion (equivalently 4.4's Sum_ell-inside second
+  moment; the §3 variance ladder, §3.2-3.4 pricing applies). Quick
+  feasibility floor: the un-completed per-(p,q) variance diagonal is
+  Sum_{ell ~ Lambda} (R/ell)(1 - R/ell) ~ R/L per block, so with
+  controlled off-diagonals E_{p,q}|D_Lambda| ~ (R/L)^{1/2}-grade and
+  the block-total ~ (R L)^{1/2} << eta R iff R >= eta^{-2} L^3-grade:
+  HOLDS with x^{0.15-o(1)} of room at R = x^{0.15}. The variance
+  route has room exactly where Step D has none; its obstruction
+  ladder ((b1)/(b2) off-diagonals) is already priced in §3.2-3.3.
+
+STATUS (Step D / Sec. 4.5): EXECUTED, OBSTRUCTED-[x^{0.408} deficit
+at citation strength; x^{1/4-2.25 eta} structural deficit at the
+square-root ceiling — quantified, both eta values]. First moment NOT
+closed by Steps A-D; A, B proved, C proved-with-power-saving (4.3),
+D priced and closed (4.5): the §3 variance/dispersion ladder is the
+unique remaining route, with feasibility floor verified.
