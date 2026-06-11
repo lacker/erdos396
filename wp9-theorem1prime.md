@@ -1,5 +1,8 @@
 # WP9: Theorem 1′ — the complete conditional chain
 
+
+> **UPDATE (June 11, WP12b):** link 7 (E3-lb) — the elementary ladder is complete and bottomed out (`wp11-e3lb.md` STATUS header); the remaining input for links 7 AND 9 is the single external Kuznetsov/DI-class estimate (roadmap WP12b). G1 (the sum-branch count) is CLOSED and verified (wp10). E2 is discharged (wp8-e2, verified).
+
 STATUS: COMPLETE (assembly document; no new analytic claims). Date: 2026-06-10.
 
 Target: **Theorem 1′** (manuscript `01-intro.tex`, thm:lower, "Target 1′; rung

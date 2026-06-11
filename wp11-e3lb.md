@@ -1,6 +1,6 @@
 # WP11: E3-lb via the citation bridge
 
-**STATUS: DRAFT — UNVERIFIED**
+**STATUS (current, June 11): the elementary ladder is COMPLETE and BOTTOMED OUT — see §4.7.4 (W4) verdict.** Reader's map: §1 citations (Korolev 2018 = load-bearing, PINNED); §2 (ii-a) pointwise route OBSTRUCTED (Pólya–Vinogradov barrier); §3 variance-route pricing ((b1)/(b2) dead, (b3) absorption viable modulo the first moment); §4 the first moment: §4.1–4.2 reduction PROVED, §4.3 bound (*) PROVED via the reciprocity flip (erratum 6 noted in place), §4.5 ℓ-average OBSTRUCTED, §4.6 (p,q)-dispersion V1–V3 PROVED / V4 floored, §4.7 full-square ladder W1–W2 PROVED, W3 floored, **W4: duality closes the citation-to-√ gap unconditionally (new fiber-count lemma) but the closing estimate (W4.6) is self-similar — missing input is EXTERNAL: Kuznetsov/Deshouillers–Iwaniec-class Kloosterman averages, or `prop-deep-large-sieve.md` Cor. 5's day-one cross-moduli question.** Individual sub-results verified to the grades stated in each section; the file as a whole is a working ladder log, not a manuscript.
 
 Session goal: prove E3-lb (lower-bound form of anatomy-dispersion) using the
 Kloosterman-sums-over-primes literature (Korolev–Changa 2020, Baker 2012,
