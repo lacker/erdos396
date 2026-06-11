@@ -20,7 +20,8 @@ above Q = x^{u'} — see Sec. 3 (this makes the "hard sub-range" mass O(eta)).
 Contents:
 1. Verbatim load-bearing citations
 2. Dispersion reduction lemma (completion + reciprocity, two-sided, q-averaged)
-3. Seam analysis: Lambda in (y, Q^{1+eps}] on the top cell
+3. Pricing the variance route (ii-b) (budget computation — added)
+4. (planned) Seam analysis: Lambda in (y, Q^{1+eps}] on the top cell
 4. E3-lb theorem in chain-consumable form + proof
 5. Numerics (model-scale variance probe)
 6. Adversarial self-check
@@ -421,3 +422,227 @@ Downstream deltas (3):
    the 2.4 arithmetic before (ii-b) is drafted — the q-average must hit the
    phase BEFORE the coefficient masses are paid, or the budget dies the
    same death at exponent scale lam - r vs u' eta_0.
+
+---
+
+## 3. Pricing the variance route (ii-b)
+
+**STATUS: BUDGET COMPUTATION ONLY (this session) — exponent pricing, not a
+proof.** Numeric provenance: /tmp/wp11_iib.py (1001-point lam-grid, both
+eta values; system python). All deficits/surpluses are x-exponents on the
+top-cell midpoint u = u' = 1/2 - 1.5 eta (the 2.0/2.4 convention);
+"deficit" = (route's exponent) - (target's exponent), positive = FAIL.
+
+### 3.0 Object, target, and ordering
+
+Fix p minor and lambda; fix a core mu (theta = theta_mu) — the max-over-mu,
+sum-over-p, and lambda-union layers of link 7 are polylog assembly overhead
+(E3-4/E3-5 territory), set aside as non-exponent-bearing. The priced object:
+
+  Var := (1/pi(Q)) sum_{q ~ Q} |E_Lambda(q; theta)|^2,
+  target: Var <= delta_0 R^2 L^{-2c-2C-10}  (link 7 variance form;
+  E3-5-strengthened delta_0^2 R^2 L^{-(4c+18+C)} — both polylog-grade,
+  identical at exponent level: target exponent 2r, r = 1 - u - u').
+
+Heeding 2.6-delta-3, the square is opened FIRST and completion in (h1, h2)
+is performed only after the q-sum exists:
+
+  Var = (1/pi(Q)) sum_{ell1, ell2 ~ Lambda} sum_q
+        [centered_{ell1}(q) x conj(centered_{ell2}(q))],
+  centered_ell = sum_{h != 0} c_h(ell; theta) e(h nu_ell(q)/ell)
+  (only h1, h2 != 0 occur — centering removed the h = 0 line exactly).
+
+MODEL CAVEAT (flagged once, applies to all of 3.2-3.3): nu_ell(q) =
+(-a_0 qbar) mod ell is priced with a_0 FROZEN. The true a_0(q) = pbar mod q
+layer (wp8-e3 §4's third inverse layer) destroys every periodicity used
+below — the honest conductor per pair is p ell1 ell2 > x, wp8-cdagger-D3
+territory. The frozen model therefore yields an UPPER bound on what any
+citation can deliver; routes that die in the model are dead a fortiori.
+
+### 3.1 Diagonal ell1 = ell2: exact, unconditional, OK
+
+|centered_ell|^2 <= 1[nu_ell <= R](1 + 2(R+1)/ell) + (R+1)^2/ell^2, and the
+per-q window count is unconditionally bounded:
+  N_win(q) := #{ell ~ Lambda : nu_ell(q) <= R} <= ((1+r)/lam)(R+1)
+            <= 3(R+1)
+(each of the R+1 values t has q(b+pt)+1 <= x^{1+r+o(1)}, which has at most
+(1+r)/lam < 3 prime factors > Lambda — no equidistribution input). Hence
+
+  Diagonal <= (1+o(1)) * 3(R+1) + 2(R+1)^2/(Lambda L) <= 4R   (R <= Lambda),
+
+versus target R^2 L^{-(2c+2C+10)}-grade: satisfied iff R >= L^{2c+2C+12},
+free on the cell (R >= x^{2eta}). Margin: a full power x^r. DIAGONAL OK —
+matches wp8-e3 P2's diagonal accounting on q-average alone.
+
+### 3.2 (b1) Generic off-diagonal: Weil-after-double-completion — the ladder
+
+Per pair (ell1 != ell2): sum_{h1,h2 != 0} c_{h1} conj(c_{h2}) K with
+K = K(ell1,ell2,h1,h2) = sum_{q ~ Q prime} e(h1 nu_{ell1}(q)/ell1 -
+h2 nu_{ell2}(q)/ell2). In the frozen model the integrand is periodic mod
+ell1 ell2 ~ Lambda^2, and the q-range covers Q/Lambda^2 < 1/Q < 1 periods:
+the SUB-ONE-SOLUTION regime (same territory as wp8-cdagger D3) — no
+per-tuple equidistribution exists, and the prime-variable literature needs
+N >= m^{1/2+eps} while here N = Q = m^{u'/(2 lam)} with u'/(2 lam) < 1/2 on
+the whole hard sub-range: BELOW the entire Korolev range, in both aspects.
+
+Assembly: Var_offdiag <= (L/Q) * [sum_{ell ~ Lambda} sum_h |c_h|]^2 *
+sup|K| = (L/Q) Lambda^2 L^{O(1)} sup|K|. The L^1 x L^1 coefficient masses
+(sum_h |c_h| <= 2 + log ell per ell, Step 1) are FORCED in this ordering:
+with h1, h2 independent and absolute values taken per tuple, no Parseval
+pairing exists (the min(R/ell, 1/h)^2-masses live only on the shared-h
+slice — Sec 3.3). The ladder of granted per-tuple bounds, deficit vs 2r:
+
+| granted |K| per tuple | Var exponent | deficit, eta=0.05 | deficit, eta=0.02 |
+|---|---|---|---|---|
+| trivial pi(Q) | 2 lam | 2(lam-r): [0.550, 0.850] | [0.820, 0.940] |
+| complete q-range + Weil 2 sqrt(ell1 ell2) L | 3 lam - u' | 3lam-u'-2r: [0.550, 1.000] | [0.820, 1.000] |
+| sqrt-cancellation sqrt(Q) | 2 lam - u'/2 | [0.338, 0.638] | [0.585, 0.705] |
+| GOD-MODE O(1) (every tuple fully cancels) | 2 lam - u' | [0.125, 0.425] | [0.350, 0.470] |
+
+Readings. (a) Weil-after-double-completion is WORSE than trivial by exactly
+lam - u' in (0, 0.15] / (0, 0.06] (= the §2.0 row-(i) deficit): the
+completed-sum bound sqrt(Lambda^2) = Lambda exceeds the trivial count Q —
+completion buys strictly negative value below the square-root scale.
+(b) The decisive row is GOD-MODE: even granting K = O(1) for EVERY tuple —
+strictly stronger than any conceivable citation — the budget fails by
+x^{2lam-u'-2r} >= x^{0.125} (eta = 0.05), >= x^{0.35} (eta = 0.02), worse
+under trim. No per-tuple estimate, of any strength, closes (b1): the
+L^1 x L^1 completion mass (Lambda-grade per ell-line, vs the window's
+Parseval mass (R/Lambda)^{1/2}-grade) is paid before the q-average — 2.6
+delta-3's flagged condition is violated STRUCTURALLY in this ordering, not
+fixably. The needed cancellation lives in the 4-fold (ell1,ell2,h1,h2)
+aggregate against the signed c-coefficients — pair correlation of roots,
+i.e. E3-dagger proper, for which no citation exists. (b1): ROUTE-DEAD.
+
+Corollary (re-pricing wp9-frontier §4 item 1). The q1q2-orientation (the
+§2.0 (ii-b) row: first moment in q, C-S in (ell,h), open the q-square,
+Baker on sum_ell e(n ellbar/(q1 q2))) dies at the SAME ledger line: its
+C-S q1 = q2 diagonal is pi(Q) (sum_{ell,h} w)^2-grade = Q Lambda^2
+L^{O(1)} against the budget Q^2 R^2 L^{-...}, deficit 2lam - u' - 2r —
+identical to the GOD-MODE floor, BEFORE Baker is even invoked (and Baker's
+explicit saving on the off-diagonal, eta_B = eps^4/2000 with eps =
+lam/(2u') - 1/2 <= 0.176, is Q^{-2 eta_B} ~ x^{-4e-7}: real but irrelevant
+against a x^{0.125} deficit). wp9-frontier §4's "power room is available"
+is hereby re-priced: FALSE in every ordering that takes absolute values in
+(ell, h) before the q-average; the §2.0/§2.6 range-compatibility of (ii-b)
+was real but, as for (ii-a) in 2.4, budget-incompatible.
+
+### 3.3 (b2) Near-diagonal h1 = h2 = h, ell1 != ell2
+
+On the shared-h slice the masses ARE Parseval-grade: sum_h sup_ell
+|c_h(ell;theta)|^2 <= (R/Lambda)(3 + 2||theta||R)-grade (theta = 0-grade
+R/Lambda quoted below; the 2.1 theta-sweep multiplies by <= (1+||theta||R),
+adding at most r to each deficit — no verdict changes). Reciprocity (2.2)
+turns the phase into h a_0 (ellbar1 - ellbar2)/q + smooth, so per (q, h),
+q not dividing h, the ell-pair sum is |T_{q,h}|^2 + O(Lambda) — the (ii-a)
+object SQUARED: the variance form genuinely doubles the citation exponent.
+
+- Unconditional mass: (R/Lambda)(Lambda/L)^2 L^{O(1)} = R Lambda L^{O(1)},
+  exponent lam + r vs 2r: SURPLUS lam - r in (0.275, 0.425] (eta=0.05),
+  (0.41, 0.47] (eta=0.02). The near-diagonal is MAIN-TERM-CARRYING: it
+  must oscillate; it cannot be dodged by mass (answers the (b2) question).
+- With Korolev Thm 3 per (q,h) (eta_0 in [0.0397, 0.0635] / [0.0578,
+  0.0635]): R Lambda Q^{-2 eta_0}, deficit lam - r - 2u' eta_0 in
+  [0.226, 0.391] (eta=0.05), [0.356, 0.412] (eta=0.02). DEAD.
+- Needed saving: eta_0 >= (lam - r)/(2u') in [0.324, 0.500] / [0.436,
+  0.500] — Weil-grade cancellation for sums over primes, a factor 5-8
+  above the entire literature (ceiling 0.0635). Not a bookkeeping gap.
+- Weil-ceiling test (eta_0 = 1/2): deficit lam - r - u' = lam - (1-u)
+  <= 0, vanishing only at Lambda = A. The near-diagonal is the FIRST
+  object in this work-package to PASS a ceiling test (contrast 2.4, where
+  even eta_0 = 1/2 left +0.0625): q-average-hits-phase-first + Parseval
+  masses is the structurally correct ordering; what is missing is purely
+  the SIZE of the prime-variable saving.
+- Degenerate sector q | h (the 2.3/2.4 killer, revisited in variance): the
+  mod-q phase dies; terms = c_{qm}(ell1) conj(c_{qm}(ell2))
+  e(-m a_0/ell1 + m a_0/ell2), no q-oscillation at all. But now |c_{qm}|
+  <= 1/(2qm) (Lambda < qR = A on the open range), so the sector's mass is
+  <= zeta(2)(Lambda/q)^2 L^{-2} = R^2 L^{-2} x^{2(lam - (1-u))}: a
+  NEGATIVE power of x for Lambda <= A x^{-delta} — and the same holds for
+  the full degenerate block (q|h1 AND q|h2, h1 != h2) of (b1). The
+  variance form thus TAMES the degenerate-harmonic obstruction (pointwise
+  (Lambda/q)L ~ RL fatal in 2.3; squared (Lambda/q)^2 absorbable), EXCEPT
+  on the top ~ (2c+2C+12) log_2 L dyadic blocks Lambda in (A L^{-K'}, A],
+  where it sits at R^2 L^{-2}: polylog-short of target, needs its own
+  polylog-only treatment — recorded as input to the planned Sec 4
+  (seam/top analysis). (b2): ROUTE-DEAD as a citation bridge; alive only
+  as the marker of where eta_0 ~ 1/3-grade new technology would land.
+
+### 3.4 (b3) The O(eta) hard-mass dodge — checked against wp9-b0-audit §5
+
+Mass accounting (computed). Hard-range ell-mass sum_{Q < ell <= A} 1/ell =
+log((1-u)/u') = 6 eta + O(eta^2) at the cell midpoint: 0.3023 (eta=0.05),
+0.1201 (eta=0.02). The audit's "~ 4 eta" (§5a) is the BEST corner
+u = u' = 1/2 - eta (0.2007 / 0.0800 — reproduced); worst corner ~ 8 eta.
+As a FRACTION of the full unwound support (x^{3/10}, A] (mass
+log((1-u)/0.3) = 0.651 / 0.569) the hard range is 46% / 21% — not small at
+eta = 0.05; what is O(eta) is the absolute mass. The b-side mirror (moduli
+against p) has the same shape, ~ 6 eta. AUDIT CLAIM CONFIRMED as a mass
+statement, with the constant pinned (6 eta midpoint, 4 eta best corner).
+Below Q the q-interval exceeds every modulus (complete-sum regime): T1 +
+per-ell Weil cover Lambda <= Q, so the entire (ii-b) burden indeed lives in
+the O(eta)-mass range Lambda in (Q, A].
+
+BUT mass-is-O(eta) does NOT by itself absorb the burden into delta_0. Two
+genuine conditions surfaced by the pricing:
+
+(1) ORDER OF THE TRIANGLE INEQUALITY. The hard-range terms admit the
+uniform bound |E_hard(q; theta_mu)| <= N_hard(q) + 6 eta R (1+o(1)) with
+N_hard(q) = #{ell > Q : nu_ell(q) <= R} — uniform in mu AND lambda, so
+both killer quantifiers (max-mu inside, E3-4's lambda-inside-event)
+dissolve for free. But paid AFTER the harmonic mu-expansion it meets
+sum_{<mu> <= mu_0} 1/<mu> ~ 2 log mu_0 = (4c+12) loglog x: error
+~ eta R loglog x, DIVERGENT against the O(R) main term. The dodge is only
+legitimate BEFORE the mu-expansion: sandwich at the population level via
+the exact identity 1[P+(a) <= x^{3/10}] = 1 - sum_{soft ell} 1[ell|a]
+- sum_{hard ell} 1[ell|a] (prop:one-large), run the D-step only on the
+soft-unwound part, and bound the hard POPULATION in absolute value — an
+O(eta) R loss against the class main term c_0 R (c_0 the audit-§6 ledger
+constant), positive for eta small. This RESTRUCTURES E3-lb: the hard range
+exits the oscillation demand entirely; no variance at Lambda > Q is needed.
+
+(2) THE RESIDUAL FIRST MOMENT (open). Absorption still requires
+  E_{p,q} N_hard <= C eta R   (C an absolute constant),
+after which Markov prices the bad q into delta_0 and the loss into the
+sandwich's O(eta). The trivial 3.1-bound gives N_hard(q) <= 2(R+1) always
+(<= 2 prime factors > Q per shifted value): constant-grade but NOT
+proportional to eta — the dodge is NOT closed by trivial counting. What it
+needs is theta = 0, phase-free, mu/lambda-free, constant-precision
+equidistribution ON (q, ell)-AVERAGE of the root window: #{(q, m):
+m = pbar mod q, ell | m, m in the length-qR window} over q ~ Q,
+ell in (Q, A] — the Titchmarsh-divisor/BFI count of wp8-e3 §4 route 2, at
+constant precision instead of polylog. This is strictly the WEAKEST demand
+in the whole E3 complex (first moment, no phases, no quantifiers,
+constant-factor target). It is NOT covered by the §1 citations: pointwise
+in ell the q-sum still carries the a_0(q)-layer (conductor p ell > x), and
+per-(ell,h) absolute values re-pay the Lambda-grade L^1 mass against an
+eta R = x^r target (deficit ~ lam - r again) — the ell-average with signed
+window coefficients (i.e. genuine dispersion) must be kept. Route-2's
+"plausibly provable with current technology, paper-scale" assessment
+(wp8-e3 §4) applies, now with a constant-precision-only demand.
+
+### 3.5 Section status
+
+STATUS: PRICED. (b1) ROUTE-DEAD-[no per-tuple bound suffices: GOD-MODE
+floor 2lam-u'-2r >= 0.125 (eta=0.05) / 0.35 (eta=0.02); Weil-after-double-
+completion is below-trivial by lam-u'; the q1q2/K-single C-S ordering dies
+at the same diagonal line — wp9-frontier §4's "power room" claim is
+withdrawn for all absolute-(ell,h) orderings]. (b2) ROUTE-DEAD-[as
+citation: needs eta_0 in [0.32, 0.50] vs 0.0635 available; passes the
+Weil-ceiling test (deficit lam-(1-u) <= 0) — correct ordering, wrong-sized
+literature; degenerate q|h sector variance-tamed except the top L^{O(1)}
+sliver of Lambda]. (b3) BURDEN-ABSORBABLE-CONDITIONALLY-[O(eta) hard mass
+confirmed (6 eta midpoint, audit's 4 eta = best corner); absorption needs
+(i) the sandwich BEFORE the mu-expansion (after it: loglog-divergent) and
+(ii) the open constant-precision first moment E_{p,q} N_hard <= C eta R —
+BFI/Titchmarsh species, weakest demand in the E3 complex. If (ii) holds,
+the Lambda > Q variance burden exits into delta_0 + O(eta) and routes
+(b1)/(b2)/E3-dagger-proper are NOT NEEDED for E3-lb].
+
+Downstream deltas (2): 1. The live E3-lb plan is now: (b3)-sandwich +
+route-2 first moment at constant precision on Lambda in (Q, A]; T1 + Weil
+on Lambda <= Q; the top-sliver degenerate blocks (3.3) into the Sec-4
+seam/top analysis. E3-dagger proper (pair correlation with phases) is
+demoted to fallback. 2. wp9-theorem1prime link 7's variance-form remark
+inherits 3.2: the variance route as a CITATION route is closed; link 7
+should be discharged via the restructured (b3) form, not the variance.
