@@ -646,3 +646,65 @@ seam/top analysis. E3-dagger proper (pair correlation with phases) is
 demoted to fallback. 2. wp9-theorem1prime link 7's variance-form remark
 inherits 3.2: the variance route as a CITATION route is closed; link 7
 should be discharged via the restructured (b3) form, not the variance.
+
+## 4. The first moment (E_{p,q} N_hard <= C eta R) — written in-session (main loop)
+
+### 4.1 Step A: reduction to window counts (bookkeeping, PROVED)
+
+Fix (q, ell) with q < ell (the sliver ell <= 2Q where ell <= q can occur
+is handled in 4.4). By Prop S, the t-existence condition on p is
+nu_ell = (-a_0 qbar mod ell) <= R, i.e.
+
+    a_0 mod ell \in W(q,ell) := {(-qt) mod ell : 0 <= t <= R},
+
+an AP mod ell with difference -q and R+1 terms. Since the canonical
+representative a_0 lies in [1,q] and q < ell, the condition is
+a_0 \in W cap [1,q] as integers. Hence exactly:
+
+    E[N_hard] = (1/(pi(P)pi(Q))) Sum_{ell in (Q,A]} Sum_{q ~ Q}
+                Sum_{p ~ P} 1[a_0(p,q) \in W(q,ell) cap [1,q]].
+
+Target main term: if the p-mean of the indicator is
+#(W cap [1,q])/q x (1+o(1)) on (q,ell)-average, then since
+#(W cap [1,q]) = (R+1)q/ell + E_AP, summing R/ell over ell in (Q,A]
+(Mertens) gives (R+1) log(log A / log Q) <= 6 eta (R+1) on the top
+cell: the target with C = 7.
+
+### 4.2 Step B: completion (bookkeeping, PROVED)
+
+Completing the window indicator mod ell (coefficients
+|c_h| <= min((R+1)/ell, 1/|h|), truncation H = ell):
+
+    E[N_hard] - (main) = (1/(pi(P)pi(Q))) Sum_ell Sum_{0<|h|<ell} c_h
+                          B(ell, h) + (E_AP-aggregate),
+
+    B(ell,h) := Sum_{q ~ Q} Sum_{p ~ P, prime} e(-h a_0(p,q) qbar_ell / ell),
+
+where a_0(p,q) \in [1,q] is the canonical representative of pbar mod q.
+The E_AP-aggregate is absorbed into the same completed form (it IS the
+h != 0 mass). BUDGET: Sum_ell (1/ell-type weights) ~ eta-mass and
+Sum_h |c_h| ~ log: any uniform bound
+
+    |B(ell,h)| <= pi(P) pi(Q) L^{-3}        (*)
+
+for 0 < |h| < ell, ell in (Q,A], closes the first moment with room
+(total error <= eta-mass x log x L^{-3}-savings aggregation; exponent
+check in 4.4).
+
+### 4.3 Step C: the bilinear bound (*) — OPEN, the single remaining piece
+
+B(ell,h) is a double sum over primes (p,q) of a Kloosterman-fraction
+phase whose numerator h is FIXED and small (<= polylog after the c_h
+truncation cutoff h <= L^{B'} carries the mass; the tail h > L^{B'}
+uses |c_h| <= 1/h and the trivial bound, costing L^{-B'+1} — fine).
+Candidate tools, in order: (i) Cauchy-Schwarz in q + the p-sum
+completing to Ramanujan/Kloosterman complete sums mod q-structure;
+(ii) DFI 1997 bilinear Kloosterman fractions (numerator fixed — the
+pair-dependence obstruction of wp9-frontier does NOT apply);
+(iii) equidistribution of pbar mod q on (p,q)-double-average
+(elementary second moment may suffice for L^{-3}).
+
+### 4.4 Exponent bookkeeping and the ell <= 2Q sliver — TODO with Step C.
+
+STATUS: REDUCED to (*) — a single uniform bilinear bound at fixed small
+numerator, needing only polylog savings. Steps A-B proved above.
