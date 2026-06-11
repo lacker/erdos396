@@ -115,9 +115,11 @@ part; Korolev-Changa is kept as belt-and-braces / future simplification.
 | Input | pinned grade | load-bearing here? |
 |---|---|---|
 | Baker 2012 (squarefull part <= q^{1/4}, N >= q^{1/2+eps}, eta = eps^4/2000) | slide-verbatim; paper-level b-uniformity UNVERIFIED | YES (hard sub-range, K-single) |
-| Korolev 2018 Thm 3 (arbitrary composite, N >= q^{5/8+eps}) | slide-verbatim | cross-check only (covers Lambda >= Q^{5/4+eps}) |
-| Bourgain 2005 (prime modulus, N >= q^{1/2+eps}) | slide-verbatim; eta ineffective | YES (seam top edge, q-aspect, b=0... see Sec. 3 — on the top cell its role is small) |
-| Korolev-Changa 2020 (arbitrary q, N << q^{3/2}) | abstract-grade only | NO (belt-and-braces) |
+| Korolev 2018 Thm 3 (arbitrary composite, N >= q^{5/8+eps}) | slide-verbatim | YES (Sec. 4.3 Step C: per-q route, N ≍ q, middle regime); also cross-check on (ii-a) |
+| Korolev 2018 Thm 1 (prime q, b = 0, q^{1/2+eps} <= N <= q, eta = eps^2/20) | slide-verbatim | YES (Sec. 4.3.4 fallback: covers the p <= q half unconditionally on prime-q-verbatim grade) |
+| Bourgain 2005 (prime modulus, N >= q^{1/2+eps}) | slide-verbatim; eta ineffective | YES (seam top edge, q-aspect, b=0... see Sec. 3 — on the top cell its role is small); second fallback for Sec. 4.3.4 (p <= q half) |
+| Korolev-Changa 2020 (arbitrary q, N << q^{3/2}) | abstract-grade only | fallback only (Sec. 4.3.4: p > q half if Thm 3 excludes prime q) |
+| DFI 1997 Thms 1-3 (bilinear Kloosterman fractions, l^2-normalized) | preprint-verbatim, fetched this session (Sec. 4.3.2) | NO (route fails on thin-coefficient normalization, Sec. 4.3.3) |
 | Weil/Hooley complete-sum bound (S(ell;a,b) <= 2 sqrt(ell), prime ell) | classical | YES (Lambda <= Q regime + completion) |
 | Montgomery-Vaughan spaced large sieve | classical (already consumed by T1) | YES (via T1) |
 
@@ -689,22 +691,326 @@ Sum_h |c_h| ~ log: any uniform bound
 
 for 0 < |h| < ell, ell in (Q,A], closes the first moment with room
 (total error <= eta-mass x log x L^{-3}-savings aggregation; exponent
-check in 4.4).
+check in 4.4). [BUDGET LINE WITHDRAWN (this session, 4.4): the error
+sum carries NO 1/ell weight — the 1/ell weights belong to the MAIN
+term only. The exponent check in 4.4 shows (*) at ANY pointwise
+strength, including below square-root, does NOT close the first
+moment; (*) itself is nevertheless PROVED in 4.3, with power saving.]
 
-### 4.3 Step C: the bilinear bound (*) — OPEN, the single remaining piece
+### 4.3 Step C: the bilinear bound (*) — RESOLVED this session
 
-B(ell,h) is a double sum over primes (p,q) of a Kloosterman-fraction
-phase whose numerator h is FIXED and small (<= polylog after the c_h
-truncation cutoff h <= L^{B'} carries the mass; the tail h > L^{B'}
-uses |c_h| <= 1/h and the trivial bound, costing L^{-B'+1} — fine).
-Candidate tools, in order: (i) Cauchy-Schwarz in q + the p-sum
-completing to Ramanujan/Kloosterman complete sums mod q-structure;
-(ii) DFI 1997 bilinear Kloosterman fractions (numerator fixed — the
-pair-dependence obstruction of wp9-frontier does NOT apply);
-(iii) equidistribution of pbar mod q on (p,q)-double-average
-(elementary second moment may suffice for L^{-3}).
+Claim (*): |B(ell,h)| <= pi(P) pi(Q) L^{-3} uniformly for
+0 < |h| <= L^{B'}, ell in (Q,A] prime, at the top cell
+P = Q = x^{0.425}, A = x^{0.575}. Verdict: see 4.3.5. Conventions:
+p runs over primes in (P,2P], q over primes in (Q,2Q], p != q (a_0
+undefined at p = q; if the program's band-pair convention admits
+p = q, those <= pi(Q) terms are excluded here and cost
+pi(Q) <= pi(P)pi(Q) x^{-0.425} L — absorbed), and q != ell (qbar_ell
+undefined; possible only in the sliver ell <= 2Q; the excluded single
+q costs <= pi(P) = pi(P)pi(Q) x^{-0.425} L-grade — absorbed; see 4.4).
 
-### 4.4 Exponent bookkeeping and the ell <= 2Q sliver — TODO with Step C.
+#### 4.3.1 Step C-1: the reciprocity flip (exact)
 
-STATUS: REDUCED to (*) — a single uniform bilinear bound at fixed small
-numerator, needing only polylog savings. Steps A-B proved above.
+Failed routes first, for the record. (i) Pointwise in q BEFORE any
+flip, the p-sum is Sum_p e(c_q a_0(p,q)) with the REAL frequency
+c_q = -h qbar_ell/ell applied to the integer a_0 in [1,q]: not a
+character sum mod q — no citation matches. (ii) Cauchy-Schwarz in q:
+the diagonal alone gives pi(Q) sqrt(pi(P)) << target (fine), but the
+off-diagonal phase difference a_0(p1,q)-a_0(p2,q) is parametrized by
+(k1,k2) with a_0(p_i,q) = (1+k_i q)/p_i, and the (k1,k2)-cells are
+q-APs mod p1 p2 ~ P^2 >> Q: ONE q per cell — the cell decomposition
+degenerates to unit terms, no cancellation accessible. Mirror route
+(Cauchy in p) dies the same way mod q1 q2. So: flip first.
+
+The flip. For primes q != ell, with qbar = qbar_ell (inverse mod ell)
+and ellbar = ellbar_q (inverse mod q), the exact three-term
+reciprocity of §2.2 (q qbar + ell ellbar == 1 mod q ell) gives
+
+    qbar/ell + ellbar/q == 1/(q ell)   (mod 1).
+
+Apply it to n = -h a_0(p,q):
+
+    e(-h a_0 qbar/ell) = e(h a_0 ellbar_q / q) * e(-h a_0/(q ell)).
+
+Smooth factor: |e(-h a_0/(q ell)) - 1| <= 2 pi |h| a_0/(q ell)
+<= 2 pi |h|/ell (a_0 <= q), so for |h| <= L^{B'} replacing it by 1
+costs, after trivial summation over (p,q),
+
+    E_smooth <= 2 pi L^{B'} pi(P) pi(Q) / ell
+             <= pi(P) pi(Q) x^{-0.425 + o(1)}   — negligible.
+
+(No partial summation needed, unlike §2.2: there the harmonics ran to
+|h| ~ ell/2; here the L^{B'} truncation makes the factor POINTWISE
+close to 1. This is the one place |h| <= L^{B'} is used essentially;
+the argument below survives up to |h| <= x^{0.4}, see 4.3.5.)
+
+Main factor: a_0 == pbar (mod q) and e(./q) depends only on the
+residue mod q, so
+
+    e(h a_0 ellbar_q/q) = e(h pbar_q ellbar_q/q)
+                        = e(h (p ell)bar_q / q),
+
+a CLEAN Kloosterman fraction. Exact outcome of Step C-1:
+
+    B(ell,h) = Sum_{q ~ Q, q != ell} Sum_{p ~ P, p != q}
+               e( h (p ell)bar_q / q )  +  O(pi(P) pi(Q) L^{B'}/ell).
+
+The modulus is now q ~ Q (it was ell), the numerator is
+a = h ellbar_q mod q, and — decisively — q | h is IMPOSSIBLE:
+0 < |h| <= L^{B'} < Q < q. The degenerate sector that §2.3 met
+(there h ran to ell/2 > q) is EMPTY in this orientation:
+(a, q) = 1 for EVERY q in the sum.
+
+#### 4.3.2 Step C-2: DFI 1997, fetched statement (verbatim)
+
+Provenance: fetched THIS session from the author preprint
+math.ucla.edu/~wdduke/preprints/bilinear.pdf (pdftotext extraction;
+published as Invent. Math. 128 (1997) 23-43). Object (their (1.2)):
+
+> B(M,N) = Sum Sum_{(m,n)=1} alpha_m beta_n e(a mbar/n),
+>
+> "where a is a fixed (but possibly large) positive integer and
+> alpha_m, beta_n are arbitrary complex numbers for M < m <= 2M,
+> N < n <= 2N, respectively and m mbar == 1 (mod n)."
+> Trivial bound (1.3): |B(M,N)| <= 2 ||alpha|| ||beta|| (MN)^{1/2},
+> ||.|| the l^2-norm.
+>
+> **Theorem 1.** For any positive integer a we have
+>   B(M,N) << ||alpha|| ||beta|| ( (M+N)^{1/2}
+>             + (1 + a/(MN))^{1/2} min(M,N) ) (MN)^eps.
+>
+> **Theorem 2.** For any positive integer a we have
+>   B(M,N) << ||alpha|| ||beta|| (a + MN)^{3/8} (M+N)^{11/48 + eps},
+> the implied constant depending only on eps.
+>
+> **Theorem 3.** For any positive integer a and any complex numbers
+> alpha_m, beta_n:
+>   B(M,N) << ||alpha|| ||beta|| (a + MN)^{14/29} (M+N)^{1/58 + eps}.
+>
+> Corollary: the same bounds hold for the weighted form
+> B_F(M,N) = Sum Sum alpha_m beta_n e(a mbar/n) F(m,n), with
+> F^{(j,k)}(m,n) << eta^{j+k} m^{-j} n^{-k} (0 <= j,k <= 2,
+> eta >= 1), at the multiplicative cost eta^2.
+
+[Paper's own commentary, transcribed: "In case a << MN ... the above
+result (Thm 2) improves the trivial bound (1.3) provided
+N > M^{5/6+eps} and M > N^{5/6+eps}." Thm 1 is nontrivial only for
+imbalanced M, N. PDF archived at the session's webfetch cache.]
+
+#### 4.3.3 Step C-3: range/normalization arithmetic — the DFI route FAILS on sparsity
+
+Cast 4.3.1's output as B(M,N): m := p ell (ell FIXED inside B(ell,h)),
+n := q, a := |h| (conjugate if h < 0). Then m in (P ell, 2P ell],
+dyadic with M = P ell; n dyadic with N = Q; (m,n) = 1 holds term-by-term
+(p, q, ell prime, p != q != ell); a <= L^{B'} << MN. Coefficients:
+alpha_m = 1{m = p ell, p prime in (P,2P]} — supported on multiples of
+ell, ||alpha||^2 = pi(P)-grade; beta_n = 1{n prime} ||beta||^2 =
+pi(Q)-grade. All hypotheses of §4.3.2 hold VERBATIM — this is a
+genuinely admissible DFI pair (the wp9-frontier §2c pair-dependence
+blocker is absent: the numerator a = |h| is fixed). The arithmetic,
+top cell (M = x^{0.85}..x^{1.0} as ell runs over (Q,A], N = x^{0.425},
+MN = x^{1.275}..x^{1.425}):
+
+  Sparsity threshold. The DFI bounds are ||.||_2-normalized; ours is a
+  THIN pair: ||alpha|| ||beta|| = (pi(P)pi(Q))^{1/2} = x^{0.425-o(1)},
+  while the true trivial count is pi(P)pi(Q) = x^{0.85-o(1)}. A bound
+  ||alpha|| ||beta|| D beats (*) iff D <= (pi(P)pi(Q))^{1/2} L^{-3}
+  = x^{0.425-o(1)}.
+
+  | bound | D at ell = Q+ | D at ell = A | vs x^{0.425} |
+  |---|---|---|---|
+  | trivial (1.3): (MN)^{1/2} | x^{0.6375} | x^{0.7125} | FAIL +0.21/+0.29 |
+  | Thm 1: (M+N)^{1/2} + min(M,N) | x^{0.425}+x^{0.425} | x^{0.5}+x^{0.425} | FAIL (at-threshold x (MN)^eps at ell=Q+; +0.075 at A) |
+  | Thm 2: (MN)^{3/8}(M+N)^{11/48} | x^{0.673} | x^{0.748} | FAIL +0.248/+0.323 |
+  | Thm 3: (MN)^{14/29}(M+N)^{1/58} | x^{0.630} | x^{0.705} | FAIL +0.21/+0.28 |
+  | DRZ26 (wp9-frontier §2c): (MN)^{1/4}(M+N)^{1/6}N^{1/3}M^{-1/12} | x^{0.532} | x^{0.581} | FAIL +0.11/+0.16 |
+
+  Structural reading: DFI-type savings are powers of (MN) gained over
+  the DENSE trivial bound (MN)^{1/2}; our thin support sits a factor
+  x^{0.2125..0.2875} BELOW that baseline ((MN)^{1/2}/(pi(P)pi(Q))^{1/2}),
+  and the best available saving ((MN)^{-1/48}-grade ~ x^{-0.027}) cannot
+  recover it. Bettin-Chandee's trilinear upgrade needs an AVERAGE over
+  the numerator a (we have a single fixed h) and is equally
+  ||.||_2-normalized. VERDICT for the route as prompted: OBSTRUCTED-
+  [thin-coefficient normalization; deficit x^{0.11} (DRZ26, best) to
+  x^{0.32}] — closed for (*) at the top cell, NOT by pair-dependence.
+  The flip of 4.3.1 is still the right move: see 4.3.4.
+
+#### 4.3.4 Step C-4: the per-q citation route — (*) PROVED, with power saving
+
+Return to 4.3.1's exact form and bound it POINTWISE IN q. For fixed
+q (prime, q != ell, q ∤ h since 0 < |h| <= L^{B'} < Q < q):
+
+  S_q := Sum_{p in (P,2P], p prime, p != q} e( a pbar_q / q ),
+  a := h ellbar_q mod q,  (a, q) = 1.
+
+This is exactly the §1 species — Kloosterman sum over primes, PRIME
+modulus q, numerator coprime to q, b = 0 — and, decisively, in the
+range where the literature LIVES: length N = P with q in (Q, 2Q] =
+(P, 2P], i.e. q/2 <= N < q-grade, N ≍ q. (Contrast §2.3-2.4: there
+the modulus was ell with N = Lambda > ell-windowed-by-R and the
+TARGET was R-scale, x^{0.275..0.425} below trivial. Here the target
+L^{-3} is polylog below trivial: the Polya-Vinogradov barrier of
+§2.4 is not in play for (*) itself.)
+
+Citation: Korolev 2018 Thm 3 (§1.3). Window check: N-values needed
+are all N in [P, 2P] (intermediate cutoffs for partial summation);
+q^{85/96} <= (2Q)^{85/96} = x^{0.3763+o(1)} < P = x^{0.425} and
+2P = 2q-grade <= q^{107/96+o(1)} = x^{0.4737+o(1)}: ENTIRELY inside
+the MIDDLE regime [q^{85/96}, q^{107/96}], with x-exponent margins
+0.049 and 0.049. Saving: Delta <= (q^{1/16} N^{2/5})^{-1/8}
+<= 2^{1/20} q^{-37/640} for N >= q/2; at q = x^{0.425+o(1)}:
+
+  Delta <= x^{-(0.425)(37/640) + o(1)} = x^{-0.02457 + o(1)}.
+
+Lambda-to-primes: Sum_{P<n<=N} Lambda(n) e_q(a nbar) =
+Sum_{P<p<=N} (log p) e_q(a pbar) + O(P^{1/2} L) (prime powers), and
+Abel summation against 1/log t gives, using the Thm-3 bound at every
+intermediate N in [P, 2P],
+
+  |S_q| << P q^{-37/640} q^{o(1)} / L + P^{1/2} L
+        << P x^{-0.02457 + o(1)},
+
+UNIFORMLY in the numerator a coprime to q (§2.5 audit) — hence
+uniformly in (ell, h). Summing over the <= pi(2Q) moduli q and
+adding 4.3.1's errors:
+
+  |B(ell,h)| <= pi(Q) L-grade * P x^{-0.02457+o(1)}
+                + pi(P)pi(Q) L^{B'} x^{-0.425+o(1)}   [E_smooth]
+                + pi(P) * 1{ell <= 2Q}                [q = ell term]
+             <= pi(P) pi(Q) x^{-0.0245 + o(1)}.
+
+Citation stack and caveats (inherited, none new):
+- PRIMARY: Korolev 2018 Thm 3, slide-verbatim (§1.3). Caveat (as in
+  §2.3/§2.5): the slide says "arbitrary composite q"; if prime q is
+  excluded by that wording, then (i) the sub-sum over p <= q is
+  covered VERBATIM by Korolev 2018 Thm 1 (§1.3: prime q, b = 0,
+  q^{1/2+eps} <= N <= q; here N >= q/2, so eps = 1/2 - o(1), explicit
+  eta = eps^2/20 = 1/80: saving q^{-1/80} = x^{-0.0053}) and
+  independently by Bourgain 2005 (§1.1, ineffective); (ii) only the
+  sub-sum over p in (q, 2P] (length < q, but cutoff 2P in (q, 2q))
+  needs the N > q extension — Korolev-Changa 2020 (§1.4: "arbitrary
+  modulus", q^{1/2+eps} <= N << q^{3/2} covers N <= 2q with margin
+  x^{0.16}) at abstract grade, Delta unpinned.
+- The half p <= q is therefore UNCONDITIONAL on pinned prime-modulus
+  statements; the transcription caveat burdens only the p > q half.
+
+#### 4.3.5 Step C-5: verdict for (*)
+
+(*) PROVED — at strength STRICTLY STRONGER than demanded:
+
+  |B(ell,h)| <= pi(P) pi(Q) x^{-0.0245 + o(1)}
+             (<= pi(P) pi(Q) L^{-3} with power-of-x room),
+
+uniformly for 0 < |h| <= L^{B'} and ell in (Q, A] prime (sliver
+included, 4.4), at the top cell. Grade: PROVED-MODULO-[Korolev-2018-
+Thm-3 slide transcription: prime-modulus admissibility + a-uniformity
+re-confirmation against the paper — the §2.3/§2.5 caveat class, no new
+citations introduced; fallback stack pinned in 4.3.4]. The h-range
+extends as-is to 0 < |h| <= x^{0.4} (E_smooth still <= pi(P)pi(Q)
+x^{-0.025}; q ∤ h still automatic). REMARK (full completed range): for
+x^{0.4} < |h| < ell/2 the same bound holds with an extra L: complete
+the a_0-VALUE range mod q (cost: one L of b-harmonics); the phase
+becomes e((h ellbar + b) pbar/q); the degenerate b == -h ellbar
+(mod q) terms have, for fixed (ell,h), at most ONE prime q in (Q,2Q]
+per b-value (q | b ell + h <= x^{0.85-} < Q^2), totaling
+<= pi(P) L = pi(P)pi(Q) x^{-0.425} L^2; the q | h moduli (now
+possible) are likewise <= 1 prime in (Q,2Q] per h, costing pi(P).
+So (*) holds for ALL 0 < |h| < ell/2 — §4.2's tail-truncation
+bookkeeping (and its erroneous "L^{-B'+1}" tail estimate) is moot.
+
+Numerics (this session, /tmp, .venv python): (i) the 4.3.1 flip
+identity e(-h a_0 qbar_ell/ell) = e(h (p ell)bar_q/q) e(-h a_0/(qell))
+verified EXACTLY on 2000 random tuples (p, q ~ 2000..4000 prime,
+ell up to 5400, h <= 12; max deviation < 1e-9). (ii) Model scale
+x = 1e7, P = Q = x^{0.425} (129 primes each side, trivial = 16641,
+sqrt = 129): |B| = 289 / 121 / 39 at (ell/Q, h) = (1.3, 1) /
+(2.7, 3) / (5.0, 7) — square-root-scale, consistent with the proved
+power saving and the random-model benchmark of 4.4.2.
+
+WARNING — sufficiency, not strength, is the issue: (*) is proved,
+but the §4.2 budget line claiming (*) closes the first moment is
+WRONG. Exponent check in 4.4 (as §4.2 stipulated), where the
+aggregation over ell is priced honestly.
+
+### 4.4 Exponent bookkeeping and the ell <= 2Q sliver — written this session
+
+#### 4.4.1 The ell <= 2Q sliver: harmless
+
+On the sliver ell in (Q, 2Q], the modulus ell and the variable
+q in (Q, 2Q] share a dyadic cell, so q >= ell and q = ell can occur.
+Three layers, all fine:
+- (*) itself: the 4.3 proof used only ell prime in (Q,A], ell != q,
+  ell > Q (for E_smooth) — NEVER ell > 2Q. It covers the sliver
+  verbatim; the q = ell column is excluded from B by convention
+  (qbar_ell undefined) at recorded cost <= pi(P) = pi(P)pi(Q)
+  x^{-0.425+o(1)} L-grade, inside the 4.3.4 constants.
+- Step B on the sliver: §4.1's integer-interval identification
+  (a_0 in W cap [1,q] AS integers) used q < ell, but it is packaging
+  only. The §4.2 completion expands the mod-ell window indicator
+  1[nu_ell in [0,R]], nu_ell = (-a_0 qbar) mod ell — exact for ALL
+  (q, ell) = 1 in either order, needing only R < ell (R = x^{0.15}
+  << Q). Main term per (q,ell): exactly c_0 = (R+1)/ell, unchanged.
+  So drop the q < ell restriction and run §4.2 as-is on the sliver.
+- q = ell pairs: Prop S's condition is undefined; bound the
+  contribution of ell = q to N_hard(p,q) by 1 — adds <= 1 << eta R
+  to E[N_hard]. Total sliver overhead: absorbed, no new terms.
+
+#### 4.4.2 Final exponent table — the aggregation check (*) was waiting for
+
+Top cell u = u' = 0.425, eta = 0.05, R = x^{0.15}, all entries
+x-exponents-with-constants where pinned:
+
+| quantity | value |
+|---|---|
+| main term Sum_{ell in (Q,A]} (R+1)/ell | 0.3023 (R+1) = 6.05 eta (R+1) |
+| error budget (target C = 7) | ~ 0.95 eta R ~ x^{0.15}/21 |
+| # moduli ell in (Q,A] | pi(A) - pi(Q) ~ x^{0.575}/(0.575 L) |
+| per-ell harmonic mass Sum_{h != 0} abs(c_h) (sharp window) | 1 + log(R+1) ~ 0.15 L |
+| (*) proved strength D := sup abs(B)/(pi(P)pi(Q)) | x^{-0.0246+o(1)} |
+| per-ell completed error <= 0.15 L D | x^{-0.0246+o(1)} |
+| per-ell MAIN term (R+1)/ell | x^{-0.275} (ell=Q) .. x^{-0.425} (ell=A) |
+| total completed error <= 0.26 x^{0.575} D | x^{0.5504+o(1)} |
+| deficit vs budget | x^{0.40} |
+| uniform D needed to close | <= 0.18 x^{-0.425} ~ (pi(P)pi(Q))^{-1/2} L^{-2}-grade |
+| random-model benchmark for abs(B) | typical (pi(P)pi(Q))^{1/2} ~ 0.42 x^{0.425}/L; sup over the ~x^{1.15} pairs (ell,h): another sqrt(L)-factor |
+| ceiling test: GRANT abs(B) = (pi(P)pi(Q))^{1/2} for every (ell,h) | sharp window: total ~ 0.11 L R (miss ~2L); Selberg majorant (O(1) harmonic mass, H ~ ell/R): total ~ 1.48 R (miss ~ constant 30) |
+
+CONCLUSION (the §4.2 budget claim REFUTED; (*) proved AND shown
+insufficient). The needed uniform strength sits at/below the
+random-model floor: per-ell the error must beat the per-ell main term
+R/ell = x^{-0.275..-0.425}, while pi(A) ~ x^{0.575}/L moduli each pay
+at least the square-root floor (pi(P)pi(Q))^{-1/2} = x^{-0.425}L —
+the pointwise route misses by ~2L at the sharp-cutoff ceiling, by a
+constant ~30 even with a Selberg-majorant completion (O(1) harmonic
+mass) at EXACT square-root cancellation for every (ell,h), and the
+sup over x^{1.15} pairs genuinely exceeds the square-root floor by
+sqrt(L)-factors in the random model. No pointwise-in-(ell,h) bound —
+provable or true — closes the first moment. This is §3.4(2)'s
+warning ("per-(ell,h) absolute values re-pay the Lambda-grade L^1
+mass ... the ell-average with signed window coefficients (i.e.
+genuine dispersion) must be kept") re-derived quantitatively; §4.2's
+budget line had contradicted it and is withdrawn.
+
+What survives, precisely: Steps A-B (exact, sliver included, 4.4.1),
+the bound (*) at power-saving strength for ALL 0 < |h| < ell/2
+(4.3.4-4.3.5), and the structural gain of the 4.3.1 flip (modulus
+moved from ell to q; degenerate sector emptied for |h| < Q). What the
+first moment still needs: the SIGNED aggregate
+  Sum_{ell in (Q,A]} Sum_{0<|h|<ell} c_h B(ell,h)
+treated with the ell-sum INSIDE — per (p,q) this is
+Sum_ell [1(nu_ell <= R) - (R+1)/ell], a dispersion/second-moment-in-
+ell object (large-sieve species over the ~x^{0.575} moduli ell), NOT
+a per-(ell,h) absolute-value object. The 4.3.1-flipped form
+Sum_q Sum_p e(h (p ell)bar_q/q) with modulus q FIXED across ell is
+the natural input: the ell-dependence now sits ONLY in the numerator
+h ellbar_q mod q — a complete-sum average over ellbar mod q is
+available per q. That is the recommended Step D (not attempted here).
+
+STATUS (Sec. 4): Steps A-B PROVED (sliver included). Step C = (*)
+PROVED-MODULO-[Korolev-2018-Thm-3 transcription caveats, §2.3/§2.5
+class] at strength pi(P)pi(Q) x^{-0.0245}, all 0 < |h| < ell/2,
+all ell in (Q,A]. FIRST MOMENT NOT CLOSED: the §4.2 pointwise budget
+is refuted (deficit x^{0.40} at proved strength; >= constant-to-L
+even at the square-root ceiling); requires dispersion in ell
+(Step D, framed above).
