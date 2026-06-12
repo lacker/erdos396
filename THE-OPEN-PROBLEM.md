@@ -589,3 +589,8 @@ density."* Independently of the application, (A)/(B) would be the first sign-sen
 bound to beat divisor counting on a cross-moduli coincidence family in the Selberg range —
 exactly the species of input that the sign-change, equidistribution, and
 dispersion-beyond-conductor problems quoted in §3.3 are all waiting for.
+
+
+## ADDENDUM (June 12; wp15 round 1)
+
+Three further approaches are now priced and dead, each with structural proofs: the wall is **moment-invariant** (4th-moment chain reduces to the same estimate; the 4-linked class CRT-collapses), **cell-independent** (proved: all cell-gains cancel exactly; closure would need $Q \ge x^{2u'}$), and **coefficient-sign-independent**: the Vaaler/Dirichlet coefficients factor as (exact phase) × (nonnegative amplitude), and the phase's total travel over the full parameter cell is $\approx 3$ rotations (the completion degree times the window sweep is identically 1) — so **the weights in both forms of the estimate may be taken nonnegative**. Consequence: the required cancellation comes from the distribution of modular inverses (the $q$-arithmetic) alone. This further sharpens where a solution must act: equidistribution/sign structure of $\{\overline{p\ell}\bmod q\}$ over the coincidence graph, not coefficient interference.
