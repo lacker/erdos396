@@ -594,3 +594,12 @@ dispersion-beyond-conductor problems quoted in §3.3 are all waiting for.
 ## ADDENDUM (June 12; wp15 round 1)
 
 Three further approaches are now priced and dead, each with structural proofs: the wall is **moment-invariant** (4th-moment chain reduces to the same estimate; the 4-linked class CRT-collapses), **cell-independent** (proved: all cell-gains cancel exactly; closure would need $Q \ge x^{2u'}$), and **coefficient-sign-independent**: the Vaaler/Dirichlet coefficients factor as (exact phase) × (nonnegative amplitude), and the phase's total travel over the full parameter cell is $\approx 3$ rotations (the completion degree times the window sweep is identically 1) — so **the weights in both forms of the estimate may be taken nonnegative**. Consequence: the required cancellation comes from the distribution of modular inverses (the $q$-arithmetic) alone. This further sharpens where a solution must act: equidistribution/sign structure of $\{\overline{p\ell}\bmod q\}$ over the coincidence graph, not coefficient interference.
+
+
+## ADDENDUM 2 (June 12/13; wp15-verify-audit — ERRATUM 7, FAVORABLE): THE WALL IS POLYLOG-DEEP
+
+The power-deficit $x^{2\lambda-0.725}$ of the main text is an **artifact of the harmonic-tuple decomposition**. A physical-side Hölder chain (P1)–(P3) — (P1) the record's own lemma (W1.4)(ii); (P2) new but elementary (inverse-injectivity + orbit-gap counting, no equidistribution input); (P3) trivial — gives **unconditionally**
+$$\mathbb E_{p,q}\,|D^{\pm}_\Lambda|^2 \;\le\; C'(R+1)^2 L,$$
+verified line-by-line and by five scaling discriminators at model $x = 10^6$–$10^{12}$ (`wp15-verify-audit.md`). The three floor theorems are reconciled: they price harmonic-tuple chains, pair-level-absolute mass, and weight-uniform sieves respectively — the physical chain lives outside all three. The chain *implies* the D3-INEQ* negative-main-term evaluation at strength $1-O(x^{-(2\lambda-0.725)}L^{O(1)})$.
+
+**The open problem is hereby restated:** improve the proved bound $C'(R+1)^2L$ by a factor $L^{3+a}$ (to the load-bearing budget $20\,\delta_0(\eta R)^2L^{-2}$) — a polylogarithmic refinement of an unconditional estimate, not a power-saving against a trivial bound. Caveat from the integer side: Form A as stated in §2 is FALSE at full period (the LHS attains $+x^{2\lambda-0.425}$); the correct target is the (W1.1)-windowed form throughout.
