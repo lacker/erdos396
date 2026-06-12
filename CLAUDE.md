@@ -47,6 +47,8 @@ Research program proving infinitude/log-density $c_1^2$ of $W_1=\{n: n(n-1)\mid\
 | `empirics_d.py` | WP1.5 band-empirics probe ($T_q(\lambda)$ on real populations, 5 strata; ~minutes at $x=10^8$) |
 | `manuscript/` | **The WP4 manuscript spine** — LaTeX, full proofs of everything proved, status tags on every statement, remaining-gaps ledger in §10. Build: `tectonic main.tex` (installed via brew). Keep it in sync with the per-lemma docs |
 | `wp8-*.md` … `wp12-*.md` | **The hypothesis-attack era** (June 10–11): prover/verifier/audit reports per work package. Always read the matching `wp*-verify-*.md` before trusting a claim; `wp9-theorem1prime.md` = the Theorem 1′ chain; `wp11-e3lb.md` = the E3-lb ladder log (see its STATUS header); `wp12-cdagger-lb-diagnosis.md` = the other brick. Current frontier: Kuznetsov/DI bridge (roadmap WP12b) |
+| `THE-OPEN-PROBLEM.md` | **The program's capstone**: self-contained statement of the one missing estimate (number-theorist-ready) |
+| `literature-dependencies.md` | The audited table: every external theorem the conditional theorem consumes, with verification grades |
 | `archive/` | Recovered session artifacts + full transcripts — historical; see `archive/README.md` |
 
 ## Scripts
